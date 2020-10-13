@@ -24,7 +24,7 @@ dsw2020-tim_ignjatkrd created by GitHub Classroom
   
   **Deljenje dokumenata(kao i delova dokumenata)**;
   
-  **Rukovanje parametrima komponenti arhitekture softverskih proizvoda;
+  **Rukovanje parametrima komponenti arhitekture softverskih proizvoda**;
 
 
 
