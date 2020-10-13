@@ -40,7 +40,7 @@ dsw2020-tim_ignjatkrd created by GitHub Classroom
 
   Alat, radni okvir.
 
-  ### 3.4. Nacin plasmana
+  ### 3.2. Nacin plasmana
   
   Slobodno trziste, ne proizvodi se za odredjenog kupca.
   
