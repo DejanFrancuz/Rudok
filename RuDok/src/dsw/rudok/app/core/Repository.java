@@ -1,5 +1,6 @@
 package dsw.rudok.app.core;
 
-public class Repository {
+public interface Repository {
 
+    Workspace getWorkspace();
 }

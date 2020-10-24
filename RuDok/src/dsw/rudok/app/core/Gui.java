@@ -1,5 +1,6 @@
 package dsw.rudok.app.core;
 
-public class Gui {
+public interface Gui {
+    void start();
 
 }
