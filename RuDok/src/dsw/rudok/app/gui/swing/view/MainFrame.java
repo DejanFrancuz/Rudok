@@ -2,16 +2,28 @@ package dsw.rudok.app.gui.swing.view;
 
 import javax.swing.*;
 
-import dsw.rudok.app.gui.swing.SwingGui;
+import dsw.rudok.app.core.Repository;
+import dsw.rudok.app.gui.swing.controller.ActionManager;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.awt.*;
 
+@Getter
+@Setter
+
 public class MainFrame extends  JFrame{
+	
+	private void initialise() {
+		actionManager = new ActionManager();
+	}
 	
 	private JMenuBar menu;
 	private JToolBar toolBar;
 	private JTree workspaceTree;
 	private static MainFrame instance;
+	private Repository documentRepository;
+	private ActionManager actionManager;
 
 	private MainFrame() {
 		initialiseGUI();
@@ -54,9 +66,8 @@ public class MainFrame extends  JFrame{
 		}
 		return instance;
 	}
+
 	
-	public static void main(String[] args) {
-		new SwingGui().start();
-		
-	}
+	
+	
 }
