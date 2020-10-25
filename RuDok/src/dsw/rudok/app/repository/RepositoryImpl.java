@@ -1,4 +1,4 @@
-package RuDok.src.dsw.rudok.app.repository;
+package dsw.rudok.app.repository;
 
 import dsw.rudok.app.core.Repository;
 import dsw.rudok.app.repository.node.RuNode;

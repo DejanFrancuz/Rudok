@@ -1,7 +1,8 @@
-package RuDok.src.dsw.rudok.app.repository;
+package dsw.rudok.app.repository;
 
-import RuDok.src.dsw.rudok.app.repository.node.RuNode;
-import RuDok.src.dsw.rudok.app.repository.node.RuNodeComposite;
+import dsw.rudok.app.repository.node.RuNode;
+import dsw.rudok.app.repository.node.RuNodeComposite;
+
 
 public class Workspace extends RuNodeComposite {
     public Workspace(String name){

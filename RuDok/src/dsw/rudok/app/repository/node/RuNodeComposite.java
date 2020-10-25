@@ -1,4 +1,4 @@
-package RuDok.src.dsw.rudok.app.repository.node;
+package dsw.rudok.app.repository.node;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +15,7 @@ public abstract class RuNodeComposite extends RuNode{
 
     public RuNodeComposite(String name,RuNode parent){
         super(name,parent);
-        this.children=new ArrayList<>();
+        this.children=new ArrayList<RuNode>();
     }
     public RuNodeComposite(String name,RuNode parent,List<RuNode> children){
         super(name,parent);

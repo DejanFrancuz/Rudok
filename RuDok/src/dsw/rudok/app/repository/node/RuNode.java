@@ -1,4 +1,4 @@
-package RuDok.src.dsw.rudok.app.repository.node;
+package dsw.rudok.app.repository.node;
 
 import lombok.*;
 
