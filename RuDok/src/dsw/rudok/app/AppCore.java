@@ -3,6 +3,7 @@ package dsw.rudok.app;
 import dsw.rudok.app.core.ApplicationFramework;
 import dsw.rudok.app.core.Gui;
 import dsw.rudok.app.core.Repository;
+import dsw.rudok.app.gui.swing.SwingGui;
 import dsw.rudok.app.repository.RepositoryImpl;
 
 public class AppCore extends ApplicationFramework {
@@ -13,7 +14,7 @@ public class AppCore extends ApplicationFramework {
 
     }
     public static AppCore getInstance(){
-        if(insatnce==null){
+        if(instance==null){
             instance = new AppCore();
         }
         return instance;
