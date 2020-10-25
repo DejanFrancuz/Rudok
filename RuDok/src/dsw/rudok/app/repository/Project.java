@@ -1,0 +1,9 @@
+package RuDok.src.dsw.rudok.app.repository;
+
+import RuDok.src.dsw.rudok.app.repository.node.RuNode;
+
+public class Project extends RuNode{
+    public Project(String name, RuNode parent){
+        super(name,parent);
+    }
+}
