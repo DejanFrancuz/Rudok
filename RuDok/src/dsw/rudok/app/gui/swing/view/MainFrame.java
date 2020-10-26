@@ -16,6 +16,7 @@ public class MainFrame extends  JFrame{
 	
 	private void initialise() {
 		actionManager = new ActionManager();
+		
 	}
 	
 	private JMenuBar menu;
