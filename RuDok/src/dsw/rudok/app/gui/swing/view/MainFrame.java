@@ -14,10 +14,7 @@ import java.awt.*;
 
 public class MainFrame extends  JFrame{
 	
-	private void initialise() {
-		actionManager = new ActionManager();
-		
-	}
+	
 	
 	private JMenuBar menu;
 	private JToolBar toolBar;
@@ -27,6 +24,16 @@ public class MainFrame extends  JFrame{
 	private ActionManager actionManager;
 
 	private MainFrame() {
+		
+	}
+	
+	private void initialise() {
+		actionManager = new ActionManager();
+		
+	}
+	
+	public void initialiseWorkspaceTree() {
+		
 		initialiseGUI();
 	}
 	
@@ -64,6 +71,7 @@ public class MainFrame extends  JFrame{
 	public static MainFrame getInstance() {
 		if(instance == null) {
 			instance = new MainFrame();
+			instance.initialise();
 		}
 		return instance;
 	}
