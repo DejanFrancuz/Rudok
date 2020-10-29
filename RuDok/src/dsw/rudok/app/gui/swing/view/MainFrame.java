@@ -76,7 +76,11 @@ public class MainFrame extends  JFrame{
 		return instance;
 	}
 
-	
-	
-	
+	public ActionManager getActionManager() {
+		return actionManager;
+	}
+
+	public void setDocumentRepository(Repository documentRepository) {
+		this.documentRepository = documentRepository;
+	}
 }

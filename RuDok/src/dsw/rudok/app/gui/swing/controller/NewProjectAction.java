@@ -1,6 +1,7 @@
 package dsw.rudok.app.gui.swing.controller;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent;
 import java.util.Random;
 
 import javax.swing.KeyStroke;
@@ -13,7 +14,7 @@ public class NewProjectAction extends AbstractRudokAction{
 	
 	 public NewProjectAction() {
 		
-		 putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N,ActionEvent.CTRL_MASK));
+		 putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		 putValue(SMALL_ICON, loadIcon("Documents/plus.png"));
 		 putValue(NAME, "New Project");
 		 putValue(SHORT_DESCRIPTION, "New Project");

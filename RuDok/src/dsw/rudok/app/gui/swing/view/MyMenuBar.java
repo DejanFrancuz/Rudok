@@ -1,7 +1,6 @@
 package dsw.rudok.app.gui.swing.view;
 
 import java.awt.event.KeyEvent;
-
 import javax.swing.*;
 
 
