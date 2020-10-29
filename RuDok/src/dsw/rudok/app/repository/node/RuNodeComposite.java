@@ -1,15 +1,12 @@
 package dsw.rudok.app.repository.node;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-@Getter
-@Setter
+
 public abstract class RuNodeComposite extends RuNode{
     List<RuNode> children;
 
@@ -21,6 +18,9 @@ public abstract class RuNodeComposite extends RuNode{
         super(name,parent);
         this.children=children;
     }
+
+
+
     public abstract void addChild(RuNode child);
 
     public RuNode getChildByName(String name){
@@ -35,4 +35,9 @@ public abstract class RuNodeComposite extends RuNode{
     public List<RuNode> getChildren() {
         return children;
     }
+
+    public void setChildren(List<RuNode> children) {
+        this.children = children;
+    }
+
 }

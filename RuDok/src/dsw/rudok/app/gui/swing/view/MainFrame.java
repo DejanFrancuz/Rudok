@@ -4,13 +4,11 @@ import javax.swing.*;
 
 import dsw.rudok.app.core.Repository;
 import dsw.rudok.app.gui.swing.controller.ActionManager;
-import lombok.Getter;
-import lombok.Setter;
+
 
 import java.awt.*;
 
-@Getter
-@Setter
+
 
 public class MainFrame extends  JFrame{
 	
@@ -82,5 +80,41 @@ public class MainFrame extends  JFrame{
 
 	public void setDocumentRepository(Repository documentRepository) {
 		this.documentRepository = documentRepository;
+	}
+
+	public JMenuBar getMenu() {
+		return menu;
+	}
+
+	public JToolBar getToolBar() {
+		return toolBar;
+	}
+
+	public JTree getWorkspaceTree() {
+		return workspaceTree;
+	}
+
+	public Repository getDocumentRepository() {
+		return documentRepository;
+	}
+
+	public void setMenu(JMenuBar menu) {
+		this.menu = menu;
+	}
+
+	public void setToolBar(JToolBar toolBar) {
+		this.toolBar = toolBar;
+	}
+
+	public void setWorkspaceTree(JTree workspaceTree) {
+		this.workspaceTree = workspaceTree;
+	}
+
+	public static void setInstance(MainFrame instance) {
+		MainFrame.instance = instance;
+	}
+
+	public void setActionManager(ActionManager actionManager) {
+		this.actionManager = actionManager;
 	}
 }

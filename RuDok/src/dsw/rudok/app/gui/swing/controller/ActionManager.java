@@ -1,10 +1,8 @@
 package dsw.rudok.app.gui.swing.controller;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+
+
 public class ActionManager {
 
 	private ExitAction exitAction;
@@ -18,6 +16,20 @@ public class ActionManager {
 		exitAction = new ExitAction();
 		newProjectAction = new NewProjectAction();
 	}
-	
-	
+
+	public ExitAction getExitAction() {
+		return exitAction;
+	}
+
+	public NewProjectAction getNewProjectAction() {
+		return newProjectAction;
+	}
+
+	public void setExitAction(ExitAction exitAction) {
+		this.exitAction = exitAction;
+	}
+
+	public void setNewProjectAction(NewProjectAction newProjectAction) {
+		this.newProjectAction = newProjectAction;
+	}
 }
