@@ -31,4 +31,8 @@ public abstract class RuNodeComposite extends RuNode{
         }
         return null;
     }
+
+    public List<RuNode> getChildren() {
+        return children;
+    }
 }
