@@ -4,6 +4,8 @@ import javax.swing.*;
 
 import dsw.rudok.app.core.Repository;
 import dsw.rudok.app.gui.swing.controller.ActionManager;
+import dsw.rudok.app.gui.swing.tree.RuTree;
+import dsw.rudok.app.gui.swing.tree.view.RuTreeImplementation;
 
 
 import java.awt.*;
@@ -20,6 +22,7 @@ public class MainFrame extends  JFrame{
 	private static MainFrame instance;
 	private Repository documentRepository;
 	private ActionManager actionManager;
+	private RuTree tree;
 
 	private MainFrame() {
 		
@@ -31,7 +34,8 @@ public class MainFrame extends  JFrame{
 	}
 	
 	public void initialiseWorkspaceTree() {
-		
+		tree=new RuTreeImplementation();
+		workspaceTree=tree.generateTree(documentRepository.getWorkspace());
 		initialiseGUI();
 	}
 	
@@ -117,4 +121,12 @@ public class MainFrame extends  JFrame{
 	public void setActionManager(ActionManager actionManager) {
 		this.actionManager = actionManager;
 	}
+
+	public JTree getWorkspace(){
+		return workspaceTree;
+	}
+	public RuTree getTree(){
+		return tree;
+	}
+
 }

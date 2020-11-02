@@ -8,7 +8,12 @@ import javax.swing.KeyStroke;
 
 import com.sun.glass.events.KeyEvent;
 
+import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
+import dsw.rudok.app.gui.swing.view.MainFrame;
+import dsw.rudok.app.repository.Project;
+import dsw.rudok.app.repository.Workspace;
 import dsw.rudok.app.repository.node.RuNode;
+import dsw.rudok.app.repository.node.RuNodeComposite;
 
 public class NewProjectAction extends AbstractRudokAction{
 	
@@ -21,9 +26,10 @@ public class NewProjectAction extends AbstractRudokAction{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent arg0) {
 		int label = new Random().nextInt(100);
-		
+		Project p = new Project("Project " + label, (RuNodeComposite) ((RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel());
+		MainFrame.getInstance().getTree().addProject(p);
 		
 	}
 

@@ -4,7 +4,7 @@ import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
 public class Project extends RuNodeComposite {
-    public Project(String name, Workspace parent){
+    public Project(String name, RuNodeComposite parent){
         super(name,parent);
     }
     @Override
