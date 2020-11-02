@@ -7,6 +7,7 @@ public class ActionManager {
 
 	private ExitAction exitAction;
 	private NewProjectAction newProjectAction;
+	private NewDocumentAction newDocumentAction;
 	
 	public ActionManager() {
 		initialiseActions();
@@ -15,6 +16,7 @@ public class ActionManager {
 	private void initialiseActions() {
 		exitAction = new ExitAction();
 		newProjectAction = new NewProjectAction();
+		newDocumentAction = new NewDocumentAction();
 	}
 
 	public ExitAction getExitAction() {
@@ -32,4 +34,14 @@ public class ActionManager {
 	public void setNewProjectAction(NewProjectAction newProjectAction) {
 		this.newProjectAction = newProjectAction;
 	}
+
+	public NewDocumentAction getNewDocumentAction() {
+		return newDocumentAction;
+	}
+
+	public void setNewDocumentAction(NewDocumentAction newDocumentAction) {
+		this.newDocumentAction = newDocumentAction;
+	}
+	
+	
 }
