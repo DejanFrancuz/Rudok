@@ -28,7 +28,7 @@ public class NewProjectAction extends AbstractRudokAction{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		int label = new Random().nextInt(100);
-		Project p = new Project("Project " + label, (RuNodeComposite) ((RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel());
+		Project p = new Project("Project " + label,  ((RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel());
 		MainFrame.getInstance().getTree().addProject(p);
 		
 	}

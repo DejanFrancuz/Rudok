@@ -4,7 +4,7 @@ import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
 public class Document extends RuNodeComposite {
-    public Document(String name, Project parent) {
+    public Document(String name, RuNode parent) {
         super(name, parent);
     }
     public void addChild(RuNode child){
