@@ -21,7 +21,7 @@ public class AboutDialog extends JDialog{
 		JLabel lbl1 = new JLabel("Ignjat Krdzavac RN 115/20");
 		lbl1.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel lbl2 = new JLabel("Dejan Francuz ");
+		JLabel lbl2 = new JLabel("Dejan Francuz RN 76/20");
 		lbl1.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		panel.add(lbl1,BorderLayout.NORTH);
