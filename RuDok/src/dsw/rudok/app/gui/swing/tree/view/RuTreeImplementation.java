@@ -33,11 +33,11 @@ public class RuTreeImplementation implements RuTree {
     }
 
     @Override
-    public void addDocument(Document document){
-
-        RuNodeComposite nodeCompositeModel = (RuNodeComposite) ((RuTreeItem)treeModel.getRoot()).getNodeModel();
-        ((RuTreeItem)treeModel.getRoot()).add(new RuTreeItem(document));
-        ((Project)nodeCompositeModel).addChild(document);
-        SwingUtilities.updateComponentTreeUI(treeView);
+    public void addDocument(Project project,Document document){
+    	
+    	((RuTreeItem)treeView.getLastSelectedPathComponent()).add(new RuTreeItem(document));
+    	project.addChild(document);
+    	treeView.expandPath(treeView.getSelectionPath());
+       
     }
 }

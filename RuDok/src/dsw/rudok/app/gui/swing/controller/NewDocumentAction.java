@@ -25,8 +25,8 @@ public class NewDocumentAction extends AbstractRudokAction{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		int label = new Random().nextInt(100);
-		Document d = new Document("Document "+label, ((RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel());
-		MainFrame.getInstance().getTree().addDocument(d);
+		Document document = new Document("Document "+label,((RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent()).getNodeModel());
+		MainFrame.getInstance().getTree().addDocument((Project)document.getParent(), document);
 	}
 
 	

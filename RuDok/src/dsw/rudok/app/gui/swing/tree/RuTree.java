@@ -10,5 +10,5 @@ import javax.swing.tree.DefaultTreeModel;
 public interface RuTree {
     JTree generateTree(Workspace workspace);
     void addProject(Project project);
-    void addDocument(Document document);
+    void addDocument(Project project,Document document);
 }
