@@ -10,6 +10,7 @@ public class ActionManager {
 	private NewDocumentAction newDocumentAction;
 	private NewPageAction newPageAction;
 	private NewSlotAction newSlotAction;
+	private DeleteNode deleteNode;
 	
 	public ActionManager() {
 		initialiseActions();
@@ -21,6 +22,7 @@ public class ActionManager {
 		newDocumentAction = new NewDocumentAction();
 		newPageAction=new NewPageAction();
 		newSlotAction=new NewSlotAction();
+		deleteNode=new DeleteNode();
 	}
 
 	public ExitAction getExitAction() {
@@ -61,5 +63,13 @@ public class ActionManager {
 
 	public void setNewSlotAction(NewSlotAction newSlotAction) {
 		this.newSlotAction = newSlotAction;
+	}
+
+	public DeleteNode getDeleteNode() {
+		return deleteNode;
+	}
+
+	public void setDeleteNode(DeleteNode deleteNode) {
+		this.deleteNode = deleteNode;
 	}
 }
