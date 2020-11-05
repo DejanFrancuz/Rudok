@@ -37,7 +37,7 @@ public class RuTreeImplementation implements RuTree {
     	
     	((RuTreeItem)treeView.getLastSelectedPathComponent()).add(new RuTreeItem(document));
     	project.addChild(document);
-    	treeView.expandPath(treeView.getSelectionPath());
+    	//treeView.expandPath(null);
        
     }
 }
