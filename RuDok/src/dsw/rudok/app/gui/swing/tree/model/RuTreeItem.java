@@ -48,15 +48,9 @@ public class RuTreeItem extends DefaultMutableTreeNode {
             return false;
         return true;
     }
-  /*  @Override
-    public boolean isRoot() {
-        if (nodeModel instanceof Workspace)
-            return true;
-            return false;
 
-    }
 
-   */
+
     @Override
     public Enumeration children(){
         if(nodeModel instanceof RuNodeComposite)

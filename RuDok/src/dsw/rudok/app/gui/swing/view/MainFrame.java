@@ -1,11 +1,13 @@
 package dsw.rudok.app.gui.swing.view;
 
 import javax.swing.*;
+import javax.swing.tree.DefaultTreeModel;
 
 import dsw.rudok.app.core.Repository;
 import dsw.rudok.app.gui.swing.controller.ActionManager;
 import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.view.RuTreeImplementation;
+import dsw.rudok.app.repository.node.RuNode;
 
 
 import java.awt.*;
@@ -23,6 +25,7 @@ public class MainFrame extends  JFrame{
 	private Repository documentRepository;
 	private ActionManager actionManager;
 	private RuTree tree;
+	private DefaultTreeModel treeModel;
 
 	private MainFrame() {
 		
@@ -129,4 +132,7 @@ public class MainFrame extends  JFrame{
 		return tree;
 	}
 
+	public DefaultTreeModel getTreeModel() {
+		return treeModel;
+	}
 }

@@ -4,9 +4,11 @@ import com.sun.tools.javac.Main;
 import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.controller.RuTreeSelectionListener;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
+import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.*;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
+import org.w3c.dom.Node;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -54,7 +56,16 @@ public class RuTreeImplementation implements RuTree {
 
     @Override
     public void removeNode(DefaultMutableTreeNode dtm){
-
+        if(dtm !=null && !dtm.isRoot()){
+            DefaultTreeModel model=(DefaultTreeModel) MainFrame.getInstance().getWorkspaceTree().getModel();
+           // ((RuTreeItem)treeView.getLastSelectedPathComponent()).removeFromParent();
+            //MainFrame.getInstance().getTreeModel().removeNodeFromParent(dtm);
+            model.removeNodeFromParent(dtm);
+            model.reload();
+            //MainFrame.getInstance().getWorkspaceTree().updateUI();
+        }else{
+            return;
+        }
 
 
 
