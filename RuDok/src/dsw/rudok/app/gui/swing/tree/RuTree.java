@@ -5,10 +5,11 @@ import dsw.rudok.app.repository.Project;
 import dsw.rudok.app.repository.Workspace;
 
 import javax.swing.*;
-import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 
 public interface RuTree {
     JTree generateTree(Workspace workspace);
     void addProject(Project project);
     void addDocument(Project project,Document document);
+
 }

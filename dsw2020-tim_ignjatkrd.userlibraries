@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="RukovalacDokumentima">
+    <archive path="C:/Users/Zivana/IdeaProjects/dsw2020-tim_ignjatkrd/RukovalacDokumentima.zip" />
+  </library>
+  <library name="lombok">
+    <archive path="C:/Users/Zivana/Desktop/lombok.jar" />
+  </library>
+</eclipse-userlibraries>
+

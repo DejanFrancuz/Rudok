@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="RuDok"/>
+	<classpathentry kind="src" path="RuDok/src"/>
+	<classpathentry kind="output" path="out/production/dsw2020-tim_ignjatkrd-1"/>
+</classpath>
