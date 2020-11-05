@@ -9,6 +9,7 @@ public class ActionManager {
 	private NewProjectAction newProjectAction;
 	private NewDocumentAction newDocumentAction;
 	private NewPageAction newPageAction;
+	private NewSlotAction newSlotAction;
 	
 	public ActionManager() {
 		initialiseActions();
@@ -19,6 +20,7 @@ public class ActionManager {
 		newProjectAction = new NewProjectAction();
 		newDocumentAction = new NewDocumentAction();
 		newPageAction=new NewPageAction();
+		newSlotAction=new NewSlotAction();
 	}
 
 	public ExitAction getExitAction() {
@@ -51,5 +53,13 @@ public class ActionManager {
 
 	public void setNewPageAction(NewPageAction newPageAction) {
 		this.newPageAction = newPageAction;
+	}
+
+	public NewSlotAction getNewSlotAction() {
+		return newSlotAction;
+	}
+
+	public void setNewSlotAction(NewSlotAction newSlotAction) {
+		this.newSlotAction = newSlotAction;
 	}
 }

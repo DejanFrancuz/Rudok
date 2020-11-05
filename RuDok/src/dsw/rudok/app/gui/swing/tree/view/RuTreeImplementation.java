@@ -3,10 +3,7 @@ package dsw.rudok.app.gui.swing.tree.view;
 import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.controller.RuTreeSelectionListener;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
-import dsw.rudok.app.repository.Document;
-import dsw.rudok.app.repository.Page;
-import dsw.rudok.app.repository.Project;
-import dsw.rudok.app.repository.Workspace;
+import dsw.rudok.app.repository.*;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
@@ -45,5 +42,10 @@ public class RuTreeImplementation implements RuTree {
     public void addPage(Document document, Page page){
         ((RuTreeItem)treeView.getLastSelectedPathComponent()).add(new RuTreeItem(page));
         document.addChild(page);
+    }
+    @Override
+    public void addSlot(Page page, Slot slot){
+        ((RuTreeItem)treeView.getLastSelectedPathComponent()).add(new RuTreeItem(slot));
+        page.addChild(slot);
     }
 }
