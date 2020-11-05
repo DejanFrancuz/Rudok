@@ -31,7 +31,7 @@ public class NewDocumentAction extends AbstractRudokAction{
 			if(node.getNodeModel() instanceof Project) {
 				
 				Project project  = (Project) node.getNodeModel();
-				Document document = new Document("Document" + (node.getChildCount() + 1), project);
+				Document document = new Document("Document " + (node.getChildCount() + 1), project);
 				MainFrame.getInstance().getTree().addDocument(project, document);
 				MainFrame.getInstance().getWorkspaceTree().updateUI();
 			}
