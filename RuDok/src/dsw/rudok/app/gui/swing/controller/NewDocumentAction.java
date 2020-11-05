@@ -36,9 +36,7 @@ public class NewDocumentAction extends AbstractRudokAction{
 				MainFrame.getInstance().getWorkspaceTree().updateUI();
 			}
 		
-		//int label = new Random().nextInt(100);
-		//Document document = new Document("Document "+label,node.getNodeModel());
-		//MainFrame.getInstance().getTree().addDocument((Project)document.getParent(), document);
+
 	}
 
 	
