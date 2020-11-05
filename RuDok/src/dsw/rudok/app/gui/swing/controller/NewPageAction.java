@@ -1,6 +1,6 @@
 package dsw.rudok.app.gui.swing.controller;
 
-import com.sun.glass.events.KeyEvent;
+
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.Document;
@@ -10,6 +10,7 @@ import dsw.rudok.app.repository.Project;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 public class NewPageAction extends AbstractRudokAction{
 

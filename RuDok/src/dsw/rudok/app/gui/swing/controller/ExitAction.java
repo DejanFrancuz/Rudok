@@ -1,10 +1,11 @@
 package dsw.rudok.app.gui.swing.controller;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 import javax.swing.KeyStroke;
 
-import com.sun.glass.events.KeyEvent;
+
 
 public class ExitAction extends AbstractRudokAction{
 

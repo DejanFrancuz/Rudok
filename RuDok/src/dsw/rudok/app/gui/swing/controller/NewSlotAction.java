@@ -1,6 +1,6 @@
 package dsw.rudok.app.gui.swing.controller;
 
-import com.sun.glass.events.KeyEvent;
+
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.Document;
@@ -9,6 +9,7 @@ import dsw.rudok.app.repository.Slot;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 public class NewSlotAction extends AbstractRudokAction{
     public NewSlotAction() {
@@ -22,7 +23,7 @@ public class NewSlotAction extends AbstractRudokAction{
         if(node.getNodeModel() instanceof Page) {
 
             Page page  = (Page) node.getNodeModel();
-            Slot slot = new Slot("Page " + (node.getChildCount() + 1), page);
+            Slot slot = new Slot("Slot " + (node.getChildCount() + 1), page);
             MainFrame.getInstance().getTree().addSlot(page, slot);
             MainFrame.getInstance().getWorkspaceTree().updateUI();
         }

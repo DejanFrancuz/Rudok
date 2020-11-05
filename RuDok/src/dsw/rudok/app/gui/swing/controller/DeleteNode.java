@@ -1,6 +1,6 @@
 package dsw.rudok.app.gui.swing.controller;
 
-import com.sun.glass.events.KeyEvent;
+
 import com.sun.tools.javac.Main;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.MainFrame;
@@ -13,6 +13,7 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreePath;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 public class DeleteNode extends AbstractRudokAction {
 
