@@ -1,5 +1,6 @@
 package dsw.rudok.app.gui.swing.tree.view;
 
+import com.sun.tools.javac.Main;
 import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.controller.RuTreeSelectionListener;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
@@ -8,7 +9,9 @@ import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.MutableTreeNode;
 
 public class RuTreeImplementation implements RuTree {
 
@@ -47,5 +50,13 @@ public class RuTreeImplementation implements RuTree {
     public void addSlot(Page page, Slot slot){
         ((RuTreeItem)treeView.getLastSelectedPathComponent()).add(new RuTreeItem(slot));
         page.addChild(slot);
+    }
+
+    @Override
+    public void removeNode(DefaultMutableTreeNode dtm){
+
+
+
+
     }
 }

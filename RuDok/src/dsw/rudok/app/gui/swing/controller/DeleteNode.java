@@ -4,8 +4,8 @@ package dsw.rudok.app.gui.swing.controller;
 import com.sun.tools.javac.Main;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.MainFrame;
-import dsw.rudok.app.repository.Project;
-import dsw.rudok.app.repository.Workspace;
+import dsw.rudok.app.repository.*;
+import dsw.rudok.app.repository.node.RuNode;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -24,30 +24,18 @@ public class DeleteNode extends AbstractRudokAction {
         putValue(SHORT_DESCRIPTION, "Delete");
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
-        Object o = MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
-
-        if (o instanceof Project) {
-            Project project = (Project)o;
-            Workspace ws =(Workspace) project.getParent();
-            DefaultMutableTreeNode node;
-            DefaultTreeModel model = (DefaultTreeModel) (MainFrame.getInstance().getWorkspaceTree().getModel());
-            TreePath[] paths = MainFrame.getInstance().getWorkspaceTree().getSelectionPaths();
-            for (int i = 0; i < paths.length; i++) {
-                node = (DefaultMutableTreeNode) (paths[i].getLastPathComponent());
-                model.removeNodeFromParent(node);
-            }
-            /*
-            Project project = (Project)o;
-           // Workspace ws =(Workspace) project.getParent();
-            DefaultTreeModel model = (DefaultTreeModel)project.getParent();
-        //    System.out.println(ws);
-            model.removeNodeFromParent(project);
-
-            MainFrame.getInstance().getWorkspaceTree().updateUI();
+        DefaultMutableTreeNode childNodeView = (DefaultMutableTreeNode) MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
+        if(childNodeView == null){
+            return;
         }
-
-             */
+        //RuNode childNodeModel = (RuNode) childNodeView.getUserObject();
+        if(childNodeView.isRoot()){
+            return;
         }
+        childNodeView.removeFromParent();
+        MainFrame.getInstance().getWorkspaceTree().updateUI();
+
     }
 }
