@@ -14,6 +14,7 @@ import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
+import java.util.ArrayList;
 
 public class RuTreeImplementation implements RuTree {
 
@@ -55,19 +56,31 @@ public class RuTreeImplementation implements RuTree {
     }
 
     @Override
-    public void removeNode(DefaultMutableTreeNode dtm){
-        if(dtm !=null && !dtm.isRoot()){
-            DefaultTreeModel model=(DefaultTreeModel) MainFrame.getInstance().getWorkspaceTree().getModel();
-           // ((RuTreeItem)treeView.getLastSelectedPathComponent()).removeFromParent();
-            //MainFrame.getInstance().getTreeModel().removeNodeFromParent(dtm);
-            model.removeNodeFromParent(dtm);
-            model.reload();
-            //MainFrame.getInstance().getWorkspaceTree().updateUI();
-        }else{
-            return;
+    public void removeNode(RuNode node){
+        if(!(node instanceof Workspace)&& node!=null){
+            RuNodeComposite parent = (RuNodeComposite) node.getParent();
+            ArrayList<RuNode> children = (ArrayList<RuNode>) parent.getChildren();
+            for(RuNode ruNode : children){
+                if(ruNode.equals(node)){
+                    //int index = children.indexOf(node);
+                    children.remove(node);
+                    parent.setChildren(children);
+                }
+            }
+
         }
-
-
-
+        SwingUtilities.updateComponentTreeUI(treeView);
     }
+
+
+    /*
+    @Override
+    public void removeNode(RuTreeItem node){
+        if(!node.isRoot() && node!=null){
+            node.removeFromParent();
+            SwingUtilities.updateComponentTreeUI(treeView);
+        }
+    }
+
+     */
 }

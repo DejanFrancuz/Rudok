@@ -6,6 +6,7 @@ import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.*;
 import dsw.rudok.app.repository.node.RuNode;
+import dsw.rudok.app.repository.node.RuNodeComposite;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -40,11 +41,20 @@ public class DeleteNode extends AbstractRudokAction {
     }
     */
 
+@Override
+    public void actionPerformed(ActionEvent e){
+    Object o =  MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
+    RuNode node =(RuNode)o;
+    MainFrame.getInstance().getTree().removeNode(node);
+    MainFrame.getInstance().getWorkspace().updateUI();
+}
 
+
+/*
     @Override
     public void actionPerformed(ActionEvent e){
         DefaultMutableTreeNode childNode = (DefaultMutableTreeNode) MainFrame.getInstance().getWorkspaceTree().getSelectionPath().getLastPathComponent();
-        if(childNode !=null && !childNode.isRoot()){
+        if(childNode !=null || !childNode.isRoot()){
             DefaultTreeModel model=(DefaultTreeModel) MainFrame.getInstance().getWorkspaceTree().getModel();
             // ((RuTreeItem)treeView.getLastSelectedPathComponent()).removeFromParent();
             //MainFrame.getInstance().getTreeModel().removeNodeFromParent(dtm);
@@ -60,7 +70,7 @@ public class DeleteNode extends AbstractRudokAction {
         //MainFrame.getInstance().getTree().removeNode(childNode);
         //MainFrame.getInstance().getWorkspaceTree().updateUI();
     }
-
+*/
     /*
     @Override
     public void actionPerformed(ActionEvent e){
