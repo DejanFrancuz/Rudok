@@ -1,5 +1,6 @@
 package dsw.rudok.app.gui.swing.tree;
 
+import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.repository.*;
 import dsw.rudok.app.repository.node.RuNode;
 
@@ -14,6 +15,6 @@ public interface RuTree {
     void addDocument(Project project,Document document);
     void addPage(Document document, Page page);
     void addSlot(Page page, Slot slot);
-    void removeNode(DefaultMutableTreeNode def);
+    void removeNode(RuNode node);
 
 }
