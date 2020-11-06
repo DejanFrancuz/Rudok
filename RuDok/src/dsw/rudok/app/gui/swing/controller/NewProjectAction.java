@@ -21,7 +21,7 @@ public class NewProjectAction extends AbstractRudokAction{
 	 public NewProjectAction() {
 		
 		 putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
-		 putValue(SMALL_ICON, loadIcon("images/plus.png"));
+		 putValue(SMALL_ICON, loadIcon("images/Project-icon.png"));
 		 putValue(NAME, "New Project");
 		 putValue(SHORT_DESCRIPTION, "New Project");
 	}
