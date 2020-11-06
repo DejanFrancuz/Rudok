@@ -15,6 +15,6 @@ public interface RuTree {
     void addDocument(Project project,Document document);
     void addPage(Document document, Page page);
     void addSlot(Page page, Slot slot);
-    void removeNode(RuNode node);
+    void removeNode(RuTreeItem item);
 
 }

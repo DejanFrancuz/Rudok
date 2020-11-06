@@ -43,9 +43,8 @@ public class DeleteNode extends AbstractRudokAction {
 
 @Override
     public void actionPerformed(ActionEvent e){
-    Object o =  MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
-    RuNode node =(RuNode)o;
-    MainFrame.getInstance().getTree().removeNode(node);
+    RuTreeItem item =(RuTreeItem)  MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
+    MainFrame.getInstance().getTree().removeNode(item);
     MainFrame.getInstance().getWorkspace().updateUI();
 }
 
