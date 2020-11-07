@@ -14,7 +14,7 @@ import java.awt.event.KeyEvent;
 public class NewSlotAction extends AbstractRudokAction{
     public NewSlotAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.ALT_MASK));
-        putValue(SMALL_ICON, loadIcon("images/newbook.png"));
+        putValue(SMALL_ICON, loadIcon("images/graphicslot-icon.png"));
         putValue(NAME, "New Slot");
         putValue(SHORT_DESCRIPTION, "New Slot");
     }

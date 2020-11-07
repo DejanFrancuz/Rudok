@@ -20,7 +20,7 @@ public class DeleteNode extends AbstractRudokAction {
 
     public DeleteNode() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("images/delete_1.png"));
+        putValue(SMALL_ICON, loadIcon("images/Delete.png"));
         putValue(NAME, "Delete Node");
         putValue(SHORT_DESCRIPTION, "Delete");
     }
