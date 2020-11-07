@@ -58,18 +58,21 @@ public class RuTreeImplementation implements RuTree {
     @Override
     public void removeNode(RuTreeItem item){
         RuNode node = item.getNodeModel();
-        if(!(node instanceof Workspace)&& node!=null){
+        int index=-1;
+        if(!(node instanceof Workspace)&& node!=null) {
             RuNodeComposite parent = (RuNodeComposite) node.getParent();
-            ArrayList<RuNode> children = (ArrayList<RuNode>) parent.getChildren();
-            for(RuNode ruNode : children){
-                if(ruNode.equals(node)){
-                    //int index = children.indexOf(node);
-                    children.remove(node);
-                    parent.setChildren(children);
+           ArrayList<RuNode> children = (ArrayList<RuNode>) parent.getChildren();
+            for (RuNode ruNode : children) {
+                if (ruNode.equals(node)) {
+                     index = children.indexOf(node);
+                    //children.remove(node);
+                    //parent.setChildren(children);
                 }
             }
-
+            children.remove(index);
+            index=-1;
         }
+
         SwingUtilities.updateComponentTreeUI(treeView);
     }
 
