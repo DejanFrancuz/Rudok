@@ -26,6 +26,7 @@ public class MainFrame extends  JFrame{
 	private ActionManager actionManager;
 	private RuTree tree;
 	private DefaultTreeModel treeModel;
+	private JDesktopPane desktop;
 
 	private MainFrame() {
 		
@@ -58,7 +59,8 @@ public class MainFrame extends  JFrame{
 		toolBar = new Toolbar();
 		add(toolBar,BorderLayout.NORTH);
 		
-		JPanel desktop = new JPanel();
+		this.desktop = new JDesktopPane();
+		this.desktop.setBackground(Color.white);
 		
 		JScrollPane scroll = new JScrollPane(workspaceTree);
 		scroll.setMinimumSize(new Dimension(200,150));
@@ -68,7 +70,7 @@ public class MainFrame extends  JFrame{
 		split.setDividerLocation(250);
 		split.setOneTouchExpandable(true);
 				
-		
+
 	
 		
 	}
@@ -134,5 +136,9 @@ public class MainFrame extends  JFrame{
 
 	public DefaultTreeModel getTreeModel() {
 		return treeModel;
+	}
+
+	public JDesktopPane getDesktop() {
+		return desktop;
 	}
 }
