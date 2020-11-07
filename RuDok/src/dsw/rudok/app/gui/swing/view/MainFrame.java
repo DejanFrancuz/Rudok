@@ -16,7 +16,8 @@ import java.awt.*;
 
 public class MainFrame extends  JFrame{
 	
-	
+
+
 	
 	private JMenuBar menu;
 	private JToolBar toolBar;
