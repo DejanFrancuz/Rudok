@@ -47,7 +47,6 @@ public class NewDocumentAction extends AbstractRudokAction{
 				DocumentTab documentTab = new DocumentTab(name,document.getParent());
 				Icon icon = loadIcon("images/close.png");
 				project.getProjectTab().addDocToPrj(documentTab,icon,document);
-
 				document.setDocumentTab(documentTab);
 			}
 
