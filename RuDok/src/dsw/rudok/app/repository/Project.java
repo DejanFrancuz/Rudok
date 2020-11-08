@@ -1,10 +1,15 @@
 package dsw.rudok.app.repository;
 
+import dsw.rudok.app.gui.swing.view.ProjectTab;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
 public class Project extends RuNodeComposite {
+
+    private ProjectTab projectTab;
+
     public Project(String name, RuNode parent){
+
         super(name,parent);
     }
     @Override
@@ -15,5 +20,13 @@ public class Project extends RuNodeComposite {
                 this.getChildren().add(document);
             }
         }
+    }
+
+    public ProjectTab getProjectTab() {
+        return projectTab;
+    }
+
+    public void setProjectTab(ProjectTab projectTab) {
+        this.projectTab = projectTab;
     }
 }
