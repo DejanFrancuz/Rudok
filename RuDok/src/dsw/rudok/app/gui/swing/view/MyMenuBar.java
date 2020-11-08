@@ -1,12 +1,14 @@
 package dsw.rudok.app.gui.swing.view;
 
 import java.awt.event.KeyEvent;
+import java.io.ObjectStreamException;
+import java.util.Observer;
 import javax.swing.*;
 
 import dsw.rudok.app.gui.swing.controller.AboutAction;
 
 
-public class MyMenuBar extends JMenuBar{
+public class MyMenuBar extends JMenuBar {
 
 	public MyMenuBar() {
 		JMenu fileMenu = new JMenu("File");
