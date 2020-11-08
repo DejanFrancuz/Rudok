@@ -16,4 +16,5 @@ public class JTabbedPaneCloseButton extends JTabbedPane {
         super.addTab(title, icon, component, tip);
         int count = this.getTabCount() -1;
     }
+
 }

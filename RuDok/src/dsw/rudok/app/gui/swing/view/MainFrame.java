@@ -148,6 +148,7 @@ public class MainFrame extends  JFrame{
 		return treeModel;
 	}
 
+
 	public JTabbedPaneCloseButton getTabbedPane() {
 
 		return tabbedPane;
