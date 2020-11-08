@@ -7,6 +7,7 @@ import java.util.Random;
 
 import com.sun.glass.events.KeyEvent;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
+import dsw.rudok.app.gui.swing.view.DocumentTab;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.Document;
 import dsw.rudok.app.repository.Project;
@@ -38,8 +39,17 @@ public class NewDocumentAction extends AbstractRudokAction{
 				Document document = new Document("Document" + (node.getChildCount() + 1), project);
 				MainFrame.getInstance().getTree().addDocument(project, document);
 				MainFrame.getInstance().getWorkspaceTree().updateUI();
+
+				//DODAVANJE DOKUMENTA NA PROJEKAT
+
+				String name = document.getName();
+				DocumentTab documentTab = new DocumentTab(document.getName(),document.getParent());
+				Icon icon = loadIcon("images/close.png");
+				project.getProjectTab().addDocToPrj(documentTab,icon,document);
+				document.setDocumentTab(documentTab);
 			}
-		
+
+
 		
 	}
 

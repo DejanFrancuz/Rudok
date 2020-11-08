@@ -1,5 +1,6 @@
 package dsw.rudok.app.gui.swing.controller;
 
+import dsw.rudok.app.gui.swing.view.DocumentTab;
 import dsw.rudok.app.gui.swing.view.ProjectTab;
 
 import javax.swing.*;
@@ -44,6 +45,8 @@ public class JTabbedPaneCloseButton extends JTabbedPane {
         addTabNoExit(title, null, component);
     }
 
+
+
     public class CloseButtonTab extends JPanel {
         /**
          *
@@ -66,6 +69,7 @@ public class JTabbedPaneCloseButton extends JTabbedPane {
             add(button);
         }
     }
+
 
 
 

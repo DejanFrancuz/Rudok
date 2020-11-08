@@ -31,15 +31,17 @@ public class NewProjectAction extends AbstractRudokAction{
 
 		RuTreeItem node = ((RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getModel().getRoot());
 
-		Project p = new Project("Project " +  (node.getChildCount()+1),  ((RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel());
-		MainFrame.getInstance().getTree().addProject(p);
+		Project project = new Project("Project " +  (node.getChildCount()+1),  ((RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel());
+		MainFrame.getInstance().getTree().addProject(project);
 
 		//DODAVANJE TABA
 
-			String name = p.getName();
+			String name = project.getName();
 		ProjectTab projectTab = new ProjectTab(name);
 		Icon icon  = loadIcon("images/close.png");
-		MainFrame.getInstance().getTabbedPane().addTab(p.getName(),icon,projectTab,p.getName());
+		MainFrame.getInstance().getTabbedPane().addTab(project.getName(),icon,projectTab,project.getName());
+		project.setProjectTab(projectTab);
+
 
 	}
 
