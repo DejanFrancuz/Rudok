@@ -5,6 +5,7 @@ import javax.swing.tree.DefaultTreeModel;
 
 import dsw.rudok.app.core.Repository;
 import dsw.rudok.app.gui.swing.controller.ActionManager;
+import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
 import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.view.RuTreeImplementation;
 import dsw.rudok.app.repository.node.RuNode;
@@ -27,7 +28,7 @@ public class MainFrame extends  JFrame{
 	private ActionManager actionManager;
 	private RuTree tree;
 	private DefaultTreeModel treeModel;
-	private JDesktopPane desktop;
+	private JTabbedPaneCloseButton tabbedPane;
 
 	private MainFrame() {
 		
@@ -60,13 +61,12 @@ public class MainFrame extends  JFrame{
 		toolBar = new Toolbar();
 		add(toolBar,BorderLayout.NORTH);
 		
-		this.desktop = new JDesktopPane();
-		this.desktop.setBackground(Color.white);
-		
 		JScrollPane scroll = new JScrollPane(workspaceTree);
 		scroll.setMinimumSize(new Dimension(200,150));
+
+		this.createTabbedPane();
 		
-		JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,desktop);
+		JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,tabbedPane);
 		getContentPane().add(split,BorderLayout.CENTER);
 		split.setDividerLocation(250);
 		split.setOneTouchExpandable(true);
@@ -82,6 +82,15 @@ public class MainFrame extends  JFrame{
 			instance.initialise();
 		}
 		return instance;
+	}
+
+
+	private void addMyTabToTabbedPane(String name){
+
+	}
+
+	private void createTabbedPane() {
+		this.tabbedPane = new JTabbedPaneCloseButton();
 	}
 
 	public ActionManager getActionManager() {
@@ -139,7 +148,11 @@ public class MainFrame extends  JFrame{
 		return treeModel;
 	}
 
-	public JDesktopPane getDesktop() {
-		return desktop;
+
+	public JTabbedPaneCloseButton getTabbedPane() {
+
+		return tabbedPane;
 	}
+
+
 }

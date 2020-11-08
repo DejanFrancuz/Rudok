@@ -5,12 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
-import javax.swing.KeyStroke;
-
+import javax.swing.*;
 
 
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.MainFrame;
+import dsw.rudok.app.gui.swing.view.ProjectTab;
 import dsw.rudok.app.repository.Project;
 import dsw.rudok.app.repository.Workspace;
 import dsw.rudok.app.repository.node.RuNode;
@@ -28,11 +28,20 @@ public class NewProjectAction extends AbstractRudokAction{
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
+
 		RuTreeItem node = ((RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getModel().getRoot());
 
 		Project p = new Project("Project " +  (node.getChildCount()+1),  ((RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel());
 		MainFrame.getInstance().getTree().addProject(p);
-		
+
+		//DODAVANJE TABA
+
+			String name = p.getName();
+		ProjectTab projectTab = new ProjectTab(name);
+		Icon icon  = loadIcon("images/close.png");
+		MainFrame.getInstance().getTabbedPane().addTab(p.getName(),icon,projectTab,p.getName());
+
 	}
 
 }
+
