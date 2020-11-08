@@ -1,6 +1,7 @@
 package dsw.rudok.app.gui.swing.tree.view;
 
 import com.sun.tools.javac.Main;
+import dsw.rudok.app.gui.swing.controller.DeleteErrorAction;
 import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.controller.RuTreeSelectionListener;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
@@ -69,8 +70,15 @@ public class RuTreeImplementation implements RuTree {
                     //parent.setChildren(children);
                 }
             }
-            children.remove(index);
-            index=-1;
+
+
+            try {
+                children.remove(index);
+                index=-1;
+            }
+            catch (IndexOutOfBoundsException exception){
+                new DeleteErrorAction();
+            }
         }
 
         SwingUtilities.updateComponentTreeUI(treeView);
