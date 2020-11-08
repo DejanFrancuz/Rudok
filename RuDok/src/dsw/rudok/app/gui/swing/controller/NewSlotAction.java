@@ -3,6 +3,8 @@ package dsw.rudok.app.gui.swing.controller;
 
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.MainFrame;
+import dsw.rudok.app.gui.swing.view.PageTab;
+import dsw.rudok.app.gui.swing.view.SlotTab;
 import dsw.rudok.app.repository.Document;
 import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.Slot;
@@ -26,6 +28,13 @@ public class NewSlotAction extends AbstractRudokAction{
             Slot slot = new Slot("Slot " + (node.getChildCount() + 1), page);
             MainFrame.getInstance().getTree().addSlot(page, slot);
             MainFrame.getInstance().getWorkspaceTree().updateUI();
+
+            //DODAVANJE SLOTOVA NA STRANICE
+
+            String name = slot.getName();
+            SlotTab slotTab = new SlotTab(name,slot.getParent());
+            Icon icon = loadIcon("images/close.png");
+            page.getPageTab().addSlotToPage(slotTab,icon,slot);
         }
     }
 }

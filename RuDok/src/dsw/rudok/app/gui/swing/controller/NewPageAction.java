@@ -38,6 +38,7 @@ public class NewPageAction extends AbstractRudokAction{
             PageTab pageTab = new PageTab(name,page.getParent());
             Icon icon = loadIcon("images/close.png");
             document.getDocumentTab().addPageToDoc(pageTab,icon,page);
+            page.setPageTab(pageTab);
 
 
         }

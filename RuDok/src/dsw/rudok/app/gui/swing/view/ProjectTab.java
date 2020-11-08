@@ -41,4 +41,12 @@ public class ProjectTab extends JPanel {
         tabbedPane.addTab(document.getName(),icon,documentTab);
 
     }
+
+    public JTabbedPaneCloseButton getTabbedPane() {
+        return tabbedPane;
+    }
+
+    public void setTabbedPane(JTabbedPaneCloseButton tabbedPane) {
+        this.tabbedPane = tabbedPane;
+    }
 }
