@@ -16,4 +16,7 @@ public class RuTreeView extends JTree {
         setCellRenderer(ruTreeCellRender);
         setEditable(true);
     }
+    public void update(){
+        SwingUtilities.updateComponentTreeUI(this);
+    }
 }
