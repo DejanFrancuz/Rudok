@@ -26,5 +26,8 @@ public class ProjectTab extends JPanel {
 
     }
 
+    public void saveProjectState() {
+        System.out.println("Cuvam sadrzaj projekta: " + this.projectName);
+    }
 
 }

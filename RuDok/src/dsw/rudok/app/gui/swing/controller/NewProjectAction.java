@@ -5,8 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
-import javax.swing.KeyStroke;
-
+import javax.swing.*;
 
 
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
@@ -39,7 +38,8 @@ public class NewProjectAction extends AbstractRudokAction{
 
 			String name = p.getName();
 		ProjectTab projectTab = new ProjectTab(name);
-		MainFrame.getInstance().getTabbedPane().addTab(p.getName(),null,projectTab,p.getName());
+		Icon icon  = loadIcon("images/close.png");
+		MainFrame.getInstance().getTabbedPane().addTab(p.getName(),icon,projectTab,p.getName());
 
 	}
 
