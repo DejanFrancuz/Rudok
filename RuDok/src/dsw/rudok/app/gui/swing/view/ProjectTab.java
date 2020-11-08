@@ -32,14 +32,13 @@ public class ProjectTab extends JPanel {
     }
 
     public void saveProjectState() {
+
         System.out.println("Cuvam sadrzaj projekta: " + this.projectName);
     }
 
     public void addDocToPrj(DocumentTab documentTab, Icon icon, Document document) {
-        //(project.getName(),icon,projectTab,project.getName()
 
         tabbedPane.addTab(document.getName(),icon,documentTab);
-
 
     }
 }

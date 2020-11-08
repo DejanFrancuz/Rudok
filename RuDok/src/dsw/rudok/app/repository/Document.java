@@ -28,6 +28,7 @@ public class Document extends RuNodeComposite {
     }
 
     public void setDocumentTab(DocumentTab documentTab) {
+
         this.documentTab = documentTab;
     }
 }

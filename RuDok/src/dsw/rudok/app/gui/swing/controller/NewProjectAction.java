@@ -42,7 +42,6 @@ public class NewProjectAction extends AbstractRudokAction{
 		MainFrame.getInstance().getTabbedPane().addTab(project.getName(),icon,projectTab,project.getName());
 		project.setProjectTab(projectTab);
 
-
 	}
 
 }

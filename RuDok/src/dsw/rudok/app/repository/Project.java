@@ -11,6 +11,7 @@ public class Project extends RuNodeComposite {
     public Project(String name, RuNode parent){
 
         super(name,parent);
+       
     }
     @Override
     public void addChild(RuNode child){
@@ -24,9 +25,11 @@ public class Project extends RuNodeComposite {
 
     public ProjectTab getProjectTab() {
         return projectTab;
+
     }
 
     public void setProjectTab(ProjectTab projectTab) {
         this.projectTab = projectTab;
+
     }
 }
