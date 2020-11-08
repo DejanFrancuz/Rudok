@@ -149,6 +149,7 @@ public class MainFrame extends  JFrame{
 	}
 
 	public JTabbedPaneCloseButton getTabbedPane() {
+
 		return tabbedPane;
 	}
 }

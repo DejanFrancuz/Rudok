@@ -14,6 +14,6 @@ public class JTabbedPaneCloseButton extends JTabbedPane {
     @Override
     public void addTab(String title, Icon icon,Component component,String tip) {
         super.addTab(title, icon, component, tip);
-        int count = this.getTabCount() - 1;
+        int count = this.getTabCount() -1;
     }
 }

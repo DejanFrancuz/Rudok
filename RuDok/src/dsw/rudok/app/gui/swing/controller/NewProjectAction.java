@@ -36,7 +36,7 @@ public class NewProjectAction extends AbstractRudokAction{
 
 		//DODAVANJE TABA
 
-		String name = p.getName();
+			String name = p.getName();
 		ProjectTab projectTab = new ProjectTab(name);
 		MainFrame.getInstance().getTabbedPane().addTab(p.getName(),null,projectTab,p.getName());
 

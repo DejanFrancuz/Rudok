@@ -16,6 +16,7 @@ public class ProjectTab extends JPanel {
         this.projectName = name;
         this.setLayout(new BorderLayout());;
 
+
         JPanel rightPanel = new JPanel();
         rightPanel.add(new JLabel( this.projectName));
 
