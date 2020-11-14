@@ -18,7 +18,7 @@ import dsw.rudok.app.repository.node.RuNodeComposite;
 import javax.swing.*;
 
 public class NewDocumentAction extends AbstractRudokAction{
-	
+	int a=5;
 	public NewDocumentAction() {
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.ALT_MASK));
 		putValue(SMALL_ICON, loadIcon("images/document_add.png"));
