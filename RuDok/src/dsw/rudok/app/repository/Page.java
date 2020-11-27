@@ -1,6 +1,7 @@
 package dsw.rudok.app.repository;
 
 import dsw.rudok.app.gui.swing.view.PageTab;
+import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
@@ -31,5 +32,20 @@ public class Page extends RuNodeComposite {
 
     public void setPageTab(PageTab pageTab) {
         this.pageTab = pageTab;
+    }
+
+    @Override
+    public void addSubs(ISubscriber iSubscriber) {
+
+    }
+
+    @Override
+    public void removeSubs(ISubscriber iSubscriber) {
+
+    }
+
+    @Override
+    public void notifyObs(Object notif) {
+
     }
 }

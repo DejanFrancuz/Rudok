@@ -1,7 +1,6 @@
 package dsw.rudok.app.gui.swing.tree.model;
 
-import dsw.rudok.app.observer.Observable;
-import dsw.rudok.app.observer.Observer;
+
 import dsw.rudok.app.repository.Workspace;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
@@ -14,11 +13,11 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
 
-public class RuTreeItem extends DefaultMutableTreeNode implements Observable, Serializable {
+public class RuTreeItem extends DefaultMutableTreeNode {
 
     private String name;
     private RuNode nodeModel;
-    private ArrayList<Observer> observers = new ArrayList<>();
+
 
     public RuTreeItem(RuNode nodeModel){
         this.nodeModel=nodeModel;
@@ -98,7 +97,7 @@ public class RuTreeItem extends DefaultMutableTreeNode implements Observable, Se
     public void setName(String name) {
         this.name = name;
         this.nodeModel.setName(name);
-        notifyObserver();
+
     }
 
     public String getName() {
@@ -113,23 +112,6 @@ public class RuTreeItem extends DefaultMutableTreeNode implements Observable, Se
         this.nodeModel = nodeModel;
     }
 
-    @Override
-    public void notifyObserver() {
-        if(observers == null)
-            return;
-        for(Observer o : observers) {
-            o.onUpdate(this);
-        }
-    }
 
-    @Override
-    public void addObserver(Observer o) {
-        if(observers == null)
-            observers = new ArrayList<>();
-        observers.add(o);
-    }
 
-    public ArrayList<Observer> getObservers() {
-        return observers;
-    }
 }

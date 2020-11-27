@@ -1,13 +1,14 @@
 package dsw.rudok.app.gui.swing.view;
 
 import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
+import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.Document;
 import dsw.rudok.app.repository.Project;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ProjectTab extends JPanel {
+public class ProjectTab extends JPanel implements ISubscriber {
 
     private static final long serialVersionUID = 7445755320045782268L;
 
@@ -48,5 +49,10 @@ public class ProjectTab extends JPanel {
 
     public void setTabbedPane(JTabbedPaneCloseButton tabbedPane) {
         this.tabbedPane = tabbedPane;
+    }
+
+    @Override
+    public void update(Object notif) {
+
     }
 }

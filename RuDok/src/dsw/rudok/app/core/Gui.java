@@ -1,6 +1,8 @@
 package dsw.rudok.app.core;
 
-public interface Gui {
+import dsw.rudok.app.observer.ISubscriber;
+
+public interface Gui extends ISubscriber {
     void start();
 
 }

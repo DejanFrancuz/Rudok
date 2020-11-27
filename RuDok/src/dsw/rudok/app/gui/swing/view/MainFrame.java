@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
 
 import dsw.rudok.app.core.Repository;
+import dsw.rudok.app.errorHandler.MyError;
 import dsw.rudok.app.gui.swing.controller.ActionManager;
 import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
 import dsw.rudok.app.gui.swing.tree.RuTree;
@@ -152,6 +153,10 @@ public class MainFrame extends  JFrame{
 	public JTabbedPaneCloseButton getTabbedPane() {
 
 		return tabbedPane;
+	}
+
+	public void showError(MyError e){
+		JOptionPane.showMessageDialog(null, e.getMessage(),e.getTitle(),e.getType());
 	}
 
 

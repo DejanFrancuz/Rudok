@@ -2,6 +2,7 @@ package dsw.rudok.app.gui.swing;
 
 import dsw.rudok.app.core.Gui;
 import dsw.rudok.app.core.Repository;
+import dsw.rudok.app.errorHandler.MyError;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 
 public class SwingGui implements Gui{
@@ -25,5 +26,11 @@ public class SwingGui implements Gui{
 		instance.setVisible(true);
 		instance.initialiseWorkspaceTree();
 		
+	}
+	public void update(Object notif){
+		if(notif instanceof MyError){
+			MyError e=(MyError)notif;
+			MainFrame.getInstance().showError(e);
+		}
 	}
 }

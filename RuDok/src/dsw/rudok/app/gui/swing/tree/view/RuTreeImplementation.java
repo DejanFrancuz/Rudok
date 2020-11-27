@@ -1,20 +1,14 @@
 package dsw.rudok.app.gui.swing.tree.view;
 
-import com.sun.tools.javac.Main;
-import dsw.rudok.app.gui.swing.controller.DeleteErrorAction;
 import dsw.rudok.app.gui.swing.tree.RuTree;
-import dsw.rudok.app.gui.swing.tree.controller.RuTreeSelectionListener;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
-import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.*;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
-import org.w3c.dom.Node;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.MutableTreeNode;
 import java.util.ArrayList;
 
 public class RuTreeImplementation implements RuTree {
@@ -70,21 +64,35 @@ public class RuTreeImplementation implements RuTree {
                     //parent.setChildren(children);
                 }
             }
-
-
-            try {
                 children.remove(index);
                 index=-1;
-            }
-            catch (IndexOutOfBoundsException exception){
-                new DeleteErrorAction();
-            }
         }
-
         SwingUtilities.updateComponentTreeUI(treeView);
     }
 
+   /* @Override
+    public void removeNode(RuTreeItem item){
+        RuNode node= (RuNode) treeView.getLastSelectedPathComponent();
+        int index=-1;
+        if(!(node instanceof Workspace)&& node!=null) {
+            RuNodeComposite parent = (RuNodeComposite) node.getParent();
+            ArrayList<RuNode> children = (ArrayList<RuNode>) parent.getChildren();
+            for (RuNode ruNode : children) {
+                if (ruNode.equals(node)) {
+                    index = children.indexOf(node);
+                    //children.remove(node);
+                    //parent.setChildren(children);
+                }
+            }
+            children.remove(index);
+            index=-1;
+        }
 
+
+        DefaultTreeModel df= (DefaultTreeNode) treeView.getModel();
+        SwingUtilities.updateComponentTreeUI(treeView);
+    }
+    */
     /*
     @Override
     public void removeNode(RuTreeItem node){

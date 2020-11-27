@@ -1,13 +1,14 @@
 package dsw.rudok.app.gui.swing.view;
 
 import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
+import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.Slot;
 import dsw.rudok.app.repository.node.RuNode;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class PageTab extends JPanel {
+public class PageTab extends JPanel implements ISubscriber {
 
     private String pageName;
     private RuNode parent;
@@ -54,5 +55,10 @@ public class PageTab extends JPanel {
         //        tabbedPane.addTab(page.getName(),icon,tab);
         //    }
         tabbedPane.addTab(slot.getName(),icon,slotTab);
+    }
+
+    @Override
+    public void update(Object notif) {
+
     }
 }

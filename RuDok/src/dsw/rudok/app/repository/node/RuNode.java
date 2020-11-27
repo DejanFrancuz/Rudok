@@ -1,7 +1,9 @@
 package dsw.rudok.app.repository.node;
 
 
-public abstract class RuNode {
+import dsw.rudok.app.observer.IPublisher;
+
+public abstract class RuNode implements IPublisher{
 
     private String name;
 
@@ -30,6 +32,7 @@ public abstract class RuNode {
 
     public void setName(String name) {
         this.name = name;
+        notifyObs(null);
     }
 
     public void setParent(RuNode parent) {

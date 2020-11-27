@@ -1,12 +1,13 @@
 package dsw.rudok.app.gui.swing.view;
 
 import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
+import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.node.RuNode;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class SlotTab extends JPanel {
+public class SlotTab extends JPanel implements ISubscriber {
 
     private String slotName;
     private RuNode parent;
@@ -40,4 +41,8 @@ public class SlotTab extends JPanel {
     }
 
 
+    @Override
+    public void update(Object notif) {
+
+    }
 }

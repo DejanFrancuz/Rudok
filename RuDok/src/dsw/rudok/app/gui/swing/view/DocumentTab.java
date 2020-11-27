@@ -1,13 +1,14 @@
 package dsw.rudok.app.gui.swing.view;
 
 import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
+import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.node.RuNode;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class DocumentTab extends JPanel {
+public class DocumentTab extends JPanel implements ISubscriber {
 
 
     private String documentName;
@@ -51,5 +52,10 @@ public class DocumentTab extends JPanel {
 
     public void addPageToDoc(PageTab tab, Icon icon, Page page) {
         tabbedPane.addTab(page.getName(),icon,tab);
+    }
+
+    @Override
+    public void update(Object notif) {
+
     }
 }
