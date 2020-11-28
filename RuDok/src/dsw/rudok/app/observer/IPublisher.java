@@ -1,8 +1,8 @@
 package dsw.rudok.app.observer;
 
 public interface IPublisher {
-    void addSubs(ISubscriber iSubscriber);
-    void removeSubs(ISubscriber iSubscriber);
+    void addSubs(ISubscriber sub);
+    void removeSubs(ISubscriber sub);
     void notifyObs(Object notif);
 
 
