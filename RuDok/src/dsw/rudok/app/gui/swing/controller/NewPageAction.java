@@ -29,17 +29,17 @@ public class NewPageAction extends AbstractRudokAction{
 
             Document document  = (Document) node.getNodeModel();
             Page page = new Page("Page " + (node.getChildCount() + 1), document);
-            MainFrame.getInstance().getTree().addPage(document, page);
-            MainFrame.getInstance().getWorkspaceTree().updateUI();
+            MainFrame.getInstance().getTree().addPage();
+            //MainFrame.getInstance().getWorkspaceTree().updateUI();
 
             //DODAVANJE STRANICE NA DOKUMENT
-
+/*
             String name = page.getName();
             PageTab pageTab = new PageTab(name,page.getParent());
             Icon icon = loadIcon("images/close.png");
             document.getDocumentTab().addPageToDoc(pageTab,icon,page);
             page.setPageTab(pageTab);
-
+*/
 
         }
 

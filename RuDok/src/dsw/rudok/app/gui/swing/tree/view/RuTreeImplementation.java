@@ -2,6 +2,7 @@ package dsw.rudok.app.gui.swing.tree.view;
 
 import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
+import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.*;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
@@ -30,20 +31,41 @@ public class RuTreeImplementation implements RuTree {
         ((Workspace)nodeModel).addChild(project);
         SwingUtilities.updateComponentTreeUI(treeView);
     }
-
     @Override
-    public void addDocument(Project project,Document document){
-    	
-    	((RuTreeItem)treeView.getLastSelectedPathComponent()).add(new RuTreeItem(document));
-    	project.addChild(document);
-    	//treeView.expandPath(null);
-       
+    public void addDocument(){
+        RuTreeItem item = (RuTreeItem) treeView.getLastSelectedPathComponent();
+        RuNode node = item.getNodeModel();
+
+        if(node instanceof Project) {
+
+            Project project = (Project) node;
+            Document document = new Document("Document" + (item.getChildCount() + 1), project);
+            item.add(new RuTreeItem(document));
+            project.addChild(document);
+            SwingUtilities.updateComponentTreeUI(treeView);
+        }
     }
+    /*
     @Override
     public void addPage(Document document, Page page){
         ((RuTreeItem)treeView.getLastSelectedPathComponent()).add(new RuTreeItem(page));
         document.addChild(page);
     }
+    */
+     @Override
+     public void addPage(){
+
+         RuTreeItem item = (RuTreeItem) treeView.getLastSelectedPathComponent();
+         RuNode node=item.getNodeModel();
+         if(node instanceof Document) {
+
+             Document document = (Document) node;
+             Page page = new Page("Page " + (item.getChildCount() + 1), document);
+             item.add(new RuTreeItem(page));
+             document.addChild(page);
+             SwingUtilities.updateComponentTreeUI(treeView);
+         }
+     }
     @Override
     public void addSlot(Page page, Slot slot){
         ((RuTreeItem)treeView.getLastSelectedPathComponent()).add(new RuTreeItem(slot));

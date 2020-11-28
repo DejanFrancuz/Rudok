@@ -12,8 +12,8 @@ import javax.swing.tree.TreePath;
 public interface RuTree {
     JTree generateTree(Workspace workspace);
     void addProject(Project project);
-    void addDocument(Project project,Document document);
-    void addPage(Document document, Page page);
+    void addDocument();
+    void addPage();
     void addSlot(Page page, Slot slot);
     void removeNode();
 

@@ -30,7 +30,7 @@ public class NewDocumentAction extends AbstractRudokAction{
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		
+		/*
 		RuTreeItem node = (RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
 		
 		
@@ -38,16 +38,20 @@ public class NewDocumentAction extends AbstractRudokAction{
 				
 				Project project  = (Project) node.getNodeModel();
 				Document document = new Document("Document" + (node.getChildCount() + 1), project);
-				MainFrame.getInstance().getTree().addDocument(project, document);
-				MainFrame.getInstance().getWorkspaceTree().updateUI();
+
+		 */
+				MainFrame.getInstance().getTree().addDocument();
+				//MainFrame.getInstance().getWorkspaceTree().updateUI();
 
 				//DODAVANJE DOKUMENTA NA PROJEKAT
 
-				String name = document.getName();
+			/*	String name = document.getName();
 				DocumentTab documentTab = new DocumentTab(name,document.getParent());
 				Icon icon = loadIcon("images/close.png");
 				project.getProjectTab().addDocToPrj(documentTab,icon,document);
 				document.setDocumentTab(documentTab);
+				*/
+
 			}
 
 
@@ -55,4 +59,4 @@ public class NewDocumentAction extends AbstractRudokAction{
 	}
 
 	
-}
+
