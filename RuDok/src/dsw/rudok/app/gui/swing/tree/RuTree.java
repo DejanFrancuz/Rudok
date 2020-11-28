@@ -11,10 +11,10 @@ import javax.swing.tree.TreePath;
 
 public interface RuTree {
     JTree generateTree(Workspace workspace);
-    void addProject(Project project);
+    void addProject();
     void addDocument();
     void addPage();
-    void addSlot(Page page, Slot slot);
+    void addSlot();
     void removeNode();
 
 }

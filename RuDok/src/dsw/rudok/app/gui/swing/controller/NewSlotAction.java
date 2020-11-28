@@ -21,20 +21,24 @@ public class NewSlotAction extends AbstractRudokAction{
         putValue(SHORT_DESCRIPTION, "New Slot");
     }
     public void actionPerformed(ActionEvent e){
+        /*
         RuTreeItem node = (RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
         if(node.getNodeModel() instanceof Page) {
 
             Page page  = (Page) node.getNodeModel();
             Slot slot = new Slot("Slot " + (node.getChildCount() + 1), page);
-            MainFrame.getInstance().getTree().addSlot(page, slot);
-            MainFrame.getInstance().getWorkspaceTree().updateUI();
+         */
+            MainFrame.getInstance().getTree().addSlot();
+           // MainFrame.getInstance().getWorkspaceTree().updateUI();
 
             //DODAVANJE SLOTOVA NA STRANICE
-
+/*
             String name = slot.getName();
             SlotTab slotTab = new SlotTab(name,slot.getParent());
             Icon icon = loadIcon("images/close.png");
             page.getPageTab().addSlotToPage(slotTab,icon,slot);
+
+ */
         }
-    }
+
 }

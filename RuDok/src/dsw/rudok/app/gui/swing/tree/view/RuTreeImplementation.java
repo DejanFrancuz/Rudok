@@ -25,11 +25,15 @@ public class RuTreeImplementation implements RuTree {
         return treeView;
     }
     @Override
-    public void addProject(Project project){
-        RuNode nodeModel =  ((RuTreeItem)treeModel.getRoot()).getNodeModel();
-        ((RuTreeItem)treeModel.getRoot()).add(new RuTreeItem(project));
-        ((Workspace)nodeModel).addChild(project);
+    public void addProject(){
+        RuTreeItem item = (RuTreeItem) treeModel.getRoot();
+        RuNode node = item.getNodeModel();
+
+        Project project = new Project("Project " +  (item.getChildCount()+1), node);
+        item.add(new RuTreeItem(project));
+        ((Workspace) node).addChild(project);
         SwingUtilities.updateComponentTreeUI(treeView);
+
     }
     @Override
     public void addDocument(){
@@ -45,13 +49,7 @@ public class RuTreeImplementation implements RuTree {
             SwingUtilities.updateComponentTreeUI(treeView);
         }
     }
-    /*
-    @Override
-    public void addPage(Document document, Page page){
-        ((RuTreeItem)treeView.getLastSelectedPathComponent()).add(new RuTreeItem(page));
-        document.addChild(page);
-    }
-    */
+
      @Override
      public void addPage(){
 
@@ -67,9 +65,17 @@ public class RuTreeImplementation implements RuTree {
          }
      }
     @Override
-    public void addSlot(Page page, Slot slot){
-        ((RuTreeItem)treeView.getLastSelectedPathComponent()).add(new RuTreeItem(slot));
-        page.addChild(slot);
+    public void addSlot(){
+        RuTreeItem item= (RuTreeItem) treeView.getLastSelectedPathComponent();
+        RuNode node = item.getNodeModel();
+        if(node instanceof Page) {
+
+            Page page = (Page) node;
+            Slot slot = new Slot("Slot " + (item.getChildCount() + 1), page);
+            item.add(new RuTreeItem(slot));
+            page.addChild(slot);
+            SwingUtilities.updateComponentTreeUI(treeView);
+        }
     }
 
     @Override
