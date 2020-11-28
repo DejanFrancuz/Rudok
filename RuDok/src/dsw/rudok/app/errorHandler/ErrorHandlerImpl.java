@@ -9,6 +9,9 @@ public class ErrorHandlerImpl  implements ErrorHandler {
         if(errorType == ErrorType.WS_CANNOT_BE_DELETED){
             notifyObs(new MyError(1,"Greska prilikom brisanja","Workspace ne moze biti obrisan"));
         }
+        if(errorType == ErrorType.NAME_CANNOT_BE_EMPTY){
+            notifyObs(new MyError(2,"Greska prilikom dodele imena","Polje za ime ne moze biti prazno"));
+        }
 
     }
 

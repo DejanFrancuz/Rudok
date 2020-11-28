@@ -89,27 +89,11 @@ public class RuTreeImplementation implements RuTree {
             for (RuNode ruNode : children) {
                 if (ruNode.equals(node)) {
                     index = children.indexOf(node);
-                    //children.remove(node);
-                    //parent.setChildren(children);
                 }
             }
             children.remove(index);
             index=-1;
         }
-
-
-
         SwingUtilities.updateComponentTreeUI(treeView);
     }
-
-    /*
-    @Override
-    public void removeNode(RuTreeItem node){
-        if(!node.isRoot() && node!=null){
-            node.removeFromParent();
-            SwingUtilities.updateComponentTreeUI(treeView);
-        }
-    }
-
-     */
 }

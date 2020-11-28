@@ -156,7 +156,7 @@ public class MainFrame extends  JFrame{
 	}
 
 	public void showError(MyError e){
-		JOptionPane.showMessageDialog(null, e.getMessage(),e.getTitle(),e.getType());
+		JOptionPane.showMessageDialog(this, e.getMessage(),e.getTitle(),e.getType());
 	}
 
 

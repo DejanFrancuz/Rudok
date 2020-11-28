@@ -1,6 +1,9 @@
 package dsw.rudok.app.repository.node;
 
 
+import dsw.rudok.app.AppCore;
+import dsw.rudok.app.errorHandler.ErrorType;
+import dsw.rudok.app.errorHandler.MyError;
 import dsw.rudok.app.observer.IPublisher;
 
 public abstract class RuNode implements IPublisher{
@@ -31,8 +34,12 @@ public abstract class RuNode implements IPublisher{
     }
 
     public void setName(String name) {
+        if(name ==""){
+            AppCore.getInstance().getErrorHandler().generateError(ErrorType.NAME_CANNOT_BE_EMPTY);
+            return;
+        }
         this.name = name;
-        notifyObs(null);
+        notifyObs(name);
     }
 
     public void setParent(RuNode parent) {
