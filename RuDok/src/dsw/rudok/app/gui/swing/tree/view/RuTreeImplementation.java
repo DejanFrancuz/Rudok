@@ -51,28 +51,9 @@ public class RuTreeImplementation implements RuTree {
     }
 
     @Override
-    public void removeNode(RuTreeItem item){
-        RuNode node = item.getNodeModel();
-        int index=-1;
-        if(!(node instanceof Workspace)&& node!=null) {
-            RuNodeComposite parent = (RuNodeComposite) node.getParent();
-           ArrayList<RuNode> children = (ArrayList<RuNode>) parent.getChildren();
-            for (RuNode ruNode : children) {
-                if (ruNode.equals(node)) {
-                     index = children.indexOf(node);
-                    //children.remove(node);
-                    //parent.setChildren(children);
-                }
-            }
-                children.remove(index);
-                index=-1;
-        }
-        SwingUtilities.updateComponentTreeUI(treeView);
-    }
-
-   /* @Override
-    public void removeNode(RuTreeItem item){
-        RuNode node= (RuNode) treeView.getLastSelectedPathComponent();
+    public void removeNode(){
+        RuTreeItem itemm= (RuTreeItem) treeView.getLastSelectedPathComponent();
+        RuNode node=itemm.getNodeModel();
         int index=-1;
         if(!(node instanceof Workspace)&& node!=null) {
             RuNodeComposite parent = (RuNodeComposite) node.getParent();
@@ -89,10 +70,10 @@ public class RuTreeImplementation implements RuTree {
         }
 
 
-        DefaultTreeModel df= (DefaultTreeNode) treeView.getModel();
+
         SwingUtilities.updateComponentTreeUI(treeView);
     }
-    */
+
     /*
     @Override
     public void removeNode(RuTreeItem node){

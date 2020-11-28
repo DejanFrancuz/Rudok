@@ -1,6 +1,7 @@
 <component name="libraryTable">
-  <library name="RukovalacDokumentima">
+  <library name="dsw2020-tim_ignjatkrd">
     <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Modeli.zip!/" />
       <root url="jar://$PROJECT_DIR$/RukovalacDokumentima.zip!/" />
     </CLASSES>
     <JAVADOC />
