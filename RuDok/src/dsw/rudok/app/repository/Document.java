@@ -24,6 +24,7 @@ public class Document extends RuNodeComposite {
             Page page=(Page)child;
             if(!this.getChildren().contains(page)){
                 this.getChildren().add(page);
+                notifyObs(page);
             }
         }
     }

@@ -19,7 +19,7 @@ public class Workspace extends RuNodeComposite {
             Project project = (Project) child;
             if(!this.getChildren().contains(project)){
                 this.getChildren().add(project);
-                this.notifyObs(null);
+                this.notifyObs(project);
             }
         }
     }
