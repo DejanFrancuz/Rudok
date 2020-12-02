@@ -107,6 +107,7 @@ public class RuTreeImplementation implements RuTree {
                 }
             }
             children.remove(index);
+            parent.removeChild(index);
             index=-1;
         }
         SwingUtilities.updateComponentTreeUI(treeView);

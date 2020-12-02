@@ -14,6 +14,11 @@ public class Workspace extends RuNodeComposite {
     }
     List<ISubscriber> subscribers;
     @Override
+    public void removeChild(int index) {
+        notifyObs(index);
+    }
+
+    @Override
     public void addChild(RuNode child){
         if(child!=null && child instanceof Project){
             Project project = (Project) child;

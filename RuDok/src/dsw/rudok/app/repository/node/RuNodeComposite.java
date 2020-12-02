@@ -22,6 +22,7 @@ public abstract class RuNodeComposite extends RuNode{
 
 
     public abstract void addChild(RuNode child);
+    public abstract void removeChild(int index);
 
     public RuNode getChildByName(String name){
         for(RuNode child: this.getChildren()){

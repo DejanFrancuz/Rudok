@@ -81,6 +81,10 @@ public class DocumentTab extends JPanel implements ISubscriber {
             }
 
         }
+        if(notif instanceof Integer){
+            int index = (Integer)notif;
+            //this.pageTab.remove(index);
+        }
     }
 
     public Document getDocument() {

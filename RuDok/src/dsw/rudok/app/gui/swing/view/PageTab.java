@@ -59,5 +59,13 @@ public class PageTab extends JPanel implements ISubscriber {
     @Override
     public void update(Object notif) {
 
+
+
+
+
+        if(notif instanceof Integer){
+            int index = (Integer)notif;
+            //this.slotTab.remove(index);
+        }
     }
 }

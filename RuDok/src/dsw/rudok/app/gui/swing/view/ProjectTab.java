@@ -43,13 +43,17 @@ public class ProjectTab extends JInternalFrame implements ISubscriber {
 
     @Override
     public void update(Object notif) {
-        if(notif instanceof  Document){
-           Document document = (Document) notif;
-            DocumentTab docTab = new DocumentTab(document);
+        if(notif instanceof  Document) {
+            Document document = (Document) notif;
+                DocumentTab docTab = new DocumentTab(document);
 
-            this.documentsTab.add(docTab,document.getName());
+                this.documentsTab.add(docTab, document.getName());
 
-            this.documentsTab.setSelectedIndex(this.documentsTab.getComponentCount() - 1);
+                this.documentsTab.setSelectedIndex(this.documentsTab.getComponentCount() - 1);
+            }
+        if(notif instanceof Integer){
+            int index = (Integer)notif;
+            this.documentsTab.remove(index);
         }
     }
 
