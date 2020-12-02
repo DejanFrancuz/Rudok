@@ -76,18 +76,20 @@ public class ProjectTab extends JInternalFrame implements ISubscriber {
     }
 
 
-    public DocumentTab getDocumentTabForDocument(Document document)
+   /* public DocumentTab getDocumentTabForDocument(Document document)
     {
         DocumentTab documentTab = null;
+        System.out.println("sdds");
         for (DocumentTab documentTabTemp : this.documentTabs) {
             if (documentTabTemp.getDocument().equals(document))
             {
+
                 documentTab = documentTabTemp;
                 break;
             }
         }
         return documentTab;
-    }
+    }*/
 
     public DocumentTab setDocumentTab(TreeNode selectedNode)
     {

@@ -59,13 +59,43 @@ public class PageTab extends JPanel implements ISubscriber {
     @Override
     public void update(Object notif) {
 
+            if(notif instanceof  Slot){
+                Slot slot = (Slot) notif;
+                SlotTab slotTab = new SlotTab(slot);
+                this.slotTabs.add(slotTab);
 
 
+                int maxWidth = (int)getSize().getWidth();
+                int maxHeight = (int)getSize().getHeight();
 
+
+                for (int i = 0; i < this.slotTabs.size(); i++)
+                {
+                    SlotTab slotViewer = (SlotTab) this.slotTabs.get(i);
+                    slotViewer.setPreferredSize(new Dimension(maxWidth ,
+                            maxHeight / 3));
+                    this.panCenter.add(slotViewer);
+                }
+
+                validate();
+
+
+            }
 
         if(notif instanceof Integer){
             int index = (Integer)notif;
             //this.slotTab.remove(index);
         }
     }
+
+    public Page getPage() {
+        return page;
+    }
+
+    public void setPage(Page page) {
+        this.page = page;
+    }
+
+
+
 }

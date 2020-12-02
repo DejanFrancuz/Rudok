@@ -24,11 +24,11 @@ public class NewPageAction extends AbstractRudokAction{
     }
     @Override
     public void actionPerformed(ActionEvent e){
-        RuTreeItem node = (RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
-        if(node.getNodeModel() instanceof Document) {
+       // RuTreeItem node = (RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
+       // if(node.getNodeModel() instanceof Document) {
 
-            Document document  = (Document) node.getNodeModel();
-            Page page = new Page("Page " + (node.getChildCount() + 1), document);
+          //  Document document  = (Document) node.getNodeModel();
+           // Page page = new Page("Page " + (node.getChildCount() + 1), document);
             MainFrame.getInstance().getTree().addPage();
             //MainFrame.getInstance().getWorkspaceTree().updateUI();
 
@@ -41,7 +41,7 @@ public class NewPageAction extends AbstractRudokAction{
             page.setPageTab(pageTab);
 */
 
-        }
+        //}
 
     }
 

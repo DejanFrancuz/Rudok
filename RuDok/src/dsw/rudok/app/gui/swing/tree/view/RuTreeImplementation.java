@@ -59,7 +59,7 @@ public class RuTreeImplementation implements RuTree {
             SwingUtilities.updateComponentTreeUI(treeView);
 
             //DODAVNJE TABA
-            document.setDocumentTab(project.getProjectTab().getDocumentTabForDocument(document));
+          //  document.setDocumentTab(project.getProjectTab().getDocumentTabForDocument(document));
 
 
         }
@@ -77,6 +77,10 @@ public class RuTreeImplementation implements RuTree {
              item.add(new RuTreeItem(page));
              document.addChild(page);
              SwingUtilities.updateComponentTreeUI(treeView);
+
+             //DODAVANJE TABA
+
+            // page.setPageTab(document.getDocumentTab().getPageTabForPage(page));
          }
      }
     @Override

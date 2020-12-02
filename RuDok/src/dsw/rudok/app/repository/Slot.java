@@ -39,4 +39,9 @@ public class Slot extends RuNode {
             listener.update(notif);
         }
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

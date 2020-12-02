@@ -70,4 +70,9 @@ public class Page extends RuNodeComposite {
             listener.update(notif);
         }
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

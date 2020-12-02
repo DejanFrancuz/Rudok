@@ -76,9 +76,9 @@ public class DocumentTab extends JPanel implements ISubscriber {
             }
             validate();
             repaint();
-            for (PageTab pageViewer : this.pageTabs) {
+            /*for (PageTab pageViewer : this.pageTabs) {
                 pageViewer.update( null);
-            }
+            }*/
 
         }
         if(notif instanceof Integer){
@@ -94,6 +94,21 @@ public class DocumentTab extends JPanel implements ISubscriber {
     public void setDocument(Document document) {
         this.document = document;
     }
+
+
+   /* public PageTab getPageTabForPage(Page page)
+    {
+       PageTab pageTab = null;
+        for (PageTab pageTabTemp : this.pageTabs) {
+            if (pageTabTemp.getPage().equals(page))
+            {
+                System.out.println("SFFSSF");
+                pageTab = pageTabTemp;
+                break;
+            }
+        }
+        return pageTab;
+    }*/
 
 
 }
