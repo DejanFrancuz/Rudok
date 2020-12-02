@@ -13,6 +13,7 @@ import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RuTreeImplementation implements RuTree {
 
@@ -32,6 +33,13 @@ public class RuTreeImplementation implements RuTree {
         RuNode node = item.getNodeModel();
 
         Project project = new Project("Project " +  (item.getChildCount()+1), node);
+        Workspace workspace = (Workspace) project.getParent();
+        List<RuNode> deca = workspace.getChildren();
+        int index = 1;
+        while(deca.contains(project)){
+            project.setName("Project " + index);
+            index++;
+        }
         item.add(new RuTreeItem(project));
         ((Workspace) node).addChild(project);
         SwingUtilities.updateComponentTreeUI(treeView);
@@ -54,6 +62,12 @@ public class RuTreeImplementation implements RuTree {
 
             Project project = (Project) node;
             Document document = new Document("Document" + (item.getChildCount() + 1), project);
+            List<RuNode> deca = project.getChildren();
+            int index = 1;
+            while(deca.contains(document)){
+                document.setName("Document " + index);
+                index++;
+            }
             item.add(new RuTreeItem(document));
             project.addChild(document);
             SwingUtilities.updateComponentTreeUI(treeView);
@@ -74,6 +88,12 @@ public class RuTreeImplementation implements RuTree {
 
              Document document = (Document) node;
              Page page = new Page("Page " + (item.getChildCount() + 1), document);
+             List<RuNode> deca = document.getChildren();
+             int index = 1;
+             while(deca.contains(page)){
+                 page.setName("Page " + index);
+                 index++;
+             }
              item.add(new RuTreeItem(page));
              document.addChild(page);
              SwingUtilities.updateComponentTreeUI(treeView);
@@ -91,6 +111,12 @@ public class RuTreeImplementation implements RuTree {
 
             Page page = (Page) node;
             Slot slot = new Slot("Slot " + (item.getChildCount() + 1), page);
+            List<RuNode> deca = page.getChildren();
+            int index = 1;
+            while(deca.contains(slot)){
+                slot.setName("Slot " + index);
+                index++;
+            }
             item.add(new RuTreeItem(slot));
             page.addChild(slot);
             SwingUtilities.updateComponentTreeUI(treeView);
@@ -112,8 +138,10 @@ public class RuTreeImplementation implements RuTree {
             }
             children.remove(index);
             parent.removeChild(index);
+            itemm.removeAllChildren();
             index=-1;
         }
+        treeView.setSelectionPath(null);
         SwingUtilities.updateComponentTreeUI(treeView);
     }
 }

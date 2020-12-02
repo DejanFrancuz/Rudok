@@ -1,6 +1,5 @@
 package dsw.rudok.app.gui.swing.view;
 
-import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.Document;
 import dsw.rudok.app.repository.Page;
@@ -20,7 +19,6 @@ public class DocumentTab extends JPanel implements ISubscriber {
     private JPanel panCenter;
     private List<PageTab> pageTabs = new ArrayList<>();
 
-
     public DocumentTab(Document document){
         this.document = document;
        this.panCenter = new JPanel();
@@ -33,7 +31,6 @@ public class DocumentTab extends JPanel implements ISubscriber {
         this.panCenter.setBackground(Color.LIGHT_GRAY);
         JScrollPane sc = new JScrollPane(this.panCenter,  20,  30);
         add(sc);
-
     }
 
     public String getDocumentName() {
@@ -83,7 +80,9 @@ public class DocumentTab extends JPanel implements ISubscriber {
         }
         if(notif instanceof Integer){
             int index = (Integer)notif;
-            //this.pageTab.remove(index);
+            //this.pagesTab.remove(index);
+            this.panCenter.remove(index);
+            panCenter.updateUI();
         }
     }
 

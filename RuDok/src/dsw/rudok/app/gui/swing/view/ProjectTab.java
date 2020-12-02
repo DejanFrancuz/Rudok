@@ -54,6 +54,7 @@ public class ProjectTab extends JInternalFrame implements ISubscriber {
         if(notif instanceof Integer){
             int index = (Integer)notif;
             this.documentsTab.remove(index);
+            documentsTab.updateUI();
         }
     }
 
