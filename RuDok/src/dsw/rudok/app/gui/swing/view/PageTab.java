@@ -2,43 +2,48 @@ package dsw.rudok.app.gui.swing.view;
 
 import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
 import dsw.rudok.app.observer.ISubscriber;
+import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.Slot;
 import dsw.rudok.app.repository.node.RuNode;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PageTab extends JPanel implements ISubscriber {
 
     private String pageName;
     private RuNode parent;
-    private JTabbedPaneCloseButton tabbedPane;
+    private JPanel panCenter;
+    private Page page;
+    private List<SlotTab> slotTabs = new ArrayList<>();
 
+    public PageTab(Page page){
+        this.page = page;
+        this.panCenter = new JPanel();
+        this.page.addSubs(this);
 
-    public PageTab(String name,RuNode parent){
-        this.pageName = name;
-        this.parent = parent;
-        this.tabbedPane = new JTabbedPaneCloseButton();
-
+        TitledBorder title = BorderFactory.createTitledBorder(page.toString());
+        title.setTitlePosition(4);
+        title.setTitleJustification(2);
+        setBorder(title);
 
         this.setLayout(new BorderLayout());;
 
 
-        JPanel rightPanel = new JPanel();
-        rightPanel.add(new JLabel( this.parent.getParent().getName() + ", " + this.parent.getName() + ", " + this.pageName));
-
-        this.add( rightPanel, BorderLayout.CENTER);
-
-        add(tabbedPane);
+        this.panCenter.setBackground(Color.WHITE);
+        add(this.panCenter);
 
     }
 
-    public JTabbedPaneCloseButton getTabbedPane() {
-        return tabbedPane;
+    public JPanel getPanCenter() {
+        return panCenter;
     }
 
-    public void setTabbedPane(JTabbedPaneCloseButton tabbedPane) {
-        this.tabbedPane = tabbedPane;
+    public void setPanCenter(JPanel panCenter) {
+        this.panCenter = panCenter;
     }
 
     public String getPageName() {
@@ -49,13 +54,7 @@ public class PageTab extends JPanel implements ISubscriber {
         this.pageName = pageName;
     }
 
-    public void addSlotToPage(SlotTab slotTab, Icon icon, Slot slot) {
 
-        //public void addPageToDoc(PageTab tab, Icon icon, Page page) {
-        //        tabbedPane.addTab(page.getName(),icon,tab);
-        //    }
-        tabbedPane.addTab(slot.getName(),icon,slotTab);
-    }
 
     @Override
     public void update(Object notif) {

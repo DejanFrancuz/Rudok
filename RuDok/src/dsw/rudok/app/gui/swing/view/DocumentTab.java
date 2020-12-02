@@ -2,35 +2,37 @@ package dsw.rudok.app.gui.swing.view;
 
 import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
 import dsw.rudok.app.observer.ISubscriber;
+import dsw.rudok.app.repository.Document;
 import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.node.RuNode;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DocumentTab extends JPanel implements ISubscriber {
 
 
     private String documentName;
+    private Document document;
     private RuNode parent;
-    private JTabbedPaneCloseButton tabbedPane;
+    private JPanel panCenter;
+    private List<PageTab> pageTabs = new ArrayList<>();
 
 
-    public DocumentTab(String name,RuNode parent){
-        this.documentName = name;
-        this.parent = parent;
-       this.tabbedPane = new JTabbedPaneCloseButton();
+    public DocumentTab(Document document){
+        this.document = document;
+       this.panCenter = new JPanel();
+       this.document.addSubs(this);
 
 
         this.setLayout(new BorderLayout());;
 
 
-        JPanel rightPanel = new JPanel();
-        rightPanel.add(new JLabel( this.parent.getName() + ", " + this.documentName));
-
-        this.add( rightPanel, BorderLayout.CENTER);
-
-        add(tabbedPane);
+        this.panCenter.setBackground(Color.LIGHT_GRAY);
+        JScrollPane sc = new JScrollPane(this.panCenter,  20,  30);
+        add(sc);
 
     }
 
@@ -42,20 +44,52 @@ public class DocumentTab extends JPanel implements ISubscriber {
         this.documentName = documentName;
     }
 
-    public JTabbedPaneCloseButton getTabbedPane() {
-        return tabbedPane;
+    public JPanel getPanCenter() {
+        return panCenter;
     }
 
-    public void setTabbedPane(JTabbedPaneCloseButton tabbedPane) {
-        this.tabbedPane = tabbedPane;
+    public void setPanCenter(JPanel panCenter) {
+        this.panCenter = panCenter;
     }
 
-    public void addPageToDoc(PageTab tab, Icon icon, Page page) {
-        tabbedPane.addTab(page.getName(),icon,tab);
-    }
+
 
     @Override
     public void update(Object notif) {
 
+        if(notif instanceof Page){
+            Page page = (Page) notif;
+            PageTab pageTab = new PageTab(page);
+
+            this.pageTabs.add(pageTab);
+            this.panCenter.add(pageTab,"align center");
+
+            int maxWidth = (int)getSize().getWidth();
+
+            for (PageTab pageTabTmp : pageTabs)
+            {
+
+
+                pageTab.setPreferredSize(new Dimension(maxWidth - 100, maxWidth - 100));
+
+                this.panCenter.add(pageTab, "align center");
+            }
+            validate();
+            repaint();
+            for (PageTab pageViewer : this.pageTabs) {
+                pageViewer.update( null);
+            }
+
+        }
     }
+
+    public Document getDocument() {
+        return document;
+    }
+
+    public void setDocument(Document document) {
+        this.document = document;
+    }
+
+
 }

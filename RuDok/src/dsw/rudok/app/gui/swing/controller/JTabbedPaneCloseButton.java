@@ -87,7 +87,7 @@ public class JTabbedPaneCloseButton extends JTabbedPane {
                 JButton clickedButton = (JButton) e.getSource();
                 JTabbedPane tabbedPane = (JTabbedPane) clickedButton.getParent().getParent().getParent();
                 if (tab instanceof ProjectTab) {
-                    ((ProjectTab)tab).saveProjectState();
+                   // ((ProjectTab)tab).saveProjectState();
                 }
                 tabbedPane.remove(tab);
             }

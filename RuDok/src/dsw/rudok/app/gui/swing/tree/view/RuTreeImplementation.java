@@ -2,7 +2,9 @@ package dsw.rudok.app.gui.swing.tree.view;
 
 import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
+import dsw.rudok.app.gui.swing.view.DocumentTab;
 import dsw.rudok.app.gui.swing.view.MainFrame;
+import dsw.rudok.app.gui.swing.view.ProjectTab;
 import dsw.rudok.app.repository.*;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
@@ -34,6 +36,14 @@ public class RuTreeImplementation implements RuTree {
         ((Workspace) node).addChild(project);
         SwingUtilities.updateComponentTreeUI(treeView);
 
+        //DODAVANJE TABA
+
+        String name = project.getName();
+        ProjectTab projectTab = new ProjectTab(project);
+        MainFrame.getInstance().getTabbedPane().add(projectTab);
+        project.setProjectTab(projectTab);
+
+
     }
     @Override
     public void addDocument(){
@@ -47,6 +57,11 @@ public class RuTreeImplementation implements RuTree {
             item.add(new RuTreeItem(document));
             project.addChild(document);
             SwingUtilities.updateComponentTreeUI(treeView);
+
+            //DODAVNJE TABA
+            document.setDocumentTab(project.getProjectTab().getDocumentTabForDocument(document));
+
+
         }
     }
 

@@ -6,6 +6,7 @@ import dsw.rudok.app.observer.ISubscriber;
 
 public class ErrorHandlerImpl  implements ErrorHandler {
     public void generateError(ErrorType errorType){
+
         if(errorType == ErrorType.WS_CANNOT_BE_DELETED){
             notifyObs(new MyError(1,"Greska prilikom brisanja","Workspace ne moze biti obrisan"));
         }

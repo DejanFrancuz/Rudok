@@ -5,13 +5,14 @@ import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
+import javax.swing.tree.MutableTreeNode;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Project extends RuNodeComposite {
 
-    private ProjectTab projectTab;
     List<ISubscriber> subscribers;
+    ProjectTab projectTab;
 
     public Project(String name, RuNode parent){
 
@@ -29,15 +30,7 @@ public class Project extends RuNodeComposite {
         }
     }
 
-    public ProjectTab getProjectTab() {
-        return projectTab;
 
-    }
-
-    public void setProjectTab(ProjectTab projectTab) {
-        this.projectTab = projectTab;
-
-    }
 
     @Override
     public void addSubs(ISubscriber sub) {
@@ -65,5 +58,18 @@ public class Project extends RuNodeComposite {
         for(ISubscriber listener : subscribers){
             listener.update(notif);
         }
+    }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
+
+    public ProjectTab getProjectTab() {
+        return projectTab;
+    }
+
+    public void setProjectTab(ProjectTab projectTab) {
+        this.projectTab = projectTab;
     }
 }

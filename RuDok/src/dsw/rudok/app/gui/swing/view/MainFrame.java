@@ -29,7 +29,7 @@ public class MainFrame extends  JFrame{
 	private ActionManager actionManager;
 	private RuTree tree;
 	private DefaultTreeModel treeModel;
-	private JTabbedPaneCloseButton tabbedPane;
+	private JTabbedPane tabbedPane;
 
 	private MainFrame() {
 		
@@ -150,7 +150,7 @@ public class MainFrame extends  JFrame{
 	}
 
 
-	public JTabbedPaneCloseButton getTabbedPane() {
+	public JTabbedPane getTabbedPane() {
 
 		return tabbedPane;
 	}

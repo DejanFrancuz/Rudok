@@ -36,8 +36,8 @@ public class NewProjectAction extends AbstractRudokAction{
 		MainFrame.getInstance().getTree().addProject();
 
 
-		//DODAVANJE TABA
-/*
+	/*	//DODAVANJE TABA
+
 			String name = project.getName();
 		ProjectTab projectTab = new ProjectTab(name);
 		Icon icon  = loadIcon("images/close.png");
