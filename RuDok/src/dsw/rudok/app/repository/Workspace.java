@@ -13,10 +13,6 @@ public class Workspace extends RuNodeComposite {
         super(name,null);
     }
     List<ISubscriber> subscribers;
-    @Override
-    public void removeChild(int index) {
-        notifyObs(index);
-    }
 
     @Override
     public void addChild(RuNode child){

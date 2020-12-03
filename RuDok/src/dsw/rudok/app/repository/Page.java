@@ -30,10 +30,7 @@ public class Page extends RuNodeComposite {
             }
         }
     }
-    @Override
-    public void removeChild(int index) {
-        notifyObs(index);
-    }
+
 
     public PageTab getPageTab() {
         return pageTab;

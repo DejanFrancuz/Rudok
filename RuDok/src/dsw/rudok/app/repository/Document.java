@@ -37,10 +37,7 @@ public class Document extends RuNodeComposite {
 
         this.documentTab = documentTab;
     }
-    @Override
-    public void removeChild(int index) {
-        notifyObs(index);
-    }
+
 
     @Override
     public void addSubs(ISubscriber sub) {

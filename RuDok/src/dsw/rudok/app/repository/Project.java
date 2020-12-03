@@ -29,10 +29,7 @@ public class Project extends RuNodeComposite {
             }
         }
     }
-    @Override
-    public void removeChild(int index) {
-        notifyObs(index);
-    }
+
 
 
     @Override

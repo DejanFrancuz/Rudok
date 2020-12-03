@@ -1,0 +1,69 @@
+<changelist name="Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]" date="1606948481755" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 02-Dec-20 23:33 [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Workspace.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Workspace.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]/Workspace.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/controller/JTabbedPaneCloseButton$CloseListener.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/controller/JTabbedPaneCloseButton$CloseListener.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]/JTabbedPaneCloseButton$CloseListener.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]/RuTreeImplementation.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/PageTab.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/PageTab.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]/PageTab.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/node/RuNodeComposite.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/node/RuNodeComposite.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]/RuNodeComposite.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/MainFrame.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/MainFrame.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]/MainFrame.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Page.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Page.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]/Page.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/errorHandler/ErrorHandlerImpl.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/errorHandler/ErrorHandlerImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]/ErrorHandlerImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/ProjectTab.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/ProjectTab.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]/ProjectTab.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Document.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Document.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]/Document.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Project.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Project.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]/Project.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/controller/NewPageAction.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/controller/NewPageAction.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]/NewPageAction.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/DocumentTab.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/DocumentTab.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02-Dec-20_23_33_[Default_Changelist]/DocumentTab.class" />
+  </binary>
+</changelist>
