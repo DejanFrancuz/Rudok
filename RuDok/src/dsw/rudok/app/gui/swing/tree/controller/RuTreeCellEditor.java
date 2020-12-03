@@ -1,7 +1,7 @@
 package dsw.rudok.app.gui.swing.tree.controller;
 
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
-import dsw.rudok.app.repository.Workspace;
+import dsw.rudok.app.repository.*;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -42,8 +42,18 @@ public class RuTreeCellEditor extends DefaultTreeCellEditor implements ActionLis
             clicked.setName(e.getActionCommand());
             ((Workspace)clicked.getNodeModel()).setName(e.getActionCommand());
         }
-        else{
-
+        else if(clicked.getNodeModel() instanceof Project){
+            clicked.setName(e.getActionCommand());
+            ((Project)clicked.getNodeModel()).setName(e.getActionCommand());
+        }else if(clicked.getNodeModel() instanceof Document){
+            clicked.setName(e.getActionCommand());
+            ((Document)clicked.getNodeModel()).setName(e.getActionCommand());
+        }else if(clicked.getNodeModel() instanceof Page){
+            clicked.setName(e.getActionCommand());
+            ((Page)clicked.getNodeModel()).setName(e.getActionCommand());
+        }else if(clicked.getNodeModel() instanceof Slot){
+            clicked.setName(e.getActionCommand());
+            ((Slot)clicked.getNodeModel()).setName(e.getActionCommand());
         }
     }
 }
