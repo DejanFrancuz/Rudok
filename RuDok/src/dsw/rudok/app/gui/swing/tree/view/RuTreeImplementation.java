@@ -1,5 +1,6 @@
 package dsw.rudok.app.gui.swing.tree.view;
 
+import com.sun.tools.javac.Main;
 import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.DocumentTab;
@@ -137,8 +138,11 @@ public class RuTreeImplementation implements RuTree {
                 }
             }
             children.remove(index);
-            parent.removeChild(index);
+            parent.notifyObs(index);
             itemm.removeAllChildren();
+            if(node instanceof Project){
+                MainFrame.getInstance().getTabbedPane().remove(index);
+            }
             index=-1;
         }
         treeView.setSelectionPath(null);

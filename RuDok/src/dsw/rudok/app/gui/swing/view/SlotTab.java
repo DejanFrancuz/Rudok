@@ -49,12 +49,7 @@ public class SlotTab extends JPanel implements ISubscriber {
 
     @Override
     public void update(Object notif) {
-        if(notif instanceof Integer){
-            int index = (Integer)notif;
-            //this.pagesTab.remove(index);
-            this.panCenter.remove(index);
-            panCenter.updateUI();
-        }
+
     }
 
     public Slot getSlot() {
