@@ -10,12 +10,11 @@ import java.util.List;
 public class ErrorHandlerImpl  implements ErrorHandler {
     List<ISubscriber> subscribers;
     public void generateError(ErrorType errorType){
-
-        if(errorType == ErrorType.WS_CANNOT_BE_DELETED){
-            notifyObs(new MyError(1,"Greska prilikom brisanja","Workspace ne moze biti obrisan"));
-        }
         if(errorType == ErrorType.NAME_CANNOT_BE_EMPTY){
-            notifyObs(new MyError(2,"Greska prilikom dodele imena","Polje za ime ne moze biti prazno"));
+            notifyObs(new MyError(1,"Greska prilikom dodele imena","Polje za ime ne moze biti prazno"));
+        }
+        if(errorType == ErrorType.NOTHING_SELECTED){
+            notifyObs(new MyError(2, "Greska prilikom selektovanja", "Nista nije selektovano"));
         }
 
     }

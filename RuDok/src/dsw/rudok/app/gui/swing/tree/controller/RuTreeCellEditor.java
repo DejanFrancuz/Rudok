@@ -38,22 +38,10 @@ public class RuTreeCellEditor extends DefaultTreeCellEditor implements ActionLis
             return;
         RuTreeItem clicked=(RuTreeItem)clickedOn;
 
-        if(clicked.getNodeModel() instanceof Workspace){
+
             clicked.setName(e.getActionCommand());
-            ((Workspace)clicked.getNodeModel()).setName(e.getActionCommand());
+            clicked.getNodeModel().setName(e.getActionCommand());
         }
-        else if(clicked.getNodeModel() instanceof Project){
-            clicked.setName(e.getActionCommand());
-            ((Project)clicked.getNodeModel()).setName(e.getActionCommand());
-        }else if(clicked.getNodeModel() instanceof Document){
-            clicked.setName(e.getActionCommand());
-            ((Document)clicked.getNodeModel()).setName(e.getActionCommand());
-        }else if(clicked.getNodeModel() instanceof Page){
-            clicked.setName(e.getActionCommand());
-            ((Page)clicked.getNodeModel()).setName(e.getActionCommand());
-        }else if(clicked.getNodeModel() instanceof Slot){
-            clicked.setName(e.getActionCommand());
-            ((Slot)clicked.getNodeModel()).setName(e.getActionCommand());
-        }
-    }
+
+
 }

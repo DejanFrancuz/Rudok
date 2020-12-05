@@ -84,6 +84,15 @@ public class DocumentTab extends JPanel implements ISubscriber {
             this.panCenter.remove(index);
             panCenter.updateUI();
         }
+        if(notif instanceof String){
+            String s =(String)notif;
+
+            setDocumentName(s);
+            this.getDocument().getDocumentTab().setName(s);
+
+
+            System.out.println(document.getName());
+        }
     }
 
     public Document getDocument() {

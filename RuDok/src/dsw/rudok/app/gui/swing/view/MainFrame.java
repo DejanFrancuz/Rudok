@@ -160,7 +160,7 @@ public class MainFrame extends  JFrame implements ISubscriber {
 	}
 
 	public void showError(MyError e){
-		JOptionPane.showMessageDialog(this, e.getMessage(),e.getTitle(),e.getType());
+		JOptionPane.showMessageDialog(this,e.getTitle(), e.getMessage(),e.getType());
 	}
 
 

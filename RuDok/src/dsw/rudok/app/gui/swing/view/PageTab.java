@@ -88,6 +88,10 @@ public class PageTab extends JPanel implements ISubscriber {
             this.panCenter.remove(index);
             this.panCenter.updateUI();
         }
+        if(notif instanceof String){
+            String s = (String)notif;
+            getPage().getPageTab().setName(s);
+        }
     }
 
     public Page getPage() {

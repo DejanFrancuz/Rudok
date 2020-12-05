@@ -1,6 +1,8 @@
 package dsw.rudok.app.gui.swing.tree.view;
 
 import com.sun.tools.javac.Main;
+import dsw.rudok.app.AppCore;
+import dsw.rudok.app.errorHandler.ErrorType;
 import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.DocumentTab;
@@ -57,6 +59,10 @@ public class RuTreeImplementation implements RuTree, ISubscriber {
     }
     @Override
     public void addDocument(){
+        if(treeView.getLastSelectedPathComponent() == null){
+            AppCore.getInstance().getErrorHandler().generateError(ErrorType.NOTHING_SELECTED);
+            return;
+        }
         RuTreeItem item = (RuTreeItem) treeView.getLastSelectedPathComponent();
         RuNode node = item.getNodeModel();
 
@@ -83,7 +89,10 @@ public class RuTreeImplementation implements RuTree, ISubscriber {
 
      @Override
      public void addPage(){
-
+         if(treeView.getLastSelectedPathComponent() == null){
+             AppCore.getInstance().getErrorHandler().generateError(ErrorType.NOTHING_SELECTED);
+             return;
+         }
          RuTreeItem item = (RuTreeItem) treeView.getLastSelectedPathComponent();
          RuNode node=item.getNodeModel();
          if(node instanceof Document) {
@@ -107,6 +116,10 @@ public class RuTreeImplementation implements RuTree, ISubscriber {
      }
     @Override
     public void addSlot(){
+        if(treeView.getLastSelectedPathComponent() == null){
+            AppCore.getInstance().getErrorHandler().generateError(ErrorType.NOTHING_SELECTED);
+            return;
+        }
         RuTreeItem item= (RuTreeItem) treeView.getLastSelectedPathComponent();
         RuNode node = item.getNodeModel();
         if(node instanceof Page) {
@@ -127,6 +140,10 @@ public class RuTreeImplementation implements RuTree, ISubscriber {
 
     @Override
     public void removeNode(){
+        if(treeView.getLastSelectedPathComponent() == null){
+            AppCore.getInstance().getErrorHandler().generateError(ErrorType.NOTHING_SELECTED);
+            return;
+        }
         RuTreeItem itemm= (RuTreeItem) treeView.getLastSelectedPathComponent();
         RuNode node=itemm.getNodeModel();
         int index=-1;

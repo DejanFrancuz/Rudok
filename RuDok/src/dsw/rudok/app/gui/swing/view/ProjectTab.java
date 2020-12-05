@@ -5,6 +5,7 @@ import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.Document;
 import dsw.rudok.app.repository.Project;
 
+import javax.sound.midi.SysexMessage;
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
 import java.awt.*;
@@ -55,6 +56,10 @@ public class ProjectTab extends JInternalFrame implements ISubscriber {
             int index = (Integer)notif;
             this.documentsTab.remove(index);
             documentsTab.updateUI();
+        }
+        if(notif instanceof String){
+            String s =(String) notif;
+            project.getProjectTab().setTitle(s);
         }
     }
 

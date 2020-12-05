@@ -100,9 +100,10 @@ public class RuTreeItem extends DefaultMutableTreeNode implements IPublisher {
     }
 
     public void setName(String name) {
-        this.name = name;
-        this.nodeModel.setName(name);
-
+        if(!name.isEmpty()) {
+            this.name = name;
+            this.nodeModel.setName(name);
+        }
     }
 
     public String getName() {

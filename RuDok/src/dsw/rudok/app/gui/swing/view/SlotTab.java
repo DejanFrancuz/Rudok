@@ -49,7 +49,9 @@ public class SlotTab extends JPanel implements ISubscriber {
 
     @Override
     public void update(Object notif) {
-
+        if(notif instanceof String){
+            String s=(String) notif;
+        }
     }
 
     public Slot getSlot() {

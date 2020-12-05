@@ -34,7 +34,7 @@ public abstract class RuNode implements IPublisher{
     }
 
     public void setName(String name) {
-        if(name ==""){
+        if(name.isEmpty()){
             AppCore.getInstance().getErrorHandler().generateError(ErrorType.NAME_CANNOT_BE_EMPTY);
             return;
         }
