@@ -4,7 +4,9 @@ import dsw.rudok.app.observer.IPublisher;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.element.SlotDevice;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class SlotModel implements IPublisher {
@@ -19,6 +21,56 @@ public class SlotModel implements IPublisher {
         this.slotDevices = slotDevices;
     }
  */
+public int getDeviceAtPosition(Point point) {
+    for(int i=getDeviceCount()-1;i>=0;i--){
+        SlotDevice device = getDeviceAt(i);
+        if(device.getDevicePainter().isElementAt(point)){
+            return i;
+        }
+    }
+    return -1;
+}
+
+    public int getDeviceCount(){
+        return slotDevices.size();
+    }
+
+    public SlotDevice getDeviceAt(int i){
+        return slotDevices.get(i);
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+
+    public static void setCount(int count) {
+        SlotModel.count = count;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return name;
+    }
+    public int getElementCount(){
+        return slotDevices.size();
+    }
+
+
+    public void addDiagramElements(SlotDevice device){
+
+        slotDevices.add(device);
+        notifyObs(device);
+    }
     @Override
     public void addSubs(ISubscriber sub) {
         if(sub == null)

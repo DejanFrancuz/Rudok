@@ -11,12 +11,12 @@ public class CircleDevice extends SlotDevice{
         devicePainter = new CirclePainter(this);
     }
 
-    public static SlotDevice createDefault(Point2D pos, int elemNo){
+    public static SlotDevice createDefault(Point2D pos){
         Point2D position = (Point2D) pos.clone();
 
         CircleDevice or=new CircleDevice(
                 new Dimension(50,50),position);
-        or.setName("Circle " + elemNo);
+        or.setName("Circle ");
         return or;
     }
 

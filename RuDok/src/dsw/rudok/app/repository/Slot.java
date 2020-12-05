@@ -47,4 +47,20 @@ public class Slot extends RuNode {
     public String toString() {
         return getName();
     }
+
+    public SlotModel getSlotModel() {
+        return slotModel;
+    }
+
+    public void setSlotModel(SlotModel slotModel) {
+        this.slotModel = slotModel;
+    }
+
+    public List<ISubscriber> getSubscribers() {
+        return subscribers;
+    }
+
+    public void setSubscribers(List<ISubscriber> subscribers) {
+        this.subscribers = subscribers;
+    }
 }
