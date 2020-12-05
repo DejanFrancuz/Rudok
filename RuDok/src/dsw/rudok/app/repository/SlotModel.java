@@ -1,20 +1,24 @@
 package dsw.rudok.app.repository;
 
+import dsw.rudok.app.observer.IPublisher;
 import dsw.rudok.app.observer.ISubscriber;
-import dsw.rudok.app.repository.node.RuNode;
+import dsw.rudok.app.repository.element.SlotDevice;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Slot extends RuNode {
+public class SlotModel implements IPublisher {
+    private String name;
+    private static int count=0;
 
-    SlotModel slotModel=new SlotModel();
-
-    public Slot(String name, RuNode parent) {
-        super(name, parent);
+    protected ArrayList<SlotDevice> slotDevices = new ArrayList<>();
+    private List<ISubscriber> subscribers;
+/*
+    public SlotModel(String name, ArrayList<SlotDevice> slotDevices) {
+        this.name = name;
+        this.slotDevices = slotDevices;
     }
-    List<ISubscriber> subscribers;
-
+ */
     @Override
     public void addSubs(ISubscriber sub) {
         if(sub == null)
@@ -41,10 +45,5 @@ public class Slot extends RuNode {
         for(ISubscriber listener : subscribers){
             listener.update(notif);
         }
-    }
-
-    @Override
-    public String toString() {
-        return getName();
     }
 }
