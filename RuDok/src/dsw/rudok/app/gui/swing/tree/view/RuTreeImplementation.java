@@ -6,6 +6,7 @@ import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.DocumentTab;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.gui.swing.view.ProjectTab;
+import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.*;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
@@ -16,7 +17,7 @@ import javax.swing.tree.DefaultTreeModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RuTreeImplementation implements RuTree {
+public class RuTreeImplementation implements RuTree, ISubscriber {
 
     private RuTreeView treeView;
     private DefaultTreeModel treeModel;
@@ -138,14 +139,16 @@ public class RuTreeImplementation implements RuTree {
                 }
             }
             children.remove(index);
-            parent.notifyObs(index);
+            parent.removeChild(index);
             itemm.removeAllChildren();
-            if(node instanceof Project){
-                MainFrame.getInstance().getTabbedPane().remove(index);
-            }
             index=-1;
         }
         treeView.setSelectionPath(null);
         SwingUtilities.updateComponentTreeUI(treeView);
+    }
+
+    @Override
+    public void update(Object notif) {
+
     }
 }

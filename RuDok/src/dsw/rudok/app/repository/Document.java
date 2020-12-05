@@ -28,6 +28,10 @@ public class Document extends RuNodeComposite {
             }
         }
     }
+    @Override
+    public void removeChild(int index) {
+        notifyObs(index);
+    }
 
     public DocumentTab getDocumentTab() {
         return documentTab;

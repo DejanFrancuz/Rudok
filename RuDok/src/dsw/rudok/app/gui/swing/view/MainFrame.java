@@ -9,6 +9,8 @@ import dsw.rudok.app.gui.swing.controller.ActionManager;
 import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
 import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.view.RuTreeImplementation;
+import dsw.rudok.app.observer.ISubscriber;
+import dsw.rudok.app.repository.Workspace;
 import dsw.rudok.app.repository.node.RuNode;
 
 
@@ -16,7 +18,7 @@ import java.awt.*;
 
 
 
-public class MainFrame extends  JFrame{
+public class MainFrame extends  JFrame implements ISubscriber {
 	
 
 
@@ -31,18 +33,20 @@ public class MainFrame extends  JFrame{
 	private DefaultTreeModel treeModel;
 	private JTabbedPane tabbedPane;
 
+
 	private MainFrame() {
-		
+
 	}
 	
 	private void initialise() {
 		actionManager = new ActionManager();
-		
+
 	}
 	
 	public void initialiseWorkspaceTree() {
 		tree=new RuTreeImplementation();
 		workspaceTree=tree.generateTree(documentRepository.getWorkspace());
+		documentRepository.getWorkspace().addSubs(this);
 		initialiseGUI();
 	}
 	
@@ -160,4 +164,11 @@ public class MainFrame extends  JFrame{
 	}
 
 
+	@Override
+	public void update(Object notif) {
+		if(notif instanceof Integer){
+			int index = (Integer) notif;
+			getTabbedPane().remove(index);
+		}
+	}
 }

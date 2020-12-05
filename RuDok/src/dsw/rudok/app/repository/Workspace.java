@@ -26,6 +26,12 @@ public class Workspace extends RuNodeComposite {
     }
 
     @Override
+    public void removeChild(int index) {
+        notifyObs(index);
+    }
+
+
+    @Override
     public void addSubs(ISubscriber sub) {
         if(sub == null)
             return;

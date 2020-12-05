@@ -1,6 +1,8 @@
 package dsw.rudok.app.gui.swing.tree.model;
 
 
+import dsw.rudok.app.observer.IPublisher;
+import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.Workspace;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
@@ -12,11 +14,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.Flow;
 
-public class RuTreeItem extends DefaultMutableTreeNode {
+public class RuTreeItem extends DefaultMutableTreeNode implements IPublisher {
 
     private String name;
     private RuNode nodeModel;
+    List<ISubscriber> subscribers;
 
 
     public RuTreeItem(RuNode nodeModel){
@@ -113,5 +118,31 @@ public class RuTreeItem extends DefaultMutableTreeNode {
     }
 
 
+    @Override
+    public void addSubs(ISubscriber sub) {
+        if(sub == null)
+            return;
+        if(this.subscribers ==null)
+            this.subscribers = new ArrayList<>();
+        if(this.subscribers.contains(sub))
+            return;
+        this.subscribers.add(sub);
+    }
 
+    @Override
+    public void removeSubs(ISubscriber sub) {
+        if(sub == null || this.subscribers == null || !this.subscribers.contains(sub))
+            return;
+        this.subscribers.remove(sub);
+    }
+
+    @Override
+    public void notifyObs(Object notif) {
+        if(notif == null || this.subscribers == null || this.subscribers.isEmpty())
+            return;
+
+        for(ISubscriber listener : subscribers){
+            listener.update(notif);
+        }
+    }
 }
