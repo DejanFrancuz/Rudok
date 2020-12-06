@@ -19,14 +19,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="537a82df-9942-46e7-9bc6-7aaa2b061bd2" name="Default Changelist" comment="popravljena logika za dodavanje i brisanje cvorova, novi cvor ne sme da ima isto ime kao neki vec postojeci cvor">
+    <list default="true" id="537a82df-9942-46e7-9bc6-7aaa2b061bd2" name="Default Changelist" comment="odradjeno deljenje dokumenta delimicno, dokument se pojavljuje u projektu u kom treba, treba ubaciti observer tako da kada se na jednom dokumentu nesto menja, da se menja i na ovom drugom">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/errorHandler/ErrorHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/errorHandler/ErrorHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/errorHandler/ErrorType.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/errorHandler/ErrorType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/model/RuTreeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/model/RuTreeItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/ProjectTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/ProjectTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/Document.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/node/RuNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/node/RuNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/errorHandler/ErrorHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/errorHandler/ErrorHandlerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/errorHandler/ErrorType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/errorHandler/ErrorType.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/model/RuTreeItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/model/RuTreeItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Project.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Project.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/ProjectTab.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/ProjectTab.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Document.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Document.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/node/RuNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/node/RuNode.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +123,7 @@
       <workItem from="1606948175798" duration="4360000" />
       <workItem from="1606955972955" duration="2934000" />
       <workItem from="1607169416833" duration="18931000" />
-      <workItem from="1607249058332" duration="21393000" />
+      <workItem from="1607249058332" duration="24128000" />
     </task>
     <task id="LOCAL-00001" summary="promenjena logika za deleteNode, selektovani cvor se zove u klasi RuTreeImplementation">
       <created>1606561618403</created>
@@ -224,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607290195204</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="odradjeno deljenje dokumenta delimicno, dokument se pojavljuje u projektu u kom treba, treba ubaciti observer tako da kada se na jednom dokumentu nesto menja, da se menja i na ovom drugom">
+      <created>1607292375104</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1607292375104</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +271,8 @@
     <MESSAGE value="zapoceta akcija deljenja dokumenta, fali dodela doukemnta selektovanom projektu, i rad observera" />
     <MESSAGE value="jedna metoda iz RuTree promakla da se pusuje, evo je sad" />
     <MESSAGE value="popravljena logika za dodavanje i brisanje cvorova, novi cvor ne sme da ima isto ime kao neki vec postojeci cvor" />
-    <option name="LAST_COMMIT_MESSAGE" value="popravljena logika za dodavanje i brisanje cvorova, novi cvor ne sme da ima isto ime kao neki vec postojeci cvor" />
+    <MESSAGE value="odradjeno deljenje dokumenta delimicno, dokument se pojavljuje u projektu u kom treba, treba ubaciti observer tako da kada se na jednom dokumentu nesto menja, da se menja i na ovom drugom" />
+    <option name="LAST_COMMIT_MESSAGE" value="odradjeno deljenje dokumenta delimicno, dokument se pojavljuje u projektu u kom treba, treba ubaciti observer tako da kada se na jednom dokumentu nesto menja, da se menja i na ovom drugom" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1607010646829">
@@ -293,22 +307,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607008047540" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1607292155114">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1607294719589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607292155114" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1607292155113">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607294719589" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1607294719589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607292155113" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1607292155113">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607294719589" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1607294719589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607292155113" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1607292155114">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607294719589" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1607294719589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607292155114" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607294719589" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1606561105945">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -341,10 +355,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606560842174" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1607290198548">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1607292377802">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1607290198548" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1607292377802" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606957584362">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

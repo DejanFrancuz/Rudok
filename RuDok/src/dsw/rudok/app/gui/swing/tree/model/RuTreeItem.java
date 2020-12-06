@@ -7,6 +7,7 @@ import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.observer.IPublisher;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.Document;
+import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.Project;
 import dsw.rudok.app.repository.Workspace;
 import dsw.rudok.app.repository.node.RuNode;
@@ -137,6 +138,9 @@ public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
                 p.addChild(d);
                 MainFrame.getInstance().getWorkspaceTree().updateUI();
             }
+        }if(notif instanceof Page){
+            Page p=(Page)notif;
+
         }
 
     }

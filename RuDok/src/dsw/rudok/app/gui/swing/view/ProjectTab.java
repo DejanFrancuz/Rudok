@@ -47,7 +47,10 @@ public class ProjectTab extends JInternalFrame implements ISubscriber {
         if(notif instanceof  Document) {
             Document document = (Document) notif;
                 DocumentTab docTab = new DocumentTab(document);
-
+                if(documentTabs.contains(docTab)){
+                    System.out.println("eee");
+                    return;
+                }
                 this.documentsTab.add(docTab, document.getName());
 
                 this.documentsTab.setSelectedIndex(this.documentsTab.getComponentCount() - 1);

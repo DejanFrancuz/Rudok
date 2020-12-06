@@ -1,5 +1,7 @@
 package dsw.rudok.app.repository;
 
+import dsw.rudok.app.AppCore;
+import dsw.rudok.app.errorHandler.ErrorType;
 import dsw.rudok.app.gui.swing.view.DocumentTab;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.node.RuNode;

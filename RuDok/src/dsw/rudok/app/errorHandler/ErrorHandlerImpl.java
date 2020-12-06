@@ -16,6 +16,9 @@ public class ErrorHandlerImpl  implements ErrorHandler {
         if(errorType == ErrorType.NOTHING_SELECTED){
             notifyObs(new MyError(2, "Greska prilikom selektovanja", "Nista nije selektovano"));
         }
+        if(errorType==ErrorType.DOCUMENTS_CANNOT_HAVE_SAME_NAME){
+            notifyObs(new MyError(1,"Greska prilikom dodele imena","Vec postoji dokument sa ovim imenom"));
+        }
 
     }
 
