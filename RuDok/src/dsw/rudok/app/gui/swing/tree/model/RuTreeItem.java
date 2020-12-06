@@ -128,12 +128,15 @@ public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
 
     @Override
     public void update(Object notif) {
-        if(notif instanceof RuTreeItem){
-            Document d=(Document) ((RuTreeItem) notif).getNodeModel();
-            this.add(new RuTreeItem(d));
-            MainFrame.getInstance().getWorkspaceTree().updateUI();
-            //this.insert(item,index);
-
+        if(notif instanceof Document){
+            Document d=(Document)notif;
+            Project p=(Project)this.getNodeModel();
+            if(!p.getChildren().contains(d)){
+                RuTreeItem item=new RuTreeItem(d);
+                this.add(item);
+                p.addChild(d);
+                MainFrame.getInstance().getWorkspaceTree().updateUI();
+            }
         }
 
     }

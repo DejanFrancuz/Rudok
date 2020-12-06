@@ -83,7 +83,6 @@ public class RuTreeImplementation implements RuTree, IPublisher {
                 deca.addAll(p1.getChildren());
             }
 
-            System.out.println(deca);
             int index = 1;
             while(deca.contains(document)){
                 document.setName("Document" + index);
@@ -222,9 +221,7 @@ public class RuTreeImplementation implements RuTree, IPublisher {
             JFrame frame = new JFrame("Document share");
 
             Project selectedProject = (Project) JOptionPane.showInputDialog(frame, "Select project", "Select document", JOptionPane.QUESTION_MESSAGE, null, projects.toArray(), projects.toArray()[0]);
-            RuTreeItem i= new RuTreeItem(d);
-            selectedProject.addChild(d);
-            notifyObs(i);
+            selectedProject.sendDocument(d);
             //notifyObs(selectedProject);
             //System.out.println(selectedProject);
         }

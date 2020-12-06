@@ -1,5 +1,6 @@
 package dsw.rudok.app.repository;
 
+import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.ProjectTab;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.node.RuNode;
@@ -28,6 +29,9 @@ public class Project extends RuNodeComposite {
                 notifyObs(document);
             }
         }
+    }
+    public void sendDocument(Document d){
+        notifyObs(d);
     }
     @Override
     public void removeChild(int index) {
