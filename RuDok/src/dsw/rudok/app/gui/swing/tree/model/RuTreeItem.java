@@ -1,6 +1,7 @@
 package dsw.rudok.app.gui.swing.tree.model;
 
 
+import dsw.rudok.app.gui.swing.tree.view.RuTreeImplementation;
 import dsw.rudok.app.observer.IPublisher;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.Workspace;
@@ -17,20 +18,23 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Flow;
 
-public class RuTreeItem extends DefaultMutableTreeNode implements IPublisher {
+public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
 
     private String name;
     private RuNode nodeModel;
-    List<ISubscriber> subscribers;
+    private RuTreeImplementation impl=new RuTreeImplementation();
 
 
     public RuTreeItem(RuNode nodeModel){
         this.nodeModel=nodeModel;
         this.name=nodeModel.getName();
+        nodeModel.addSubs(this);
+        impl.addSubs(this);
     }
     public RuTreeItem(RuNode ruNode,String name){
         this.name=name;
         this.nodeModel=ruNode;
+        nodeModel.addSubs(this);
     }
     @Override
     public int getIndex(TreeNode node){
@@ -120,30 +124,10 @@ public class RuTreeItem extends DefaultMutableTreeNode implements IPublisher {
 
 
     @Override
-    public void addSubs(ISubscriber sub) {
-        if(sub == null)
-            return;
-        if(this.subscribers ==null)
-            this.subscribers = new ArrayList<>();
-        if(this.subscribers.contains(sub))
-            return;
-        this.subscribers.add(sub);
-    }
+    public void update(Object notif) {
+        if(notif instanceof RuNode){
 
-    @Override
-    public void removeSubs(ISubscriber sub) {
-        if(sub == null || this.subscribers == null || !this.subscribers.contains(sub))
-            return;
-        this.subscribers.remove(sub);
-    }
-
-    @Override
-    public void notifyObs(Object notif) {
-        if(notif == null || this.subscribers == null || this.subscribers.isEmpty())
-            return;
-
-        for(ISubscriber listener : subscribers){
-            listener.update(notif);
         }
+
     }
 }

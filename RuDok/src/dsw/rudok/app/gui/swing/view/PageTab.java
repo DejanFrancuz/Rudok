@@ -1,6 +1,7 @@
 package dsw.rudok.app.gui.swing.view;
 
 import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
+import dsw.rudok.app.gui.swing.view.state.StateManager;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.Slot;
@@ -9,10 +10,19 @@ import dsw.rudok.app.repository.node.RuNode;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.*;
 
 public class PageTab extends JPanel implements ISubscriber {
+    static int openFrameCount = 0;
+
+    static final int xOffset = 30, yOffset = 30;
+
+    private Slot slot;
 
     private String pageName;
     private RuNode parent;
@@ -36,6 +46,26 @@ public class PageTab extends JPanel implements ISubscriber {
         this.panCenter.setBackground(Color.WHITE);
         add(this.panCenter);
 
+
+        ++openFrameCount;
+        setLocation(xOffset*openFrameCount, yOffset*openFrameCount);
+
+
+        setSize(400,400);
+        setVisible(true);
+        panCenter.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        panCenter.setBackground(Color.WHITE);
+        SlotController s=new SlotController();
+        panCenter.addMouseListener(s);
+        panCenter.addMouseMotionListener(s);
+
+
+
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
     }
 
     public JPanel getPanCenter() {
@@ -53,6 +83,23 @@ public class PageTab extends JPanel implements ISubscriber {
     public void setPageName(String pageName) {
         this.pageName = pageName;
     }
+
+    private class SlotController extends MouseAdapter implements MouseMotionListener {
+
+        public void mousePressed(MouseEvent e) {
+            slot.getStateManager().getCurrentState().mousePressed(e);
+        }
+
+        public void mouseReleased(MouseEvent e) {
+            slot.getStateManager().getCurrentState().mouseReleased(e);
+        }
+
+        public void mouseDragged(MouseEvent e ){
+            slot.getStateManager().getCurrentState().mouseDragged(e);
+        }
+
+    }
+
 
 
 
@@ -91,6 +138,8 @@ public class PageTab extends JPanel implements ISubscriber {
         if(notif instanceof String){
             String s = (String)notif;
             getPage().getPageTab().setName(s);
+        }else{
+            repaint();
         }
     }
 
@@ -102,6 +151,40 @@ public class PageTab extends JPanel implements ISubscriber {
         this.page = page;
     }
 
+    public static int getOpenFrameCount() {
+        return openFrameCount;
+    }
+
+    public static void setOpenFrameCount(int openFrameCount) {
+        PageTab.openFrameCount = openFrameCount;
+    }
+
+    public static int getxOffset() {
+        return xOffset;
+    }
+
+    public static int getyOffset() {
+        return yOffset;
+    }
+
+    public Slot getSlot() {
+        return slot;
+    }
+
+    public void setSlot(Slot slot) {
+        this.slot = slot;
+    }
 
 
+    public void setParent(RuNode parent) {
+        this.parent = parent;
+    }
+
+    public List<SlotTab> getSlotTabs() {
+        return slotTabs;
+    }
+
+    public void setSlotTabs(List<SlotTab> slotTabs) {
+        this.slotTabs = slotTabs;
+    }
 }

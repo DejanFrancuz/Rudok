@@ -8,6 +8,7 @@ import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.DocumentTab;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.gui.swing.view.ProjectTab;
+import dsw.rudok.app.observer.IPublisher;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.*;
 import dsw.rudok.app.repository.node.RuNode;
@@ -16,13 +17,15 @@ import dsw.rudok.app.repository.node.RuNodeComposite;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.MutableTreeNode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RuTreeImplementation implements RuTree, ISubscriber {
+public class RuTreeImplementation implements RuTree, IPublisher {
 
     private RuTreeView treeView;
     private DefaultTreeModel treeModel;
+    private List<ISubscriber> subscribers;
 
     @Override
     public JTree generateTree(Workspace workspace){
@@ -165,7 +168,54 @@ public class RuTreeImplementation implements RuTree, ISubscriber {
     }
 
     @Override
-    public void update(Object notif) {
+    public void shareDocument() {
+        if(treeView.getLastSelectedPathComponent()==null){
+            AppCore.getInstance().getErrorHandler().generateError(ErrorType.NOTHING_SELECTED);
+            return;
+        }
+        RuTreeItem item= (RuTreeItem) treeView.getLastSelectedPathComponent();
+        RuNode node=item.getNodeModel();
+        if(node instanceof Document) {
+            Document d=(Document)node;
+            Workspace w = (Workspace) ((RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel();
 
+            List<RuNode> projects = w.getChildren();
+
+            JFrame frame = new JFrame("Document share");
+
+            Project selectedProject = (Project) JOptionPane.showInputDialog(frame, "Select project", "Select document", JOptionPane.QUESTION_MESSAGE, null, projects.toArray(), projects.toArray()[0]);
+            selectedProject.addChild(d);
+            RuTreeItem i= new RuTreeItem(d);
+            notifyObs(d);
+        }
+    }
+
+
+    @Override
+    public void addSubs(ISubscriber sub) {
+        if(sub == null)
+            return;
+        if(this.subscribers ==null)
+            this.subscribers = new ArrayList<>();
+        if(this.subscribers.contains(sub))
+            return;
+        this.subscribers.add(sub);
+    }
+
+    @Override
+    public void removeSubs(ISubscriber sub) {
+        if(sub == null || this.subscribers == null || !this.subscribers.contains(sub))
+            return;
+        this.subscribers.remove(sub);
+    }
+
+    @Override
+    public void notifyObs(Object notif) {
+        if(notif == null || this.subscribers == null || this.subscribers.isEmpty())
+            return;
+
+        for(ISubscriber listener : subscribers){
+            listener.update(notif);
+        }
     }
 }

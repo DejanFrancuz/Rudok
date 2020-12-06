@@ -38,6 +38,11 @@ public class SlotTab extends JPanel implements ISubscriber {
 
     }
 
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+    }
+
     public String getSlotName() {
         return slotName;
     }

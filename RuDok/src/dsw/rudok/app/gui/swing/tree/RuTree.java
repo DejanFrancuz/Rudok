@@ -16,5 +16,6 @@ public interface RuTree {
     void addPage();
     void addSlot();
     void removeNode();
+    void shareDocument();
 
 }

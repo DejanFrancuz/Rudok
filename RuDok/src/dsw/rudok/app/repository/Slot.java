@@ -1,5 +1,6 @@
 package dsw.rudok.app.repository;
 
+import dsw.rudok.app.gui.swing.view.state.StateManager;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.node.RuNode;
 
@@ -14,6 +15,22 @@ public class Slot extends RuNode {
         super(name, parent);
     }
     List<ISubscriber> subscribers;
+
+    private StateManager stateManager=new StateManager(this);
+
+    public void startCircleState() {
+        stateManager.setCircleState();
+    }
+
+    public void startSelectState() {
+        stateManager.setSelectState();
+    }
+    public void startRectangleState(){
+        stateManager.setRectangleState();
+    }
+    public StateManager getStateManager() {
+        return stateManager;
+    }
 
     @Override
     public void addSubs(ISubscriber sub) {

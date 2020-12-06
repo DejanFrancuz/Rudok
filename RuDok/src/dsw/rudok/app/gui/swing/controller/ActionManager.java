@@ -9,6 +9,7 @@ public class ActionManager {
 	private NewPageAction newPageAction;
 	private NewSlotAction newSlotAction;
 	private DeleteNode deleteNode;
+	private ShareDocumentAction shareDocumentAction;
 	
 	public ActionManager() {
 		initialiseActions();
@@ -21,6 +22,15 @@ public class ActionManager {
 		newPageAction=new NewPageAction();
 		newSlotAction=new NewSlotAction();
 		deleteNode=new DeleteNode();
+		shareDocumentAction=new ShareDocumentAction();
+	}
+
+	public ShareDocumentAction getShareDocumentAction() {
+		return shareDocumentAction;
+	}
+
+	public void setShareDocumentAction(ShareDocumentAction shareDocumentAction) {
+		this.shareDocumentAction = shareDocumentAction;
 	}
 
 	public ExitAction getExitAction() {
