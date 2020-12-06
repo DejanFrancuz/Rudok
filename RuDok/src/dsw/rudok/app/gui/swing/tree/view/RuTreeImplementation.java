@@ -71,12 +71,22 @@ public class RuTreeImplementation implements RuTree, IPublisher {
 
         if(node instanceof Project) {
 
+
             Project project = (Project) node;
             Document document = new Document("Document" + (item.getChildCount() + 1), project);
-            List<RuNode> deca = project.getChildren();
+            List<RuNode> ocevi=new ArrayList<>();
+            Workspace w=(Workspace)((RuTreeItem)MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel();
+            ocevi=w.getChildren();
+            List<RuNode> deca = new ArrayList<>();
+            for(RuNode p: ocevi){
+                Project p1=(Project)p;
+                deca.addAll(p1.getChildren());
+            }
+
+            System.out.println(deca);
             int index = 1;
             while(deca.contains(document)){
-                document.setName("Document " + index);
+                document.setName("Document" + index);
                 index++;
             }
             item.add(new RuTreeItem(document));
@@ -98,11 +108,22 @@ public class RuTreeImplementation implements RuTree, IPublisher {
          }
          RuTreeItem item = (RuTreeItem) treeView.getLastSelectedPathComponent();
          RuNode node=item.getNodeModel();
-         if(node instanceof Document) {
-
+         if(node instanceof Document){
+             List<RuNode> projekti= new ArrayList<>();
+             List<RuNode> dokumenti= new ArrayList<>();
+             Workspace w=(Workspace)((RuTreeItem)MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel();
+             projekti=w.getChildren();
+             for(RuNode project: projekti){
+                 Project p=(Project)project;
+                 dokumenti.addAll(p.getChildren());
+             }
              Document document = (Document) node;
              Page page = new Page("Page " + (item.getChildCount() + 1), document);
-             List<RuNode> deca = document.getChildren();
+             List<RuNode> deca = new ArrayList<>();
+             for(RuNode dokument: dokumenti){
+                 Document d=(Document)dokument;
+                 deca.addAll(d.getChildren());
+             }
              int index = 1;
              while(deca.contains(page)){
                  page.setName("Page " + index);
@@ -126,10 +147,27 @@ public class RuTreeImplementation implements RuTree, IPublisher {
         RuTreeItem item= (RuTreeItem) treeView.getLastSelectedPathComponent();
         RuNode node = item.getNodeModel();
         if(node instanceof Page) {
-
+            List<RuNode> projekti= new ArrayList<>();
+            List<RuNode> dokumenti= new ArrayList<>();
+            List<RuNode> pages= new ArrayList<>();
+            Workspace w=(Workspace)((RuTreeItem)MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel();
+            projekti=w.getChildren();
+            for(RuNode project: projekti){
+                Project p=(Project)project;
+                dokumenti.addAll(p.getChildren());
+            }
+            for(RuNode dokument: dokumenti){
+                Document d=(Document)dokument;
+                pages.addAll(d.getChildren());
+            }
             Page page = (Page) node;
             Slot slot = new Slot("Slot " + (item.getChildCount() + 1), page);
-            List<RuNode> deca = page.getChildren();
+            List<RuNode> deca = new ArrayList<>();
+            for(RuNode s: pages){
+                Page s1=(Page) s;
+                deca.addAll(s1.getChildren());
+            }
+
             int index = 1;
             while(deca.contains(slot)){
                 slot.setName("Slot " + index);
@@ -184,9 +222,11 @@ public class RuTreeImplementation implements RuTree, IPublisher {
             JFrame frame = new JFrame("Document share");
 
             Project selectedProject = (Project) JOptionPane.showInputDialog(frame, "Select project", "Select document", JOptionPane.QUESTION_MESSAGE, null, projects.toArray(), projects.toArray()[0]);
-            selectedProject.addChild(d);
             RuTreeItem i= new RuTreeItem(d);
-            notifyObs(d);
+            selectedProject.addChild(d);
+            notifyObs(i);
+            //notifyObs(selectedProject);
+            //System.out.println(selectedProject);
         }
     }
 

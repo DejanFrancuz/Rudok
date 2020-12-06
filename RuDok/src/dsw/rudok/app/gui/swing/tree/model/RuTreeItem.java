@@ -2,8 +2,12 @@ package dsw.rudok.app.gui.swing.tree.model;
 
 
 import dsw.rudok.app.gui.swing.tree.view.RuTreeImplementation;
+import dsw.rudok.app.gui.swing.tree.view.RuTreeView;
+import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.observer.IPublisher;
 import dsw.rudok.app.observer.ISubscriber;
+import dsw.rudok.app.repository.Document;
+import dsw.rudok.app.repository.Project;
 import dsw.rudok.app.repository.Workspace;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
@@ -29,7 +33,6 @@ public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
         this.nodeModel=nodeModel;
         this.name=nodeModel.getName();
         nodeModel.addSubs(this);
-        impl.addSubs(this);
     }
     public RuTreeItem(RuNode ruNode,String name){
         this.name=name;
@@ -125,7 +128,11 @@ public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
 
     @Override
     public void update(Object notif) {
-        if(notif instanceof RuNode){
+        if(notif instanceof RuTreeItem){
+            Document d=(Document) ((RuTreeItem) notif).getNodeModel();
+            this.add(new RuTreeItem(d));
+            MainFrame.getInstance().getWorkspaceTree().updateUI();
+            //this.insert(item,index);
 
         }
 
