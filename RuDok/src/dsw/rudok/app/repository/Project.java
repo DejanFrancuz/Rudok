@@ -1,11 +1,13 @@
 package dsw.rudok.app.repository;
 
+import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.ProjectTab;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
+import javax.print.Doc;
 import javax.swing.tree.MutableTreeNode;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +32,8 @@ public class Project extends RuNodeComposite {
             }
         }
     }
-    public void sendDocument(Document d){
-        notifyObs(d);
+    public void shareDocument(RuTreeItem item){
+        notifyObs(item);
     }
     @Override
     public void removeChild(int index) {

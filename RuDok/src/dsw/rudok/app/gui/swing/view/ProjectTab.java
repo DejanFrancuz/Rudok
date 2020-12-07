@@ -10,6 +10,7 @@ import javax.swing.*;
 import javax.swing.tree.TreeNode;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ProjectTab extends JInternalFrame implements ISubscriber {
@@ -46,12 +47,17 @@ public class ProjectTab extends JInternalFrame implements ISubscriber {
     public void update(Object notif) {
         if(notif instanceof  Document) {
             Document document = (Document) notif;
+
                 DocumentTab docTab = new DocumentTab(document);
-                if(documentTabs.contains(docTab)){
-                    System.out.println("eee");
+                System.out.println(documentTabs.toString());
+            for(DocumentTab tab: documentTabs){
+                if(tab.equals(docTab)) {
                     return;
                 }
+            }
+
                 this.documentsTab.add(docTab, document.getName());
+            documentTabs.add(docTab);
 
                 this.documentsTab.setSelectedIndex(this.documentsTab.getComponentCount() - 1);
             }

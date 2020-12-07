@@ -44,7 +44,7 @@ public class RuTreeImplementation implements RuTree, IPublisher {
         List<RuNode> deca = workspace.getChildren();
         int index = 1;
         while(deca.contains(project)){
-            project.setName("Project " + index);
+            project.setName("Project "+index);
             index++;
         }
         item.add(new RuTreeItem(project));
@@ -73,7 +73,7 @@ public class RuTreeImplementation implements RuTree, IPublisher {
 
 
             Project project = (Project) node;
-            Document document = new Document("Document" + (item.getChildCount() + 1), project);
+            Document document = new Document("Document " + (item.getChildCount() + 1), project);
             List<RuNode> ocevi=new ArrayList<>();
             Workspace w=(Workspace)((RuTreeItem)MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel();
             ocevi=w.getChildren();
@@ -85,7 +85,7 @@ public class RuTreeImplementation implements RuTree, IPublisher {
 
             int index = 1;
             while(deca.contains(document)){
-                document.setName("Document" + index);
+                document =new Document("Document "+index,node);
                 index++;
             }
             item.add(new RuTreeItem(document));
@@ -221,7 +221,10 @@ public class RuTreeImplementation implements RuTree, IPublisher {
             JFrame frame = new JFrame("Document share");
 
             Project selectedProject = (Project) JOptionPane.showInputDialog(frame, "Select project", "Select document", JOptionPane.QUESTION_MESSAGE, null, projects.toArray(), projects.toArray()[0]);
-            selectedProject.sendDocument(d);
+            RuTreeItem i=new RuTreeItem(d);
+            selectedProject.shareDocument(i);
+            SwingUtilities.updateComponentTreeUI(treeView);
+
             //notifyObs(selectedProject);
             //System.out.println(selectedProject);
         }
