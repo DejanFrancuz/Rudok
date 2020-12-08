@@ -138,29 +138,6 @@ public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
             Document d=(Document) item.getNodeModel();
             p.addChild(d);
         }
-        /*if(notif instanceof Document){
-            Document d=(Document)notif;
-            Project p=(Project)this.getNodeModel();
-            //List<RuNode> deca=new ArrayList<>();
-            if(!p.getChildren().contains(d)){
-                RuTreeItem item=new RuTreeItem(d);
-                this.add(item);
-                p.addChild(d);
-                for(RuNode dete: d.getChildren()){
-                    Page page=(Page)dete;
-                    item.add(new RuTreeItem(page));
-                    d.addChild(p);
-                }
-            }
-        }if(notif instanceof Page){
-            Page p=(Page)notif;
-            Document d=(Document)this.getNodeModel();
-            if(!d.getChildren().contains(p)) {
-                this.add(new RuTreeItem(p));
-                d.addChild(p);
-                System.out.println("usaooooo");
-            }
-        }*/
 
     }
 }

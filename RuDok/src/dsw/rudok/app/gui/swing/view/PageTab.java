@@ -12,6 +12,7 @@ import dsw.rudok.app.repository.node.RuNode;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import javax.swing.tree.TreeSelectionModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -94,8 +95,11 @@ public class PageTab extends JPanel implements ISubscriber {
 
         public void mousePressed(MouseEvent e) {
             //slot.getStateManager().getCurrentState().mousePressed(e);
+           // MainFrame.getInstance().getWorkspace().setSelectionModel();
             MainFrame.getInstance().getTree().addSlot();
 
+            /*page.addChild(slot);
+            MainFrame.getInstance().getWorkspaceTree().updateUI();*/
             Point position = e.getPoint();
             GeneralPath gp=new GeneralPath();
 
@@ -103,10 +107,11 @@ public class PageTab extends JPanel implements ISubscriber {
 
             RectangleSlot rectangle= (RectangleSlot) RectangleSlot.createDefault(position);
 
-                    //new RectangleSlot( new Dimension(100,50),position);
+            //new RectangleSlot( new Dimension(100,50),position);
 
-           // rectangle.setName("RectangleSlot ");//+ slot.getSlotModel().getElementCount()
+            // rectangle.setName("RectangleSlot ");//+ slot.getSlotModel().getElementCount()
             slot.getSlotModel().addSlodDevices(rectangle);
+            MainFrame.getInstance().getTabbedPane().updateUI();
         }
 
       /*  public void mouseReleased(MouseEvent e) {
