@@ -13,7 +13,7 @@ public class SlotModel implements IPublisher {
     private String name;
     private static int count=0;
 
-    protected ArrayList<SlotDevice> slotDevices = new ArrayList<>();
+    protected ArrayList<SlotDevice> slotDevices = new ArrayList<SlotDevice>();
     private List<ISubscriber> subscribers;
 /*
     public SlotModel(String name, ArrayList<SlotDevice> slotDevices) {
@@ -30,6 +30,10 @@ public int getDeviceAtPosition(Point point) {
     }
     return -1;
 }
+
+    public Iterator<SlotDevice> getSlotIterator(){
+        return slotDevices.iterator();
+    }
 
     public int getDeviceCount(){
         return slotDevices.size();
@@ -66,7 +70,7 @@ public int getDeviceAtPosition(Point point) {
     }
 
 
-    public void addDiagramElements(SlotDevice device){
+    public void addSlodDevices(SlotDevice device){
 
         slotDevices.add(device);
         notifyObs(device);
@@ -97,5 +101,9 @@ public int getDeviceAtPosition(Point point) {
         for(ISubscriber listener : subscribers){
             listener.update(notif);
         }
+    }
+
+    public ArrayList<SlotDevice> getSlotDevices() {
+        return slotDevices;
     }
 }

@@ -3,6 +3,7 @@ package dsw.rudok.app.gui.swing.view;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.Document;
 import dsw.rudok.app.repository.Page;
+import dsw.rudok.app.repository.Slot;
 import dsw.rudok.app.repository.node.RuNode;
 
 import javax.swing.*;
@@ -57,7 +58,7 @@ public class DocumentTab extends JPanel implements ISubscriber {
         if(notif instanceof Page){
             Page page = (Page) notif;
             PageTab pageTab = new PageTab(page);
-
+            //pageTab.setSlot((Slot) page.getChildren().get(0));
             this.pageTabs.add(pageTab);
             this.panCenter.add(pageTab,"align center");
 

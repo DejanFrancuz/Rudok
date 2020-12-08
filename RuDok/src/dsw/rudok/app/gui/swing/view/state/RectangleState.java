@@ -1,7 +1,7 @@
 package dsw.rudok.app.gui.swing.view.state;
 
 import dsw.rudok.app.repository.Slot;
-import dsw.rudok.app.repository.element.RectangleDevice;
+import dsw.rudok.app.repository.element.RectangleSlot;
 import dsw.rudok.app.repository.element.SlotDevice;
 
 import java.awt.*;
@@ -17,8 +17,8 @@ public class RectangleState extends State{
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
             if (med.getSlotModel().getDeviceAtPosition(position)==-1){
-                SlotDevice device = RectangleDevice.createDefault(position);
-                med.getSlotModel().addDiagramElements(device);
+                SlotDevice device = RectangleSlot.createDefault(position);
+                med.getSlotModel().addSlodDevices(device);
             }
         }
     }

@@ -1,13 +1,7 @@
 package dsw.rudok.app.gui.swing.controller;
 
 
-import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.MainFrame;
-import dsw.rudok.app.gui.swing.view.PageTab;
-import dsw.rudok.app.gui.swing.view.SlotTab;
-import dsw.rudok.app.repository.Document;
-import dsw.rudok.app.repository.Page;
-import dsw.rudok.app.repository.Slot;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,6 +15,8 @@ public class NewSlotAction extends AbstractRudokAction{
         putValue(SHORT_DESCRIPTION, "New Slot");
     }
     public void actionPerformed(ActionEvent e){
+
+
         /*
         RuTreeItem node = (RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
         if(node.getNodeModel() instanceof Page) {

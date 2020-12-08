@@ -1,10 +1,13 @@
 package dsw.rudok.app.gui.swing.view;
 
 import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
+import dsw.rudok.app.gui.swing.view.painters.ElementPainter;
 import dsw.rudok.app.gui.swing.view.state.StateManager;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.Slot;
+import dsw.rudok.app.repository.element.RectangleSlot;
+import dsw.rudok.app.repository.element.SlotDevice;
 import dsw.rudok.app.repository.node.RuNode;
 
 import javax.swing.*;
@@ -13,7 +16,9 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.awt.*;
 
@@ -22,13 +27,15 @@ public class PageTab extends JPanel implements ISubscriber {
 
     static final int xOffset = 30, yOffset = 30;
 
-    private Slot slot;
+
 
     private String pageName;
     private RuNode parent;
     private JPanel panCenter;
     private Page page;
-    private List<SlotTab> slotTabs = new ArrayList<>();
+   // private List<SlotTab> slotTabs = new ArrayList<>();
+
+    private Slot slot = new Slot("sdsdsd", page);
 
     public PageTab(Page page){
         this.page = page;
@@ -63,10 +70,9 @@ public class PageTab extends JPanel implements ISubscriber {
 
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-    }
+
+
+
 
     public JPanel getPanCenter() {
         return panCenter;
@@ -84,29 +90,62 @@ public class PageTab extends JPanel implements ISubscriber {
         this.pageName = pageName;
     }
 
-    private class SlotController extends MouseAdapter implements MouseMotionListener {
+   private class SlotController extends MouseAdapter implements MouseMotionListener {
 
         public void mousePressed(MouseEvent e) {
-            slot.getStateManager().getCurrentState().mousePressed(e);
+            //slot.getStateManager().getCurrentState().mousePressed(e);
+            MainFrame.getInstance().getTree().addSlot();
+
+            Point position = e.getPoint();
+            GeneralPath gp=new GeneralPath();
+
+            Paint fill = Color.BLACK;
+
+            RectangleSlot rectangle= (RectangleSlot) RectangleSlot.createDefault(position);
+
+                    //new RectangleSlot( new Dimension(100,50),position);
+
+           // rectangle.setName("RectangleSlot ");//+ slot.getSlotModel().getElementCount()
+            slot.getSlotModel().addSlodDevices(rectangle);
         }
 
-        public void mouseReleased(MouseEvent e) {
+      /*  public void mouseReleased(MouseEvent e) {
             slot.getStateManager().getCurrentState().mouseReleased(e);
         }
 
         public void mouseDragged(MouseEvent e ){
             slot.getStateManager().getCurrentState().mouseDragged(e);
-        }
+        }*/
 
     }
 
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
 
+        Graphics2D graphics2D = (Graphics2D) g;
+        graphics2D.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+        graphics2D.setStroke(new BasicStroke());
+
+        graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
+         Iterator<SlotDevice> it = slot.getSlotModel().getSlotIterator();
+        while (it.hasNext()){
+
+
+
+            SlotDevice slotDevice = (SlotDevice) it.next();
+            ElementPainter painter = slotDevice.getDevicePainter();
+            painter.paint(graphics2D,slotDevice);
+        }
+    }
 
     @Override
     public void update(Object notif) {
 
-            if(notif instanceof  Slot){
+
+
+         /*  if(notif instanceof  Slot){
                 Slot slot = (Slot) notif;
                 SlotTab slotTab = new SlotTab(slot);
                 this.slotTabs.add(slotTab);
@@ -127,7 +166,7 @@ public class PageTab extends JPanel implements ISubscriber {
                 validate();
 
 
-            }
+            }*/
 
         if(notif instanceof Integer){
             int index = (Integer)notif;
@@ -173,6 +212,7 @@ public class PageTab extends JPanel implements ISubscriber {
 
     public void setSlot(Slot slot) {
         this.slot = slot;
+        this.slot.getSlotModel().notify();
     }
 
 
@@ -180,11 +220,11 @@ public class PageTab extends JPanel implements ISubscriber {
         this.parent = parent;
     }
 
-    public List<SlotTab> getSlotTabs() {
+    /*public List<SlotTab> getSlotTabs() {
         return slotTabs;
     }
 
     public void setSlotTabs(List<SlotTab> slotTabs) {
         this.slotTabs = slotTabs;
-    }
+    }*/
 }

@@ -1,17 +1,16 @@
 package dsw.rudok.app.gui.swing.view.painters;
 
-import dsw.rudok.app.repository.element.CircleDevice;
+import dsw.rudok.app.repository.element.CircleSlot;
 import dsw.rudok.app.repository.element.SlotDevice;
 
-import java.awt.*;
 import java.awt.geom.GeneralPath;
 
-public class CirclePainter extends DevicePainter{
+public class CirclePainter extends SlotDevicePainter {
 
 
     public CirclePainter(SlotDevice device) {
         super(device);
-        CircleDevice or = (CircleDevice) device;
+        CircleSlot or = (CircleSlot) device;
 
         shape=new GeneralPath();
 

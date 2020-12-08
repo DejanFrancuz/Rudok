@@ -173,6 +173,7 @@ public class RuTreeImplementation implements RuTree, IPublisher {
                 index++;
             }
             item.add(new RuTreeItem(slot));
+            //page.getPageTab().setSlot(slot);
             page.addChild(slot);
             SwingUtilities.updateComponentTreeUI(treeView);
         }
