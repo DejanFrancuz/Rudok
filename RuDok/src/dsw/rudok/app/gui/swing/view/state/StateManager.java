@@ -1,6 +1,6 @@
 package dsw.rudok.app.gui.swing.view.state;
 
-import dsw.rudok.app.repository.Slot;
+import dsw.rudok.app.repository.element.Slot;
 
 public class StateManager {
     private State currentState;

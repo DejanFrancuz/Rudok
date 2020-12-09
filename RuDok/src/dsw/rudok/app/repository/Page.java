@@ -2,6 +2,7 @@ package dsw.rudok.app.repository;
 
 import dsw.rudok.app.gui.swing.view.PageTab;
 import dsw.rudok.app.observer.ISubscriber;
+import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 

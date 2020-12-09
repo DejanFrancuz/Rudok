@@ -1,27 +1,21 @@
 package dsw.rudok.app.gui.swing.view;
 
-import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
 import dsw.rudok.app.gui.swing.view.painters.ElementPainter;
-import dsw.rudok.app.gui.swing.view.state.StateManager;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.Page;
-import dsw.rudok.app.repository.Slot;
+import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.element.RectangleSlot;
 import dsw.rudok.app.repository.element.SlotDevice;
 import dsw.rudok.app.repository.node.RuNode;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.swing.tree.TreeSelectionModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.GeneralPath;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.awt.*;
 
 public class PageTab extends JPanel implements ISubscriber {
     static int openFrameCount = 0;

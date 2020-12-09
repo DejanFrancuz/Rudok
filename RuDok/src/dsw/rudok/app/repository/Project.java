@@ -31,6 +31,18 @@ public class Project extends RuNodeComposite {
                 notifyObs(document);
             }
         }
+
+    }
+    public RuTreeItem getItem(){
+        for(ISubscriber s: subscribers){
+            System.out.println(s.toString());
+
+            if(s instanceof RuTreeItem){
+                RuTreeItem r=(RuTreeItem)s;
+                return r;
+            }
+        }
+        return null;
     }
     public void shareDocument(RuTreeItem item){
         notifyObs(item);

@@ -1,15 +1,17 @@
 package dsw.rudok.app.gui.swing.view.painters;
 
 import dsw.rudok.app.repository.element.RectangleSlot;
+import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.element.SlotDevice;
 
 import java.awt.geom.GeneralPath;
 
 public class RectanglePainter extends SlotDevicePainter {
 
-    public RectanglePainter(SlotDevice device) {
-        super(device);
-        RectangleSlot rectangle = (RectangleSlot) device;
+
+    public RectanglePainter(Slot slot) {
+        super(slot);
+        RectangleSlot rectangle = (RectangleSlot) slot;
 
         shape=new GeneralPath();
         ((GeneralPath)shape).moveTo(rectangle.getPosition().getX(),rectangle.getPosition().getY());

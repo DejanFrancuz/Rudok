@@ -1,8 +1,7 @@
 package dsw.rudok.app.gui.swing.view;
 
-import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
 import dsw.rudok.app.observer.ISubscriber;
-import dsw.rudok.app.repository.Slot;
+import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.node.RuNode;
 
 import javax.swing.*;

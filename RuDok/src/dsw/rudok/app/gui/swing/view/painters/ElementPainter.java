@@ -1,13 +1,13 @@
 package dsw.rudok.app.gui.swing.view.painters;
 
-import dsw.rudok.app.repository.Slot;
+import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.element.SlotDevice;
 
 import java.awt.*;
 
 public abstract class  ElementPainter{
 
-    public ElementPainter(SlotDevice slotDevice){
+    public ElementPainter(Slot slot){
 
         }
 

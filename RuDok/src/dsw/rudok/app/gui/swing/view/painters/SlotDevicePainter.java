@@ -1,6 +1,6 @@
 package dsw.rudok.app.gui.swing.view.painters;
 
-import dsw.rudok.app.repository.Slot;
+import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.element.SlotDevice;
 
 import java.awt.*;
@@ -8,7 +8,7 @@ import java.awt.*;
 public class SlotDevicePainter extends  ElementPainter{
     protected Shape shape;
 
-    public SlotDevicePainter(SlotDevice device) {
+    public SlotDevicePainter(Slot device) {
         super(device);
     }
     public void paint(Graphics2D g, SlotDevice element){

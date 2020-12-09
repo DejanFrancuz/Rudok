@@ -1,23 +1,20 @@
 package dsw.rudok.app.gui.swing.tree.view;
 
-import com.sun.tools.javac.Main;
 import dsw.rudok.app.AppCore;
 import dsw.rudok.app.errorHandler.ErrorType;
 import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
-import dsw.rudok.app.gui.swing.view.DocumentTab;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.gui.swing.view.ProjectTab;
 import dsw.rudok.app.observer.IPublisher;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.*;
+import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
 import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.MutableTreeNode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -224,7 +221,8 @@ public class RuTreeImplementation implements RuTree, IPublisher {
             Project selectedProject = (Project) JOptionPane.showInputDialog(frame, "Select project", "Select document", JOptionPane.QUESTION_MESSAGE, null, projects.toArray(), projects.toArray()[0]);
             if(selectedProject==null)return;
             RuTreeItem i=new RuTreeItem(d);
-            selectedProject.shareDocument(i);
+            selectedProject.getItem().insert(i,selectedProject.getChildren().size());
+            /*selectedProject.shareDocument(i);*/
             selectedProject.addChild(d);
             SwingUtilities.updateComponentTreeUI(treeView);
 
