@@ -222,8 +222,10 @@ public class RuTreeImplementation implements RuTree, IPublisher {
             JFrame frame = new JFrame("Document share");
 
             Project selectedProject = (Project) JOptionPane.showInputDialog(frame, "Select project", "Select document", JOptionPane.QUESTION_MESSAGE, null, projects.toArray(), projects.toArray()[0]);
+            if(selectedProject==null)return;
             RuTreeItem i=new RuTreeItem(d);
             selectedProject.shareDocument(i);
+            selectedProject.addChild(d);
             SwingUtilities.updateComponentTreeUI(treeView);
 
             //notifyObs(selectedProject);

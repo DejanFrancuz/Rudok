@@ -18,10 +18,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeNode;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.Flow;
 
 public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
@@ -127,16 +124,40 @@ public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
         this.nodeModel = nodeModel;
     }
 
+    @Override
+    public void insert(MutableTreeNode newChild, int childIndex) {
+        if (!allowsChildren) {
+            throw new IllegalStateException("node does not allow children");
+        } else if (newChild == null) {
+            throw new IllegalArgumentException("new child is null");
+        } else if (isNodeAncestor(newChild)) {
+            throw new IllegalArgumentException("new child is an ancestor");
+        }
 
+      //  MutableTreeNode oldParent = (MutableTreeNode)newChild.getParent();
+/*
+        if (oldParent != null) {
+            oldParent.remove(newChild);
+        }
+ */
+        //newChild.setParent(this);
+        if (children == null) {
+            children = new Vector<>();
+        }
+        children.insertElementAt(newChild, childIndex);
+    }
 
     @Override
     public void update(Object notif) {
         if(notif instanceof RuTreeItem){
             RuTreeItem item=(RuTreeItem)notif;
-            this.add(item);
-            Project p=(Project) this.getNodeModel();
+            this.insert(item,this.getChildCount());
+
+            //this.add(item);
+
+            /*Project p=(Project) this.getNodeModel();
             Document d=(Document) item.getNodeModel();
-            p.addChild(d);
+            p.addChild(d);*/
         }
 
     }
