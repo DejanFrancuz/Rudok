@@ -9,6 +9,7 @@ public class StateManager {
     CircleState circleState;
     RectangleState rectangleState;
     SelectState selectState;
+    TriangleState triangleState;
 
     public StateManager(Page page)
     {
@@ -16,9 +17,10 @@ public class StateManager {
         circleState = new CircleState(page);
         rectangleState=new RectangleState(page);
         selectState=new SelectState(page);
+        triangleState=new TriangleState(page);
         currentState = selectState;
     }
-
+    public void setTriangleState(){currentState=triangleState;}
     public void setCircleState() { currentState = circleState; }
     public void setRectangleState(){ currentState = rectangleState; }
     public void setSelectState(){ currentState = selectState; }

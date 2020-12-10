@@ -17,6 +17,6 @@ public class TriangleAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        ((PageTab)MainFrame.getInstance().getjPanel()).getPage().startTriangleState();
     }
 }

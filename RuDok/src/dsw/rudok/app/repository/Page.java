@@ -34,7 +34,7 @@ public class Page extends RuNodeComposite {
         }
     }
 
-
+    public void startTriangleState(){stateManager.setCircleState();}
     public void startSelectState() {
         stateManager.setSelectState();
     }

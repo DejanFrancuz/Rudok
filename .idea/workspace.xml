@@ -19,11 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="537a82df-9942-46e7-9bc6-7aaa2b061bd2" name="Default Changelist" comment="implementirano crtanje kruga">
-      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/RuTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/RuTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/RuTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/RuTree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.class" afterDir="false" />
+    <list default="true" id="537a82df-9942-46e7-9bc6-7aaa2b061bd2" name="Default Changelist" comment="crtanje radi sada tako da moze na svakom page-u da se crta">
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/controller/SelectAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/controller/SelectAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/StateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/StateManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +122,7 @@
       <workItem from="1607510011000" duration="147000" />
       <workItem from="1607532084284" duration="6817000" />
       <workItem from="1607560796473" duration="642000" />
-      <workItem from="1607611319710" duration="15633000" />
+      <workItem from="1607611319710" duration="17086000" />
     </task>
     <task id="LOCAL-00001" summary="promenjena logika za deleteNode, selektovani cvor se zove u klasi RuTreeImplementation">
       <created>1606561618403</created>
@@ -294,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607629578666</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="crtanje radi sada tako da moze na svakom page-u da se crta">
+      <created>1607629935395</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1607629935395</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,7 +342,8 @@
     <MESSAGE value="ikonice za state-crtanje stavljene na toolbar i menubar" />
     <MESSAGE value="crtanje pravougaonika sada preko state-a" />
     <MESSAGE value="implementirano crtanje kruga" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementirano crtanje kruga" />
+    <MESSAGE value="crtanje radi sada tako da moze na svakom page-u da se crta" />
+    <option name="LAST_COMMIT_MESSAGE" value="crtanje radi sada tako da moze na svakom page-u da se crta" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1607010646829">
@@ -356,10 +362,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="117" key="#com.intellij.ide.macro.MacrosDialog/0.0.1536.824@0.0.1536.824" timestamp="1606561058803" />
-    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser" timestamp="1607625936804">
+    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser" timestamp="1607630275318">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1607625936804" />
+    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1607630275318" />
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1607434735586">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -424,10 +430,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606560842174" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1607629580759">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1607629939239">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1607629580759" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1607629939239" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606957584362">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
