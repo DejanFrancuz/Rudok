@@ -10,8 +10,7 @@ public abstract class  ElementPainter{
     public ElementPainter(Slot slot){
 
         }
+        public abstract void paint(Graphics2D g, Slot slot);
 
-        public abstract void paint(Graphics2D g, SlotDevice slotDevice);
-
-    public abstract boolean elementAt(Slot slotDevice, Point pos);
+    public abstract boolean elementAt(Slot slot, Point pos);
 }

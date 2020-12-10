@@ -1,5 +1,6 @@
 package dsw.rudok.app.repository;
 
+import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.PageTab;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.element.Slot;
@@ -13,6 +14,7 @@ public class Page extends RuNodeComposite {
 
     private PageTab pageTab;
     List<ISubscriber> subscribers;
+    private PageModel pageModel = new PageModel();
 
 
     public Page(String name, RuNode parent) {
@@ -21,16 +23,16 @@ public class Page extends RuNodeComposite {
     }
 
 
-
-    public void addChild(RuNode child){
-        if(child!=null && child instanceof Slot){
-            Slot slot= (Slot)child;
-            if(!this.getChildren().contains(slot)){
+    public void addChild(RuNode child) {
+        if (child != null && child instanceof Slot) {
+            Slot slot = (Slot) child;
+            if (!this.getChildren().contains(slot)) {
                 this.getChildren().add(slot);
                 notifyObs(slot);
             }
         }
     }
+
     @Override
     public void removeChild(int index) {
         notifyObs(index);
@@ -47,28 +49,28 @@ public class Page extends RuNodeComposite {
 
     @Override
     public void addSubs(ISubscriber sub) {
-        if(sub == null)
+        if (sub == null)
             return;
-        if(this.subscribers ==null)
+        if (this.subscribers == null)
             this.subscribers = new ArrayList<>();
-        if(this.subscribers.contains(sub))
+        if (this.subscribers.contains(sub))
             return;
         this.subscribers.add(sub);
     }
 
     @Override
     public void removeSubs(ISubscriber sub) {
-        if(sub == null || this.subscribers == null || !this.subscribers.contains(sub))
+        if (sub == null || this.subscribers == null || !this.subscribers.contains(sub))
             return;
         this.subscribers.remove(sub);
     }
 
     @Override
     public void notifyObs(Object notif) {
-        if(notif == null || this.subscribers == null || this.subscribers.isEmpty())
+        if (notif == null || this.subscribers == null || this.subscribers.isEmpty())
             return;
 
-        for(ISubscriber listener : subscribers){
+        for (ISubscriber listener : subscribers) {
             listener.update(notif);
         }
     }
@@ -77,4 +79,39 @@ public class Page extends RuNodeComposite {
     public String toString() {
         return getName();
     }
+
+    public PageModel getPageModel() {
+        return pageModel;
+    }
+
+    public void setPageModel(PageModel pageModel) {
+        this.pageModel = pageModel;
+    }
+
+
+  /*  public RuTreeItem getItem(){
+        for(ISubscriber s: subscribers){
+            System.out.println(s.toString());
+
+            if(s instanceof RuTreeItem){
+                RuTreeItem r=(RuTreeItem)s;
+                return r;
+            }
+        }
+        return null;
+    }*/
+
+    public RuTreeItem getItem() {
+        for (ISubscriber s : subscribers) {
+
+            if (s instanceof RuTreeItem) {
+                RuTreeItem r = (RuTreeItem) s;
+
+                return r;
+            }
+
+        }
+        return null;
+    }
+
 }

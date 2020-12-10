@@ -5,13 +5,13 @@ import dsw.rudok.app.repository.element.SlotDevice;
 
 import java.awt.*;
 
-public class SlotDevicePainter extends  ElementPainter{
+public class SlotPainter extends  ElementPainter{
     protected Shape shape;
 
-    public SlotDevicePainter(Slot device) {
+    public SlotPainter(Slot device) {
         super(device);
     }
-    public void paint(Graphics2D g, SlotDevice element){
+    public void paint(Graphics2D g, Slot element){
 
         g.setPaint(Color.MAGENTA);
 
@@ -21,9 +21,9 @@ public class SlotDevicePainter extends  ElementPainter{
 
         g.fill(getShape());
 
-        if (element instanceof SlotDevice){
+        if (element instanceof Slot){
             g.setPaint(Color.BLACK);
-            SlotDevice device=(SlotDevice )element;
+            Slot device=(Slot)element;
             g.drawString(device.getName(), (int)device.getPosition().getX()+10,
                     (int)device.getPosition().getY()+10);
         }

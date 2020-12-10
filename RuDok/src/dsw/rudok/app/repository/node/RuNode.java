@@ -24,6 +24,10 @@ public abstract class RuNode implements IPublisher{
         this.name=name;
         this.parent=parent;
     }
+
+    public RuNode(String name) {
+    }
+
     @Override
     public boolean equals(Object obj){
         if(obj!=null && obj instanceof RuNode){

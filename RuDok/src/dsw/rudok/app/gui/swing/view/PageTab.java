@@ -30,7 +30,7 @@ public class PageTab extends JPanel implements ISubscriber {
     private Page page;
    // private List<SlotTab> slotTabs = new ArrayList<>();
 
-    private Slot slot = new Slot("sdsdsd", page);
+
 
     public PageTab(Page page){
         this.page = page;
@@ -90,7 +90,7 @@ public class PageTab extends JPanel implements ISubscriber {
         public void mousePressed(MouseEvent e) {
             //slot.getStateManager().getCurrentState().mousePressed(e);
            // MainFrame.getInstance().getWorkspace().setSelectionModel();
-            MainFrame.getInstance().getTree().addSlot();
+
 
             /*page.addChild(slot);
             MainFrame.getInstance().getWorkspaceTree().updateUI();*/
@@ -99,12 +99,16 @@ public class PageTab extends JPanel implements ISubscriber {
 
             Paint fill = Color.BLACK;
 
-            RectangleSlot rectangle= (RectangleSlot) RectangleSlot.createDefault(position);
+            //RectangleElement rectangle=new RectangleElement(position, new Dimension(100,50), new BasicStroke(2f), fill);
+
+            RectangleSlot rectangle= new RectangleSlot(new Dimension(100,50),position,new BasicStroke(),fill,
+                    "Rectangle " + page.getPageModel().getElementCount());
 
             //new RectangleSlot( new Dimension(100,50),position);
 
             // rectangle.setName("RectangleSlot ");//+ slot.getSlotModel().getElementCount()
-            slot.getSlotModel().addSlodDevices(rectangle);
+            MainFrame.getInstance().getTree().addSlot(rectangle,getPage());
+            page.getPageModel().addSlots(rectangle);
             MainFrame.getInstance().getTabbedPane().updateUI();
         }
 
@@ -128,14 +132,14 @@ public class PageTab extends JPanel implements ISubscriber {
         graphics2D.setStroke(new BasicStroke());
 
         graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
-         Iterator<SlotDevice> it = slot.getSlotModel().getSlotIterator();
+         Iterator<Slot> it = page.getPageModel().getSlotIterator();
         while (it.hasNext()){
 
 
 
-            SlotDevice slotDevice = (SlotDevice) it.next();
-            ElementPainter painter = slotDevice.getDevicePainter();
-            painter.paint(graphics2D,slotDevice);
+            Slot slot = (Slot) it.next();
+            ElementPainter painter = slot.getSlotPainter();
+            painter.paint(graphics2D,slot);
         }
     }
 
@@ -205,14 +209,7 @@ public class PageTab extends JPanel implements ISubscriber {
         return yOffset;
     }
 
-    public Slot getSlot() {
-        return slot;
-    }
 
-    public void setSlot(Slot slot) {
-        this.slot = slot;
-        this.slot.getSlotModel().notify();
-    }
 
 
     public void setParent(RuNode parent) {

@@ -2,18 +2,18 @@ package dsw.rudok.app.repository;
 
 import dsw.rudok.app.observer.IPublisher;
 import dsw.rudok.app.observer.ISubscriber;
-import dsw.rudok.app.repository.element.SlotDevice;
+import dsw.rudok.app.repository.element.Slot;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class SlotModel implements IPublisher {
+public class PageModel implements IPublisher {
     private String name;
     private static int count=0;
 
-    protected ArrayList<SlotDevice> slotDevices = new ArrayList<SlotDevice>();
+    protected ArrayList<Slot> slots = new ArrayList<Slot>();
     private List<ISubscriber> subscribers;
 /*
     public SlotModel(String name, ArrayList<SlotDevice> slotDevices) {
@@ -21,26 +21,26 @@ public class SlotModel implements IPublisher {
         this.slotDevices = slotDevices;
     }
  */
-public int getDeviceAtPosition(Point point) {
+public int getSlotatPosition(Point point) {
     for(int i=getDeviceCount()-1;i>=0;i--){
-        SlotDevice device = getDeviceAt(i);
-        if(device.getDevicePainter().isElementAt(point)){
+        Slot slot = getSlotAt(i);
+        if(slot.getSlotPainter().isElementAt(point)){
             return i;
         }
     }
     return -1;
 }
 
-    public Iterator<SlotDevice> getSlotIterator(){
-        return slotDevices.iterator();
+    public Iterator<Slot> getSlotIterator(){
+        return slots.iterator();
     }
 
     public int getDeviceCount(){
-        return slotDevices.size();
+        return slots.size();
     }
 
-    public SlotDevice getDeviceAt(int i){
-        return slotDevices.get(i);
+    public Slot getSlotAt(int i){
+        return slots.get(i);
     }
 
     public static int getCount() {
@@ -49,7 +49,7 @@ public int getDeviceAtPosition(Point point) {
 
 
     public static void setCount(int count) {
-        SlotModel.count = count;
+        PageModel.count = count;
     }
 
 
@@ -66,14 +66,14 @@ public int getDeviceAtPosition(Point point) {
         return name;
     }
     public int getElementCount(){
-        return slotDevices.size();
+        return slots.size();
     }
 
 
-    public void addSlodDevices(SlotDevice device){
+    public void addSlots(Slot slot){
 
-        slotDevices.add(device);
-        notifyObs(device);
+        slots.add(slot);
+        notifyObs(slot);
     }
     @Override
     public void addSubs(ISubscriber sub) {
@@ -103,7 +103,7 @@ public int getDeviceAtPosition(Point point) {
         }
     }
 
-    public ArrayList<SlotDevice> getSlotDevices() {
-        return slotDevices;
+    public ArrayList<Slot> getSlots() {
+        return slots;
     }
 }

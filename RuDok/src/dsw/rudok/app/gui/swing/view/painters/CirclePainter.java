@@ -2,11 +2,10 @@ package dsw.rudok.app.gui.swing.view.painters;
 
 import dsw.rudok.app.repository.element.CircleSlot;
 import dsw.rudok.app.repository.element.Slot;
-import dsw.rudok.app.repository.element.SlotDevice;
 
 import java.awt.geom.GeneralPath;
 
-public class CirclePainter extends SlotDevicePainter {
+public class CirclePainter extends SlotPainter {
 
 
     public CirclePainter(Slot slot) {

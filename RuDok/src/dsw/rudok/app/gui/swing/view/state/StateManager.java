@@ -5,7 +5,7 @@ import dsw.rudok.app.repository.element.Slot;
 public class StateManager {
     private State currentState;
 
-
+/*
     CircleState circleState;
     RectangleState rectangleState;
     SelectState selectState;
@@ -24,5 +24,5 @@ public class StateManager {
     public void setSelectState(){ currentState = selectState; }
     public State getCurrentState() {
         return currentState;
-    }
+    }*/
 }

@@ -9,6 +9,8 @@ import dsw.rudok.app.gui.swing.view.ProjectTab;
 import dsw.rudok.app.observer.IPublisher;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.*;
+import dsw.rudok.app.repository.element.CircleSlot;
+import dsw.rudok.app.repository.element.RectangleSlot;
 import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
@@ -135,14 +137,14 @@ public class RuTreeImplementation implements RuTree, IPublisher {
          }
      }
     @Override
-    public void addSlot(){
+    public void addSlot(RectangleSlot rectangleSlot,Page page){
         if(treeView.getLastSelectedPathComponent() == null){
             AppCore.getInstance().getErrorHandler().generateError(ErrorType.NOTHING_SELECTED);
             return;
         }
-        RuTreeItem item= (RuTreeItem) treeView.getLastSelectedPathComponent();
-        RuNode node = item.getNodeModel();
-        if(node instanceof Page) {
+        RuTreeItem item= page.getItem();
+
+        //if(node instanceof Page) {
             List<RuNode> projekti= new ArrayList<>();
             List<RuNode> dokumenti= new ArrayList<>();
             List<RuNode> pages= new ArrayList<>();
@@ -156,8 +158,7 @@ public class RuTreeImplementation implements RuTree, IPublisher {
                 Document d=(Document)dokument;
                 pages.addAll(d.getChildren());
             }
-            Page page = (Page) node;
-            Slot slot = new Slot("Slot " + (item.getChildCount() + 1), page);
+           // Page page = (Page) node;
             List<RuNode> deca = new ArrayList<>();
             for(RuNode s: pages){
                 Page s1=(Page) s;
@@ -165,15 +166,21 @@ public class RuTreeImplementation implements RuTree, IPublisher {
             }
 
             int index = 1;
-            while(deca.contains(slot)){
-                slot.setName("Slot " + index);
+            while(deca.contains(rectangleSlot)){
+                //rectangleSlot.setName("RectangleSlot " + index);
                 index++;
             }
-            item.add(new RuTreeItem(slot));
+
+            item.add(new RuTreeItem(rectangleSlot));
             //page.getPageTab().setSlot(slot);
-            page.addChild(slot);
+            page.addChild(rectangleSlot);
             SwingUtilities.updateComponentTreeUI(treeView);
-        }
+        //}
+    }
+
+    @Override
+    public void addSlot(CircleSlot circle,Page page) {
+
     }
 
     @Override

@@ -2,11 +2,10 @@ package dsw.rudok.app.gui.swing.view.painters;
 
 import dsw.rudok.app.repository.element.RectangleSlot;
 import dsw.rudok.app.repository.element.Slot;
-import dsw.rudok.app.repository.element.SlotDevice;
 
 import java.awt.geom.GeneralPath;
 
-public class RectanglePainter extends SlotDevicePainter {
+public class RectanglePainter extends SlotPainter {
 
 
     public RectanglePainter(Slot slot) {

@@ -24,7 +24,7 @@ public class NewSlotAction extends AbstractRudokAction{
             Page page  = (Page) node.getNodeModel();
             Slot slot = new Slot("Slot " + (node.getChildCount() + 1), page);
          */
-            MainFrame.getInstance().getTree().addSlot();
+         //   MainFrame.getInstance().getTree().addSlot(rectangle);
            // MainFrame.getInstance().getWorkspaceTree().updateUI();
 
             //DODAVANJE SLOTOVA NA STRANICE

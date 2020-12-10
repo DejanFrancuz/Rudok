@@ -1,7 +1,7 @@
 package dsw.rudok.app.repository.element;
 
 import dsw.rudok.app.gui.swing.view.painters.ElementPainter;
-import dsw.rudok.app.gui.swing.view.painters.SlotDevicePainter;
+import dsw.rudok.app.gui.swing.view.painters.SlotPainter;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -22,18 +22,18 @@ public abstract class SlotDevice{
         this.stroke = stroke;
         this.paint = paint;
     }
-    protected SlotDevicePainter devicePainter;
+    protected SlotPainter devicePainter;
 
     public SlotDevice(Dimension size, Point2D position) {
         this.size = size;
         this.position = position;
     }
 
-    public SlotDevicePainter getDevicePainter() {
+    public SlotPainter getDevicePainter() {
         return devicePainter;
     }
 
-    public void setDevicePainter(SlotDevicePainter devicePainter) {
+    public void setDevicePainter(SlotPainter devicePainter) {
         this.devicePainter = devicePainter;
     }
 

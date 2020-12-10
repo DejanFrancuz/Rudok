@@ -1,10 +1,9 @@
 package dsw.rudok.app.repository.element;
 
 import dsw.rudok.app.gui.swing.view.painters.ElementPainter;
-import dsw.rudok.app.gui.swing.view.painters.SlotDevicePainter;
+import dsw.rudok.app.gui.swing.view.painters.SlotPainter;
 import dsw.rudok.app.gui.swing.view.state.StateManager;
 import dsw.rudok.app.observer.ISubscriber;
-import dsw.rudok.app.repository.SlotModel;
 import dsw.rudok.app.repository.node.RuNode;
 
 import java.awt.*;
@@ -14,7 +13,7 @@ import java.util.List;
 
 public abstract class Slot extends RuNode {
 
-    SlotModel slotModel=new SlotModel();
+
     public Stroke stroke;
     public Paint paint;
     public Dimension size;
@@ -22,25 +21,27 @@ public abstract class Slot extends RuNode {
     public String name;
 
     public ElementPainter elementPainter;
+    public SlotPainter slotPainter;
 
     public Slot(String name, RuNode parent) {
         super(name, parent);
     }
     List<ISubscriber> subscribers;
 
-    public Slot(String name, RuNode parent, SlotModel slotModel, Stroke stroke, Paint paint, Dimension size, Point2D position, String name1, ElementPainter elementPainter, List<ISubscriber> subscribers, StateManager stateManager) {
-        super(name, parent);
-        this.slotModel = slotModel;
+    public Slot(Dimension size, Point2D position, Stroke stroke, Paint paint,String name) {
+        super(name);
+
+
         this.stroke = stroke;
         this.paint = paint;
         this.size = size;
         this.position = position;
-        this.name = name1;
-        this.elementPainter = elementPainter;
-        this.subscribers = subscribers;
-        this.stateManager = stateManager;
+        this.name = name;
+
+
+
     }
-    protected SlotDevicePainter devicePainter;
+
 
 
 
@@ -90,11 +91,19 @@ public abstract class Slot extends RuNode {
         return elementPainter;
     }
 
+    public SlotPainter getSlotPainter() {
+        return slotPainter;
+    }
+
+    public void setSlotPainter(SlotPainter slotPainter) {
+        this.slotPainter = slotPainter;
+    }
+
     public void setElementPainter(ElementPainter elementPainter) {
         this.elementPainter = elementPainter;
     }
 
-    public void setStateManager(StateManager stateManager) {
+   /* public void setStateManager(StateManager stateManager) {
         this.stateManager = stateManager;
     }
 
@@ -112,7 +121,7 @@ public abstract class Slot extends RuNode {
     }
     public StateManager getStateManager() {
         return stateManager;
-    }
+    }*/
 
     @Override
     public void addSubs(ISubscriber sub) {
@@ -145,14 +154,6 @@ public abstract class Slot extends RuNode {
     @Override
     public String toString() {
         return getName();
-    }
-
-    public SlotModel getSlotModel() {
-        return slotModel;
-    }
-
-    public void setSlotModel(SlotModel slotModel) {
-        this.slotModel = slotModel;
     }
 
     public List<ISubscriber> getSubscribers() {
