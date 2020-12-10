@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ShareDocumentAction extends AbstractRudokAction{
     public ShareDocumentAction() {
-        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.ALT_MASK));
+        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.ALT_MASK));
         putValue(SMALL_ICON, loadIcon("images/shareDoc.png"));
         putValue(NAME, "Share document");
         putValue(SHORT_DESCRIPTION, "Share document");
