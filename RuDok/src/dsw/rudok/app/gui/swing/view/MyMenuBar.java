@@ -26,6 +26,10 @@ public class MyMenuBar extends JMenuBar {
 		fileMenu.add(MainFrame.getInstance().getActionManager().getNewSlotAction());
 		fileMenu.add(MainFrame.getInstance().getActionManager().getDeleteNode());
 		fileMenu.add(MainFrame.getInstance().getActionManager().getShareDocumentAction());
+		fileMenu.add(MainFrame.getInstance().getActionManager().getCircleAction());
+		fileMenu.add(MainFrame.getInstance().getActionManager().getRectangleAction());
+		fileMenu.add(MainFrame.getInstance().getActionManager().getTriangleAction());
+		fileMenu.add(MainFrame.getInstance().getActionManager().getSelectAction());
 
 
 		

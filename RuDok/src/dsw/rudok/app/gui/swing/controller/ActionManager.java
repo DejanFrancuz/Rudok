@@ -10,6 +10,10 @@ public class ActionManager {
 	private NewSlotAction newSlotAction;
 	private DeleteNode deleteNode;
 	private ShareDocumentAction shareDocumentAction;
+	private CircleAction circleAction;
+	private RectangleAction rectangleAction;
+	private TriangleAction triangleAction;
+	private SelectAction selectAction;
 	
 	public ActionManager() {
 		initialiseActions();
@@ -23,6 +27,42 @@ public class ActionManager {
 		newSlotAction=new NewSlotAction();
 		deleteNode=new DeleteNode();
 		shareDocumentAction=new ShareDocumentAction();
+		circleAction=new CircleAction();
+		rectangleAction=new RectangleAction();
+		triangleAction=new TriangleAction();
+		selectAction=new SelectAction();
+	}
+
+	public RectangleAction getRectangleAction() {
+		return rectangleAction;
+	}
+
+	public void setRectangleAction(RectangleAction rectangleAction) {
+		this.rectangleAction = rectangleAction;
+	}
+
+	public TriangleAction getTriangleAction() {
+		return triangleAction;
+	}
+
+	public void setTriangleAction(TriangleAction triangleAction) {
+		this.triangleAction = triangleAction;
+	}
+
+	public SelectAction getSelectAction() {
+		return selectAction;
+	}
+
+	public void setSelectAction(SelectAction selectAction) {
+		this.selectAction = selectAction;
+	}
+
+	public CircleAction getCircleAction() {
+		return circleAction;
+	}
+
+	public void setCircleAction(CircleAction circleAction) {
+		this.circleAction = circleAction;
 	}
 
 	public ShareDocumentAction getShareDocumentAction() {

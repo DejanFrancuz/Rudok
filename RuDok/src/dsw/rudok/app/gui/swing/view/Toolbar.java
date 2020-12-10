@@ -15,6 +15,11 @@ public class Toolbar extends JToolBar{
 		add(MainFrame.getInstance().getActionManager().getNewSlotAction());
 		add(MainFrame.getInstance().getActionManager().getDeleteNode());
 		add(MainFrame.getInstance().getActionManager().getShareDocumentAction());
+		add(MainFrame.getInstance().getActionManager().getCircleAction());
+		add(MainFrame.getInstance().getActionManager().getRectangleAction());
+		add(MainFrame.getInstance().getActionManager().getTriangleAction());
+		add(MainFrame.getInstance().getActionManager().getSelectAction());
+
 
 
 	}
