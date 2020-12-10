@@ -41,6 +41,7 @@ public class Page extends RuNodeComposite {
     public void startRectangleState(){
         stateManager.setRectangleState();
     }
+    public void startCircleState(){stateManager.setCircleState();}
     public StateManager getStateManager() {
         return stateManager;
     }

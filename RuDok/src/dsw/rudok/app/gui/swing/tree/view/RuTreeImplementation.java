@@ -185,7 +185,10 @@ public class RuTreeImplementation implements RuTree, IPublisher {
 
     @Override
     public void addSlot(CircleSlot circle,Page page) {
-
+        RuTreeItem item= page.getItem();
+        item.add(new RuTreeItem(circle));
+        page.addChild(circle);
+        SwingUtilities.updateComponentTreeUI(treeView);
     }
 
     @Override

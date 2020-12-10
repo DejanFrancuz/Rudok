@@ -1,5 +1,6 @@
 package dsw.rudok.app.gui.swing.view.state;
 
+import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.element.CircleSlot;
@@ -18,9 +19,10 @@ public class CircleState extends State{
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
             if (page.getPageModel().getSlotatPosition(position) == -1){        //CircleSlot.createDefault(position);
-               // med.getSlotModel().addSlodDevices(device);
-/*                DiagramDevice device = CircleElement.createDefault(position,med.getModel().getDeviceCount());
-                med.getModel().addDiagramElements(device);*/
+
+           Slot slot = CircleSlot.createDefault(position,page.getPageModel().getDeviceCount());
+                page.getPageModel().addSlots(slot);
+                MainFrame.getInstance().getTree().addSlot(slot,page);
             }
 
 
