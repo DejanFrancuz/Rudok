@@ -108,6 +108,7 @@ public class PageTab extends JPanel implements ISubscriber {
 
             // rectangle.setName("RectangleSlot ");//+ slot.getSlotModel().getElementCount()
             MainFrame.getInstance().getTree().addSlot(rectangle,getPage());
+           // System.out.println(page.getName());
             page.getPageModel().addSlots(rectangle);
             MainFrame.getInstance().getTabbedPane().updateUI();
         }
