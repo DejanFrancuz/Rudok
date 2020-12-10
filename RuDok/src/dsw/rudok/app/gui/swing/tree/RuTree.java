@@ -13,7 +13,7 @@ public interface RuTree {
     void addDocument();
     void addPage();
     void addSlot(Slot rectangle, Page page);
-    void addSlot(CircleSlot circle,Page page);
+    //void addSlot(CircleSlot circle,Page page);
     void removeNode();
     void shareDocument();
 

@@ -137,59 +137,20 @@ public class RuTreeImplementation implements RuTree, IPublisher {
          }
      }
     @Override
-    public void addSlot(Slot rectangleSlot,Page page){
-        if(treeView.getLastSelectedPathComponent() == null){
-            AppCore.getInstance().getErrorHandler().generateError(ErrorType.NOTHING_SELECTED);
-            return;
-        }
+    public void addSlot(Slot slot,Page page){
         RuTreeItem item= page.getItem();
-
-
-        //if(node instanceof Page) {
-            List<RuNode> projekti= new ArrayList<>();
-            List<RuNode> dokumenti= new ArrayList<>();
-            List<RuNode> pages= new ArrayList<>();
-            Workspace w=(Workspace)((RuTreeItem)MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel();
-            projekti=w.getChildren();
-
-
-            for(RuNode project: projekti){
-                Project p=(Project)project;
-                dokumenti.addAll(p.getChildren());
-            }
-            for(RuNode dokument: dokumenti){
-                Document d=(Document)dokument;
-                pages.addAll(d.getChildren());
-            }
-           // Page page = (Page) node;
-            List<RuNode> deca = new ArrayList<>();
-            for(RuNode s: pages){
-                Page s1=(Page) s;
-                deca.addAll(s1.getChildren());
-            }
-
-            int index = 1;
-           System.out.println(page.getName());
-            while(deca.contains(rectangleSlot)){
-                //rectangleSlot.setName("RectangleSlot " + index);
-                index++;
-            }
-
-
-            item.add(new RuTreeItem(rectangleSlot));
-            //page.getPageTab().setSlot(slot);
-            page.addChild(rectangleSlot);
+            item.add(new RuTreeItem(slot));
+            page.addChild(slot);
             SwingUtilities.updateComponentTreeUI(treeView);
-        //}
     }
 
-    @Override
+    /*@Override
     public void addSlot(CircleSlot circle,Page page) {
         RuTreeItem item= page.getItem();
         item.add(new RuTreeItem(circle));
         page.addChild(circle);
         SwingUtilities.updateComponentTreeUI(treeView);
-    }
+    }*/
 
     @Override
     public void removeNode(){
