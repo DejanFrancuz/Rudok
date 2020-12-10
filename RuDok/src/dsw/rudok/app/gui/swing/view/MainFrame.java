@@ -33,6 +33,7 @@ public class MainFrame extends  JFrame implements ISubscriber {
 	private RuTree tree;
 	private DefaultTreeModel treeModel;
 	private JTabbedPane tabbedPane;
+	private JPanel jPanel;
 	private StateManager stateManager;
 
 
@@ -94,6 +95,14 @@ public class MainFrame extends  JFrame implements ISubscriber {
 
 	private void addMyTabToTabbedPane(String name){
 
+	}
+
+	public JPanel getjPanel() {
+		return jPanel;
+	}
+
+	public void setjPanel(JPanel jPanel) {
+		this.jPanel = jPanel;
 	}
 
 	private void createTabbedPane() {
@@ -179,6 +188,7 @@ public class MainFrame extends  JFrame implements ISubscriber {
 
 		return tabbedPane;
 	}
+
 
 	public void showError(MyError e){
 		JOptionPane.showMessageDialog(this,e.getTitle(), e.getMessage(),e.getType());

@@ -85,15 +85,15 @@ public class PageTab extends JPanel implements ISubscriber {
         this.pageName = pageName;
     }
 
-   private class SlotController extends MouseAdapter implements MouseMotionListener {
+   /*private class SlotController extends MouseAdapter implements MouseMotionListener {
 
         public void mousePressed(MouseEvent e) {
             //slot.getStateManager().getCurrentState().mousePressed(e);
            // MainFrame.getInstance().getWorkspace().setSelectionModel();
 
 
-            /*page.addChild(slot);
-            MainFrame.getInstance().getWorkspaceTree().updateUI();*/
+            *//*page.addChild(slot);
+            MainFrame.getInstance().getWorkspaceTree().updateUI();*//*
             Point position = e.getPoint();
             GeneralPath gp=new GeneralPath();
 
@@ -113,16 +113,37 @@ public class PageTab extends JPanel implements ISubscriber {
             MainFrame.getInstance().getTabbedPane().updateUI();
         }
 
-      /*  public void mouseReleased(MouseEvent e) {
+      *//*  public void mouseReleased(MouseEvent e) {
             slot.getStateManager().getCurrentState().mouseReleased(e);
         }
 
         public void mouseDragged(MouseEvent e ){
             slot.getStateManager().getCurrentState().mouseDragged(e);
-        }*/
+        }*//*
+
+    }*/
+
+    private void setuj(){
+        MainFrame.getInstance().setjPanel(this);
+    }
+    private class SlotController extends MouseAdapter implements MouseMotionListener{
+
+
+
+        public void mousePressed(MouseEvent e) {
+            setuj();
+            page.getStateManager().getCurrentState().mousePressed(e);
+        }
+
+        public void mouseReleased(MouseEvent e) {
+            page.getStateManager().getCurrentState().mouseReleased(e);
+        }
+
+        public void mouseDragged(MouseEvent e ){
+            page.getStateManager().getCurrentState().mouseDragged(e);
+        }
 
     }
-
 
     @Override
     protected void paintComponent(Graphics g) {

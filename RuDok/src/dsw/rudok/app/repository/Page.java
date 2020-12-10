@@ -2,6 +2,7 @@ package dsw.rudok.app.repository;
 
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.PageTab;
+import dsw.rudok.app.gui.swing.view.state.StateManager;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.node.RuNode;
@@ -21,7 +22,7 @@ public class Page extends RuNodeComposite {
 
         super(name, parent);
     }
-
+    private StateManager stateManager= new StateManager(this);
 
     public void addChild(RuNode child) {
         if (child != null && child instanceof Slot) {
@@ -31,6 +32,21 @@ public class Page extends RuNodeComposite {
                 notifyObs(slot);
             }
         }
+    }
+
+
+    public void startSelectState() {
+        stateManager.setSelectState();
+    }
+    public void startRectangleState(){
+        stateManager.setRectangleState();
+    }
+    public StateManager getStateManager() {
+        return stateManager;
+    }
+
+    public void setStateManager(StateManager stateManager) {
+        this.stateManager = stateManager;
     }
 
     @Override

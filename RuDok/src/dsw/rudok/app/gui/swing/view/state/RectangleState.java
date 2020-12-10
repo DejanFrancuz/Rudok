@@ -1,5 +1,6 @@
 package dsw.rudok.app.gui.swing.view.state;
 
+import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.element.RectangleSlot;
@@ -14,13 +15,14 @@ public class RectangleState extends State{
         this.page = page;
     }
 
-   /* public void mousePressed(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
-            if (med.getSlotModel().getDeviceAtPosition(position)==-1){
-                SlotDevice device = RectangleSlot.createDefault(position);
-                med.getSlotModel().addSlodDevices(device);
+            if (page.getPageModel().getSlotatPosition(position)==-1){
+                Slot slot = RectangleSlot.createDefault(position,page.getPageModel().getDeviceCount());
+                page.getPageModel().addSlots(slot);
+                MainFrame.getInstance().getTree().addSlot(slot,page);
             }
         }
-    }*/
+    }
 }

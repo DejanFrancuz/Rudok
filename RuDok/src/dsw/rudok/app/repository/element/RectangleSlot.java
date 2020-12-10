@@ -18,4 +18,12 @@ public class RectangleSlot extends Slot{
     public RectangleSlot(String name, RuNode parent) {
         super(name, parent);
     }
+
+    public static Slot createDefault(Point position, int index){
+
+        Paint fill = Color.BLACK;
+        RectangleSlot rectangle= new RectangleSlot(new Dimension(100,50),position,new BasicStroke(),fill,
+                "Rectangle " + index);
+        return rectangle;
+    }
 }

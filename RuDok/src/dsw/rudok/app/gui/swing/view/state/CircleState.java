@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 
 public class CircleState extends State{
     private Page page;
-    /*public CircleState(Page page) {
+    public CircleState(Page page) {
         this.page = page;
     }
 
@@ -18,11 +18,12 @@ public class CircleState extends State{
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
             if (page.getPageModel().getSlotatPosition(position) == -1){        //CircleSlot.createDefault(position);
-                Slot slot = new CircleSlot()
-                med.getSlotModel().addSlodDevices(device);
+               // med.getSlotModel().addSlodDevices(device);
+/*                DiagramDevice device = CircleElement.createDefault(position,med.getModel().getDeviceCount());
+                med.getModel().addDiagramElements(device);*/
             }
 
 
         }
-    }*/
+    }
 }

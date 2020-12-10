@@ -137,11 +137,11 @@ public class RuTreeImplementation implements RuTree, IPublisher {
          }
      }
     @Override
-    public void addSlot(RectangleSlot rectangleSlot,Page page){
-        /*if(treeView.getLastSelectedPathComponent() == null){
+    public void addSlot(Slot rectangleSlot,Page page){
+        if(treeView.getLastSelectedPathComponent() == null){
             AppCore.getInstance().getErrorHandler().generateError(ErrorType.NOTHING_SELECTED);
             return;
-        }*/
+        }
         RuTreeItem item= page.getItem();
 
 
@@ -168,12 +168,12 @@ public class RuTreeImplementation implements RuTree, IPublisher {
                 deca.addAll(s1.getChildren());
             }
 
-            /*int index = 1;
+            int index = 1;
            System.out.println(page.getName());
             while(deca.contains(rectangleSlot)){
                 //rectangleSlot.setName("RectangleSlot " + index);
                 index++;
-            }*/
+            }
 
 
             item.add(new RuTreeItem(rectangleSlot));

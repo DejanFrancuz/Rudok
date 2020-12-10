@@ -1,13 +1,14 @@
 package dsw.rudok.app.gui.swing.view.state;
 
+import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.element.Slot;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class SelectState extends State{
-    private Slot med; //save the Mediator
-    public SelectState(Slot md) {
+    private Page med; //save the Mediator
+    public SelectState(Page md) {
         med = md;
     }
 

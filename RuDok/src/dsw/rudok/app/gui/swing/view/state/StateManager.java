@@ -1,21 +1,21 @@
 package dsw.rudok.app.gui.swing.view.state;
 
+import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.element.Slot;
 
 public class StateManager {
     private State currentState;
 
-/*
     CircleState circleState;
     RectangleState rectangleState;
     SelectState selectState;
 
-    public StateManager(Slot med)
+    public StateManager(Page page)
     {
 
-        circleState = new CircleState(med);
-        rectangleState=new RectangleState(med);
-        selectState=new SelectState(med);
+        circleState = new CircleState(page);
+        rectangleState=new RectangleState(page);
+        selectState=new SelectState(page);
         currentState = selectState;
     }
 
@@ -24,5 +24,5 @@ public class StateManager {
     public void setSelectState(){ currentState = selectState; }
     public State getCurrentState() {
         return currentState;
-    }*/
+    }
 }

@@ -19,4 +19,9 @@ public class CircleSlot extends Slot{
     public CircleSlot(String name, RuNode parent) {
         super(name, parent);
     }
+
+    public Slot createDefault(Point position, int index){
+
+return null;
+    }
 }
