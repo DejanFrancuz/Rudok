@@ -1,4 +1,4 @@
-package dsw.rudok.app.repository.slotFactory;
+package dsw.rudok.app.repository.factory;
 
 import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.element.TriangleSlot;

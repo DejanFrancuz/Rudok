@@ -3,10 +3,8 @@ package dsw.rudok.app.gui.swing.view.state;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.element.Slot;
-import dsw.rudok.app.repository.element.RectangleSlot;
-import dsw.rudok.app.repository.element.SlotDevice;
-import dsw.rudok.app.repository.slotFactory.RectangleFactory;
-import dsw.rudok.app.repository.slotFactory.SlotFactory;
+import dsw.rudok.app.repository.factory.RectangleFactory;
+import dsw.rudok.app.repository.factory.SlotFactory;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;

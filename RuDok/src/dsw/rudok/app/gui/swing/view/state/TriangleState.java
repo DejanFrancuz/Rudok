@@ -2,12 +2,9 @@ package dsw.rudok.app.gui.swing.view.state;
 
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.Page;
-import dsw.rudok.app.repository.element.CircleSlot;
 import dsw.rudok.app.repository.element.Slot;
-import dsw.rudok.app.repository.element.TriangleSlot;
-import dsw.rudok.app.repository.slotFactory.RectangleFactory;
-import dsw.rudok.app.repository.slotFactory.SlotFactory;
-import dsw.rudok.app.repository.slotFactory.TriangleFactory;
+import dsw.rudok.app.repository.factory.SlotFactory;
+import dsw.rudok.app.repository.factory.TriangleFactory;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
