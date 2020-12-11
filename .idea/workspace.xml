@@ -19,9 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="537a82df-9942-46e7-9bc6-7aaa2b061bd2" name="Default Changelist" comment="crtanje radi sada tako da moze na svakom page-u da se crta">
-      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/controller/SelectAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/controller/SelectAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/StateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/StateManager.java" afterDir="false" />
+    <list default="true" id="537a82df-9942-46e7-9bc6-7aaa2b061bd2" name="Default Changelist" comment="ubacen trougao, ostala je samo logika u trianglePainter da se promeni">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/element/TriangleSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/element/TriangleSlot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +52,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -72,17 +73,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -122,7 +112,8 @@
       <workItem from="1607510011000" duration="147000" />
       <workItem from="1607532084284" duration="6817000" />
       <workItem from="1607560796473" duration="642000" />
-      <workItem from="1607611319710" duration="17086000" />
+      <workItem from="1607611319710" duration="17320000" />
+      <workItem from="1607695239714" duration="366000" />
     </task>
     <task id="LOCAL-00001" summary="promenjena logika za deleteNode, selektovani cvor se zove u klasi RuTreeImplementation">
       <created>1606561618403</created>
@@ -299,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607629935395</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="ubacen trougao, ostala je samo logika u trianglePainter da se promeni">
+      <created>1607631500129</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1607631500129</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,7 +316,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="promenjena logika za deleteNode, selektovani cvor se zove u klasi RuTreeImplementation" />
     <MESSAGE value="promenjena logika za dodavanje stranice i dokumenta, selektovani cvor se zove u RuTreeImplementation" />
     <MESSAGE value="promenjena logika za dodavanje projekta i slota, selektovani cvor se zove u RuTreeImplementation, sada su sve pogresno implementirane akcije u controleru dobro uradjene u RuTreeImplementation" />
     <MESSAGE value="uradjen error za treeclicker" />
@@ -343,7 +340,8 @@
     <MESSAGE value="crtanje pravougaonika sada preko state-a" />
     <MESSAGE value="implementirano crtanje kruga" />
     <MESSAGE value="crtanje radi sada tako da moze na svakom page-u da se crta" />
-    <option name="LAST_COMMIT_MESSAGE" value="crtanje radi sada tako da moze na svakom page-u da se crta" />
+    <MESSAGE value="ubacen trougao, ostala je samo logika u trianglePainter da se promeni" />
+    <option name="LAST_COMMIT_MESSAGE" value="ubacen trougao, ostala je samo logika u trianglePainter da se promeni" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1607010646829">
@@ -382,22 +380,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607616115833" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1607629842975">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1607631582570">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607629842975" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1607629842974">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607631582570" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1607631582570">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607629842974" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1607629842974">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607631582570" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1607631582570">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607629842974" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1607629842975">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607631582570" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1607631582570">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607629842975" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607631582570" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1606561105945">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -430,10 +428,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606560842174" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1607629939239">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1607631503892">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1607629939239" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1607631503892" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606957584362">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -1,5 +1,6 @@
 package dsw.rudok.app.repository.element;
 
+import dsw.rudok.app.gui.swing.view.painters.TrianglePainter;
 import dsw.rudok.app.repository.node.RuNode;
 
 import java.awt.*;
@@ -13,9 +14,12 @@ public class TriangleSlot extends Slot{
 
     public TriangleSlot(Dimension size, Point2D position, Stroke stroke, Paint paint, String name) {
         super(size, position, stroke, paint, name);
+        slotPainter=new TrianglePainter(this);
     }
     public static Slot createDefault(Point position,int index){
-
-        return null;
+        Paint fill = Color.BLACK;
+        TriangleSlot triangle= new TriangleSlot(new Dimension(50,50),position,new BasicStroke(),fill,
+                "Triangle " + index);
+        return triangle;
     }
 }
