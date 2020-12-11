@@ -20,7 +20,7 @@ public class StateManager {
         triangleState=new TriangleState(page);
         currentState = selectState;
     }
-    public void setTriangleState(){currentState=triangleState;}
+    public void setTriangleState(){currentState=triangleState; }
     public void setCircleState() { currentState = circleState; }
     public void setRectangleState(){ currentState = rectangleState; }
     public void setSelectState(){ currentState = selectState; }

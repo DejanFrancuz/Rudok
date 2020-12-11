@@ -24,6 +24,7 @@ public class TriangleAction extends AbstractRudokAction{
             AppCore.getInstance().getErrorHandler().generateError(ErrorType.NOT_SELECTED_JPANEL);
         }
         else {
+
             ((PageTab) MainFrame.getInstance().getjPanel()).getPage().startTriangleState();
         }
     }
