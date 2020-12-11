@@ -5,6 +5,8 @@ import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.element.RectangleSlot;
 import dsw.rudok.app.repository.element.SlotDevice;
+import dsw.rudok.app.repository.slotFactory.RectangleFactory;
+import dsw.rudok.app.repository.slotFactory.SlotFactory;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -19,7 +21,9 @@ public class RectangleState extends State{
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
             if (page.getPageModel().getSlotatPosition(position)==-1){
-                Slot slot = RectangleSlot.createDefault(position,page.getPageModel().getDeviceCount());
+                //Slot slot = RectangleSlot.createDefault(position,page.getPageModel().getDeviceCount());
+                SlotFactory factory= new RectangleFactory();
+                Slot slot= factory.makeSlot(position,page.getPageModel().getDeviceCount());
                 page.getPageModel().addSlots(slot);
                 MainFrame.getInstance().getTree().addSlot(slot,page);
             }

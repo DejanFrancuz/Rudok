@@ -5,6 +5,9 @@ import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.element.CircleSlot;
 import dsw.rudok.app.repository.element.SlotDevice;
+import dsw.rudok.app.repository.slotFactory.CircleFactory;
+import dsw.rudok.app.repository.slotFactory.RectangleFactory;
+import dsw.rudok.app.repository.slotFactory.SlotFactory;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -20,7 +23,9 @@ public class CircleState extends State{
         if (e.getButton()==MouseEvent.BUTTON1){
             if (page.getPageModel().getSlotatPosition(position) == -1){        //CircleSlot.createDefault(position);
 
-           Slot slot = CircleSlot.createDefault(position,page.getPageModel().getDeviceCount());
+           //Slot slot = CircleSlot.createDefault(position,page.getPageModel().getDeviceCount());
+                SlotFactory factory= new CircleFactory();
+                Slot slot= factory.makeSlot(position,page.getPageModel().getDeviceCount());
                 page.getPageModel().addSlots(slot);
                 MainFrame.getInstance().getTree().addSlot(slot,page);
             }

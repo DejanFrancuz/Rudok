@@ -19,9 +19,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="537a82df-9942-46e7-9bc6-7aaa2b061bd2" name="Default Changelist" comment="ubacen trougao, ostala je samo logika u trianglePainter da se promeni">
+    <list default="true" id="537a82df-9942-46e7-9bc6-7aaa2b061bd2" name="Default Changelist" comment="implementirano crtanje trougla">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/element/TriangleSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/element/TriangleSlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/CircleState.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/CircleState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/RectangleState.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/RectangleState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/TriangleState.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/TriangleState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/element/RectangleSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/element/RectangleSlot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/errorHandler/ErrorHandlerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/errorHandler/ErrorHandlerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/errorHandler/ErrorType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/errorHandler/ErrorType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/controller/CircleAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/controller/CircleAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/controller/RectangleAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/controller/RectangleAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/controller/SelectAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/controller/SelectAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/controller/TriangleAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/controller/TriangleAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/StateManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/StateManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Page.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Page.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +88,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.AppCore" />
@@ -113,7 +137,7 @@
       <workItem from="1607532084284" duration="6817000" />
       <workItem from="1607560796473" duration="642000" />
       <workItem from="1607611319710" duration="17320000" />
-      <workItem from="1607695239714" duration="366000" />
+      <workItem from="1607695239714" duration="5789000" />
     </task>
     <task id="LOCAL-00001" summary="promenjena logika za deleteNode, selektovani cvor se zove u klasi RuTreeImplementation">
       <created>1606561618403</created>
@@ -297,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607631500129</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="implementirano crtanje trougla">
+      <created>1607695909707</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1607695909707</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,7 +347,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="promenjena logika za dodavanje stranice i dokumenta, selektovani cvor se zove u RuTreeImplementation" />
     <MESSAGE value="promenjena logika za dodavanje projekta i slota, selektovani cvor se zove u RuTreeImplementation, sada su sve pogresno implementirane akcije u controleru dobro uradjene u RuTreeImplementation" />
     <MESSAGE value="uradjen error za treeclicker" />
     <MESSAGE value="implementirane metode publishera u cvorovima, svakom zasebno" />
@@ -341,7 +371,8 @@
     <MESSAGE value="implementirano crtanje kruga" />
     <MESSAGE value="crtanje radi sada tako da moze na svakom page-u da se crta" />
     <MESSAGE value="ubacen trougao, ostala je samo logika u trianglePainter da se promeni" />
-    <option name="LAST_COMMIT_MESSAGE" value="ubacen trougao, ostala je samo logika u trianglePainter da se promeni" />
+    <MESSAGE value="implementirano crtanje trougla" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementirano crtanje trougla" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1607010646829">
@@ -360,10 +391,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="117" key="#com.intellij.ide.macro.MacrosDialog/0.0.1536.824@0.0.1536.824" timestamp="1606561058803" />
-    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser" timestamp="1607630275318">
+    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser" timestamp="1607710033977">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1607630275318" />
+    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1607710033977" />
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1607434735586">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -376,26 +407,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="147" y="65" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1606948677844" />
-    <state x="549" y="130" key="FileChooserDialogImpl" timestamp="1607616115833">
+    <state x="549" y="130" key="FileChooserDialogImpl" timestamp="1607707086865">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607616115833" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1607631582570">
+    <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607707086865" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1607712325485">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607631582570" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1607631582570">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607712325485" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1607712325484">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607631582570" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1607631582570">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607712325484" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1607712325484">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607631582570" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1607631582570">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607712325484" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1607712325485">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607631582570" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607712325485" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1606561105945">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -416,10 +447,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1606948481458" />
-    <state x="439" y="117" key="NewModule_or_Project.wizard" timestamp="1607616137319">
+    <state x="439" y="117" key="NewModule_or_Project.wizard" timestamp="1607707113388">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="439" y="117" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1607616137319" />
+    <state x="439" y="117" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1607707113388" />
     <state width="254" height="198" key="RunAnythingAction_Filter_Popup" timestamp="1607283767587">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -428,10 +459,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606560842174" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1607631503892">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1607695913379">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1607631503892" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1607695913379" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606957584362">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

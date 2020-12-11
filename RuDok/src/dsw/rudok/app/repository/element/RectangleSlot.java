@@ -20,7 +20,6 @@ public class RectangleSlot extends Slot{
     }
 
     public static Slot createDefault(Point position, int index){
-
         Paint fill = Color.BLACK;
         RectangleSlot rectangle= new RectangleSlot(new Dimension(100,50),position,new BasicStroke(),fill,
                 "Rectangle " + index);
