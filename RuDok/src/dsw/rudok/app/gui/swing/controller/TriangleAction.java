@@ -1,5 +1,7 @@
 package dsw.rudok.app.gui.swing.controller;
 
+import dsw.rudok.app.AppCore;
+import dsw.rudok.app.errorHandler.ErrorType;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.gui.swing.view.PageTab;
 
@@ -17,6 +19,12 @@ public class TriangleAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        ((PageTab)MainFrame.getInstance().getjPanel()).getPage().startTriangleState();
+
+        if(((PageTab)MainFrame.getInstance().getjPanel()) == null){
+            AppCore.getInstance().getErrorHandler().generateError(ErrorType.NOT_SELECTED_JPANEL);
+        }
+        else {
+            ((PageTab) MainFrame.getInstance().getjPanel()).getPage().startTriangleState();
+        }
     }
 }

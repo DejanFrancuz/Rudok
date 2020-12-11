@@ -2,6 +2,7 @@ package dsw.rudok.app.gui.swing.controller;
 
 import com.sun.tools.javac.Main;
 import dsw.rudok.app.AppCore;
+import dsw.rudok.app.errorHandler.ErrorType;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.gui.swing.view.PageTab;
 import dsw.rudok.app.repository.Page;
@@ -21,6 +22,14 @@ public class RectangleAction extends AbstractRudokAction{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        ((PageTab)MainFrame.getInstance().getjPanel()).getPage().startRectangleState();
+
+        if(((PageTab)MainFrame.getInstance().getjPanel()) == null){
+            AppCore.getInstance().getErrorHandler().generateError(ErrorType.NOT_SELECTED_JPANEL);
+        }
+        else{
+            ((PageTab)MainFrame.getInstance().getjPanel()).getPage().startRectangleState();
+        }
+
+
     }
 }

@@ -20,6 +20,10 @@ public class ErrorHandlerImpl  implements ErrorHandler {
             notifyObs(new MyError(1,"Greska prilikom dodele imena","Vec postoji dokument sa ovim imenom"));
         }
 
+        if(errorType == ErrorType.NOT_SELECTED_JPANEL){
+            notifyObs(new MyError(2, "Greska prilikom selektovanja Page-a", "PageTab mora biti selektovan"));
+        }
+
     }
 
     @Override
