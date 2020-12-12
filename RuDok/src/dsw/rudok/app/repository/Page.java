@@ -75,6 +75,7 @@ public class Page extends RuNodeComposite {
         this.subscribers.add(sub);
     }
 
+
     @Override
     public void removeSubs(ISubscriber sub) {
         if (sub == null || this.subscribers == null || !this.subscribers.contains(sub))

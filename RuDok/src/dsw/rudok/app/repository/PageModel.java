@@ -15,20 +15,21 @@ public class PageModel implements IPublisher {
 
     protected ArrayList<Slot> slots = new ArrayList<Slot>();
     private List<ISubscriber> subscribers;
+    private Slot selected;
 /*
     public SlotModel(String name, ArrayList<SlotDevice> slotDevices) {
         this.name = name;
         this.slotDevices = slotDevices;
     }
  */
-public int getSlotatPosition(Point point) {
+public Slot getSlotatPosition(Point point) {
     for(int i=getDeviceCount()-1;i>=0;i--){
         Slot slot = getSlotAt(i);
         if(slot.getSlotPainter().isElementAt(point)){
-            return i;
+            return slot;
         }
     }
-    return -1;
+    return null;
 }
 
     public Iterator<Slot> getSlotIterator(){
@@ -105,5 +106,24 @@ public int getSlotatPosition(Point point) {
 
     public ArrayList<Slot> getSlots() {
         return slots;
+    }
+
+    public Slot getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Slot selected) {
+        this.selected = selected;
+        notify();
+    }
+
+    public void postaviSelektovan(Slot slotSelected) {
+
+        for(Slot slot:slots){
+
+            if(slot.equals(slotSelected)){
+                setSelected(slot);
+            }
+        }
     }
 }

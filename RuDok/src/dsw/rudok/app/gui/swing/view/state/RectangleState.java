@@ -18,12 +18,16 @@ public class RectangleState extends State{
     public void mousePressed(MouseEvent e) {
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
-            if (page.getPageModel().getSlotatPosition(position)==-1){
+            if (page.getPageModel().getSlotatPosition(position)== null){
                 //Slot slot = RectangleSlot.createDefault(position,page.getPageModel().getDeviceCount());
                 SlotFactory factory= new RectangleFactory();
                 Slot slot= factory.makeSlot(position,page.getPageModel().getDeviceCount());
                 page.getPageModel().addSlots(slot);
                 MainFrame.getInstance().getTree().addSlot(slot,page);
+            }
+            else{
+
+
             }
         }
     }

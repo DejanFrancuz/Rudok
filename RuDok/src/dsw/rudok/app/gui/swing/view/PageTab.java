@@ -6,6 +6,7 @@ import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.element.RectangleSlot;
 import dsw.rudok.app.repository.element.SlotDevice;
+import dsw.rudok.app.repository.element.SlotHandler;
 import dsw.rudok.app.repository.node.RuNode;
 
 import javax.swing.*;
@@ -15,6 +16,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.GeneralPath;
+import java.security.GuardedObject;
 import java.util.Iterator;
 
 public class PageTab extends JPanel implements ISubscriber {
@@ -64,8 +66,6 @@ public class PageTab extends JPanel implements ISubscriber {
 
 
     }
-
-
 
 
 
@@ -133,6 +133,16 @@ public class PageTab extends JPanel implements ISubscriber {
         public void mousePressed(MouseEvent e) {
             setuj();
             page.getStateManager().getCurrentState().mousePressed(e);
+             int x = e.getXOnScreen();
+             int y = e.getYOnScreen();
+
+             if(page.getPageModel().getSlotatPosition(new Point(x,y)) != null){
+                 Slot slotSelected = page.getPageModel().getSlotatPosition(new Point(x,y));
+
+                 SlotHandler slotHandler = new SlotHandler();
+                 slotHandler.transform(slotSelected,"Selected",new Point(x,y));
+             }
+
         }
 
         public void mouseReleased(MouseEvent e) {
