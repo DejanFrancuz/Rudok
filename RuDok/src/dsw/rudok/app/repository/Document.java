@@ -2,6 +2,7 @@ package dsw.rudok.app.repository;
 
 import dsw.rudok.app.AppCore;
 import dsw.rudok.app.errorHandler.ErrorType;
+import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.DocumentTab;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.node.RuNode;
@@ -71,6 +72,18 @@ public class Document extends RuNodeComposite {
         for(ISubscriber listener : subscribers){
             listener.update(notif);
         }
+    }
+    public RuTreeItem getItem() {
+        for (ISubscriber s : subscribers) {
+
+            if (s instanceof RuTreeItem) {
+                RuTreeItem r = (RuTreeItem) s;
+
+                return r;
+            }
+
+        }
+        return null;
     }
 
 

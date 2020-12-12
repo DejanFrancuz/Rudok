@@ -25,6 +25,7 @@ public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
 
     private String name;
     private RuNode nodeModel;
+    private ArrayList<MutableTreeNode> parents;
     private RuTreeImplementation impl=new RuTreeImplementation();
 
 
@@ -36,6 +37,7 @@ public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
     public RuTreeItem(RuNode ruNode,String name){
         this.name=name;
         this.nodeModel=ruNode;
+        parents=new ArrayList<>();
         nodeModel.addSubs(this);
     }
     @Override
@@ -83,6 +85,7 @@ public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
     private TreeNode findChildByIndex(int childIndex){
         if(nodeModel instanceof RuNodeComposite){
             RuTreeItem toLookFor = new RuTreeItem(((RuNodeComposite)nodeModel).getChildren().get(childIndex));
+//            if(!children.iterator().hasNext())return null;
             Iterator childrenIterator = children.iterator();
             TreeNode current;
 
@@ -111,6 +114,11 @@ public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
             this.nodeModel.setName(name);
         }
     }
+/*    @Override
+    public void setParent(MutableTreeNode newParent) {
+        parents.add(newParent);
+        //parent = newParent;
+    }*/
 
     public String getName() {
         return name;
@@ -134,17 +142,16 @@ public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
             throw new IllegalArgumentException("new child is an ancestor");
         }
 
-      //  MutableTreeNode oldParent = (MutableTreeNode)newChild.getParent();
-/*
+        /*MutableTreeNode oldParent = (MutableTreeNode)newChild.getParent();
         if (oldParent != null) {
             oldParent.remove(newChild);
-        }
- */
+        }*/
         //newChild.setParent(this);
+
         if (children == null) {
             children = new Vector<>();
         }
-        children.insertElementAt(newChild, childIndex);
+        children.insertElementAt(newChild,childIndex);
     }
 
     @Override
