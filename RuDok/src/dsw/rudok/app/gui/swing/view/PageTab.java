@@ -123,7 +123,7 @@ public class PageTab extends JPanel implements ISubscriber {
 
     }*/
 
-    private void setuj(){
+    public void setuj(){
         MainFrame.getInstance().setjPanel(this);
     }
     private class SlotController extends MouseAdapter implements MouseMotionListener{

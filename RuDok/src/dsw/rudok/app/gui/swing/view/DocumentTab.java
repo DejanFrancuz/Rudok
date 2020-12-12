@@ -67,12 +67,14 @@ public class DocumentTab extends JPanel implements ISubscriber {
             {
 
 
-                pageTab.setPreferredSize(new Dimension(maxWidth - 100, maxWidth - 100));
+                pageTabTmp.setPreferredSize(new Dimension(maxWidth - 100, maxWidth - 100));
 
-                this.panCenter.add(pageTab, "align center");
+                this.panCenter.add(pageTabTmp, "align center");
             }
+            pageTab.setuj();
             validate();
             repaint();
+            MainFrame.getInstance().getTabbedPane().updateUI();
             /*for (PageTab pageViewer : this.pageTabs) {
                 pageViewer.update( null);
             }*/
