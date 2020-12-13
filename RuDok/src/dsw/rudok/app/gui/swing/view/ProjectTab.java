@@ -49,7 +49,6 @@ public class ProjectTab extends JInternalFrame implements ISubscriber {
             Document document = (Document) notif;
 
                 DocumentTab docTab = new DocumentTab(document);
-                System.out.println(documentTabs.toString());
             for(DocumentTab tab: documentTabs){
                 if(tab.equals(docTab)) {
                     return;

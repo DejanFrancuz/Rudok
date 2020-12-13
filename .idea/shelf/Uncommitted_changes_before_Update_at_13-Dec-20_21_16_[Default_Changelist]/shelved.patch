@@ -1,0 +1,410 @@
+Index: RuDok/src/dsw/rudok/app/gui/swing/view/state/SelectState.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dsw.rudok.app.gui.swing.view.state;\r\n\r\nimport dsw.rudok.app.repository.Page;\r\nimport dsw.rudok.app.repository.element.Slot;\r\n\r\nimport java.awt.*;\r\nimport java.awt.event.MouseEvent;\r\n\r\npublic class SelectState extends State{\r\n    private Page med; //save the Mediator\r\n    public SelectState(Page md) {\r\n        med = md;\r\n    }\r\n\r\n\r\n    public void mousePressed(MouseEvent e) {\r\n\r\n        Point position = e.getPoint();\r\n        if (e.getButton()==MouseEvent.BUTTON1){\r\n\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- RuDok/src/dsw/rudok/app/gui/swing/view/state/SelectState.java	(revision 09cb4614282019e9b2d656695433d1e2ce88d844)
++++ RuDok/src/dsw/rudok/app/gui/swing/view/state/SelectState.java	(date 1607814613615)
+@@ -2,22 +2,30 @@
+ 
+ import dsw.rudok.app.repository.Page;
+ import dsw.rudok.app.repository.element.Slot;
++import dsw.rudok.app.repository.element.SlotHandler;
++import dsw.rudok.app.repository.element.TransformType;
+ 
+ import java.awt.*;
+ import java.awt.event.MouseEvent;
+ 
+-public class SelectState extends State{
++public class SelectState extends State {
+     private Page med; //save the Mediator
++
+     public SelectState(Page md) {
+         med = md;
+     }
+ 
+ 
+-    public void mousePressed(MouseEvent e) {
++    public void mousePressed(MouseEvent e, Page page) {
+ 
+         Point position = e.getPoint();
+-        if (e.getButton()==MouseEvent.BUTTON1){
+-
+-        }
+-    }
+-}
++        if (e.getButton() == MouseEvent.BUTTON1) {
++            if (page.getPageModel().getSlotatPosition(position) != null) {
++                Slot slotSelected = page.getPageModel().getSlotatPosition(position);
++                SlotHandler slotHandler = new SlotHandler();
++                slotSelected=slotHandler.transform(slotSelected,TransformType.SELECT,position);
++                page.setSelectedSlot(slotSelected);
++            }
++        }
++    }
++}
+\ No newline at end of file
+Index: RuDok/src/dsw/rudok/app/repository/element/SlotHandler.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dsw.rudok.app.repository.element;\r\n\r\nimport java.awt.geom.Point2D;\r\n\r\npublic class SlotHandler{\r\n    public void transform(Slot slot, String s, Point2D position) {\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- RuDok/src/dsw/rudok/app/repository/element/SlotHandler.java	(revision 09cb4614282019e9b2d656695433d1e2ce88d844)
++++ RuDok/src/dsw/rudok/app/repository/element/SlotHandler.java	(date 1607815386209)
+@@ -3,7 +3,11 @@
+ import java.awt.geom.Point2D;
+ 
+ public class SlotHandler{
+-    public void transform(Slot slot, String s, Point2D position) {
++    static final int handleSize = 7;
++    public Slot transform(Slot slot,TransformType type, Point2D position) {
++        if(type==TransformType.SELECT){
+ 
++        }
++        return null;
+     }
+ }
+Index: RuDok/src/dsw/rudok/app/gui/swing/view/PageTab.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dsw.rudok.app.gui.swing.view;\r\n\r\nimport dsw.rudok.app.gui.swing.view.painters.ElementPainter;\r\nimport dsw.rudok.app.observer.ISubscriber;\r\nimport dsw.rudok.app.repository.Page;\r\nimport dsw.rudok.app.repository.element.Slot;\r\nimport dsw.rudok.app.repository.element.RectangleSlot;\r\nimport dsw.rudok.app.repository.element.SlotDevice;\r\nimport dsw.rudok.app.repository.element.SlotHandler;\r\nimport dsw.rudok.app.repository.node.RuNode;\r\n\r\nimport javax.swing.*;\r\nimport javax.swing.border.TitledBorder;\r\nimport java.awt.*;\r\nimport java.awt.event.MouseAdapter;\r\nimport java.awt.event.MouseEvent;\r\nimport java.awt.event.MouseMotionListener;\r\nimport java.awt.geom.GeneralPath;\r\nimport java.security.GuardedObject;\r\nimport java.util.Iterator;\r\n\r\npublic class PageTab extends JPanel implements ISubscriber {\r\n    static int openFrameCount = 0;\r\n\r\n    static final int xOffset = 30, yOffset = 30;\r\n\r\n\r\n\r\n    private String pageName;\r\n    private RuNode parent;\r\n    private JPanel panCenter;\r\n    private Page page;\r\n   // private List<SlotTab> slotTabs = new ArrayList<>();\r\n\r\n\r\n\r\n    public PageTab(Page page){\r\n        this.page = page;\r\n        this.panCenter = new JPanel();\r\n        this.page.addSubs(this);\r\n\r\n        TitledBorder title = BorderFactory.createTitledBorder(page.toString());\r\n        title.setTitlePosition(4);\r\n        title.setTitleJustification(2);\r\n        setBorder(title);\r\n\r\n        this.setLayout(new BorderLayout());;\r\n\r\n\r\n        this.panCenter.setBackground(Color.WHITE);\r\n        add(this.panCenter);\r\n\r\n\r\n        ++openFrameCount;\r\n        setLocation(xOffset*openFrameCount, yOffset*openFrameCount);\r\n\r\n\r\n        setSize(400,400);\r\n        setVisible(true);\r\n        panCenter.setCursor(new Cursor(Cursor.HAND_CURSOR));\r\n        panCenter.setBackground(Color.WHITE);\r\n        SlotController s=new SlotController();\r\n        panCenter.addMouseListener(s);\r\n        panCenter.addMouseMotionListener(s);\r\n\r\n\r\n\r\n    }\r\n\r\n\r\n\r\n    public JPanel getPanCenter() {\r\n        return panCenter;\r\n    }\r\n\r\n    public void setPanCenter(JPanel panCenter) {\r\n        this.panCenter = panCenter;\r\n    }\r\n\r\n    public String getPageName() {\r\n        return pageName;\r\n    }\r\n\r\n    public void setPageName(String pageName) {\r\n        this.pageName = pageName;\r\n    }\r\n\r\n   /*private class SlotController extends MouseAdapter implements MouseMotionListener {\r\n\r\n        public void mousePressed(MouseEvent e) {\r\n            //slot.getStateManager().getCurrentState().mousePressed(e);\r\n           // MainFrame.getInstance().getWorkspace().setSelectionModel();\r\n\r\n\r\n            *//*page.addChild(slot);\r\n            MainFrame.getInstance().getWorkspaceTree().updateUI();*//*\r\n            Point position = e.getPoint();\r\n            GeneralPath gp=new GeneralPath();\r\n\r\n            Paint fill = Color.BLACK;\r\n\r\n            //RectangleElement rectangle=new RectangleElement(position, new Dimension(100,50), new BasicStroke(2f), fill);\r\n\r\n            RectangleSlot rectangle= new RectangleSlot(new Dimension(100,50),position,new BasicStroke(),fill,\r\n                    \"Rectangle \" + page.getPageModel().getElementCount());\r\n\r\n            //new RectangleSlot( new Dimension(100,50),position);\r\n\r\n            // rectangle.setName(\"RectangleSlot \");//+ slot.getSlotModel().getElementCount()\r\n            MainFrame.getInstance().getTree().addSlot(rectangle,getPage());\r\n           // System.out.println(page.getName());\r\n            page.getPageModel().addSlots(rectangle);\r\n            MainFrame.getInstance().getTabbedPane().updateUI();\r\n        }\r\n\r\n      *//*  public void mouseReleased(MouseEvent e) {\r\n            slot.getStateManager().getCurrentState().mouseReleased(e);\r\n        }\r\n\r\n        public void mouseDragged(MouseEvent e ){\r\n            slot.getStateManager().getCurrentState().mouseDragged(e);\r\n        }*//*\r\n\r\n    }*/\r\n\r\n    public void setuj(){\r\n        MainFrame.getInstance().setjPanel(this);\r\n    }\r\n    private class SlotController extends MouseAdapter implements MouseMotionListener{\r\n\r\n\r\n\r\n        public void mousePressed(MouseEvent e) {\r\n            setuj();\r\n            page.getStateManager().getCurrentState().mousePressed(e);\r\n             int x = e.getXOnScreen();\r\n             int y = e.getYOnScreen();\r\n\r\n             if(page.getPageModel().getSlotatPosition(new Point(x,y)) != null){\r\n                 Slot slotSelected = page.getPageModel().getSlotatPosition(new Point(x,y));\r\n\r\n                 SlotHandler slotHandler = new SlotHandler();\r\n                 slotHandler.transform(slotSelected,\"Selected\",new Point(x,y));\r\n             }\r\n\r\n        }\r\n\r\n        public void mouseReleased(MouseEvent e) {\r\n            page.getStateManager().getCurrentState().mouseReleased(e);\r\n        }\r\n\r\n        public void mouseDragged(MouseEvent e ){\r\n            page.getStateManager().getCurrentState().mouseDragged(e);\r\n        }\r\n\r\n    }\r\n\r\n    @Override\r\n    protected void paintComponent(Graphics g) {\r\n        super.paintComponent(g);\r\n\r\n        Graphics2D graphics2D = (Graphics2D) g;\r\n        graphics2D.setFont(new Font(\"TimesRoman\", Font.PLAIN, 20));\r\n        graphics2D.setStroke(new BasicStroke());\r\n\r\n        graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));\r\n         Iterator<Slot> it = page.getPageModel().getSlotIterator();\r\n        while (it.hasNext()){\r\n\r\n\r\n\r\n            Slot slot = (Slot) it.next();\r\n            ElementPainter painter = slot.getSlotPainter();\r\n            painter.paint(graphics2D,slot);\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void update(Object notif) {\r\n\r\n\r\n\r\n         /*  if(notif instanceof  Slot){\r\n                Slot slot = (Slot) notif;\r\n                SlotTab slotTab = new SlotTab(slot);\r\n                this.slotTabs.add(slotTab);\r\n\r\n\r\n                int maxWidth = (int)getSize().getWidth();\r\n                int maxHeight = (int)getSize().getHeight();\r\n\r\n\r\n                for (int i = 0; i < this.slotTabs.size(); i++)\r\n                {\r\n                    SlotTab slotViewer = (SlotTab) this.slotTabs.get(i);\r\n                    slotViewer.setPreferredSize(new Dimension(maxWidth ,\r\n                            maxHeight / 3));\r\n                    this.panCenter.add(slotViewer);\r\n                }\r\n\r\n                validate();\r\n\r\n\r\n            }*/\r\n\r\n        if(notif instanceof Integer){\r\n            int index = (Integer)notif;\r\n            //this.slotTab.remove(index);\r\n            this.panCenter.remove(index);\r\n            this.panCenter.updateUI();\r\n        }\r\n        if(notif instanceof String){\r\n            String s = (String)notif;\r\n            getPage().getPageTab().setName(s);\r\n        }else{\r\n            repaint();\r\n        }\r\n    }\r\n\r\n    public Page getPage() {\r\n        return page;\r\n    }\r\n\r\n    public void setPage(Page page) {\r\n        this.page = page;\r\n    }\r\n\r\n    public static int getOpenFrameCount() {\r\n        return openFrameCount;\r\n    }\r\n\r\n    public static void setOpenFrameCount(int openFrameCount) {\r\n        PageTab.openFrameCount = openFrameCount;\r\n    }\r\n\r\n    public static int getxOffset() {\r\n        return xOffset;\r\n    }\r\n\r\n    public static int getyOffset() {\r\n        return yOffset;\r\n    }\r\n\r\n\r\n\r\n\r\n    public void setParent(RuNode parent) {\r\n        this.parent = parent;\r\n    }\r\n\r\n    /*public List<SlotTab> getSlotTabs() {\r\n        return slotTabs;\r\n    }\r\n\r\n    public void setSlotTabs(List<SlotTab> slotTabs) {\r\n        this.slotTabs = slotTabs;\r\n    }*/\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- RuDok/src/dsw/rudok/app/gui/swing/view/PageTab.java	(revision 09cb4614282019e9b2d656695433d1e2ce88d844)
++++ RuDok/src/dsw/rudok/app/gui/swing/view/PageTab.java	(date 1607816841821)
+@@ -15,7 +15,9 @@
+ import java.awt.event.MouseAdapter;
+ import java.awt.event.MouseEvent;
+ import java.awt.event.MouseMotionListener;
++import java.awt.geom.Dimension2D;
+ import java.awt.geom.GeneralPath;
++import java.awt.geom.Point2D;
+ import java.security.GuardedObject;
+ import java.util.Iterator;
+ 
+@@ -30,6 +32,7 @@
+     private RuNode parent;
+     private JPanel panCenter;
+     private Page page;
++    static final int handleSize = 7;
+    // private List<SlotTab> slotTabs = new ArrayList<>();
+ 
+ 
+@@ -130,19 +133,9 @@
+ 
+ 
+ 
+-        public void mousePressed(MouseEvent e) {
++        public void mousePressed(MouseEvent e,Page p) {
+             setuj();
+             page.getStateManager().getCurrentState().mousePressed(e);
+-             int x = e.getXOnScreen();
+-             int y = e.getYOnScreen();
+-
+-             if(page.getPageModel().getSlotatPosition(new Point(x,y)) != null){
+-                 Slot slotSelected = page.getPageModel().getSlotatPosition(new Point(x,y));
+-
+-                 SlotHandler slotHandler = new SlotHandler();
+-                 slotHandler.transform(slotSelected,"Selected",new Point(x,y));
+-             }
+-
+         }
+ 
+         public void mouseReleased(MouseEvent e) {
+@@ -165,44 +158,80 @@
+ 
+         graphics2D.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
+          Iterator<Slot> it = page.getPageModel().getSlotIterator();
+-        while (it.hasNext()){
++        while (it.hasNext()) {
++            /*// Iscrtavanje pravougaonika sa isprekidanom linijom
++				g2.setStroke(new BasicStroke((float)1, BasicStroke.CAP_SQUARE,
++						BasicStroke.JOIN_BEVEL, 1f, new float[]{3f, 6f}, 0 ));
++				g2.setPaint(Color.BLACK);
+ 
++				g2.drawRect((int)device.getPosition().getX(), (int)device.getPosition().getY(),
++						(int)device.getSize().getWidth(), (int)device.getSize().getHeight());
++
++				// 	Iscrtavanje hendlova
++				for(Handle e: Handle.values()){
++					paintSelectionHandle(g2, getHandlePoint(device.getPosition(), device.getSize(), e));*/
+ 
+ 
+             Slot slot = (Slot) it.next();
+-            ElementPainter painter = slot.getSlotPainter();
+-            painter.paint(graphics2D,slot);
+-        }
++            if (slot.equals(page.getSelectedSlot())) {
++                graphics2D.setStroke(new BasicStroke((float) 1, BasicStroke.CAP_SQUARE,
++                        BasicStroke.JOIN_BEVEL, 1f, new float[]{3f, 6f}, 0));
++                graphics2D.setPaint(Color.BLACK);
++                for (Handle e : Handle.values()) {
++                    paintSelectionHandle(graphics2D, getHandlePoint((Point) slot.getPosition(), slot.getSize(), e));
++
++                }
++                ElementPainter painter = slot.getSlotPainter();
++                painter.paint(graphics2D, slot);
++            }
++        }
++    }
++        private void paintSelectionHandle(Graphics2D g2, Point2D.Double position){
++            double size = handleSize;
++            int x= (int) (position.x-size/2);
++            int y=(int)(position.y-size/2);
++            Point p=new Point(x,y);
++            //g2.fill(new Slot(p, size));
++        }
++    private Point.Double getHandlePoint(Point topLeft, Dimension2D size, Handle handlePosition ){
++        double x=0, y=0;
++
++        // Doređivanje y koordinate
++
++        // Ako su gornji hendlovi
++        if(handlePosition == Handle.NorthWest || handlePosition == Handle.North || handlePosition == Handle.NorthEast){
++            y = topLeft.getY();
++        }
++        // Ako su centralni po y osi
++        if(handlePosition == Handle.East || handlePosition == Handle.West){
++            y = topLeft.getY()+size.getHeight()/2;
++        }
++        //Ako su donji
++        if(handlePosition == Handle.SouthWest || handlePosition == Handle.South || handlePosition == Handle.SouthEast){
++            y = topLeft.getY() + size.getHeight();
++        }
++
++        // Određivanje x koordinate
++
++        // Ako su levi
++        if(handlePosition == Handle.NorthWest || handlePosition == Handle.West || handlePosition == Handle.SouthWest){
++            x = topLeft.getX();
++        }
++        // ako su centralni po x osi
++        if(handlePosition == Handle.North || handlePosition == Handle.South){
++            x = topLeft.getX() + size.getWidth()/2;
++        }
++        // ako su desni
++        if(handlePosition == Handle.NorthEast || handlePosition == Handle.East || handlePosition == Handle.SouthEast){
++            x = topLeft.getX() + size.getWidth();
++        }
++
++        return new Point.Double(x,y);
++
+     }
+ 
+     @Override
+     public void update(Object notif) {
+-
+-
+-
+-         /*  if(notif instanceof  Slot){
+-                Slot slot = (Slot) notif;
+-                SlotTab slotTab = new SlotTab(slot);
+-                this.slotTabs.add(slotTab);
+-
+-
+-                int maxWidth = (int)getSize().getWidth();
+-                int maxHeight = (int)getSize().getHeight();
+-
+-
+-                for (int i = 0; i < this.slotTabs.size(); i++)
+-                {
+-                    SlotTab slotViewer = (SlotTab) this.slotTabs.get(i);
+-                    slotViewer.setPreferredSize(new Dimension(maxWidth ,
+-                            maxHeight / 3));
+-                    this.panCenter.add(slotViewer);
+-                }
+-
+-                validate();
+-
+-
+-            }*/
+-
+         if(notif instanceof Integer){
+             int index = (Integer)notif;
+             //this.slotTab.remove(index);
+Index: RuDok/src/dsw/rudok/app/repository/Page.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dsw.rudok.app.repository;\r\n\r\nimport dsw.rudok.app.gui.swing.tree.model.RuTreeItem;\r\nimport dsw.rudok.app.gui.swing.view.PageTab;\r\nimport dsw.rudok.app.gui.swing.view.state.StateManager;\r\nimport dsw.rudok.app.observer.ISubscriber;\r\nimport dsw.rudok.app.repository.element.Slot;\r\nimport dsw.rudok.app.repository.node.RuNode;\r\nimport dsw.rudok.app.repository.node.RuNodeComposite;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class Page extends RuNodeComposite {\r\n\r\n    private PageTab pageTab;\r\n    List<ISubscriber> subscribers;\r\n    private PageModel pageModel = new PageModel();\r\n\r\n\r\n    public Page(String name, RuNode parent) {\r\n\r\n        super(name, parent);\r\n    }\r\n    private StateManager stateManager= new StateManager(this);\r\n\r\n    public void addChild(RuNode child) {\r\n        if (child != null && child instanceof Slot) {\r\n            Slot slot = (Slot) child;\r\n            if (!this.getChildren().contains(slot)) {\r\n                this.getChildren().add(slot);\r\n                notifyObs(slot);\r\n            }\r\n        }\r\n    }\r\n\r\n    public void startTriangleState(){stateManager.setTriangleState(); }\r\n    public void startSelectState() {\r\n        stateManager.setSelectState();\r\n    }\r\n    public void startRectangleState(){\r\n        stateManager.setRectangleState();\r\n    }\r\n    public void startCircleState(){stateManager.setCircleState();}\r\n    public StateManager getStateManager() {\r\n        return stateManager;\r\n    }\r\n\r\n    public void setStateManager(StateManager stateManager) {\r\n        this.stateManager = stateManager;\r\n    }\r\n\r\n    @Override\r\n    public void removeChild(int index) {\r\n        notifyObs(index);\r\n    }\r\n\r\n\r\n    public PageTab getPageTab() {\r\n        return pageTab;\r\n    }\r\n\r\n    public void setPageTab(PageTab pageTab) {\r\n        this.pageTab = pageTab;\r\n    }\r\n\r\n    @Override\r\n    public void addSubs(ISubscriber sub) {\r\n        if (sub == null)\r\n            return;\r\n        if (this.subscribers == null)\r\n            this.subscribers = new ArrayList<>();\r\n        if (this.subscribers.contains(sub))\r\n            return;\r\n        this.subscribers.add(sub);\r\n    }\r\n\r\n\r\n    @Override\r\n    public void removeSubs(ISubscriber sub) {\r\n        if (sub == null || this.subscribers == null || !this.subscribers.contains(sub))\r\n            return;\r\n        this.subscribers.remove(sub);\r\n    }\r\n\r\n    @Override\r\n    public void notifyObs(Object notif) {\r\n        if (notif == null || this.subscribers == null || this.subscribers.isEmpty())\r\n            return;\r\n\r\n        for (ISubscriber listener : subscribers) {\r\n            listener.update(notif);\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return getName();\r\n    }\r\n\r\n    public PageModel getPageModel() {\r\n        return pageModel;\r\n    }\r\n\r\n    public void setPageModel(PageModel pageModel) {\r\n        this.pageModel = pageModel;\r\n    }\r\n\r\n\r\n  /*  public RuTreeItem getItem(){\r\n        for(ISubscriber s: subscribers){\r\n            System.out.println(s.toString());\r\n\r\n            if(s instanceof RuTreeItem){\r\n                RuTreeItem r=(RuTreeItem)s;\r\n                return r;\r\n            }\r\n        }\r\n        return null;\r\n    }*/\r\n\r\n    public RuTreeItem getItem() {\r\n        for (ISubscriber s : subscribers) {\r\n\r\n            if (s instanceof RuTreeItem) {\r\n                RuTreeItem r = (RuTreeItem) s;\r\n\r\n                return r;\r\n            }\r\n\r\n        }\r\n        return null;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- RuDok/src/dsw/rudok/app/repository/Page.java	(revision 09cb4614282019e9b2d656695433d1e2ce88d844)
++++ RuDok/src/dsw/rudok/app/repository/Page.java	(date 1607815962701)
+@@ -16,6 +16,7 @@
+     private PageTab pageTab;
+     List<ISubscriber> subscribers;
+     private PageModel pageModel = new PageModel();
++    private Slot selectedSlot;
+ 
+ 
+     public Page(String name, RuNode parent) {
+@@ -46,6 +47,15 @@
+         return stateManager;
+     }
+ 
++    public Slot getSelectedSlot() {
++        return selectedSlot;
++    }
++
++    public void setSelectedSlot(Slot selectedSlot) {
++        this.selectedSlot = selectedSlot;
++        notifyObs(null);
++    }
++
+     public void setStateManager(StateManager stateManager) {
+         this.stateManager = stateManager;
+     }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"537a82df-9942-46e7-9bc6-7aaa2b061bd2\" name=\"Default Changelist\" comment=\"popravljena sitna greska za dodavanje pageTaba-a, i namesteno da poslednji dodati pageTab bude onaj koji je u fokusu\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/model/RuTreeItem.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/model/RuTreeItem.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/Document.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/Document.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/model/RuTreeItem.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/model/RuTreeItem.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/DocumentTab.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/DocumentTab.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/PageTab$SlotController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/PageTab$SlotController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/PageTab.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/PageTab.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1kupXMsJ1d3XAGkOdt7evDGdFBs\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"project.structure.last.edited\" value=\"SDKs\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.0\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n    <property name=\"restartRequiresConfirmation\" value=\"false\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\ovo nije za brisanje\\dsw2020-tim_ignjatkrd\\RuDok\\src\\dsw\\rudok\\app\\gui\\swing\\controller\\images\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"AppCore\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"dsw.rudok.app.AppCore\" />\r\n      <module name=\"dsw2020-tim_ignjatkrd\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"dsw.rudok.app.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.AppCore\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"537a82df-9942-46e7-9bc6-7aaa2b061bd2\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1606560371854</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1606560371854</updated>\r\n      <workItem from=\"1606560380208\" duration=\"714000\" />\r\n      <workItem from=\"1606561200990\" duration=\"7933000\" />\r\n      <workItem from=\"1606569893708\" duration=\"1325000\" />\r\n      <workItem from=\"1606571853262\" duration=\"8000\" />\r\n      <workItem from=\"1606650315918\" duration=\"222000\" />\r\n      <workItem from=\"1606657244593\" duration=\"3549000\" />\r\n      <workItem from=\"1606917150231\" duration=\"5461000\" />\r\n      <workItem from=\"1606937794736\" duration=\"4753000\" />\r\n      <workItem from=\"1606948175798\" duration=\"4360000\" />\r\n      <workItem from=\"1606955972955\" duration=\"2934000\" />\r\n      <workItem from=\"1607169416833\" duration=\"18931000\" />\r\n      <workItem from=\"1607249058332\" duration=\"24187000\" />\r\n      <workItem from=\"1607296759058\" duration=\"3182000\" />\r\n      <workItem from=\"1607327110011\" duration=\"12187000\" />\r\n      <workItem from=\"1607434647265\" duration=\"4401000\" />\r\n      <workItem from=\"1607446991163\" duration=\"5894000\" />\r\n      <workItem from=\"1607474507480\" duration=\"1105000\" />\r\n      <workItem from=\"1607475749673\" duration=\"257000\" />\r\n      <workItem from=\"1607510011000\" duration=\"147000\" />\r\n      <workItem from=\"1607532084284\" duration=\"6817000\" />\r\n      <workItem from=\"1607560796473\" duration=\"642000\" />\r\n      <workItem from=\"1607611319710\" duration=\"17320000\" />\r\n      <workItem from=\"1607695239714\" duration=\"5789000\" />\r\n      <workItem from=\"1607713943107\" duration=\"4021000\" />\r\n      <workItem from=\"1607726284263\" duration=\"153000\" />\r\n      <workItem from=\"1607733371140\" duration=\"1089000\" />\r\n      <workItem from=\"1607790890393\" duration=\"6707000\" />\r\n      <workItem from=\"1607799370340\" duration=\"1064000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"promenjena logika za deleteNode, selektovani cvor se zove u klasi RuTreeImplementation\">\r\n      <created>1606561618403</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606561618403</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"promenjena logika za dodavanje stranice i dokumenta, selektovani cvor se zove u RuTreeImplementation\">\r\n      <created>1606563039495</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606563039495</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"promenjena logika za dodavanje projekta i slota, selektovani cvor se zove u RuTreeImplementation, sada su sve pogresno implementirane akcije u controleru dobro uradjene u RuTreeImplementation\">\r\n      <created>1606564113487</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606564113487</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"uradjen error za treeclicker\">\r\n      <created>1606566260641</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606566260641</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"implementirane metode publishera u cvorovima, svakom zasebno\">\r\n      <created>1606567664520</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606567664520</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"ubacen notify kod dodavanja dece\">\r\n      <created>1606570277364</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606570277364</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"ukljucen observer da kad se obrise cvor sa stabla, da se obrise i sa taba\">\r\n      <created>1606922051991</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606922051991</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"svaki obrisani cvor sa stabla, brise se i sa taba, ali ne radi za projekat\">\r\n      <created>1606952551623</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606952551623</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"dovrsena komanda za menjanje imena cvorova\">\r\n      <created>1606991680366</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606991680366</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"observer za brisanje cvorova, koji azurira brisanje na tabovima, ispravno implementiran i premesten u klase u kojima treba da bude, zapoceto kreiranje klasa za crtanje\">\r\n      <created>1607173152229</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607173152230</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"odradjen error handler, kada nista nije selektovano a korisnik zahteva dodavanje nove dece\">\r\n      <created>1607190168029</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607190168029</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"napravljeni model i view za grafiku, slabo implementirani\">\r\n      <created>1607204243056</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607204243056</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"zapoceta akcija deljenja dokumenta, fali dodela doukemnta selektovanom projektu, i rad observera\">\r\n      <created>1607266120855</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607266120871</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"jedna metoda iz RuTree promakla da se pusuje, evo je sad\">\r\n      <created>1607266195854</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607266195854</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"popravljena logika za dodavanje i brisanje cvorova, novi cvor ne sme da ima isto ime kao neki vec postojeci cvor\">\r\n      <created>1607290195179</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607290195204</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"odradjeno deljenje dokumenta delimicno, dokument se pojavljuje u projektu u kom treba, treba ubaciti observer tako da kada se na jednom dokumentu nesto menja, da se menja i na ovom drugom\">\r\n      <created>1607292375104</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607292375104</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"ubacen error , da dokumenti ne mogu imati ista imena\">\r\n      <created>1607294939236</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607294939236</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"za sad, najblize resenju deljenju dokumenata, sta se doda na jednom, doda se i ona drugom, ali kada se deljeni dokuemnt selektuje,izbacuje se null pointer exception\">\r\n      <created>1607345533680</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607345533680</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"update-ovani pagetab-ovi, moze da se crta po svim, samo se deca i dalje dodaju u selektovanim page-ovima\">\r\n      <created>1607469585861</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607469585861</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00020\" summary=\"overrajdovana metoda insert zbog deljenja dokumenta, ali i dalje ne radi\">\r\n      <created>1607534373596</created>\r\n      <option name=\"number\" value=\"00020\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00020\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607534373596</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00021\" summary=\"premestena klasa Slot, i promenjena njegova uloga\">\r\n      <created>1607540599805</created>\r\n      <option name=\"number\" value=\"00021\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00021\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607540599805</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00022\" summary=\"ikonice za state-crtanje stavljene na toolbar i menubar\">\r\n      <created>1607618650193</created>\r\n      <option name=\"number\" value=\"00022\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00022\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607618650193</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00023\" summary=\"crtanje pravougaonika sada preko state-a\">\r\n      <created>1607627967194</created>\r\n      <option name=\"number\" value=\"00023\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00023\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607627967195</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00024\" summary=\"implementirano crtanje kruga\">\r\n      <created>1607629578666</created>\r\n      <option name=\"number\" value=\"00024\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00024\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607629578666</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00025\" summary=\"crtanje radi sada tako da moze na svakom page-u da se crta\">\r\n      <created>1607629935395</created>\r\n      <option name=\"number\" value=\"00025\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00025\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607629935395</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00026\" summary=\"ubacen trougao, ostala je samo logika u trianglePainter da se promeni\">\r\n      <created>1607631500129</created>\r\n      <option name=\"number\" value=\"00026\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00026\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607631500129</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00027\" summary=\"implementirano crtanje trougla\">\r\n      <created>1607695909707</created>\r\n      <option name=\"number\" value=\"00027\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00027\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607695909707</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00028\" summary=\"sitne promene imena odredjenih paketa\">\r\n      <created>1607718098760</created>\r\n      <option name=\"number\" value=\"00028\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00028\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607718098760</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00029\" summary=\"popravljena sitna greska za dodavanje pageTaba-a, i namesteno da poslednji dodati pageTab bude onaj koji je u fokusu\">\r\n      <created>1607734442483</created>\r\n      <option name=\"number\" value=\"00029\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00029\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607734442483</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"30\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"implementirane metode publishera u cvorovima, svakom zasebno\" />\r\n    <MESSAGE value=\"ubacen notify kod dodavanja dece\" />\r\n    <MESSAGE value=\"ukljucen observer da kad se obrise cvor sa stabla, da se obrise i sa taba\" />\r\n    <MESSAGE value=\"svaki obrisani cvor sa stabla, brise se i sa taba, ali ne radi za projekat\" />\r\n    <MESSAGE value=\"dovrsena komanda za menjanje imena cvorova\" />\r\n    <MESSAGE value=\"observer za brisanje cvorova, koji azurira brisanje na tabovima, ispravno implementiran i premesten u klase u kojima treba da bude, zapoceto kreiranje klasa za crtanje\" />\r\n    <MESSAGE value=\"odradjen error handler, kada nista nije selektovano a korisnik zahteva dodavanje nove dece\" />\r\n    <MESSAGE value=\"napravljeni model i view za grafiku, slabo implementirani\" />\r\n    <MESSAGE value=\"zapoceta akcija deljenja dokumenta, fali dodela doukemnta selektovanom projektu, i rad observera\" />\r\n    <MESSAGE value=\"jedna metoda iz RuTree promakla da se pusuje, evo je sad\" />\r\n    <MESSAGE value=\"popravljena logika za dodavanje i brisanje cvorova, novi cvor ne sme da ima isto ime kao neki vec postojeci cvor\" />\r\n    <MESSAGE value=\"odradjeno deljenje dokumenta delimicno, dokument se pojavljuje u projektu u kom treba, treba ubaciti observer tako da kada se na jednom dokumentu nesto menja, da se menja i na ovom drugom\" />\r\n    <MESSAGE value=\"ubacen error , da dokumenti ne mogu imati ista imena\" />\r\n    <MESSAGE value=\"za sad, najblize resenju deljenju dokumenata, sta se doda na jednom, doda se i ona drugom, ali kada se deljeni dokuemnt selektuje,izbacuje se null pointer exception\" />\r\n    <MESSAGE value=\"update-ovani pagetab-ovi, moze da se crta po svim, samo se deca i dalje dodaju u selektovanim page-ovima\" />\r\n    <MESSAGE value=\"overrajdovana metoda insert zbog deljenja dokumenta, ali i dalje ne radi\" />\r\n    <MESSAGE value=\"premestena klasa Slot, i promenjena njegova uloga\" />\r\n    <MESSAGE value=\"ikonice za state-crtanje stavljene na toolbar i menubar\" />\r\n    <MESSAGE value=\"crtanje pravougaonika sada preko state-a\" />\r\n    <MESSAGE value=\"implementirano crtanje kruga\" />\r\n    <MESSAGE value=\"crtanje radi sada tako da moze na svakom page-u da se crta\" />\r\n    <MESSAGE value=\"ubacen trougao, ostala je samo logika u trianglePainter da se promeni\" />\r\n    <MESSAGE value=\"implementirano crtanje trougla\" />\r\n    <MESSAGE value=\"sitne promene imena odredjenih paketa\" />\r\n    <MESSAGE value=\"popravljena sitna greska za dodavanje pageTaba-a, i namesteno da poslednji dodati pageTab bude onaj koji je u fokusu\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"popravljena sitna greska za dodavanje pageTaba-a, i namesteno da poslednji dodati pageTab bude onaj koji je u fokusu\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"395\" y=\"91\" key=\"#Inspections\" timestamp=\"1607010646829\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"395\" y=\"91\" key=\"#Inspections/0.0.1536.824@0.0.1536.824\" timestamp=\"1607010646829\" />\r\n    <state x=\"223\" y=\"67\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog\" timestamp=\"1606561290393\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"223\" y=\"67\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824\" timestamp=\"1606561290393\" />\r\n    <state x=\"521\" y=\"214\" key=\"#com.intellij.fileTypes.FileTypeChooser\" timestamp=\"1607262795693\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"521\" y=\"214\" key=\"#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824\" timestamp=\"1607262795693\" />\r\n    <state x=\"548\" y=\"117\" key=\"#com.intellij.ide.macro.MacrosDialog\" timestamp=\"1606561058803\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"548\" y=\"117\" key=\"#com.intellij.ide.macro.MacrosDialog/0.0.1536.824@0.0.1536.824\" timestamp=\"1606561058803\" />\r\n    <state x=\"422\" y=\"166\" width=\"388\" height=\"487\" key=\"#com.intellij.ide.util.MemberChooser\" timestamp=\"1607710033977\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"422\" y=\"166\" width=\"388\" height=\"487\" key=\"#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824\" timestamp=\"1607710033977\" />\r\n    <state x=\"449\" y=\"148\" key=\"#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog\" timestamp=\"1607434735586\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"449\" y=\"148\" key=\"#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824\" timestamp=\"1607434735586\" />\r\n    <state x=\"551\" y=\"307\" width=\"448\" height=\"216\" key=\"#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes\" timestamp=\"1607716882185\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"551\" y=\"307\" width=\"448\" height=\"216\" key=\"#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824\" timestamp=\"1607716882185\" />\r\n    <state x=\"499\" y=\"159\" key=\"#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog\" timestamp=\"1607716898025\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"499\" y=\"159\" key=\"#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824\" timestamp=\"1607716898025\" />\r\n    <state x=\"147\" y=\"65\" key=\"DiffContextDialog\" timestamp=\"1606948677844\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"147\" y=\"65\" key=\"DiffContextDialog/0.0.1536.824@0.0.1536.824\" timestamp=\"1606948677844\" />\r\n    <state x=\"549\" y=\"130\" key=\"FileChooserDialogImpl\" timestamp=\"1607713981442\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"549\" y=\"130\" key=\"FileChooserDialogImpl/0.0.1536.824@0.0.1536.824\" timestamp=\"1607713981442\" />\r\n    <state width=\"1493\" height=\"210\" key=\"GridCell.Tab.0.bottom\" timestamp=\"1607800047988\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state width=\"1493\" height=\"210\" key=\"GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824\" timestamp=\"1607800047988\" />\r\n    <state width=\"1493\" height=\"210\" key=\"GridCell.Tab.0.center\" timestamp=\"1607800047988\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state width=\"1493\" height=\"210\" key=\"GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824\" timestamp=\"1607800047988\" />\r\n    <state width=\"1493\" height=\"210\" key=\"GridCell.Tab.0.left\" timestamp=\"1607800047988\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state width=\"1493\" height=\"210\" key=\"GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824\" timestamp=\"1607800047988\" />\r\n    <state width=\"1493\" height=\"210\" key=\"GridCell.Tab.0.right\" timestamp=\"1607800047988\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state width=\"1493\" height=\"210\" key=\"GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824\" timestamp=\"1607800047988\" />\r\n    <state width=\"1493\" height=\"261\" key=\"GridCell.Tab.1.bottom\" timestamp=\"1606561105945\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state width=\"1493\" height=\"261\" key=\"GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824\" timestamp=\"1606561105945\" />\r\n    <state width=\"1493\" height=\"261\" key=\"GridCell.Tab.1.center\" timestamp=\"1606561105945\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state width=\"1493\" height=\"261\" key=\"GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824\" timestamp=\"1606561105945\" />\r\n    <state width=\"1493\" height=\"261\" key=\"GridCell.Tab.1.left\" timestamp=\"1606561105945\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state width=\"1493\" height=\"261\" key=\"GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824\" timestamp=\"1606561105945\" />\r\n    <state width=\"1493\" height=\"261\" key=\"GridCell.Tab.1.right\" timestamp=\"1606561105945\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state width=\"1493\" height=\"261\" key=\"GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824\" timestamp=\"1606561105945\" />\r\n    <state x=\"147\" y=\"65\" key=\"MergeDialog\" timestamp=\"1606948481458\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"147\" y=\"65\" key=\"MergeDialog/0.0.1536.824@0.0.1536.824\" timestamp=\"1606948481458\" />\r\n    <state x=\"439\" y=\"117\" key=\"NewModule_or_Project.wizard\" timestamp=\"1607707113388\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"439\" y=\"117\" key=\"NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824\" timestamp=\"1607707113388\" />\r\n    <state width=\"254\" height=\"198\" key=\"RunAnythingAction_Filter_Popup\" timestamp=\"1607283767587\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state width=\"254\" height=\"198\" key=\"RunAnythingAction_Filter_Popup/0.0.1536.824@0.0.1536.824\" timestamp=\"1607283767587\" />\r\n    <state x=\"249\" y=\"0\" key=\"SettingsEditor\" timestamp=\"1606560842174\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"249\" y=\"0\" key=\"SettingsEditor/0.0.1536.824@0.0.1536.824\" timestamp=\"1606560842174\" />\r\n    <state x=\"361\" y=\"145\" key=\"Vcs.Push.Dialog.v2\" timestamp=\"1607734445708\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"361\" y=\"145\" key=\"Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824\" timestamp=\"1607734445708\" />\r\n    <state x=\"586\" y=\"326\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1606957584362\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"586\" y=\"326\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824\" timestamp=\"1606957584362\" />\r\n    <state x=\"320\" y=\"148\" width=\"895\" height=\"628\" key=\"com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2\" timestamp=\"1607795575812\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"320\" y=\"148\" width=\"895\" height=\"628\" key=\"com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824@0.0.1536.824\" timestamp=\"1607795575812\" />\r\n    <state x=\"478\" y=\"11\" width=\"579\" height=\"801\" key=\"find.popup\" timestamp=\"1607620454148\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"478\" y=\"11\" width=\"579\" height=\"801\" key=\"find.popup/0.0.1536.824@0.0.1536.824\" timestamp=\"1607620454148\" />\r\n    <state x=\"425\" y=\"187\" key=\"run.anything.popup\" timestamp=\"1607283767821\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"425\" y=\"187\" key=\"run.anything.popup/0.0.1536.824@0.0.1536.824\" timestamp=\"1607283767821\" />\r\n    <state x=\"496\" y=\"251\" width=\"672\" height=\"678\" key=\"search.everywhere.popup\" timestamp=\"1607793615217\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"824\" />\r\n    </state>\r\n    <state x=\"496\" y=\"251\" width=\"672\" height=\"678\" key=\"search.everywhere.popup/0.0.1536.824@0.0.1536.824\" timestamp=\"1607793615217\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.ClassCastException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.NullPointerException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision 09cb4614282019e9b2d656695433d1e2ce88d844)
++++ .idea/workspace.xml	(date 1607890582680)
+@@ -19,16 +19,19 @@
+     <select />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="537a82df-9942-46e7-9bc6-7aaa2b061bd2" name="Default Changelist" comment="popravljena sitna greska za dodavanje pageTaba-a, i namesteno da poslednji dodati pageTab bude onaj koji je u fokusu">
++    <list default="true" id="537a82df-9942-46e7-9bc6-7aaa2b061bd2" name="Default Changelist" comment="implementirano deljenje dokumemata">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/model/RuTreeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/model/RuTreeItem.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/Document.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/model/RuTreeItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/model/RuTreeItem.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/DocumentTab.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/DocumentTab.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/PageTab$SlotController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/PageTab$SlotController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/PageTab.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/PageTab.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/PageTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/PageTab.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/SelectState.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/SelectState.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/Page.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/element/SlotHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/element/SlotHandler.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/CircleState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/CircleState.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/RectangleState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/RectangleState.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/TriangleState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/TriangleState.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Document.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Document.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Page.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Page.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/PageModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/PageModel.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/element/RectangleSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/element/RectangleSlot.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -40,6 +43,7 @@
+       <list>
+         <option value="Interface" />
+         <option value="Class" />
++        <option value="Enum" />
+       </list>
+     </option>
+   </component>
+@@ -125,7 +129,9 @@
+       <workItem from="1607726284263" duration="153000" />
+       <workItem from="1607733371140" duration="1089000" />
+       <workItem from="1607790890393" duration="6707000" />
+-      <workItem from="1607799370340" duration="1064000" />
++      <workItem from="1607799370340" duration="2571000" />
++      <workItem from="1607812726052" duration="4100000" />
++      <workItem from="1607890256876" duration="317000" />
+     </task>
+     <task id="LOCAL-00001" summary="promenjena logika za deleteNode, selektovani cvor se zove u klasi RuTreeImplementation">
+       <created>1606561618403</created>
+@@ -330,7 +336,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1607734442483</updated>
+     </task>
+-    <option name="localTasksCounter" value="30" />
++    <task id="LOCAL-00030" summary="implementirano deljenje dokumemata">
++      <created>1607800541365</created>
++      <option name="number" value="00030" />
++      <option name="presentableId" value="LOCAL-00030" />
++      <option name="project" value="LOCAL" />
++      <updated>1607800541365</updated>
++    </task>
++    <option name="localTasksCounter" value="31" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -349,7 +362,6 @@
+     <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+   <component name="VcsManagerConfiguration">
+-    <MESSAGE value="implementirane metode publishera u cvorovima, svakom zasebno" />
+     <MESSAGE value="ubacen notify kod dodavanja dece" />
+     <MESSAGE value="ukljucen observer da kad se obrise cvor sa stabla, da se obrise i sa taba" />
+     <MESSAGE value="svaki obrisani cvor sa stabla, brise se i sa taba, ali ne radi za projekat" />
+@@ -374,7 +386,8 @@
+     <MESSAGE value="implementirano crtanje trougla" />
+     <MESSAGE value="sitne promene imena odredjenih paketa" />
+     <MESSAGE value="popravljena sitna greska za dodavanje pageTaba-a, i namesteno da poslednji dodati pageTab bude onaj koji je u fokusu" />
+-    <option name="LAST_COMMIT_MESSAGE" value="popravljena sitna greska za dodavanje pageTaba-a, i namesteno da poslednji dodati pageTab bude onaj koji je u fokusu" />
++    <MESSAGE value="implementirano deljenje dokumemata" />
++    <option name="LAST_COMMIT_MESSAGE" value="implementirano deljenje dokumemata" />
+   </component>
+   <component name="WindowStateProjectService">
+     <state x="395" y="91" key="#Inspections" timestamp="1607010646829">
+@@ -393,10 +406,10 @@
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+     <state x="548" y="117" key="#com.intellij.ide.macro.MacrosDialog/0.0.1536.824@0.0.1536.824" timestamp="1606561058803" />
+-    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser" timestamp="1607710033977">
++    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser" timestamp="1607814222970">
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+-    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1607710033977" />
++    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1607814222970" />
+     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1607434735586">
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+@@ -417,22 +430,22 @@
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+     <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607713981442" />
+-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1607800047988">
++    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1607801971306">
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607800047988" />
+-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1607800047988">
++    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1607801971306" />
++    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1607801971306">
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607800047988" />
+-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1607800047988">
++    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1607801971306" />
++    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1607801971306">
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607800047988" />
+-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1607800047988">
++    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1607801971306" />
++    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1607801971306">
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607800047988" />
++    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1607801971306" />
+     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1606561105945">
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+@@ -465,10 +478,10 @@
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606560842174" />
+-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1607734445708">
++    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1607800544723">
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>
+-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1607734445708" />
++    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1607800544723" />
+     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606957584362">
+       <screen x="0" y="0" width="1536" height="824" />
+     </state>

@@ -16,6 +16,7 @@ public class Page extends RuNodeComposite {
     private PageTab pageTab;
     List<ISubscriber> subscribers;
     private PageModel pageModel = new PageModel();
+    private Slot selected;
 
 
     public Page(String name, RuNode parent) {
@@ -119,6 +120,15 @@ public class Page extends RuNodeComposite {
         }
         return null;
     }*/
+
+    public Slot getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Slot selected) {
+        this.selected = selected;
+        notifyObs(new Object());
+    }
 
     public RuTreeItem getItem() {
         for (ISubscriber s : subscribers) {

@@ -1,0 +1,39 @@
+<changelist name="Uncommitted_changes_before_Update_at_13-Dec-20_21_16_[Default_Changelist]" date="1607890623442" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13-Dec-20_21_16_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 13-Dec-20 21:16 [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/RectangleState.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/RectangleState.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13-Dec-20_21_16_[Default_Changelist]/RectangleState.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/PageModel.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/PageModel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13-Dec-20_21_16_[Default_Changelist]/PageModel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/element/RectangleSlot.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/element/RectangleSlot.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13-Dec-20_21_16_[Default_Changelist]/RectangleSlot.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Page.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Page.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13-Dec-20_21_16_[Default_Changelist]/Page.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/CircleState.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/CircleState.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13-Dec-20_21_16_[Default_Changelist]/CircleState.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Document.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Document.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13-Dec-20_21_16_[Default_Changelist]/Document.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/TriangleState.class" />
+    <option name="AFTER_PATH" value="out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/TriangleState.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_13-Dec-20_21_16_[Default_Changelist]/TriangleState.class" />
+  </binary>
+</changelist>

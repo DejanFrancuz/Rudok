@@ -29,7 +29,6 @@ public class SelectState extends State{
 
             if(med.getPageModel().getSlotatPosition(position) != null){
                 Slot slotClicked = med.getPageModel().getSlotatPosition(position);
-                med.getPageModel().setSelected(slotClicked);
 
 
 
@@ -54,8 +53,9 @@ public class SelectState extends State{
 
                     slotLastSelected = slotClicked;
                 }
+                med.setSelected(slotClicked);
 
+            }
         }
     }
-}
 }

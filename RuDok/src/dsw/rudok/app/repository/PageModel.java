@@ -15,7 +15,7 @@ public class PageModel implements IPublisher {
 
     protected ArrayList<Slot> slots = new ArrayList<Slot>();
     private List<ISubscriber> subscribers;
-    private Slot selected;
+
 /*
     public SlotModel(String name, ArrayList<SlotDevice> slotDevices) {
         this.name = name;
@@ -108,21 +108,8 @@ public Slot getSlotatPosition(Point point) {
         return slots;
     }
 
-    public Slot getSelected() {
-        return selected;
-    }
 
-    public void setSelected(Slot slotClicked) {
 
-        for(Slot slotTmp : slots){
-            if(slotTmp.equals(slotClicked)){
-
-                this.selected = slotClicked;
-                break;
-            }
-        }
-        notifyObs(null);
-    }
 
 
 }

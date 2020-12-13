@@ -213,6 +213,7 @@ public class PageTab extends JPanel implements ISubscriber {
             getPage().getPageTab().setName(s);
         }else{
             repaint();
+            System.out.println("Crtam");
         }
     }
 
