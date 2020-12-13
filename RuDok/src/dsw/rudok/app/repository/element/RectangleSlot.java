@@ -27,7 +27,7 @@ public class RectangleSlot extends Slot{
     }
 
 
-    public static void changeSlotSelected(Slot novi,Slot stari) {
+    public static void changeSlotSelected(Slot novi,Slot stari){
 
         if(!novi.equals(stari)) {
             novi.setPaint(Color.CYAN);

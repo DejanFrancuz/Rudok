@@ -9,6 +9,7 @@ public class TriangleFactory extends SlotFactory{
 
     @Override
     public Slot create(Point position, int index) {
+
         Slot slot= TriangleSlot.createDefault(position,index);
         return slot;
     }

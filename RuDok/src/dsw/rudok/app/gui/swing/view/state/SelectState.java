@@ -55,7 +55,6 @@ public class SelectState extends State{
                     slotLastSelected = slotClicked;
                 }
 
-
         }
     }
 }

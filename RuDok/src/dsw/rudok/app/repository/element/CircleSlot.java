@@ -30,6 +30,7 @@ public class CircleSlot extends Slot{
 
     public static void changeSlotSelected(Slot novi, Slot stari) {
 
+
         if(!novi.equals(stari)) {
             novi.setPaint(Color.CYAN);
 

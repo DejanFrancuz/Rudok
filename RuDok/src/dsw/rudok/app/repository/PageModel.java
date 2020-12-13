@@ -116,6 +116,7 @@ public Slot getSlotatPosition(Point point) {
 
         for(Slot slotTmp : slots){
             if(slotTmp.equals(slotClicked)){
+
                 this.selected = slotClicked;
                 break;
             }

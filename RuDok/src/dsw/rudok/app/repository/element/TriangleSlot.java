@@ -20,6 +20,7 @@ public class TriangleSlot extends Slot{
         Paint fill = Color.BLACK;
         TriangleSlot triangle= new TriangleSlot(new Dimension(50,50),position,new BasicStroke(),fill,
                 "Triangle " + index);
+
         return triangle;
     }
 

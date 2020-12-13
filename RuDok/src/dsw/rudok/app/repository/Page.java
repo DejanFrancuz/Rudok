@@ -89,6 +89,7 @@ public class Page extends RuNodeComposite {
             return;
 
         for (ISubscriber listener : subscribers) {
+
             listener.update(notif);
         }
     }

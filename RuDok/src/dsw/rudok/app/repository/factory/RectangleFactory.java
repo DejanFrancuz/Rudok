@@ -9,6 +9,7 @@ public class RectangleFactory extends SlotFactory{
 
     @Override
     public Slot create(Point position,int index) {
+
         Slot slot= RectangleSlot.createDefault(position,index);
         return slot;
     }

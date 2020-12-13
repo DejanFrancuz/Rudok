@@ -9,6 +9,7 @@ public class CircleFactory extends SlotFactory{
 
     @Override
     public Slot create(Point position, int index) {
+
         Slot slot= CircleSlot.createDefault(position,index);
         return slot;
     }

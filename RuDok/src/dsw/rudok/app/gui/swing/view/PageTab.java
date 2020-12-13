@@ -129,7 +129,6 @@ public class PageTab extends JPanel implements ISubscriber {
     private class SlotController extends MouseAdapter implements MouseMotionListener{
 
 
-
         public void mousePressed(MouseEvent e) {
             setuj();
             page.getStateManager().getCurrentState().mousePressed(e);
