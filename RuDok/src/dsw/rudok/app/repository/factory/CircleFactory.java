@@ -12,4 +12,9 @@ public class CircleFactory extends SlotFactory{
         Slot slot= CircleSlot.createDefault(position,index);
         return slot;
     }
+
+    @Override
+    public void change(Slot novi,Slot stari) {
+        CircleSlot.changeSlotSelected(novi,stari);
+    }
 }

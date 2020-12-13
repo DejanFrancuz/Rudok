@@ -22,4 +22,14 @@ public class TriangleSlot extends Slot{
                 "Triangle " + index);
         return triangle;
     }
+
+    public static void changeSlotSelected(Slot novi, Slot stari) {
+
+        if(!novi.equals(stari)) {
+            novi.setPaint(Color.CYAN);
+
+            if (stari != null)
+                stari.setPaint(Color.BLACK);
+        }
+    }
 }

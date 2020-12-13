@@ -26,11 +26,14 @@ public class RectangleSlot extends Slot{
         return rectangle;
     }
 
-    public static Slot createSelected(Point position){
 
-        Paint fill = Color.BLUE;
-        RectangleSlot rectangle= new RectangleSlot(new Dimension(100,50),position,new BasicStroke(),fill,
-                "Selected" );
-        return rectangle;
+    public static void changeSlotSelected(Slot novi,Slot stari) {
+
+        if(!novi.equals(stari)) {
+            novi.setPaint(Color.CYAN);
+
+            if (stari != null)
+                stari.setPaint(Color.BLACK);
+        }
     }
 }

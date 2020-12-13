@@ -27,6 +27,16 @@ public class CircleSlot extends Slot{
                 "Circle " + index);
         return circle;
     }
+
+    public static void changeSlotSelected(Slot novi, Slot stari) {
+
+        if(!novi.equals(stari)) {
+            novi.setPaint(Color.CYAN);
+
+            if (stari != null)
+                stari.setPaint(Color.BLACK);
+        }
+    }
 }
 /*Paint fill = Color.WHITE;
 	    CircleElement or=new CircleElement(position,

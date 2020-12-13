@@ -9,5 +9,11 @@ public abstract class SlotFactory {
         Slot slot= create(position,index);
         return slot;
     }
+
+    public void changeSlot(Slot novi,Slot stari){
+        change(novi,stari);
+    }
+
     public abstract Slot create(Point position,int index);
+    public abstract void change(Slot novi,Slot stari);
 }

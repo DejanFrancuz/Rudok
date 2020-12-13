@@ -12,4 +12,11 @@ public class RectangleFactory extends SlotFactory{
         Slot slot= RectangleSlot.createDefault(position,index);
         return slot;
     }
+
+    @Override
+    public void change(Slot novi,Slot stari) {
+        RectangleSlot.changeSlotSelected(novi, stari);
+    }
+
+
 }

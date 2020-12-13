@@ -112,18 +112,16 @@ public Slot getSlotatPosition(Point point) {
         return selected;
     }
 
-    public void setSelected(Slot selected) {
-        this.selected = selected;
-        notify();
-    }
+    public void setSelected(Slot slotClicked) {
 
-    public void postaviSelektovan(Slot slotSelected) {
-
-        for(Slot slot:slots){
-
-            if(slot.equals(slotSelected)){
-                setSelected(slot);
+        for(Slot slotTmp : slots){
+            if(slotTmp.equals(slotClicked)){
+                this.selected = slotClicked;
+                break;
             }
         }
+        notifyObs(null);
     }
+
+
 }

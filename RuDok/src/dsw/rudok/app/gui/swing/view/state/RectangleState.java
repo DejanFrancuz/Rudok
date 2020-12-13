@@ -25,10 +25,8 @@ public class RectangleState extends State{
                 page.getPageModel().addSlots(slot);
                 MainFrame.getInstance().getTree().addSlot(slot,page);
             }
-            else{
-
 
             }
         }
     }
-}
+

@@ -133,15 +133,15 @@ public class PageTab extends JPanel implements ISubscriber {
         public void mousePressed(MouseEvent e) {
             setuj();
             page.getStateManager().getCurrentState().mousePressed(e);
-             int x = e.getXOnScreen();
+            /* int x = e.getXOnScreen();
              int y = e.getYOnScreen();
 
              if(page.getPageModel().getSlotatPosition(new Point(x,y)) != null){
-                 Slot slotSelected = page.getPageModel().getSlotatPosition(new Point(x,y));
+                 Slot slotClicked = page.getPageModel().getSlotatPosition(new Point(x,y));
 
-                 SlotHandler slotHandler = new SlotHandler();
-                 slotHandler.transform(slotSelected,"Selected",new Point(x,y));
-             }
+                 page.getPageModel().setSelected(slotClicked);
+             }*/
+
 
         }
 
@@ -222,6 +222,7 @@ public class PageTab extends JPanel implements ISubscriber {
     }
 
     public void setPage(Page page) {
+
         this.page = page;
     }
 

@@ -43,7 +43,7 @@ public abstract class Slot extends RuNode {
     }
 
 
-
+   // public  abstract void change(Slot slot);
 
     public Stroke getStroke() {
         return stroke;

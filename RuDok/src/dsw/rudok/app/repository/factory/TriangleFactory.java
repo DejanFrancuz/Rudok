@@ -12,4 +12,9 @@ public class TriangleFactory extends SlotFactory{
         Slot slot= TriangleSlot.createDefault(position,index);
         return slot;
     }
+
+    @Override
+    public void change(Slot novi,Slot stari) {
+       TriangleSlot.changeSlotSelected(novi,stari);
+    }
 }
