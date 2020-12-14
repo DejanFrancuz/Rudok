@@ -36,6 +36,7 @@ public class PageTab extends JPanel implements ISubscriber {
         this.page = page;
         this.panCenter = new JPanel();
         this.page.addSubs(this);
+        this.page.getPageModel().addSubs(this);
 
         TitledBorder title = BorderFactory.createTitledBorder(page.toString());
         title.setTitlePosition(4);
@@ -87,6 +88,7 @@ public class PageTab extends JPanel implements ISubscriber {
     public void setuj(){
         MainFrame.getInstance().setjPanel(this);
     }
+
     private class SlotController extends MouseAdapter implements MouseMotionListener{
 
 

@@ -10,6 +10,10 @@ public class StateManager {
     RectangleState rectangleState;
     SelectState selectState;
     TriangleState triangleState;
+    DeleteSlotState deleteSlotState;
+    MoveState moveState;
+    ResizeState resizeState;
+    RotateState rotateState;
 
     public StateManager(Page page)
     {
@@ -18,12 +22,23 @@ public class StateManager {
         rectangleState=new RectangleState(page);
         selectState=new SelectState(page);
         triangleState=new TriangleState(page);
+        deleteSlotState=new DeleteSlotState(page);
+        moveState=new MoveState(page);
+        resizeState=new ResizeState(page);
+        rotateState=new RotateState(page);
+
+
         currentState = selectState;
     }
     public void setTriangleState(){currentState=triangleState; }
     public void setCircleState() { currentState = circleState; }
     public void setRectangleState(){ currentState = rectangleState; }
     public void setSelectState(){ currentState = selectState; }
+    public void setDeleteSlotState(){ currentState = deleteSlotState; }
+    public void setResizeState(){ currentState = resizeState; }
+    public void setRotateState(){ currentState = rotateState; }
+    public void setMoveState(){ currentState = moveState; }
+
     public State getCurrentState() {
         return currentState;
     }

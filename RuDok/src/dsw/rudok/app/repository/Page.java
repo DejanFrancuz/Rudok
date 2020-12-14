@@ -43,6 +43,10 @@ public class Page extends RuNodeComposite {
         stateManager.setRectangleState();
     }
     public void startCircleState(){stateManager.setCircleState();}
+    public void startResizeState(){stateManager.setResizeState();}
+    public void startMoveState(){stateManager.setMoveState();}
+    public void startRotateState(){stateManager.setRotateState();}
+    public void startDeleteSlotState(){stateManager.setDeleteSlotState();}
     public StateManager getStateManager() {
         return stateManager;
     }
@@ -127,7 +131,7 @@ public class Page extends RuNodeComposite {
 
     public void setSelected(Slot selected) {
         this.selected = selected;
-        notifyObs(new Object());
+        notifyObs(selected);
     }
 
     public RuTreeItem getItem() {
