@@ -17,7 +17,7 @@ public class TrianglePainter extends SlotPainter{
 
         ((GeneralPath)shape).lineTo(triangle.getPosition().getX()+triangle.getSize().width,triangle.getPosition().getY());
 
-        ((GeneralPath)shape).lineTo(triangle.getPosition().getX()+triangle.getSize().width / 2,triangle.getPosition().getY()-triangle.getSize().height );
+        ((GeneralPath)shape).lineTo(triangle.getPosition().getX()+triangle.getSize().width / 2,triangle.getPosition().getY()+triangle.getSize().height );
 
        // ((GeneralPath)shape).lineTo(triangle.getPosition().getX(),triangle.getPosition().getY()+triangle.getSize().height);
 
