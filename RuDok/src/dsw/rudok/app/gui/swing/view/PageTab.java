@@ -36,7 +36,7 @@ public class PageTab extends JPanel implements ISubscriber {
         this.page = page;
         this.panCenter = new JPanel();
         this.page.addSubs(this);
-        this.page.getPageModel().addSubs(this);
+       // this.page.getSelected().addSubs(this);
 
         TitledBorder title = BorderFactory.createTitledBorder(page.toString());
         title.setTitlePosition(4);

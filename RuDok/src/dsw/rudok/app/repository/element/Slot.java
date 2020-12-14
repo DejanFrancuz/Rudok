@@ -3,6 +3,7 @@ package dsw.rudok.app.repository.element;
 import dsw.rudok.app.gui.swing.view.painters.ElementPainter;
 import dsw.rudok.app.gui.swing.view.painters.SlotPainter;
 import dsw.rudok.app.gui.swing.view.state.StateManager;
+import dsw.rudok.app.observer.IPublisher;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.node.RuNode;
 
@@ -11,7 +12,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Slot extends RuNode {
+public abstract class Slot extends RuNode implements IPublisher{
 
 
     public Stroke stroke;
@@ -75,6 +76,7 @@ public abstract class Slot extends RuNode {
 
     public void setPosition(Point2D position) {
         this.position = position;
+        notifyObs(position);
     }
 
     @Override
