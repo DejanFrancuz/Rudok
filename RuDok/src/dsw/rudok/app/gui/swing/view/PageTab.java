@@ -134,7 +134,7 @@ public class PageTab extends JPanel implements ISubscriber {
         g2.fill(new Rectangle2D.Double(position.getX()-size/2, position.getY()-size/2,
                 size, size));
     }
-    private Point2D getHandlePoint(Point2D topLeft, Dimension2D size, Handle handlePosition ){
+    public Point2D getHandlePoint(Point2D topLeft, Dimension2D size, Handle handlePosition ){
         double x=0, y=0;
 
         // Doređivanje y koordinate
@@ -169,6 +169,33 @@ public class PageTab extends JPanel implements ISubscriber {
 
         return new Point2D.Double(x,y);
 
+    }
+    private boolean isPointInHandle(Slot element, Point2D point, Handle handle){
+        if (element instanceof Slot){
+            Slot device=(Slot)element;
+            Point2D handleCenter = getHandlePoint(device.getPosition(), device.getSize(), handle);
+            return ( (Math.abs(point.getX()-handleCenter.getX())<=(double)handleSize/2) &&
+                    (Math.abs(point.getY()-handleCenter.getY())<=(double)handleSize/2) );
+        }else
+            return false;
+    }
+    private Handle getHandleForPoint(Slot slot, Point2D point){
+        for(Handle h: Handle.values()){
+            if(isPointInHandle(slot, point, h)){
+                return h;
+            }
+        }
+        return null;
+    }
+    public Handle getDeviceAndHandleForPoint(Point2D point){
+        Slot slot;
+
+        Iterator<Slot> it = page.getPageModel().getSlotIterator();
+        while(it.hasNext()){
+            slot = it.next();
+            return getHandleForPoint(slot, point);
+        }
+        return null;
     }
 
     @Override

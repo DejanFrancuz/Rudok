@@ -14,6 +14,10 @@ public class ActionManager {
 	private RectangleAction rectangleAction;
 	private TriangleAction triangleAction;
 	private SelectAction selectAction;
+	private MoveAction moveAction;
+	private ResizeAction resizeAction;
+	private RotateAction rotateAction;
+	private DeleteSlotAction deleteSlotAction;
 	
 	public ActionManager() {
 		initialiseActions();
@@ -31,6 +35,42 @@ public class ActionManager {
 		rectangleAction=new RectangleAction();
 		triangleAction=new TriangleAction();
 		selectAction=new SelectAction();
+		moveAction = new MoveAction();
+		resizeAction=new ResizeAction();
+		rotateAction=new RotateAction();
+		deleteSlotAction=new DeleteSlotAction();
+	}
+
+	public MoveAction getMoveAction() {
+		return moveAction;
+	}
+
+	public void setMoveAction(MoveAction moveAction) {
+		this.moveAction = moveAction;
+	}
+
+	public ResizeAction getResizeAction() {
+		return resizeAction;
+	}
+
+	public void setResizeAction(ResizeAction resizeAction) {
+		this.resizeAction = resizeAction;
+	}
+
+	public RotateAction getRotateAction() {
+		return rotateAction;
+	}
+
+	public void setRotateAction(RotateAction rotateAction) {
+		this.rotateAction = rotateAction;
+	}
+
+	public DeleteSlotAction getDeleteSlotAction() {
+		return deleteSlotAction;
+	}
+
+	public void setDeleteSlotAction(DeleteSlotAction deleteSlotAction) {
+		this.deleteSlotAction = deleteSlotAction;
 	}
 
 	public RectangleAction getRectangleAction() {

@@ -12,6 +12,7 @@ import java.util.List;
 public class PageModel implements IPublisher {
     private String name;
     private static int count=0;
+    private Slot selectedSlot;
 
     protected ArrayList<Slot> slots = new ArrayList<Slot>();
     private List<ISubscriber> subscribers;
@@ -70,6 +71,13 @@ public Slot getSlotatPosition(Point point) {
         return slots.size();
     }
 
+    public Slot getSelectedSlot() {
+        return selectedSlot;
+    }
+
+    public void setSelectedSlot(Slot selectedSlot) {
+        this.selectedSlot = selectedSlot;
+    }
 
     public void addSlots(Slot slot){
 
