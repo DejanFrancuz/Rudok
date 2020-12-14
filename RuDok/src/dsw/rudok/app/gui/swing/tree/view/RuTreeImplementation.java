@@ -172,6 +172,7 @@ public class RuTreeImplementation implements RuTree, IPublisher {
             children.remove(index);
             parent.removeChild(index);
             itemm.removeAllChildren();
+            itemm.removeFromParent();
             index=-1;
         }
         treeView.setSelectionPath(null);
@@ -196,16 +197,9 @@ public class RuTreeImplementation implements RuTree, IPublisher {
 
             Project selectedProject = (Project) JOptionPane.showInputDialog(frame, "Select project", "Select document", JOptionPane.QUESTION_MESSAGE, null, projects.toArray(), projects.toArray()[0]);
             if(selectedProject==null)return;
-            RuTreeItem i=new RuTreeItem(d);
-            /*System.out.println(i.toString());
-            System.out.println(selectedProject.toString());*/
             selectedProject.getItem().insert(d.getItem(),selectedProject.getChildren().size());
-            /*selectedProject.shareDocument(i);*/
             selectedProject.addChild(d);
             SwingUtilities.updateComponentTreeUI(treeView);
-
-            //notifyObs(selectedProject);
-            //System.out.println(selectedProject);
         }
     }
 
