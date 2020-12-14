@@ -14,6 +14,7 @@ public class MoveState extends State{
 
 
     public void mousePressed(MouseEvent e) {
+
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
 

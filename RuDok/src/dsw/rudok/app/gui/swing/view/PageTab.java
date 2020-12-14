@@ -86,6 +86,7 @@ public class PageTab extends JPanel implements ISubscriber {
 
 
     public void setuj(){
+
         MainFrame.getInstance().setjPanel(this);
     }
 

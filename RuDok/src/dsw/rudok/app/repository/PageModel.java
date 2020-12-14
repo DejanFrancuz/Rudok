@@ -113,6 +113,7 @@ public Slot getSlotatPosition(Point point) {
             return;
 
         for(ISubscriber listener : subscribers){
+
             listener.update(notif);
         }
     }
