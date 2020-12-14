@@ -14,8 +14,5 @@ public class CircleFactory extends SlotFactory{
         return slot;
     }
 
-    @Override
-    public void change(Slot novi,Slot stari) {
-        CircleSlot.changeSlotSelected(novi,stari);
-    }
+
 }

@@ -14,10 +14,6 @@ public class RectangleFactory extends SlotFactory{
         return slot;
     }
 
-    @Override
-    public void change(Slot novi,Slot stari) {
-        RectangleSlot.changeSlotSelected(novi, stari);
-    }
 
 
 }

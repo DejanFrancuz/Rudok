@@ -14,8 +14,4 @@ public class TriangleFactory extends SlotFactory{
         return slot;
     }
 
-    @Override
-    public void change(Slot novi,Slot stari) {
-       TriangleSlot.changeSlotSelected(novi,stari);
-    }
 }
