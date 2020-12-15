@@ -29,7 +29,6 @@ public class MoveState extends State{
         Point position=e.getPoint();
         Slot slot=page.getSelected();
         handler.transform(slot,null, TransformType.MOVE,position);
-        page.setSelected(slot);
     }
     public void mouseReleased(MouseEvent e){
 
