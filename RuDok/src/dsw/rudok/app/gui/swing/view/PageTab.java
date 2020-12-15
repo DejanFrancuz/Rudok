@@ -36,7 +36,7 @@ public class PageTab extends JPanel implements ISubscriber {
         this.page = page;
         this.panCenter = new JPanel();
         this.page.addSubs(this);
-       // this.page.getSelected().addSubs(this);
+        this.page.getPageModel().addSubs(this);
 
         TitledBorder title = BorderFactory.createTitledBorder(page.toString());
         title.setTitlePosition(4);
@@ -200,7 +200,28 @@ public class PageTab extends JPanel implements ISubscriber {
         }
         return null;
     }
+    public void setMouseCursor(Point2D point){
 
+        Handle handle = getDeviceAndHandleForPoint(point);
+        System.out.println("Nisam ovde puko!");
+        if(handle != null){
+            Cursor cursor = null;
+
+            switch(handle){
+                case North: cursor = Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR);break;
+                case South: cursor = Cursor.getPredefinedCursor(Cursor.S_RESIZE_CURSOR);break;
+                case East: cursor = Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR);break;
+                case West: cursor = Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR);break;
+                case SouthEast: cursor = Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR);break;
+                case NorthWest: cursor = Cursor.getPredefinedCursor(Cursor.NW_RESIZE_CURSOR);break;
+                case SouthWest: cursor = Cursor.getPredefinedCursor(Cursor.SW_RESIZE_CURSOR);break;
+                case NorthEast: cursor = Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR);break;
+            }
+            this.setCursor(cursor);
+        }
+        else
+            this.setCursor(Cursor.getDefaultCursor());
+    }
     @Override
     public void update(Object notif) {
         if(notif instanceof Integer){
