@@ -20,7 +20,8 @@ public class SlotHandler {
                     stari.getSlotPainter().setPaint(Color.BLACK);
             }
         }else if(type == TransformType.MOVE){
-          //  novi.setPosition(position);
+            novi.setPosition(position);
+
         }
     }
 
