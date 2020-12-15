@@ -37,6 +37,8 @@ public class SlotHandler {
             ((PageTab)MainFrame.getInstance().getjPanel()).getPage().getPageModel().setSelectedSlot(slot);
             //transform(slot,((PageTab)MainFrame.getInstance().getjPanel()).getPage().getStateManager().getSelectState().getSlotLastSelected(),TransformType.SELECT,position);
             slot.getSlotPainter().setPaint(Color.CYAN);
+            ((PageTab)MainFrame.getInstance().getjPanel()).getPage().getStateManager().getSelectState().setSlotLastSelected(slot);
+
 
 
 
