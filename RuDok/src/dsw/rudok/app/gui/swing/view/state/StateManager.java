@@ -39,6 +39,38 @@ public class StateManager {
     public void setRotateState(){ currentState = rotateState; }
     public void setMoveState(){ currentState = moveState; }
 
+    public CircleState getCircleState() {
+        return circleState;
+    }
+
+    public RectangleState getRectangleState() {
+        return rectangleState;
+    }
+
+    public SelectState getSelectState() {
+        return selectState;
+    }
+
+    public TriangleState getTriangleState() {
+        return triangleState;
+    }
+
+    public DeleteSlotState getDeleteSlotState() {
+        return deleteSlotState;
+    }
+
+    public MoveState getMoveState() {
+        return moveState;
+    }
+
+    public ResizeState getResizeState() {
+        return resizeState;
+    }
+
+    public RotateState getRotateState() {
+        return rotateState;
+    }
+
     public State getCurrentState() {
         return currentState;
     }

@@ -39,4 +39,12 @@ public class SelectState extends State{
 
         }
     }
+
+    public Slot getSlotLastSelected() {
+        return slotLastSelected;
+    }
+
+    public void setSlotLastSelected(Slot slotLastSelected) {
+        this.slotLastSelected = slotLastSelected;
+    }
 }
