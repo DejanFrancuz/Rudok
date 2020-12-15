@@ -12,8 +12,8 @@ public class CircleSlot extends Slot{
 
 
 
-    public CircleSlot( Dimension size, Point2D position,Stroke stroke, Paint paint,String name) {
-        super(size,position,stroke,paint,name);
+    public CircleSlot( Dimension size, Point2D position,String name) {
+        super(size,position,name);
         slotPainter = new CirclePainter(this);
     }
 
@@ -23,7 +23,7 @@ public class CircleSlot extends Slot{
 
     public static Slot createDefault(Point position, int index){
         Paint fill = Color.BLACK;
-        CircleSlot circle= new CircleSlot(new Dimension(50,50),position,new BasicStroke(),fill,
+        CircleSlot circle= new CircleSlot(new Dimension(50,50),position,
                 "Circle " + index);
         return circle;
     }
@@ -32,10 +32,10 @@ public class CircleSlot extends Slot{
 
 
         if(!novi.equals(stari)) {
-            novi.setPaint(Color.CYAN);
+            novi.getSlotPainter().setPaint(Color.CYAN);
 
             if (stari != null)
-                stari.setPaint(Color.BLACK);
+                stari.getSlotPainter().setPaint(Color.BLACK);
         }
     }
 }

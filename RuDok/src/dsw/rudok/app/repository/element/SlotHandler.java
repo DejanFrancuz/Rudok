@@ -14,13 +14,13 @@ public class SlotHandler {
         if (type == TransformType.SELECT) {
 
             if (!novi.equals(stari)) {
-                novi.setPaint(Color.CYAN);
+                novi.getSlotPainter().setPaint(Color.CYAN);
 
                 if (stari != null)
-                    stari.setPaint(Color.BLACK);
+                    stari.getSlotPainter().setPaint(Color.BLACK);
             }
         }else if(type == TransformType.MOVE){
-            novi.setPosition(position);
+          //  novi.setPosition(position);
         }
     }
 

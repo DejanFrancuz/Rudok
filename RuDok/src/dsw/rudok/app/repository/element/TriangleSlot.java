@@ -12,13 +12,13 @@ public class TriangleSlot extends Slot{
         super(name, parent);
     }
 
-    public TriangleSlot(Dimension size, Point2D position, Stroke stroke, Paint paint, String name) {
-        super(size, position, stroke, paint, name);
+    public TriangleSlot(Dimension size, Point2D position, String name) {
+        super(size, position, name);
         slotPainter=new TrianglePainter(this);
     }
     public static Slot createDefault(Point position,int index){
         Paint fill = Color.BLACK;
-        TriangleSlot triangle= new TriangleSlot(new Dimension(50,50),position,new BasicStroke(),fill,
+        TriangleSlot triangle= new TriangleSlot(new Dimension(50,50),position,
                 "Triangle " + index);
 
         return triangle;
@@ -27,10 +27,10 @@ public class TriangleSlot extends Slot{
     public static void changeSlotSelected(Slot novi, Slot stari) {
 
         if(!novi.equals(stari)) {
-            novi.setPaint(Color.CYAN);
+            novi.getSlotPainter().setPaint(Color.CYAN);
 
             if (stari != null)
-                stari.setPaint(Color.BLACK);
+                stari.getSlotPainter().setPaint(Color.BLACK);
         }
     }
 }

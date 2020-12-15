@@ -7,17 +7,19 @@ import java.awt.*;
 
 public class SlotPainter extends  ElementPainter{
     protected Shape shape;
+    protected Stroke stroke = new BasicStroke();
+    protected Paint paint = Color.BLACK;
 
     public SlotPainter(Slot device) {
         super(device);
     }
     public void paint(Graphics2D g, Slot element){
 
-        g.setPaint(Color.MAGENTA);
+        g.setPaint(paint);
 
-        g.setStroke(element.getStroke());
+        g.setStroke(stroke);
         g.draw(getShape());
-        g.setPaint(element.getPaint());
+
 
         g.fill(getShape());
 
@@ -44,5 +46,21 @@ public class SlotPainter extends  ElementPainter{
 
     public void setShape(Shape shape) {
         this.shape = shape;
+    }
+
+    public Stroke getStroke() {
+        return stroke;
+    }
+
+    public void setStroke(Stroke stroke) {
+        this.stroke = stroke;
+    }
+
+    public Paint getPaint() {
+        return paint;
+    }
+
+    public void setPaint(Paint paint) {
+        this.paint = paint;
     }
 }

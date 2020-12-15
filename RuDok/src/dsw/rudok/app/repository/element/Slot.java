@@ -15,13 +15,12 @@ import java.util.List;
 public abstract class Slot extends RuNode implements IPublisher{
 
 
-    public Stroke stroke;
-    public Paint paint;
+
     public Dimension size;
     public Point2D position;
     public String name;
 
-    public ElementPainter elementPainter;
+
     public SlotPainter slotPainter;
 
     public Slot(String name, RuNode parent) {
@@ -29,12 +28,10 @@ public abstract class Slot extends RuNode implements IPublisher{
     }
     List<ISubscriber> subscribers;
 
-    public Slot(Dimension size, Point2D position, Stroke stroke, Paint paint,String name) {
+    public Slot(Dimension size, Point2D position,String name) {
         super(name);
 
 
-        this.stroke = stroke;
-        this.paint = paint;
         this.size = size;
         this.position = position;
         this.name = name;
@@ -46,21 +43,7 @@ public abstract class Slot extends RuNode implements IPublisher{
 
 
 
-    public Stroke getStroke() {
-        return stroke;
-    }
 
-    public void setStroke(Stroke stroke) {
-        this.stroke = stroke;
-    }
-
-    public Paint getPaint() {
-        return paint;
-    }
-
-    public void setPaint(Paint paint) {
-        this.paint = paint;
-    }
 
     public Dimension getSize() {
         return size;
@@ -89,9 +72,7 @@ public abstract class Slot extends RuNode implements IPublisher{
         this.name = name;
     }
 
-    public ElementPainter getElementPainter() {
-        return elementPainter;
-    }
+
 
     public SlotPainter getSlotPainter() {
         return slotPainter;
@@ -101,9 +82,6 @@ public abstract class Slot extends RuNode implements IPublisher{
         this.slotPainter = slotPainter;
     }
 
-    public void setElementPainter(ElementPainter elementPainter) {
-        this.elementPainter = elementPainter;
-    }
 
    /* public void setStateManager(StateManager stateManager) {
         this.stateManager = stateManager;
