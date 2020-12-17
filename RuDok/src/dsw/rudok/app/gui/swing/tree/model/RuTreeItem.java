@@ -112,11 +112,6 @@ public class RuTreeItem extends DefaultMutableTreeNode{
             this.nodeModel.setName(name);
         }
     }
-/*    @Override
-    public void setParent(MutableTreeNode newParent) {
-        parents.add(newParent);
-        //parent = newParent;
-    }*/
 
     public String getName() {
         return name;

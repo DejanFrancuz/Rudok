@@ -86,7 +86,6 @@ public Slot getSlotatPosition(Point point) {
     }
     public void removeSlots(Slot slot){
     slots.remove(slot);
-    System.out.println(slot.toString());
     notifyObs(slot);
     }
     @Override

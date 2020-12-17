@@ -13,9 +13,9 @@ import java.awt.geom.Point2D;
 
 public class SlotHandler {
 
-    public void transform(Slot novi, Slot stari, TransformType type, Point2D position) {
+    public void transform(Slot novi, Object s, TransformType type, Point2D position) {
         if (type == TransformType.SELECT) {
-
+            Slot stari=(Slot)s;
             if (!novi.equals(stari)) {
                 novi.getSlotPainter().setPaint(Color.CYAN);
 
@@ -24,8 +24,9 @@ public class SlotHandler {
             }
         }else if(type == TransformType.MOVE){
             //novi.setPosition(position);
+           Page p=(Page)s;
+
             Slot slot=null;
-            ((PageTab)MainFrame.getInstance().getjPanel()).getPage().getPageModel().removeSlots(novi);
             if(novi instanceof RectangleSlot){
                 slot=new RectangleSlot(novi.getSize(),position,novi.getName());
             }else if(novi instanceof CircleSlot){
@@ -33,12 +34,12 @@ public class SlotHandler {
             }else if(novi instanceof TriangleSlot){
                 slot=new TriangleSlot(novi.getSize(),position,novi.getName());
             }
-            ((PageTab)MainFrame.getInstance().getjPanel()).getPage().getPageModel().addSlots(slot);
-            ((PageTab)MainFrame.getInstance().getjPanel()).getPage().getPageModel().setSelectedSlot(slot);
-            //transform(slot,((PageTab)MainFrame.getInstance().getjPanel()).getPage().getStateManager().getSelectState().getSlotLastSelected(),TransformType.SELECT,position);
-            slot.getSlotPainter().setPaint(Color.CYAN);
-            ((PageTab)MainFrame.getInstance().getjPanel()).getPage().getStateManager().getSelectState().setSlotLastSelected(slot);
 
+            p.getPageModel().removeSlots(novi);
+            p.getPageModel().addSlots(slot);
+            p.getPageModel().setSelectedSlot(slot);
+            slot.getSlotPainter().setPaint(Color.CYAN);
+            p.getStateManager().getSelectState().setSlotLastSelected(slot);
 
 
 
