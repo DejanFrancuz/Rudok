@@ -15,6 +15,7 @@ public class Document extends RuNodeComposite {
 
     private DocumentTab documentTab;
     List<ISubscriber> subscribers;
+    List<Document> shared=new ArrayList<>();
 
     public Document(String name, RuNode parent) {
 
@@ -45,6 +46,13 @@ public class Document extends RuNodeComposite {
         this.documentTab = documentTab;
     }
 
+    public List<Document> getShared() {
+        return shared;
+    }
+
+    public void setShared(List<Document> shared) {
+        this.shared = shared;
+    }
 
     @Override
     public void addSubs(ISubscriber sub) {
@@ -72,18 +80,6 @@ public class Document extends RuNodeComposite {
         for(ISubscriber listener : subscribers){
             listener.update(notif);
         }
-    }
-    public RuTreeItem getItem() {
-        for (ISubscriber s : subscribers) {
-
-            if (s instanceof RuTreeItem) {
-                RuTreeItem r = (RuTreeItem) s;
-
-                return r;
-            }
-
-        }
-        return null;
     }
 
 }

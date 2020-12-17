@@ -1,6 +1,7 @@
 package dsw.rudok.app.gui.swing.tree.view;
 
 import dsw.rudok.app.AppCore;
+import dsw.rudok.app.core.Repository;
 import dsw.rudok.app.errorHandler.ErrorType;
 import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
@@ -15,8 +16,10 @@ import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
+import javax.print.Doc;
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -138,19 +141,17 @@ public class RuTreeImplementation implements RuTree, IPublisher {
      }
     @Override
     public void addSlot(Slot slot,Page page){
-        RuTreeItem item= page.getItem();
-            item.add(new RuTreeItem(slot));
+        Document d=(Document) page.getParent();
+        Project p=(Project)d.getParent();
+        int indexD=p.getChildren().indexOf(d);
+        RuTreeItem projI=getProjectItem(p);
+        RuTreeItem docItem=(RuTreeItem) projI.findChildByIndex(indexD);
+        int indexP= d.getChildren().indexOf(page);
+        RuTreeItem pageItem=(RuTreeItem) docItem.findChildByIndex(indexP);
+            pageItem.add(new RuTreeItem(slot));
             page.addChild(slot);
             SwingUtilities.updateComponentTreeUI(treeView);
     }
-
-    /*@Override
-    public void addSlot(CircleSlot circle,Page page) {
-        RuTreeItem item= page.getItem();
-        item.add(new RuTreeItem(circle));
-        page.addChild(circle);
-        SwingUtilities.updateComponentTreeUI(treeView);
-    }*/
 
     @Override
     public void removeNode(){
@@ -158,25 +159,55 @@ public class RuTreeImplementation implements RuTree, IPublisher {
             AppCore.getInstance().getErrorHandler().generateError(ErrorType.NOTHING_SELECTED);
             return;
         }
+        Workspace w = (Workspace) ((RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel();
         RuTreeItem itemm= (RuTreeItem) treeView.getLastSelectedPathComponent();
         RuNode node=itemm.getNodeModel();
         int index=-1;
         if(!(node instanceof Workspace)&& node!=null) {
-            RuNodeComposite parent = (RuNodeComposite) node.getParent();
-            ArrayList<RuNode> children = (ArrayList<RuNode>) parent.getChildren();
-            for (RuNode ruNode : children) {
-                if (ruNode.equals(node)) {
-                    index = children.indexOf(node);
+            remove(node,itemm);
+        }
+        if(node instanceof Document){
+
+            Document d=(Document)node;
+            if (d.getShared().contains(d)){
+                List<RuNode> projects= w.getChildren();
+                List<RuNodeComposite> projectsComposite=new ArrayList<>();
+                for(RuNode nodee: projects){
+                    RuNodeComposite com=(RuNodeComposite) nodee;
+                    projectsComposite.add(com);
+                }
+
+                for(RuNodeComposite project: projectsComposite){
+                    if(project.getChildren().contains(node)){
+                        Project p=(Project)project;
+                        itemm.removeFromParent();
+                        int indexx=p.getChildren().indexOf(node);
+                        p.getChildren().remove(node);
+                        p.removeChild(indexx);
+                        d.getShared().remove(d);
+
+
+                    }
                 }
             }
-            children.remove(index);
-            parent.removeChild(index);
-            itemm.removeAllChildren();
-            itemm.removeFromParent();
-            index=-1;
         }
         treeView.setSelectionPath(null);
         SwingUtilities.updateComponentTreeUI(treeView);
+    }
+    public void remove(RuNode node,RuTreeItem item){
+        int index=-1;
+        RuNodeComposite parent = (RuNodeComposite) node.getParent();
+        ArrayList<RuNode> children = (ArrayList<RuNode>) parent.getChildren();
+        for (RuNode ruNode : children) {
+            if (ruNode.equals(node)) {
+                index = children.indexOf(node);
+            }
+        }
+        children.remove(index);
+        parent.removeChild(index);
+        item.removeAllChildren();
+        item.removeFromParent();
+        index=-1;
     }
 
     @Override
@@ -197,11 +228,22 @@ public class RuTreeImplementation implements RuTree, IPublisher {
 
             Project selectedProject = (Project) JOptionPane.showInputDialog(frame, "Select project", "Select document", JOptionPane.QUESTION_MESSAGE, null, projects.toArray(), projects.toArray()[0]);
             if(selectedProject==null)return;
-            selectedProject.getItem().insert(d.getItem(),selectedProject.getChildren().size());
+            RuTreeItem ii=getProjectItem(selectedProject);
+            if(!d.getShared().contains(d)) {
+                d.getShared().add(d);
+            }
+            ii.insert(item,selectedProject.getChildren().size());
             selectedProject.addChild(d);
             SwingUtilities.updateComponentTreeUI(treeView);
         }
     }
+    public RuTreeItem getProjectItem(Project project){
+        RuTreeItem item = (RuTreeItem) treeModel.getRoot();
+        Workspace w = (Workspace) ((RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel();
+        int index=w.getChildren().indexOf(project);
+        return (RuTreeItem) item.findChildByIndex(index);
+    }
+
 
 
     @Override

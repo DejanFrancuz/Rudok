@@ -113,17 +113,6 @@ public class Page extends RuNodeComposite {
     }
 
 
-  /*  public RuTreeItem getItem(){
-        for(ISubscriber s: subscribers){
-            System.out.println(s.toString());
-
-            if(s instanceof RuTreeItem){
-                RuTreeItem r=(RuTreeItem)s;
-                return r;
-            }
-        }
-        return null;
-    }*/
 
     public Slot getSelected() {
         return selected;
@@ -134,17 +123,5 @@ public class Page extends RuNodeComposite {
         notifyObs(selected);
     }
 
-    public RuTreeItem getItem() {
-        for (ISubscriber s : subscribers) {
-
-            if (s instanceof RuTreeItem) {
-                RuTreeItem r = (RuTreeItem) s;
-
-                return r;
-            }
-
-        }
-        return null;
-    }
 
 }

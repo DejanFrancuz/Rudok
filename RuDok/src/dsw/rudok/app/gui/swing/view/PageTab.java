@@ -173,6 +173,10 @@ public class PageTab extends JPanel implements ISubscriber {
         return new Point2D.Double(x,y);
 
     }
+    public Handle biloSta(Point2D point){
+
+        return null;
+    }
     private boolean isPointInHandle(Slot element, Point2D point, Handle handle){
         if (element instanceof Slot){
             Slot device=(Slot)element;
@@ -202,8 +206,8 @@ public class PageTab extends JPanel implements ISubscriber {
     }
     public void setMouseCursor(Point2D point){
 
-        Handle handle = getDeviceAndHandleForPoint(point);
         System.out.println("Nisam ovde puko!");
+        Handle handle = getDeviceAndHandleForPoint(point);
         if(handle != null){
             Cursor cursor = null;
 

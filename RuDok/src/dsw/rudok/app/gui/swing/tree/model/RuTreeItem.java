@@ -21,7 +21,7 @@ import java.io.Serializable;
 import java.util.*;
 import java.util.concurrent.Flow;
 
-public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
+public class RuTreeItem extends DefaultMutableTreeNode{
 
     private String name;
     private RuNode nodeModel;
@@ -32,13 +32,11 @@ public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
     public RuTreeItem(RuNode nodeModel){
         this.nodeModel=nodeModel;
         this.name=nodeModel.getName();
-        nodeModel.addSubs(this);
     }
     public RuTreeItem(RuNode ruNode,String name){
         this.name=name;
         this.nodeModel=ruNode;
         parents=new ArrayList<>();
-        nodeModel.addSubs(this);
     }
     @Override
     public int getIndex(TreeNode node){
@@ -82,10 +80,10 @@ public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
         }
         return false;
     }
-    private TreeNode findChildByIndex(int childIndex){
+
+    public TreeNode findChildByIndex(int childIndex){
         if(nodeModel instanceof RuNodeComposite){
             RuTreeItem toLookFor = new RuTreeItem(((RuNodeComposite)nodeModel).getChildren().get(childIndex));
-//            if(!children.iterator().hasNext())return null;
             Iterator childrenIterator = children.iterator();
             TreeNode current;
 
@@ -154,17 +152,4 @@ public class RuTreeItem extends DefaultMutableTreeNode implements ISubscriber {
         children.insertElementAt(newChild,childIndex);
     }
 
-    @Override
-    public void update(Object notif) {
-        /*if(notif instanceof RuTreeItem){
-            RuTreeItem item=(RuTreeItem)notif;
-            this.insert(item,this.getChildCount());
-
-            //this.add(item);
-
-            *//*Project p=(Project) this.getNodeModel();
-            Document d=(Document) item.getNodeModel();
-            p.addChild(d);*//*
-        }*/
-    }
 }

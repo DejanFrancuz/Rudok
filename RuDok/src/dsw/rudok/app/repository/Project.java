@@ -33,20 +33,7 @@ public class Project extends RuNodeComposite {
         }
 
     }
-    public RuTreeItem getItem(){
-        for(ISubscriber s: subscribers){
-            System.out.println(s.toString());
 
-            if(s instanceof RuTreeItem){
-                RuTreeItem r=(RuTreeItem)s;
-                return r;
-            }
-        }
-        return null;
-    }
-    public void shareDocument(RuTreeItem item){
-        notifyObs(item);
-    }
     @Override
     public void removeChild(int index) {
         notifyObs(index);

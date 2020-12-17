@@ -83,26 +83,6 @@ public abstract class Slot extends RuNode implements IPublisher{
     }
 
 
-   /* public void setStateManager(StateManager stateManager) {
-        this.stateManager = stateManager;
-    }
-
-    private StateManager stateManager=new StateManager(this);
-
-    public void startCircleState() {
-        stateManager.setCircleState();
-    }
-
-    public void startSelectState() {
-        stateManager.setSelectState();
-    }
-    public void startRectangleState(){
-        stateManager.setRectangleState();
-    }
-    public StateManager getStateManager() {
-        return stateManager;
-    }*/
-
     @Override
     public void addSubs(ISubscriber sub) {
         if(sub == null)
