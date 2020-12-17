@@ -14,7 +14,7 @@ import java.util.Iterator;
 public class ResizeState extends State{
     private Page page;
     int p=-1;
-    static final int handleSize = 7;
+    static final int handleSize = 14;
     public ResizeState(Page page) {
         this.page = page;
     }
