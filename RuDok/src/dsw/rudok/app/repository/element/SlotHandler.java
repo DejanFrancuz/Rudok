@@ -131,19 +131,31 @@ public class SlotHandler {
                         d=new Dimension((int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getPosition().getX(),novi.getPosition().getY(),position.getX(),position.getY()),(int)novi.getSize().getHeight());
                     break;
                         case North:
-                            d=new Dimension();
+                            d=new Dimension((int)novi.getSize().getWidth(),(int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getSouth(novi).getX(),novi.getSouth(novi).getY(),position.getX(),position.getY()));
                             break;
                     case NorthWest:
+                        d=new Dimension((int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getNorthEast(novi).getX(),novi.getNorthEast(novi).getY(),position.getX(),position.getY()),(int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getSouthWest(novi).getX(),novi.getSouthWest(novi).getY(),position.getX(),position.getY()));
+                        break;
 
                     case NorthEast:
+                        d=new Dimension((int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getPosition().getX(),novi.getPosition().getY(),position.getX(),position.getY()),(int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getSouthEast(novi).getX(),novi.getSouthEast(novi).getY(),position.getX(),position.getY()));
+                        break;
 
                     case SouthEast:
+                        d=new Dimension((int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getSouthWest(novi).getX(),novi.getSouthWest(novi).getY(),position.getX(),position.getY()),(int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getNorthEast(novi).getX(),novi.getNorthEast(novi).getY(),position.getX(),position.getY()));
+                        break;
 
                     case West:
+                        d=new Dimension((int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getEast(novi).getX(),novi.getEast(novi).getY(),position.getX(),position.getY()),(int)novi.getSize().getHeight());
+                        break;
 
                     case South:
+                        d=new Dimension((int)novi.getSize().getWidth(),(int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getSouth(novi).getX(),novi.getSouth(novi).getY(),position.getX(),position.getY()));
+                        break;
 
                     case SouthWest:
+                        d=new Dimension((int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getSouthEast(novi).getX(),novi.getSouthEast(novi).getY(),position.getX(),position.getY()),(int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getPosition().getX(),novi.getPosition().getY(),position.getX(),position.getY()));
+                        break;
 
                 }
                slot=new RectangleSlot(d,novi.getPosition(),novi.getName());

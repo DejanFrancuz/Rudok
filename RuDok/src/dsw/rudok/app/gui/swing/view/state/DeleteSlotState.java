@@ -25,6 +25,7 @@ public class DeleteSlotState extends State{
                 page.getChildren().remove(page.getPageModel().getSelectedSlot());
                 page.getPageModel().removeSlots(page.getPageModel().getSelectedSlot());
                 page.setSelected(null);
+                page.getStateManager().getSelectState().setSlotLastSelected(null);
                 MainFrame.getInstance().getWorkspaceTree().updateUI();
             }
             }
