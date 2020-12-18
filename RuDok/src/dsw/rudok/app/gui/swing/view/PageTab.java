@@ -143,6 +143,10 @@ public class PageTab extends JPanel implements ISubscriber {
                 ElementPainter painter = slot.getSlotPainter();
                 painter.paint(graphics2D, slot);
             }
+            /*for(Slot s:page.getPageModel().getSlots()){
+                System.out.println(s.getPosition());
+                break;
+            }*/
             page.setRotate(false);
         }
     }
