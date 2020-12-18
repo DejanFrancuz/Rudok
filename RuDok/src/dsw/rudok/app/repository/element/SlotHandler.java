@@ -50,6 +50,7 @@ public class SlotHandler {
             Page p=(Page)s;
             Slot slot=null;
 
+
             if(novi instanceof RectangleSlot){
 
                 RectangleSlot novii= (RectangleSlot) novi;
