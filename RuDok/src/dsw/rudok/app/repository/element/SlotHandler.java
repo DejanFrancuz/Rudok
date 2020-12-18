@@ -43,23 +43,24 @@ public class SlotHandler {
             slot.getSlotPainter().setPaint(Color.CYAN);
             p.getStateManager().getSelectState().setSlotLastSelected(slot);
         }else if(type==TransformType.ROTATE){
-            //Handle handle=(Handle)s;
-            Point2D point2D = new Point((int)(novi.position.getX()+novi.getSize().getWidth()),(int)(novi.getPosition().getY()-novi.getSize().getHeight()));
 
-            Point2D center=new Point2D.Double(novi.getSize().getWidth()/2,novi.getSize().getHeight()/2);
             Point2D point=new Point2D.Double();
             switch (handle){
                 case NorthEast:
                     point=novi.getNorthEast(novi);
+                    break;
                 case NorthWest:
                     point=novi.getPosition();
+                    break;
                 case SouthEast:
                     point=novi.getSouthEast(novi);
+                    break;
                 case SouthWest:
                     point=novi.getSouthWest(novi);
+                    break;
             }
-            Line2D line1= new Line2D.Double(center,point);
-            Line2D line2=new Line2D.Double(center,position);
+            Line2D line1= new Line2D.Double(novi.getPosition(),position);
+            Line2D line2=new Line2D.Double(novi.getPosition(),point);
             /*double slope1 = line1.getY1() - line1.getY2() / line1.getX1() - line1.getX2();
             double slope2 = line2.getY1() - line2.getY2() / line2.getX1() - line2.getX2();
             double angle = Math.atan((slope1 - slope2) / (1 - (slope1 * slope2)));
@@ -81,14 +82,15 @@ public class SlotHandler {
                         d=new Dimension((int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getPosition().getX(),novi.getPosition().getY(),position.getX(),position.getY()),(int)novi.getSize().getWidth());
                     break;
                     case NorthWest:
-                        d=new Dimension((int)novi.calculateDistanceBetweenPointsWithPoint2D(position.getX(),position.getY(),novi.getPosition().getX(),novi.getPosition().getY()),(int)novi.getSize().getWidth());
+                        d=new Dimension((int)novi.getSize().getHeight(),(int)novi.calculateDistanceBetweenPointsWithPoint2D(position.getX(),position.getY(),novi.getPosition().getX(),novi.getPosition().getY()));
                         break;
                     default:
                         return;
 
                 }
                 if(handle != Handle.East && handle != Handle.West && handle != Handle.SouthEast && handle != Handle.SouthWest) {
-                    slot = new TriangleSlot(d, novi.getPosition(), novi.getName());
+
+                        slot = new TriangleSlot(d, novi.getPosition(), novi.getName());
                     Page p = (Page) s;
                     p.getPageModel().addSlots(slot);
                     p.getPageModel().removeSlots(novi);
@@ -122,66 +124,36 @@ public class SlotHandler {
                 ((PageTab) MainFrame.getInstance().getjPanel()).getPage().getPageModel().removeSlots(novi);
                 ((PageTab) MainFrame.getInstance().getjPanel()).getPage().getPageModel().addSlots(slot);
                 ((PageTab) MainFrame.getInstance().getjPanel()).getPage().setSelected(slot);
+            }else if(novi instanceof RectangleSlot){
+                Page p=(Page)s;
+                switch (handle){
+                    case East:
+                        d=new Dimension((int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getPosition().getX(),novi.getPosition().getY(),position.getX(),position.getY()),(int)novi.getSize().getHeight());
+                    break;
+                        case North:
+                            d=new Dimension();
+                            break;
+                    case NorthWest:
+
+                    case NorthEast:
+
+                    case SouthEast:
+
+                    case West:
+
+                    case South:
+
+                    case SouthWest:
+
+                }
+               slot=new RectangleSlot(d,novi.getPosition(),novi.getName());
+                p.getPageModel().removeSlots(novi);
+                p.getPageModel().addSlots(slot);
+                p.getPageModel().setSelectedSlot(slot);
+                slot.getSlotPainter().setPaint(Color.CYAN);
+                p.getStateManager().getSelectState().setSlotLastSelected(slot);
             }
         }
-        /*else if(type == TransformType.RESIZE){
-
-
-            Page p=(Page)s;
-            Slot slot=null;
-            Handle start=(Handle)s;
-            Point2D startPoint=novi.getSouth(novi);
-
-            if(novi instanceof RectangleSlot){
-
-                RectangleSlot novii= (RectangleSlot) novi;
-                double vrednostPovlacenja = novii.calculateDistanceBetweenPointsWithPoint2D(position.getX(),position.getY(),startPoint.getX(),startPoint.getY());
-
-                if(start.equals(Handle.NorthEast)){
-
-                }
-                else if(start.equals(Handle.North)){
-
-                }
-                else if(start.equals(Handle.South)){
-
-                }
-                else if(start.equals(Handle.East)){
-
-                    int novaSirina = (int)(novii.getSize().getWidth() + vrednostPovlacenja);
-                    int visina =(int) novii.getSize().getHeight();
-
-
-                    slot = new RectangleSlot(new Dimension(novaSirina,visina),novii.getPosition(), novii.getName());
-                }
-                else if(start.equals(Handle.West)){
-
-                }
-                else if(start.equals(Handle.NorthWest)){
-
-                }
-                else if(start.equals(Handle.SouthEast)){
-
-                }
-                else if(start.equals(Handle.SouthWest)){
-
-                }
-
-            }
-            else if(novi instanceof CircleSlot){
-
-            }
-            else if(novi instanceof TriangleSlot){
-
-            }
-
-            p.getPageModel().removeSlots(novi);
-            p.getPageModel().addSlots(slot);
-            p.getPageModel().setSelectedSlot(slot);
-            slot.getSlotPainter().setPaint(Color.CYAN);
-            p.getStateManager().getSelectState().setSlotLastSelected(slot);
-
-        }*/
     }
     public static double angleBetween2Lines(Line2D line1, Line2D line2)
     {

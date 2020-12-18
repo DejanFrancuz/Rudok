@@ -20,6 +20,7 @@ public abstract class Slot extends RuNode implements IPublisher{
     public Point2D position;
     public String name;
     public double angle;
+    public boolean rotate;
 
 
     public SlotPainter slotPainter;
@@ -46,6 +47,14 @@ public abstract class Slot extends RuNode implements IPublisher{
 
     public Dimension getSize() {
         return size;
+    }
+
+    public boolean isRotate() {
+        return rotate;
+    }
+
+    public void setRotate(boolean rotate) {
+        this.rotate = rotate;
     }
 
     public void setSize(Dimension size) {

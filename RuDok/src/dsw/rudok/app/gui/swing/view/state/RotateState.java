@@ -39,12 +39,13 @@ public class RotateState extends State{
         if(p==1){
             Slot slot=page.getSelected();
             handler.transform(slot,page, TransformType.ROTATE,e.getPoint(),handle);
-            page.setRotate(true);
+            slot.setRotate(true);
+
         }
     }
     public void mouseReleased(MouseEvent e){
         p=-1;
-        page.setRotate(false);
+        page.getSelected().setRotate(false);
     }
     private boolean isPointInHandle(Slot device, Point2D point, Handle handle){
         Point2D handleCenter = getHandlePoint(device.getPosition(), device.getSize(), handle);
