@@ -22,9 +22,9 @@ public class DeleteSlotState extends State{
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
             if(page.getPageModel().getSlotatPosition(position) != null){
-                //Slot slotClicked = page.getPageModel().getSlotatPosition(position);
                 page.getChildren().remove(page.getPageModel().getSelectedSlot());
                 page.getPageModel().removeSlots(page.getPageModel().getSelectedSlot());
+                page.setSelected(null);
                 MainFrame.getInstance().getWorkspaceTree().updateUI();
             }
             }

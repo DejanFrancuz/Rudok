@@ -4,9 +4,12 @@ import dsw.rudok.app.gui.swing.view.Handle;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.element.Slot;
+import dsw.rudok.app.repository.element.SlotHandler;
+import dsw.rudok.app.repository.element.TransformType;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
 import java.util.Iterator;
@@ -15,6 +18,8 @@ public class ResizeState extends State{
     private Page page;
     int p=-1;
     static final int handleSize = 14;
+    SlotHandler handler=new SlotHandler();
+    Handle handle;
     public ResizeState(Page page) {
         this.page = page;
     }
@@ -23,20 +28,32 @@ public class ResizeState extends State{
     public void mousePressed(MouseEvent e) {
         Point2D position = e.getPoint();
         if (e.getButton() == MouseEvent.BUTTON1) {
-            //setMouseCursor(position);
-            Handle handle=getHandleForPoint(page.getSelected(),position);
-            System.out.println(handle==null);
-                }
+            handle=getHandleForPoint(page.getSelected(),position);
+            if(handle!=null){
+                p=1;
+            }
 
+        }
+
+        }
+        public void mouseDragged(MouseEvent e){
+        if(p==1){
+            Slot slot=page.getSelected();
+            System.out.println(handle.toString());
+            handler.transform(slot,handle, TransformType.RESIZE,e.getPoint());
+            page.setSelected(slot);
+        }
+        }
+        public void mouseReleased(MouseEvent e){
+        p=-1;
+        //page.setResize(false);
         }
     private boolean isPointInHandle(Slot device, Point2D point, Handle handle){
             Point2D handleCenter = getHandlePoint(device.getPosition(), device.getSize(), handle);
-            System.out.println(handleCenter.toString());
             return ( (Math.abs(point.getX()-handleCenter.getX())<=(double)handleSize/2) &&
                     (Math.abs(point.getY()-handleCenter.getY())<=(double)handleSize/2) );
         }
     private Handle getHandleForPoint(Slot slot, Point2D point){
-        System.out.println(point);
         for(Handle h: Handle.values()){
             if(isPointInHandle(slot, point, h)){
                 return h;
@@ -71,10 +88,12 @@ public class ResizeState extends State{
                 case SouthWest: cursor = Cursor.getPredefinedCursor(Cursor.SW_RESIZE_CURSOR);break;
                 case NorthEast: cursor = Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR);break;
             }
-            page.getPageTab().setCursor(cursor);
+            //page.getPageTab().setCursor(cursor);
+            MainFrame.getInstance().setCursor(cursor);
         }
         else
-            page.getPageTab().setCursor(Cursor.getDefaultCursor());
+            //page.getPageTab().setCursor(Cursor.getDefaultCursor());
+        MainFrame.getInstance().setCursor(Cursor.getDefaultCursor());
     }
     public Point2D getHandlePoint(Point2D topLeft, Dimension2D size, Handle handlePosition ){
         double x=0, y=0;

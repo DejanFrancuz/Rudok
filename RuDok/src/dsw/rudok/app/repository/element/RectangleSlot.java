@@ -15,25 +15,12 @@ public class RectangleSlot extends Slot{
         slotPainter = new RectanglePainter(this);
     }
 
-    public RectangleSlot(String name, RuNode parent) {
-        super(name, parent);
-    }
 
     public static Slot createDefault(Point position, int index){
-        Paint fill = Color.BLACK;
         RectangleSlot rectangle= new RectangleSlot(new Dimension(100,50),position,
                 "Rectangle " + index);
         return rectangle;
     }
 
 
-    public static void changeSlotSelected(Slot novi,Slot stari){
-
-        if(!novi.equals(stari)) {
-            novi.getSlotPainter().setPaint(Color.CYAN);
-
-            if (stari != null)
-                stari.getSlotPainter().setPaint(Color.BLACK);
-        }
-    }
 }

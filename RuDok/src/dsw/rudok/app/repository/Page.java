@@ -17,6 +17,7 @@ public class Page extends RuNodeComposite {
     List<ISubscriber> subscribers;
     private PageModel pageModel = new PageModel();
     private Slot selected;
+    boolean rotate;
 
 
     public Page(String name, RuNode parent) {
@@ -67,6 +68,15 @@ public class Page extends RuNodeComposite {
 
     public void setPageTab(PageTab pageTab) {
         this.pageTab = pageTab;
+    }
+
+    public boolean isRotate() {
+        return rotate;
+    }
+
+    public void setRotate(boolean rotate) {
+        this.rotate = rotate;
+        notifyObs(rotate);
     }
 
     @Override

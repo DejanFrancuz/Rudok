@@ -12,6 +12,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -128,8 +129,17 @@ public class PageTab extends JPanel implements ISubscriber {
                     paintSelectionHandle(graphics2D,getHandlePoint(slot.getPosition(), slot.getSize(), e));
                 }
             }
-            ElementPainter painter = slot.getSlotPainter();
-            painter.paint(graphics2D,slot);
+            if(page.isRotate()){
+                AffineTransform at=graphics2D.getTransform();
+                graphics2D.rotate(Math.toRadians(page.getSelected().getAngle()));
+
+                ElementPainter painter = slot.getSlotPainter();
+                painter.paint(graphics2D, slot);
+                graphics2D.setTransform(at);
+            }else {
+                ElementPainter painter = slot.getSlotPainter();
+                painter.paint(graphics2D, slot);
+            }
         }
     }
     private void paintSelectionHandle(Graphics2D g2, Point2D position){
@@ -172,59 +182,6 @@ public class PageTab extends JPanel implements ISubscriber {
 
         return new Point2D.Double(x,y);
 
-    }
-    public Handle biloSta(Point2D point){
-
-        return null;
-    }
-    private boolean isPointInHandle(Slot element, Point2D point, Handle handle){
-        if (element instanceof Slot){
-            Slot device=(Slot)element;
-            Point2D handleCenter = getHandlePoint(device.getPosition(), device.getSize(), handle);
-            return ( (Math.abs(point.getX()-handleCenter.getX())<=(double)handleSize/2) &&
-                    (Math.abs(point.getY()-handleCenter.getY())<=(double)handleSize/2) );
-        }else
-            return false;
-    }
-    private Handle getHandleForPoint(Slot slot, Point2D point){
-        for(Handle h: Handle.values()){
-            if(isPointInHandle(slot, point, h)){
-                return h;
-            }
-        }
-        return null;
-    }
-    public Handle getDeviceAndHandleForPoint(Point2D point){
-        Slot slot;
-
-        Iterator<Slot> it = page.getPageModel().getSlotIterator();
-        while(it.hasNext()){
-            slot = it.next();
-            return getHandleForPoint(slot, point);
-        }
-        return null;
-    }
-    public void setMouseCursor(Point2D point){
-
-        System.out.println("Nisam ovde puko!");
-        Handle handle = getDeviceAndHandleForPoint(point);
-        if(handle != null){
-            Cursor cursor = null;
-
-            switch(handle){
-                case North: cursor = Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR);break;
-                case South: cursor = Cursor.getPredefinedCursor(Cursor.S_RESIZE_CURSOR);break;
-                case East: cursor = Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR);break;
-                case West: cursor = Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR);break;
-                case SouthEast: cursor = Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR);break;
-                case NorthWest: cursor = Cursor.getPredefinedCursor(Cursor.NW_RESIZE_CURSOR);break;
-                case SouthWest: cursor = Cursor.getPredefinedCursor(Cursor.SW_RESIZE_CURSOR);break;
-                case NorthEast: cursor = Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR);break;
-            }
-            this.setCursor(cursor);
-        }
-        else
-            this.setCursor(Cursor.getDefaultCursor());
     }
     @Override
     public void update(Object notif) {
