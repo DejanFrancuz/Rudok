@@ -13,7 +13,7 @@ import java.awt.geom.Point2D;
 
 public class SlotHandler {
 
-    public void transform(Slot novi, Object s, TransformType type, Point2D position) {
+    public void transform(Slot novi, Object s, TransformType type, Point2D position,Handle start,Point2D startPoint) {
         if (type == TransformType.SELECT) {
             Slot stari=(Slot)s;
             if (!novi.equals(stari)) {
@@ -42,6 +42,62 @@ public class SlotHandler {
             p.getStateManager().getSelectState().setSlotLastSelected(slot);
 
 
+
+        }
+        else if(type == TransformType.RESIZE){
+
+
+            Page p=(Page)s;
+            Slot slot=null;
+
+            if(novi instanceof RectangleSlot){
+
+                RectangleSlot novii= (RectangleSlot) novi;
+                double vrednostPovlacenja = novii.calculateDistanceBetweenPointsWithPoint2D(position.getX(),position.getY(),startPoint.getX(),startPoint.getY());
+
+                if(start.equals(Handle.NorthEast)){
+
+                }
+                else if(start.equals(Handle.North)){
+
+                }
+                else if(start.equals(Handle.South)){
+
+                }
+                else if(start.equals(Handle.East)){
+
+                    int novaSirina = (int)(novii.getSize().getWidth() + vrednostPovlacenja);
+                    int visina =(int) novii.getSize().getHeight();
+
+
+                    slot = new RectangleSlot(new Dimension(novaSirina,visina),novii.getPosition(), novii.getName());
+                }
+                else if(start.equals(Handle.West)){
+
+                }
+                else if(start.equals(Handle.NorthWest)){
+
+                }
+                else if(start.equals(Handle.SouthEast)){
+
+                }
+                else if(start.equals(Handle.SouthWest)){
+
+                }
+
+            }
+            else if(novi instanceof CircleSlot){
+
+            }
+            else if(novi instanceof TriangleSlot){
+
+            }
+
+            p.getPageModel().removeSlots(novi);
+            p.getPageModel().addSlots(slot);
+            p.getPageModel().setSelectedSlot(slot);
+            slot.getSlotPainter().setPaint(Color.CYAN);
+            p.getStateManager().getSelectState().setSlotLastSelected(slot);
 
         }
     }

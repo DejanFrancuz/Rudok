@@ -206,7 +206,7 @@ public class PageTab extends JPanel implements ISubscriber {
     }
     public void setMouseCursor(Point2D point){
 
-        System.out.println("Nisam ovde puko!");
+
         Handle handle = getDeviceAndHandleForPoint(point);
         if(handle != null){
             Cursor cursor = null;

@@ -4,6 +4,8 @@ import dsw.rudok.app.gui.swing.view.Handle;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.element.Slot;
+import dsw.rudok.app.repository.element.SlotHandler;
+import dsw.rudok.app.repository.element.TransformType;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -13,30 +15,49 @@ import java.util.Iterator;
 
 public class ResizeState extends State{
     private Page page;
-    int p=-1;
+    private SlotHandler handler=new SlotHandler();
+    private Handle start;
     static final int handleSize = 14;
+    private Point2D startPoint;
+
     public ResizeState(Page page) {
         this.page = page;
     }
 
 
     public void mousePressed(MouseEvent e) {
-        Point2D position = e.getPoint();
+         start = null;
+        startPoint = e.getPoint();
         if (e.getButton() == MouseEvent.BUTTON1) {
-            //setMouseCursor(position);
-            Handle handle=getHandleForPoint(page.getSelected(),position);
-            System.out.println(handle==null);
+
+            if(getDeviceAndHandleForPoint(startPoint) != null){
+                start = getDeviceAndHandleForPoint(startPoint);
                 }
 
+            }
+
         }
+
+    public void mouseDragged(MouseEvent e){
+
+        if(start != null){
+            Point position=e.getPoint();
+            Slot slot=page.getSelected();
+            handler.transform(slot,page,TransformType.RESIZE,position,start,startPoint);
+        }
+    }
+    public void mouseReleased(MouseEvent e){
+
+    }
+
+
     private boolean isPointInHandle(Slot device, Point2D point, Handle handle){
             Point2D handleCenter = getHandlePoint(device.getPosition(), device.getSize(), handle);
-            System.out.println(handleCenter.toString());
             return ( (Math.abs(point.getX()-handleCenter.getX())<=(double)handleSize/2) &&
                     (Math.abs(point.getY()-handleCenter.getY())<=(double)handleSize/2) );
         }
     private Handle getHandleForPoint(Slot slot, Point2D point){
-        System.out.println(point);
+
         for(Handle h: Handle.values()){
             if(isPointInHandle(slot, point, h)){
                 return h;
@@ -56,7 +77,7 @@ public class ResizeState extends State{
     }
     public void setMouseCursor(Point2D point){
 
-        System.out.println("Nisam ovde puko!");
+
         Handle handle = getDeviceAndHandleForPoint(point);
         if(handle != null){
             Cursor cursor = null;

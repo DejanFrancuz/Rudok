@@ -28,7 +28,7 @@ public class MoveState extends State{
     public void mouseDragged(MouseEvent e){
         Point position=e.getPoint();
         Slot slot=page.getSelected();
-        handler.transform(slot,page, TransformType.MOVE,position);
+        handler.transform(slot,page, TransformType.MOVE,position,null,null);
     }
     public void mouseReleased(MouseEvent e){
 
