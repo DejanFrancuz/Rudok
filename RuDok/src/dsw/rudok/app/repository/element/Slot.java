@@ -117,6 +117,11 @@ public abstract class Slot extends RuNode implements IPublisher{
         Point2D point=new Point2D.Double(slot.getPosition().getX()+slot.getSize().getWidth(),slot.getPosition().getY()-slot.getSize().getHeight()/2);
         return point;
     }
+    public double calculateDistanceBetweenPointsWithPoint2D(double x1,double y1,double x2,double y2) {
+
+
+        return Point2D.distance(x1,y1,x2,y2);
+    }
 
 
     @Override

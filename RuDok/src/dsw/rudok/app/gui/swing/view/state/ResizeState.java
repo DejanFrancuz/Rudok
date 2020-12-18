@@ -40,7 +40,7 @@ public class ResizeState extends State{
         if(p==1){
             Slot slot=page.getSelected();
             System.out.println(handle.toString());
-            handler.transform(slot,handle, TransformType.RESIZE,e.getPoint());
+            handler.transform(slot,page, TransformType.RESIZE,e.getPoint(),handle);
             page.setSelected(slot);
         }
         }

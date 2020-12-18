@@ -15,7 +15,7 @@ import java.awt.geom.Point2D;
 
 public class SlotHandler {
 
-    public void transform(Slot novi, Object s, TransformType type, Point2D position,Handle start,Point2D startPoint) {
+    public void transform(Slot novi, Object s, TransformType type, Point2D position,Handle handle) {
         if (type == TransformType.SELECT) {
             Slot stari=(Slot)s;
             if (!novi.equals(stari)) {
@@ -43,7 +43,7 @@ public class SlotHandler {
             slot.getSlotPainter().setPaint(Color.CYAN);
             p.getStateManager().getSelectState().setSlotLastSelected(slot);
         }else if(type==TransformType.ROTATE){
-            Handle handle=(Handle)s;
+            //Handle handle=(Handle)s;
             Point2D point2D = new Point((int)(novi.position.getX()+novi.getSize().getWidth()),(int)(novi.getPosition().getY()-novi.getSize().getHeight()));
 
             Point2D center=new Point2D.Double(novi.getSize().getWidth()/2,novi.getSize().getHeight()/2);
@@ -66,13 +66,37 @@ public class SlotHandler {
             */
             novi.setAngle(angleBetween2Lines(line1,line2));
         }else if(type==TransformType.RESIZE){
-            Handle handle=(Handle)s;
+            //Handle handle=(Handle)s;
             Slot slot=null;
+            Dimension d=null;
             if(novi instanceof TriangleSlot) {
                 switch (handle) {
                     case South:
-                        novi.getSize().setSize(novi.getSize().getWidth(),(position.getY())+novi.getSize().getHeight());
+                        d=new Dimension((int) novi.getSize().getHeight(),(int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getPosition().getX(),novi.getPosition().getY(),position.getX(),position.getY()));
+                    break;
+                        case North:
+                        d=new Dimension((int) novi.getSize().getHeight(),(int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getPosition().getX(),novi.getPosition().getY(),position.getX(),position.getY()));
+                    break;
+                        case NorthEast:
+                        d=new Dimension((int)novi.calculateDistanceBetweenPointsWithPoint2D(novi.getPosition().getX(),novi.getPosition().getY(),position.getX(),position.getY()),(int)novi.getSize().getWidth());
+                    break;
+                    case NorthWest:
+                        d=new Dimension((int)novi.calculateDistanceBetweenPointsWithPoint2D(position.getX(),position.getY(),novi.getPosition().getX(),novi.getPosition().getY()),(int)novi.getSize().getWidth());
+                        break;
+                    default:
+                        return;
+
                 }
+                if(handle != Handle.East && handle != Handle.West && handle != Handle.SouthEast && handle != Handle.SouthWest) {
+                    slot = new TriangleSlot(d, novi.getPosition(), novi.getName());
+                    Page p = (Page) s;
+                    p.getPageModel().addSlots(slot);
+                    p.getPageModel().removeSlots(novi);
+                    p.getPageModel().setSelectedSlot(slot);
+                    slot.getSlotPainter().setPaint(Color.CYAN);
+                    p.getStateManager().getSelectState().setSlotLastSelected(slot);
+                }
+
             }else if(novi instanceof CircleSlot){
 
                 switch (handle) {
@@ -100,12 +124,13 @@ public class SlotHandler {
                 ((PageTab) MainFrame.getInstance().getjPanel()).getPage().setSelected(slot);
             }
         }
-        else if(type == TransformType.RESIZE){
+        /*else if(type == TransformType.RESIZE){
 
 
             Page p=(Page)s;
             Slot slot=null;
-
+            Handle start=(Handle)s;
+            Point2D startPoint=novi.getSouth(novi);
 
             if(novi instanceof RectangleSlot){
 
@@ -156,7 +181,7 @@ public class SlotHandler {
             slot.getSlotPainter().setPaint(Color.CYAN);
             p.getStateManager().getSelectState().setSlotLastSelected(slot);
 
-        }
+        }*/
     }
     public static double angleBetween2Lines(Line2D line1, Line2D line2)
     {

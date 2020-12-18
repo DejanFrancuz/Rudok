@@ -38,7 +38,7 @@ public class RotateState extends State{
     public void mouseDragged(MouseEvent e){
         if(p==1){
             Slot slot=page.getSelected();
-            handler.transform(slot,handle, TransformType.ROTATE,e.getPoint());
+            handler.transform(slot,page, TransformType.ROTATE,e.getPoint(),handle);
             page.setRotate(true);
         }
     }
