@@ -1,6 +1,8 @@
 package dsw.rudok.app.repository.element;
 
 
+import dsw.rudok.app.AppCore;
+import dsw.rudok.app.errorHandler.ErrorType;
 import dsw.rudok.app.gui.swing.view.Handle;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.gui.swing.view.PageTab;
@@ -36,12 +38,16 @@ public class SlotHandler {
             }else if(novi instanceof TriangleSlot){
                 slot=new TriangleSlot(novi.getSize(),position,novi.getName());
             }
-
-            p.getPageModel().removeSlots(novi);
-            p.getPageModel().addSlots(slot);
-            p.getPageModel().setSelectedSlot(slot);
-            slot.getSlotPainter().setPaint(Color.CYAN);
-            p.getStateManager().getSelectState().setSlotLastSelected(slot);
+                if(slot == null){
+                    AppCore.getInstance().getErrorHandler().generateError(ErrorType.NOTHING_SELECTED);
+                }
+                else {
+                    p.getPageModel().removeSlots(novi);
+                    p.getPageModel().addSlots(slot);
+                    p.getPageModel().setSelectedSlot(slot);
+                    slot.getSlotPainter().setPaint(Color.CYAN);
+                    p.getStateManager().getSelectState().setSlotLastSelected(slot);
+                }
         }else if(type==TransformType.ROTATE){
             Page p=(Page)s;
             Point2D point=p.getStateManager().getRotateState().getHandlePoint(novi.getPosition(),novi.getSize(),handle);

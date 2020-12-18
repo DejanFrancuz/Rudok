@@ -1,5 +1,7 @@
 package dsw.rudok.app.gui.swing.view.state;
 
+import dsw.rudok.app.AppCore;
+import dsw.rudok.app.errorHandler.ErrorType;
 import dsw.rudok.app.gui.swing.view.Handle;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.Page;
@@ -54,9 +56,14 @@ public class ResizeState extends State{
                     (Math.abs(point.getY()-handleCenter.getY())<=(double)handleSize/2) );
         }
     private Handle getHandleForPoint(Slot slot, Point2D point){
-        for(Handle h: Handle.values()){
-            if(isPointInHandle(slot, point, h)){
-                return h;
+        if(slot == null){
+            AppCore.getInstance().getErrorHandler().generateError(ErrorType.NOTHING_SELECTED);
+        }else {
+
+            for (Handle h : Handle.values()) {
+                if (isPointInHandle(slot, point, h)) {
+                    return h;
+                }
             }
         }
         return null;
