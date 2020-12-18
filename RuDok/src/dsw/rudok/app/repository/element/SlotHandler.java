@@ -43,29 +43,17 @@ public class SlotHandler {
             slot.getSlotPainter().setPaint(Color.CYAN);
             p.getStateManager().getSelectState().setSlotLastSelected(slot);
         }else if(type==TransformType.ROTATE){
+            Page p=(Page)s;
+            Point2D point=p.getStateManager().getRotateState().getHandlePoint(novi.getPosition(),novi.getSize(),handle);
 
-            Point2D point=new Point2D.Double();
-            switch (handle){
-                case NorthEast:
-                    point=novi.getNorthEast(novi);
-                    break;
-                case NorthWest:
-                    point=novi.getPosition();
-                    break;
-                case SouthEast:
-                    point=novi.getSouthEast(novi);
-                    break;
-                case SouthWest:
-                    point=novi.getSouthWest(novi);
-                    break;
-            }
             Line2D line1= new Line2D.Double(novi.getPosition(),position);
-            Line2D line2=new Line2D.Double(novi.getPosition(),point);
+            Line2D line2=new Line2D.Double(new Point(0,0),new Point(0,100));
             /*double slope1 = line1.getY1() - line1.getY2() / line1.getX1() - line1.getX2();
             double slope2 = line2.getY1() - line2.getY2() / line2.getX1() - line2.getX2();
-            double angle = Math.atan((slope1 - slope2) / (1 - (slope1 * slope2)));
-            */
-            novi.setAngle(angleBetween2Lines(line1,line2));
+            double angle = Math.atan((slope1 - slope2) / (1 - (slope1 * slope2)));*/
+            novi.setAngle(angleBetweenTwoPointsWithFixedPoint(point.getX(),point.getY(),position.getX(),position.getY(),novi.getPosition().getX(),novi.getPosition().getY())*50);
+            //novi.setAngle(angleBetween2Lines(line2,line1));
+
         }else if(type==TransformType.RESIZE){
             //Handle handle=(Handle)s;
             Slot slot=null;
@@ -167,7 +155,16 @@ public class SlotHandler {
             }
         }
     }
-    public static double angleBetween2Lines(Line2D line1, Line2D line2)
+    public static double angleBetweenTwoPointsWithFixedPoint(double point1X, double point1Y,
+                                                             double point2X, double point2Y,
+                                                             double fixedX, double fixedY) {
+
+        double angle1 = Math.atan2(point1Y - fixedY, point1X - fixedX);
+        double angle2 = Math.atan2(point2Y - fixedY, point2X - fixedX);
+
+        return angle1 - angle2;
+    }
+    public double angleBetween2Lines(Line2D line1, Line2D line2)
     {
         double angle1 = Math.atan2(line1.getY1() - line1.getY2(),
                 line1.getX1() - line1.getX2());

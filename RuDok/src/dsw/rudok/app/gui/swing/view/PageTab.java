@@ -131,7 +131,10 @@ public class PageTab extends JPanel implements ISubscriber {
             }
             if(slot.isRotate()){
                 AffineTransform at=graphics2D.getTransform();
-                graphics2D.rotate(Math.toDegrees(page.getSelected().getAngle()));
+
+                //graphics2D.rotate(Math.toRadians(page.getSelected().getAngle()));
+                graphics2D.rotate(Math.toRadians(page.getSelected().getAngle()),slot.getNorth(slot).getX(),slot.getNorth(slot).getY());
+
 
                 ElementPainter painter = slot.getSlotPainter();
                 painter.paint(graphics2D, slot);
