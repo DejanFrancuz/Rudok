@@ -9,10 +9,11 @@ import dsw.rudok.app.repository.node.RuNode;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Slot extends RuNode implements IPublisher{
+public abstract class Slot extends RuNode implements IPublisher, Serializable {
 
 
 

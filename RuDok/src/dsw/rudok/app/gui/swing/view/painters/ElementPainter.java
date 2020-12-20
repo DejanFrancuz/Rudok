@@ -3,8 +3,9 @@ package dsw.rudok.app.gui.swing.view.painters;
 import dsw.rudok.app.repository.element.Slot;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public abstract class  ElementPainter{
+public abstract class  ElementPainter implements Serializable {
 
     public ElementPainter(Slot slot){
 

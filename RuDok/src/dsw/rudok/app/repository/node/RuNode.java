@@ -11,10 +11,11 @@ import dsw.rudok.app.repository.Document;
 import dsw.rudok.app.repository.Project;
 import dsw.rudok.app.repository.Workspace;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class RuNode implements IPublisher{
+public abstract class RuNode implements IPublisher, Serializable {
 
     private String name;
 
