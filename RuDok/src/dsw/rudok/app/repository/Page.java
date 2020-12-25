@@ -16,7 +16,7 @@ public class Page extends RuNodeComposite {
     private PageTab pageTab;
     List<ISubscriber> subscribers;
     private PageModel pageModel = new PageModel();
-    private Slot selected;
+    //private Slot selected;
     boolean rotate;
 
 
@@ -124,14 +124,14 @@ public class Page extends RuNodeComposite {
 
 
 
-    public Slot getSelected() {
+    /*public Slot getSelected() {
         return selected;
     }
 
     public void setSelected(Slot selected) {
         this.selected = selected;
         notifyObs(selected);
-    }
+    }*/
 
 
 }

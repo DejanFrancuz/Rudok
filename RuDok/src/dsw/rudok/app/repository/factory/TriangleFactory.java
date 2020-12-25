@@ -14,4 +14,6 @@ public class TriangleFactory extends SlotFactory{
         return slot;
     }
 
+
+
 }

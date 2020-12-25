@@ -1,5 +1,6 @@
 package dsw.rudok.app.gui.swing.view.painters;
 
+import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.element.Slot;
 
 import java.awt.*;

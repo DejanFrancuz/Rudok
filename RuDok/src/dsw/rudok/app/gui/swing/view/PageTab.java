@@ -44,9 +44,7 @@ public class PageTab extends JPanel implements ISubscriber {
         title.setTitleJustification(2);
         setBorder(title);
 
-        this.setLayout(new BorderLayout());;
-
-
+        this.setLayout(new BorderLayout());
         this.panCenter.setBackground(Color.WHITE);
         add(this.panCenter);
 
@@ -123,17 +121,10 @@ public class PageTab extends JPanel implements ISubscriber {
 
 
 
-            Slot slot = (Slot) it.next();
-            if (slot.equals(page.getSelected())){
-                for(Handle e: Handle.values()){
-                    paintSelectionHandle(graphics2D,getHandlePoint(slot.getPosition(), slot.getSize(), e));
-                }
-            }
+            Slot slot =it.next();
             if(slot.isRotate()){
                 AffineTransform at=graphics2D.getTransform();
-
-                //graphics2D.rotate(Math.toRadians(page.getSelected().getAngle()));
-                graphics2D.rotate(Math.toRadians(page.getSelected().getAngle()),slot.getNorth(slot).getX(),slot.getNorth(slot).getY());
+                graphics2D.rotate(Math.toRadians(page.getPageModel().getSelectedSlot().getAngle()),slot.getNorth().getX(),slot.getNorth().getY());
 
 
                 ElementPainter painter = slot.getSlotPainter();
@@ -143,13 +134,34 @@ public class PageTab extends JPanel implements ISubscriber {
                 ElementPainter painter = slot.getSlotPainter();
                 painter.paint(graphics2D, slot);
             }
-            /*for(Slot s:page.getPageModel().getSlots()){
-                System.out.println(s.getPosition());
-                break;
-            }*/
-            page.setRotate(false);
+            paintSelectionHandles(graphics2D);
         }
     }
+    private void paintSelectionHandles(Graphics2D g2) {
+
+        //Iterator<Slot> it = page.getPageModel().getSlotIterator();
+        //while (it.hasNext()) {
+            Slot slot = page.getPageModel().getSelectedSlot();
+            if(slot==null)return;
+            // Iscrtavanje pravougaonika sa isprekidanom linijom
+            g2.setStroke(new BasicStroke((float) 1, BasicStroke.CAP_SQUARE,
+                    BasicStroke.JOIN_BEVEL, 1f, new float[]{3f, 6f}, 0));
+            g2.setPaint(Color.BLACK);
+
+            g2.drawRect((int) slot.getPosition().getX(), (int) slot.getPosition().getY(),
+                    (int) slot.getSize().getWidth(), (int) slot.getSize().getHeight());
+
+            // 	Iscrtavanje hendlova
+            for (Handle e : Handle.values()) {
+                paintSelectionHandle(g2, getHandlePoint(slot.getPosition(), slot.getSize(), e));
+               // System.out.println(getHandlePoint(slot.getPosition(), slot.getSize(), e));
+            }
+
+
+        }
+
+
+
     private void paintSelectionHandle(Graphics2D g2, Point2D position){
         double size = handleSize;
         g2.fill(new Rectangle2D.Double(position.getX()-size/2, position.getY()-size/2,

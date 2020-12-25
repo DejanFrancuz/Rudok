@@ -60,6 +60,7 @@ public abstract class Slot extends RuNode implements IPublisher, Serializable {
 
     public void setSize(Dimension size) {
         this.size = size;
+        notifyObs(this);
     }
 
     public Point2D getPosition() {
@@ -68,7 +69,7 @@ public abstract class Slot extends RuNode implements IPublisher, Serializable {
 
     public void setPosition(Point2D position) {
         this.position = position;
-        notifyObs(position);
+        notifyObs(this);
     }
 
     public double getAngle() {
@@ -99,42 +100,37 @@ public abstract class Slot extends RuNode implements IPublisher, Serializable {
         this.slotPainter = slotPainter;
     }
 
-    public Point2D getNorthEast(Slot slot){
-        Point2D point= new Point2D.Double(slot.getPosition().getX()+slot.getSize().getWidth(),slot.getPosition().getY());
+    public Point2D getNorthEast(){
+        Point2D point= new Point2D.Double(this.getPosition().getX()+this.getSize().getWidth(),this.getPosition().getY());
         return point;
     }
-    public Point2D getSouthEast(Slot slot){
-        Point2D point=new Point2D.Double(slot.getPosition().getX()+slot.getSize().getWidth(),slot.getPosition().getY()-slot.getSize().getHeight());
+    public Point2D getSouthEast(){
+        Point2D point=new Point2D.Double(this.getPosition().getX()+this.getSize().getWidth(),this.getPosition().getY()-this.getSize().getHeight());
         return point;
     }
-    public Point2D getSouthWest(Slot slot){
-        Point2D point= new Point2D.Double(slot.getPosition().getX(),slot.getPosition().getY()-slot.getSize().getHeight());
+    public Point2D getSouthWest(){
+        Point2D point= new Point2D.Double(this.getPosition().getX(),this.getPosition().getY()-this.getSize().getHeight());
         return point;
     }
-    public Point2D getSouth(Slot slot){
-        Point2D point=new Point2D.Double(slot.getPosition().getX()+slot.getSize().getWidth()/2,slot.getPosition().getY()-slot.getSize().getHeight());
+    public Point2D getSouth(){
+        Point2D point=new Point2D.Double(this.getPosition().getX()+this.getSize().getWidth()/2,this.getPosition().getY()-this.getSize().getHeight());
         return point;
     }
-    public Point2D getNorth(Slot slot){
-        Point2D point=new Point2D.Double(slot.getPosition().getX()+slot.getSize().getWidth()/2,slot.getPosition().getY());
+    public Point2D getNorth(){
+        Point2D point=new Point2D.Double(this.getPosition().getX()+this.getSize().getWidth()/2,this.getPosition().getY());
         return point;
     }
-    public Point2D getWest(Slot slot){
-        Point2D point=new Point2D.Double(slot.getPosition().getX(),slot.getPosition().getY()-slot.getSize().getHeight()/2);
+    public Point2D getWest(){
+        Point2D point=new Point2D.Double(this.getPosition().getX(),this.getPosition().getY()-this.getSize().getHeight()/2);
         return point;
     }
-    public Point2D getEast(Slot slot){
-        Point2D point=new Point2D.Double(slot.getPosition().getX()+slot.getSize().getWidth(),slot.getPosition().getY()-slot.getSize().getHeight()/2);
+    public Point2D getEast(){
+        Point2D point=new Point2D.Double(this.getPosition().getX()+this.getSize().getWidth(),this.getPosition().getY()-this.getSize().getHeight()/2);
         return point;
     }
-    public Point2D getCenter(Slot slot){
-        Point2D point=new Point2D.Double(slot.getPosition().getX()+slot.getSize().getWidth()/2,slot.getPosition().getY()-slot.getSize().getHeight()/2);
+    public Point2D getCenter(){
+        Point2D point=new Point2D.Double(this.getPosition().getX()+this.getSize().getWidth()/2,this.getPosition().getY()-this.getSize().getHeight()/2);
         return point;
-    }
-    public double calculateDistanceBetweenPointsWithPoint2D(double x1,double y1,double x2,double y2) {
-
-
-        return Point2D.distance(x1,y1,x2,y2);
     }
 
 

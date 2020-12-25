@@ -15,5 +15,4 @@ public class RectangleFactory extends SlotFactory{
     }
 
 
-
 }

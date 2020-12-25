@@ -77,8 +77,8 @@ public Slot getSlotatPosition(Point point) {
 
     public void setSelectedSlot(Slot selectedSlot) {
         this.selectedSlot = selectedSlot;
+        notifyObs(selectedSlot);
     }
-
     public void addSlots(Slot slot){
 
         slots.add(slot);

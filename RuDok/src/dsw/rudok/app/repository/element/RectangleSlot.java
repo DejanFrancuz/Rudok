@@ -2,6 +2,7 @@ package dsw.rudok.app.repository.element;
 
 import dsw.rudok.app.gui.swing.view.painters.RectanglePainter;
 import dsw.rudok.app.repository.node.RuNode;
+import org.w3c.dom.css.Rect;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -20,6 +21,10 @@ public class RectangleSlot extends Slot{
         RectangleSlot rectangle= new RectangleSlot(new Dimension(100,50),position,
                 "Rectangle " + index);
         return rectangle;
+    }
+    public static Slot createNotDefault(Dimension d,Point point,int index){
+        RectangleSlot rectangleSlot=new RectangleSlot(new Dimension(d),point,"Rectangle "+index);
+        return rectangleSlot;
     }
     public double calculateDistanceBetweenPointsWithPoint2D(double x1,double y1,double x2,double y2) {
 
