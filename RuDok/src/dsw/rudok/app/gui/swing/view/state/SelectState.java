@@ -27,13 +27,14 @@ public class SelectState extends State{
 
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
-
-
             if(med.getPageModel().getSlotatPosition(position) != null){
                 Slot slotClicked = med.getPageModel().getSlotatPosition(position);
                 handler.transform(slotClicked,slotLastSelected,TransformType.SELECT,null,null);
                 slotLastSelected=slotClicked;
                 med.getPageModel().setSelectedSlot(slotClicked);
+            }else{
+                slotLastSelected.getSlotPainter().setPaint(Color.GRAY);
+                med.getPageModel().setSelectedSlot(null);
             }
 
         }
