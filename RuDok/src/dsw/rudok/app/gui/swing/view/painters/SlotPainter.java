@@ -22,6 +22,7 @@ public class SlotPainter extends  ElementPainter{
 
 
         g.fill(getShape());
+
         if (element instanceof Slot){
             g.setPaint(Color.BLACK);
             Slot device=(Slot)element;

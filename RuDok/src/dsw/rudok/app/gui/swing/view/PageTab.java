@@ -37,6 +37,7 @@ public class PageTab extends JPanel implements ISubscriber {
         this.page = page;
         this.panCenter = new JPanel();
         this.page.addSubs(this);
+        this.page.getPageSelectionModel().addSubs(this);
         this.page.getPageModel().addSubs(this);
 
         TitledBorder title = BorderFactory.createTitledBorder(page.toString());
@@ -124,7 +125,7 @@ public class PageTab extends JPanel implements ISubscriber {
             Slot slot =it.next();
             if(slot.isRotate()){
                 AffineTransform at=graphics2D.getTransform();
-                graphics2D.rotate(Math.toRadians(page.getPageModel().getSelectedSlot().getAngle()),slot.getNorth().getX(),slot.getNorth().getY());
+                graphics2D.rotate(Math.toRadians(slot.getAngle()),slot.getNorth().getX(),slot.getNorth().getY());
 
 
                 ElementPainter painter = slot.getSlotPainter();
@@ -141,8 +142,10 @@ public class PageTab extends JPanel implements ISubscriber {
 
         //Iterator<Slot> it = page.getPageModel().getSlotIterator();
         //while (it.hasNext()) {
-            Slot slot = page.getPageModel().getSelectedSlot();
-            if(slot==null)return;
+        Iterator<Slot> it=page.getPageSelectionModel().getSelectionListIterator();
+        while(it.hasNext()) {
+            Slot slot = it.next();
+            if (slot == null) return;
             // Iscrtavanje pravougaonika sa isprekidanom linijom
             g2.setStroke(new BasicStroke((float) 1, BasicStroke.CAP_SQUARE,
                     BasicStroke.JOIN_BEVEL, 1f, new float[]{3f, 6f}, 0));
@@ -154,10 +157,10 @@ public class PageTab extends JPanel implements ISubscriber {
             // 	Iscrtavanje hendlova
             for (Handle e : Handle.values()) {
                 paintSelectionHandle(g2, getHandlePoint(slot.getPosition(), slot.getSize(), e));
-               // System.out.println(getHandlePoint(slot.getPosition(), slot.getSize(), e));
+                // System.out.println(getHandlePoint(slot.getPosition(), slot.getSize(), e));
             }
 
-
+        }
         }
 
 

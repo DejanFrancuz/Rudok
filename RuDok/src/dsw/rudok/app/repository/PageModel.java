@@ -13,7 +13,6 @@ import java.util.List;
 public class PageModel implements IPublisher, Serializable {
     private String name;
     private static int count=0;
-    private Slot selectedSlot;
 
     protected ArrayList<Slot> slots = new ArrayList<Slot>();
     private List<ISubscriber> subscribers;
@@ -53,6 +52,15 @@ public Slot getSlotatPosition(Point point) {
     public String getName() {
         return name;
     }
+    public int getIndexAtPosition(Point point) {
+        for(int i=getDeviceCount()-1;i>=0;i--){
+            Slot element = getSlotAt(i);
+            if(element.getSlotPainter().elementAt(element,point)){
+                return i;
+            }
+        }
+        return -1;
+    }
 
 
     public void setName(String name) {
@@ -66,14 +74,7 @@ public Slot getSlotatPosition(Point point) {
         return slots.size();
     }
 
-    public Slot getSelectedSlot() {
-        return selectedSlot;
-    }
 
-    public void setSelectedSlot(Slot selectedSlot) {
-        this.selectedSlot = selectedSlot;
-        notifyObs(new Object());
-    }
     public void addSlots(Slot slot){
 
         slots.add(slot);

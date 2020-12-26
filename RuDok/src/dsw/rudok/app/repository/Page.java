@@ -12,12 +12,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Page extends RuNodeComposite implements Serializable {
+public class Page extends RuNodeComposite implements Serializable,ISubscriber {
 
     private PageTab pageTab;
     List<ISubscriber> subscribers;
     private PageModel pageModel = new PageModel();
-    //private Slot selected;
+    private PageSelectionModel pageSelectionModel=new PageSelectionModel();
     boolean rotate;
 
 
@@ -62,6 +62,13 @@ public class Page extends RuNodeComposite implements Serializable {
         notifyObs(index);
     }
 
+    public PageSelectionModel getPageSelectionModel() {
+        return pageSelectionModel;
+    }
+
+    public void setPageSelectionModel(PageSelectionModel pageSelectionModel) {
+        this.pageSelectionModel = pageSelectionModel;
+    }
 
     public PageTab getPageTab() {
         return pageTab;
@@ -124,15 +131,8 @@ public class Page extends RuNodeComposite implements Serializable {
     }
 
 
-
-    /*public Slot getSelected() {
-        return selected;
+    @Override
+    public void update(Object notif) {
+        notifyObs(new Object());
     }
-
-    public void setSelected(Slot selected) {
-        this.selected = selected;
-        notifyObs(selected);
-    }*/
-
-
 }

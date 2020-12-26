@@ -19,18 +19,29 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="537a82df-9942-46e7-9bc6-7aaa2b061bd2" name="Default Changelist" comment="serijalizacija implementirana, ostalo je par nedostataka da se popravi">
+    <list default="true" id="537a82df-9942-46e7-9bc6-7aaa2b061bd2" name="Default Changelist" comment="klikom na mesto gde nema slota, slot se 'odselektuje'">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/PageTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/PageTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/painters/SlotPainter.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/painters/SlotPainter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/DeleteSlotState.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/DeleteSlotState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/MoveState.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/MoveState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/ResizeState.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/ResizeState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/RotateState.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/RotateState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/SelectState.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/SelectState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/AppCore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/AppCore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/RuTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/RuTree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/tree/view/RuTreeImplementation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Document.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Document.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/PageModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/PageModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/element/SlotHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/element/SlotHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/element/TransformType.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/element/TransformType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/serialization/SerializableStrokeAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/PageTab$SlotController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/PageTab$SlotController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/PageTab.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/PageTab.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/painters/SlotPainter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/painters/SlotPainter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/ResizeState$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/ResizeState$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/RotateState$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/RotateState$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/SelectState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/state/SelectState.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Page.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Page.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/PageModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/PageModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Project.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Project.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Workspace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/Workspace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/node/RuNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/repository/node/RuNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/serialization/SerializableStrokeAdapter.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,21 +173,7 @@
       <workItem from="1608753460058" duration="3281000" />
       <workItem from="1608896785679" duration="4722000" />
       <workItem from="1608921722291" duration="7686000" />
-      <workItem from="1608991170774" duration="8546000" />
-    </task>
-    <task id="LOCAL-00012" summary="napravljeni model i view za grafiku, slabo implementirani">
-      <created>1607204243056</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1607204243056</updated>
-    </task>
-    <task id="LOCAL-00013" summary="zapoceta akcija deljenja dokumenta, fali dodela doukemnta selektovanom projektu, i rad observera">
-      <created>1607266120855</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1607266120871</updated>
+      <workItem from="1608991170774" duration="15975000" />
     </task>
     <task id="LOCAL-00014" summary="jedna metoda iz RuTree promakla da se pusuje, evo je sad">
       <created>1607266195854</created>
@@ -507,7 +504,21 @@
       <option name="project" value="LOCAL" />
       <updated>1609001391223</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="klikom na mesto gde nema slota, slot se 'odselektuje'">
+      <created>1609003166740</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1609003166740</updated>
+    </task>
+    <task id="LOCAL-00062" summary="klikom na mesto gde nema slota, slot se 'odselektuje'">
+      <created>1609003184409</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1609003184409</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +537,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="brisu se page-ovi zajednickih dokumenata, ali ne orbisu se oba kada obrisem dokument" />
     <MESSAGE value="selektovanje slota premesteno iz factory-ja u SlotHandler" />
     <MESSAGE value="ubaceni hendlovi za selektovani slot" />
     <MESSAGE value="ubacene ikonice za akcije move,resize,rotate,deleteSlot" />
@@ -551,7 +561,8 @@
     <MESSAGE value="popravljeni resize i move, hendlovi idu uz slot" />
     <MESSAGE value="ubaceni open i save project na toolbar, obrisana akcija za newSLot, jer se do sada slot dodaje iskljucivo crtanjem" />
     <MESSAGE value="serijalizacija implementirana, ostalo je par nedostataka da se popravi" />
-    <option name="LAST_COMMIT_MESSAGE" value="serijalizacija implementirana, ostalo je par nedostataka da se popravi" />
+    <MESSAGE value="klikom na mesto gde nema slota, slot se 'odselektuje'" />
+    <option name="LAST_COMMIT_MESSAGE" value="klikom na mesto gde nema slota, slot se 'odselektuje'" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1607010646829">
@@ -574,10 +585,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="117" key="#com.intellij.ide.macro.MacrosDialog/0.0.1536.824@0.0.1536.824" timestamp="1606561058803" />
-    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser" timestamp="1608996326292">
+    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser" timestamp="1609010700694">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1608996326292" />
+    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1609010700694" />
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1607434735586">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -598,22 +609,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1609001423037" />
-    <state width="1493" height="201" key="GridCell.Tab.0.bottom" timestamp="1609001784142">
+    <state width="1493" height="201" key="GridCell.Tab.0.bottom" timestamp="1609010958096">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="201" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609001784142" />
-    <state width="1493" height="201" key="GridCell.Tab.0.center" timestamp="1609001784142">
+    <state width="1493" height="201" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609010958096" />
+    <state width="1493" height="201" key="GridCell.Tab.0.center" timestamp="1609010958095">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="201" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1609001784142" />
-    <state width="1493" height="201" key="GridCell.Tab.0.left" timestamp="1609001784142">
+    <state width="1493" height="201" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1609010958095" />
+    <state width="1493" height="201" key="GridCell.Tab.0.left" timestamp="1609010958095">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="201" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1609001784142" />
-    <state width="1493" height="201" key="GridCell.Tab.0.right" timestamp="1609001784142">
+    <state width="1493" height="201" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1609010958095" />
+    <state width="1493" height="201" key="GridCell.Tab.0.right" timestamp="1609010958095">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="201" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1609001784142" />
+    <state width="1493" height="201" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1609010958095" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1606561105945">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -650,10 +661,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606560842174" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609001393005">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609003186279">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609001393005" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609003186279" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607973853995">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

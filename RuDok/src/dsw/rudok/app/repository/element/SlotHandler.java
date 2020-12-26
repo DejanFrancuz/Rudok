@@ -19,19 +19,10 @@ import java.awt.geom.Point2D;
 
 public class SlotHandler {
 
-    public void transform(Slot novi, Object s, TransformType type, Point2D position,Handle handle) {
-        if (type == TransformType.SELECT) {
-            Slot stari=(Slot)s;
-            if (!novi.equals(stari)) {
-                novi.getSlotPainter().setPaint(Color.CYAN);
-
-                if (stari != null)
-                    stari.getSlotPainter().setPaint(Color.BLACK);
-            }
-        }else if(type == TransformType.MOVE){
+    public void transform(Slot novi, Page p, TransformType type, Point2D position,Handle handle) {
+        if(type == TransformType.MOVE){
             novi.setPosition(position);
         }else if(type==TransformType.ROTATE){
-            Page p=(Page)s;
             Point2D point=p.getStateManager().getRotateState().getHandlePoint(novi.getPosition(),novi.getSize(),handle);
             novi.setAngle(angleBetweenTwoPointsWithFixedPoint(point.getX(),point.getY(),position.getX(),position.getY(),novi.getPosition().getX(),novi.getPosition().getY())*50);
         }else if(type==TransformType.RESIZE){
@@ -63,8 +54,6 @@ public class SlotHandler {
                     break;
             }
             novi.setSize(d);
-            Page p=(Page)s;
-            //p.getPageModel().setSelectedSlot(novi);
         }
     }
     public static double angleBetweenTwoPointsWithFixedPoint(double point1X, double point1Y,

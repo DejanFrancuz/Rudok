@@ -18,6 +18,7 @@ import java.util.Iterator;
 
 public class ResizeState extends State{
     private Page page;
+    Slot slot=null;
     int p=-1;
     static final int handleSize = 14;
     SlotHandler handler=new SlotHandler();
@@ -30,19 +31,20 @@ public class ResizeState extends State{
     public void mousePressed(MouseEvent e) {
         Point2D position = e.getPoint();
         if (e.getButton() == MouseEvent.BUTTON1) {
-            handle=getHandleForPoint(page.getPageModel().getSelectedSlot(),position);
-            if(handle!=null){
-                p=1;
+            if (page.getPageModel().getSlotatPosition((Point) position) != null) {
+                slot = page.getPageModel().getSlotatPosition((Point) position);
+                handle = getHandleForPoint(slot, position);
+                if (handle != null) {
+                    p = 1;
+                    slot.addSubs(page);
+                }
+
             }
-
         }
-
         }
         public void mouseDragged(MouseEvent e){
         if(p==1){
-            Slot slot=page.getPageModel().getSelectedSlot();
             handler.transform(slot,page, TransformType.RESIZE,e.getPoint(),handle);
-            page.getPageModel().setSelectedSlot(slot);
         }
         }
         public void mouseReleased(MouseEvent e){

@@ -11,6 +11,7 @@ import java.awt.geom.AffineTransform;
 
 public class MoveState extends State{
     private Page page;
+    Slot slot=null;
     SlotHandler handler=new SlotHandler();
     boolean hit=false;
     public MoveState(Page page) {
@@ -23,6 +24,7 @@ public class MoveState extends State{
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
             if(page.getPageModel().getSlotatPosition(position) != null) {
+                slot=page.getPageModel().getSlotatPosition(position);
                 hit=true;
             }
         }
@@ -31,9 +33,7 @@ public class MoveState extends State{
     public void mouseDragged(MouseEvent e) {
         if (hit) {
             Point position = e.getPoint();
-            Slot slot = page.getPageModel().getSelectedSlot();
             handler.transform(slot, page, TransformType.MOVE, position, null);
-            page.getPageModel().setSelectedSlot(slot);
         }
     }
     public void mouseReleased(MouseEvent e){

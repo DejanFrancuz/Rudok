@@ -19,6 +19,7 @@ public class RotateState extends State{
     private Page page;
     static final int handleSize = 14;
     int p=-1;
+    Slot slot=null;
     Handle handle;
     SlotHandler handler=new SlotHandler();
     public RotateState(Page page) {
@@ -29,21 +30,21 @@ public class RotateState extends State{
     public void mousePressed(MouseEvent e) {
         Point2D position = e.getPoint();
         if (e.getButton() == MouseEvent.BUTTON1) {
-            handle=getHandleForPoint(page.getPageModel().getSelectedSlot(),position);
-            if(handle!=null){
-                p=1;
+            if(page.getPageModel().getSlotatPosition((Point) position) != null) {
+                slot = page.getPageModel().getSlotatPosition((Point) position);
+                handle = getHandleForPoint(slot, position);
+                if (handle != null) {
+                    p = 1;
+                    slot.addSubs(page);
+                }
             }
-
         }
 
     }
     public void mouseDragged(MouseEvent e){
         if(p==1){
-            Slot slot=page.getPageModel().getSelectedSlot();
             handler.transform(slot,page, TransformType.ROTATE,e.getPoint(),handle);
-            page.getPageModel().setSelectedSlot(slot);
             slot.setRotate(true);
-
         }
     }
     public void mouseReleased(MouseEvent e){
