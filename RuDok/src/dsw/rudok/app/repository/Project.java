@@ -1,26 +1,33 @@
 package dsw.rudok.app.repository;
 
+import dsw.rudok.app.AppCore;
 import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
+import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.gui.swing.view.ProjectTab;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
 import javax.print.Doc;
+import javax.swing.*;
 import javax.swing.tree.MutableTreeNode;
+import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Project extends RuNodeComposite {
+public class Project extends RuNodeComposite implements Serializable{
 
     List<ISubscriber> subscribers;
     ProjectTab projectTab;
+    private transient boolean changed;
+    private File projectFile;
 
     public Project(String name, RuNode parent){
-
         super(name,parent);
-       
+       changed=false;
+       projectFile=null;
     }
     @Override
     public void addChild(RuNode child){
@@ -66,6 +73,25 @@ public class Project extends RuNodeComposite {
 
         for(ISubscriber listener : subscribers){
             listener.update(notif);
+        }
+    }
+
+    public File getProjectFile() {
+        return projectFile;
+    }
+
+    public void setProjectFile(File projectFile) {
+        this.projectFile = projectFile;
+    }
+
+    public boolean isChanged() {
+        return changed;
+    }
+
+    public void setChanged(boolean changed) {
+        if(this.changed!=changed) {
+            this.changed = changed;
+           // SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().);
         }
     }
 

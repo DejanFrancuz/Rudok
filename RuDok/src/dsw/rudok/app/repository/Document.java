@@ -8,10 +8,11 @@ import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Document extends RuNodeComposite {
+public class Document extends RuNodeComposite implements Serializable {
 
     private DocumentTab documentTab;
     List<ISubscriber> subscribers;

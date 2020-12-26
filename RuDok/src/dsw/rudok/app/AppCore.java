@@ -8,6 +8,8 @@ import dsw.rudok.app.errorHandler.ErrorHandlerImpl;
 import dsw.rudok.app.gui.swing.SwingGui;
 import dsw.rudok.app.repository.RepositoryImpl;
 
+import java.awt.*;
+
 public class AppCore extends ApplicationFramework {
 
     private static AppCore instance;

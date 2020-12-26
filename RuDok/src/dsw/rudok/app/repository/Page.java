@@ -8,10 +8,11 @@ import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Page extends RuNodeComposite {
+public class Page extends RuNodeComposite implements Serializable {
 
     private PageTab pageTab;
     List<ISubscriber> subscribers;

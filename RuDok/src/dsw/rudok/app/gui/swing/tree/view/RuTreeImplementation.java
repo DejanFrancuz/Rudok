@@ -237,6 +237,16 @@ public class RuTreeImplementation implements RuTree, IPublisher {
             SwingUtilities.updateComponentTreeUI(treeView);
         }
     }
+    public void addProject(Project project){
+        RuTreeItem item = (RuTreeItem) treeModel.getRoot();
+        Workspace workspace = (Workspace) project.getParent();
+        item.add(new RuTreeItem(project));
+        workspace.addChild(project);
+        SwingUtilities.updateComponentTreeUI(treeView);
+
+
+        }
+
     public RuTreeItem getProjectItem(Project project){
         RuTreeItem item = (RuTreeItem) treeModel.getRoot();
         Workspace w = (Workspace) ((RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getModel().getRoot()).getNodeModel();

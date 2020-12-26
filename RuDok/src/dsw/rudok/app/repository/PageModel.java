@@ -5,11 +5,12 @@ import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.element.Slot;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class PageModel implements IPublisher {
+public class PageModel implements IPublisher, Serializable {
     private String name;
     private static int count=0;
     private Slot selectedSlot;
@@ -17,12 +18,6 @@ public class PageModel implements IPublisher {
     protected ArrayList<Slot> slots = new ArrayList<Slot>();
     private List<ISubscriber> subscribers;
 
-/*
-    public SlotModel(String name, ArrayList<SlotDevice> slotDevices) {
-        this.name = name;
-        this.slotDevices = slotDevices;
-    }
- */
 public Slot getSlotatPosition(Point point) {
     for(int i=getDeviceCount()-1;i>=0;i--){
         Slot slot = getSlotAt(i);

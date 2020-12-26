@@ -10,10 +10,10 @@ import javax.swing.*;
 public interface RuTree {
     JTree generateTree(Workspace workspace);
     void addProject();
+    void addProject(Project p);
     void addDocument();
     void addPage();
     void addSlot(Slot rectangle, Page page);
-    //void addSlot(CircleSlot circle,Page page);
     void removeNode();
     void shareDocument();
 

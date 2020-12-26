@@ -4,11 +4,12 @@ import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Workspace extends RuNodeComposite {
+public class Workspace extends RuNodeComposite implements Serializable {
     public Workspace(String name){
         super(name,null);
     }

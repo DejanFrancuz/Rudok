@@ -15,7 +15,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class RuNode implements IPublisher, Serializable {
+public abstract class RuNode implements IPublisher{
 
     private String name;
 
