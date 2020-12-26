@@ -7,7 +7,6 @@ public class ActionManager {
 	private NewProjectAction newProjectAction;
 	private NewDocumentAction newDocumentAction;
 	private NewPageAction newPageAction;
-	private NewSlotAction newSlotAction;
 	private DeleteNode deleteNode;
 	private ShareDocumentAction shareDocumentAction;
 	private CircleAction circleAction;
@@ -18,6 +17,8 @@ public class ActionManager {
 	private ResizeAction resizeAction;
 	private RotateAction rotateAction;
 	private DeleteSlotAction deleteSlotAction;
+	private OpenProjectAction openProjectAction;
+	private SaveProjectAction saveProjectAction;
 	
 	public ActionManager() {
 		initialiseActions();
@@ -28,7 +29,6 @@ public class ActionManager {
 		newProjectAction = new NewProjectAction();
 		newDocumentAction = new NewDocumentAction();
 		newPageAction=new NewPageAction();
-		newSlotAction=new NewSlotAction();
 		deleteNode=new DeleteNode();
 		shareDocumentAction=new ShareDocumentAction();
 		circleAction=new CircleAction();
@@ -39,6 +39,8 @@ public class ActionManager {
 		resizeAction=new ResizeAction();
 		rotateAction=new RotateAction();
 		deleteSlotAction=new DeleteSlotAction();
+		openProjectAction=new OpenProjectAction();
+		saveProjectAction=new SaveProjectAction();
 	}
 
 	public MoveAction getMoveAction() {
@@ -145,13 +147,6 @@ public class ActionManager {
 		this.newPageAction = newPageAction;
 	}
 
-	public NewSlotAction getNewSlotAction() {
-		return newSlotAction;
-	}
-
-	public void setNewSlotAction(NewSlotAction newSlotAction) {
-		this.newSlotAction = newSlotAction;
-	}
 
 	public DeleteNode getDeleteNode() {
 		return deleteNode;
@@ -160,4 +155,20 @@ public class ActionManager {
 	public void setDeleteNode(DeleteNode deleteNode) {
 		this.deleteNode = deleteNode;
 	}
+
+	public OpenProjectAction getOpenProjectAction() {
+		return openProjectAction;
 	}
+
+	public void setOpenProjectAction(OpenProjectAction openProjectAction) {
+		this.openProjectAction = openProjectAction;
+	}
+
+	public SaveProjectAction getSaveProjectAction() {
+		return saveProjectAction;
+	}
+
+	public void setSaveProjectAction(SaveProjectAction saveProjectAction) {
+		this.saveProjectAction = saveProjectAction;
+	}
+}

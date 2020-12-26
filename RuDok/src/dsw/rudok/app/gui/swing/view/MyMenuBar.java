@@ -23,7 +23,6 @@ public class MyMenuBar extends JMenuBar {
 		fileMenu.add(MainFrame.getInstance().getActionManager().getNewProjectAction());
 		fileMenu.add(MainFrame.getInstance().getActionManager().getNewDocumentAction());
 		fileMenu.add(MainFrame.getInstance().getActionManager().getNewPageAction());
-		fileMenu.add(MainFrame.getInstance().getActionManager().getNewSlotAction());
 		fileMenu.add(MainFrame.getInstance().getActionManager().getDeleteNode());
 		fileMenu.add(MainFrame.getInstance().getActionManager().getShareDocumentAction());
 		fileMenu.add(MainFrame.getInstance().getActionManager().getCircleAction());
@@ -34,6 +33,8 @@ public class MyMenuBar extends JMenuBar {
 		fileMenu.add(MainFrame.getInstance().getActionManager().getResizeAction());
 		fileMenu.add(MainFrame.getInstance().getActionManager().getRotateAction());
 		fileMenu.add(MainFrame.getInstance().getActionManager().getDeleteSlotAction());
+		fileMenu.add(MainFrame.getInstance().getActionManager().getOpenProjectAction());
+		fileMenu.add(MainFrame.getInstance().getActionManager().getSelectAction());
 
 
 		

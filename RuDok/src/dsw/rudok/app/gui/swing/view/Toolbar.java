@@ -12,7 +12,6 @@ public class Toolbar extends JToolBar{
 		add(MainFrame.getInstance().getActionManager().getNewProjectAction());
 		add(MainFrame.getInstance().getActionManager().getNewDocumentAction());
 		add(MainFrame.getInstance().getActionManager().getNewPageAction());
-		add(MainFrame.getInstance().getActionManager().getNewSlotAction());
 		add(MainFrame.getInstance().getActionManager().getDeleteNode());
 		add(MainFrame.getInstance().getActionManager().getShareDocumentAction());
 		add(MainFrame.getInstance().getActionManager().getCircleAction());
@@ -23,9 +22,8 @@ public class Toolbar extends JToolBar{
 		add(MainFrame.getInstance().getActionManager().getResizeAction());
 		add(MainFrame.getInstance().getActionManager().getRotateAction());
 		add(MainFrame.getInstance().getActionManager().getDeleteSlotAction());
-
-
-
+		add(MainFrame.getInstance().getActionManager().getOpenProjectAction());
+		add(MainFrame.getInstance().getActionManager().getSaveProjectAction());
 	}
 	
 }
