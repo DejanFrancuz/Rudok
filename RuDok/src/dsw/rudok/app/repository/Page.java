@@ -1,5 +1,6 @@
 package dsw.rudok.app.repository;
 
+import dsw.rudok.app.commands.CommandManager;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.PageTab;
 import dsw.rudok.app.gui.swing.view.state.StateManager;
@@ -19,6 +20,7 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
     private PageModel pageModel = new PageModel();
     private PageSelectionModel pageSelectionModel=new PageSelectionModel();
     boolean rotate;
+    private CommandManager commandManager;
 
 
     public Page(String name, RuNode parent) {
@@ -85,6 +87,14 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
     public void setRotate(boolean rotate) {
         this.rotate = rotate;
         notifyObs(rotate);
+    }
+
+    public CommandManager getCommandManager() {
+        return commandManager;
+    }
+
+    public void setCommandManager(CommandManager commandManager) {
+        this.commandManager = commandManager;
     }
 
     @Override

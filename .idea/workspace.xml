@@ -19,11 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="537a82df-9942-46e7-9bc6-7aaa2b061bd2" name="Default Changelist" comment="observer i multiselekcija rade zajedno kako treba">
+    <list default="true" id="537a82df-9942-46e7-9bc6-7aaa2b061bd2" name="Default Changelist" comment="ubaceni undo i redo na toolbar i menubar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/controller/ActionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/controller/ActionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/MyMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/MyMenuBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/Toolbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/Toolbar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/AppCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/AppCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/core/ApplicationFramework.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/core/ApplicationFramework.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/SwingGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/SwingGui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/controller/RedoAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/controller/RedoAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/controller/UndoAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/controller/UndoAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/PageTab.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/PageTab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/CircleState.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/CircleState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/RectangleState.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/gui/swing/view/state/RectangleState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/Page.java" beforeDir="false" afterPath="$PROJECT_DIR$/RuDok/src/dsw/rudok/app/repository/Page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dsw2020-tim_ignjatkrd/dsw/rudok/app/gui/swing/view/MainFrame.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +63,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Download/DSWTermin-Selection" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Wim Wenders/Telegram" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
@@ -158,21 +166,7 @@
       <workItem from="1608896785679" duration="4722000" />
       <workItem from="1608921722291" duration="7686000" />
       <workItem from="1608991170774" duration="16134000" />
-      <workItem from="1609073727900" duration="2104000" />
-    </task>
-    <task id="LOCAL-00018" summary="za sad, najblize resenju deljenju dokumenata, sta se doda na jednom, doda se i ona drugom, ali kada se deljeni dokuemnt selektuje,izbacuje se null pointer exception">
-      <created>1607345533680</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1607345533680</updated>
-    </task>
-    <task id="LOCAL-00019" summary="update-ovani pagetab-ovi, moze da se crta po svim, samo se deca i dalje dodaju u selektovanim page-ovima">
-      <created>1607469585861</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1607469585861</updated>
+      <workItem from="1609073727900" duration="13804000" />
     </task>
     <task id="LOCAL-00020" summary="overrajdovana metoda insert zbog deljenja dokumenta, ali i dalje ne radi">
       <created>1607534373596</created>
@@ -503,7 +497,21 @@
       <option name="project" value="LOCAL" />
       <updated>1609074952184</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="ubaceni undo i redo na toolbar i menubar">
+      <created>1609076027551</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1609076027551</updated>
+    </task>
+    <task id="LOCAL-00068" summary="ubaceni undo i redo na toolbar i menubar">
+      <created>1609076047750</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1609076047750</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,7 +530,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ubacene ikonice za akcije move,resize,rotate,deleteSlot" />
     <MESSAGE value="implementirana akcija za brisanje slotova, brise se i u stablu automatski" />
     <MESSAGE value="akcija move pomera samo hendlove selektovanog slota, ali ne i njega samog" />
     <MESSAGE value="popravljena metoda za brisanje, desava se iste sekunde" />
@@ -547,7 +554,8 @@
     <MESSAGE value="klikom na mesto gde nema slota, slot se 'odselektuje'" />
     <MESSAGE value="implementirana multiselekcija" />
     <MESSAGE value="observer i multiselekcija rade zajedno kako treba" />
-    <option name="LAST_COMMIT_MESSAGE" value="observer i multiselekcija rade zajedno kako treba" />
+    <MESSAGE value="ubaceni undo i redo na toolbar i menubar" />
+    <option name="LAST_COMMIT_MESSAGE" value="ubaceni undo i redo na toolbar i menubar" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="91" key="#Inspections" timestamp="1607010646829">
@@ -570,46 +578,46 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="117" key="#com.intellij.ide.macro.MacrosDialog/0.0.1536.824@0.0.1536.824" timestamp="1606561058803" />
-    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser" timestamp="1609075792206">
+    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser" timestamp="1609096010854">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1609075792206" />
+    <state x="422" y="166" width="388" height="487" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1609096010854" />
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1607434735586">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="449" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1607434735586" />
-    <state x="551" y="307" width="448" height="216" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1608994732447">
+    <state x="551" y="307" width="448" height="216" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1609094175588">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="551" y="307" width="448" height="216" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1608994732447" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608995420344">
+    <state x="551" y="307" width="448" height="216" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1609094175588" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1609094112343">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1608995420344" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1609094112343" />
     <state x="147" y="65" width="1228" height="687" key="DiffContextDialog" timestamp="1608313292048">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="147" y="65" width="1228" height="687" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1608313292048" />
-    <state x="549" y="130" key="FileChooserDialogImpl" timestamp="1609001423037">
+    <state x="549" y="130" key="FileChooserDialogImpl" timestamp="1609099000222">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1609001423037" />
-    <state width="1493" height="201" key="GridCell.Tab.0.bottom" timestamp="1609074802278">
+    <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1609099000222" />
+    <state width="1493" height="201" key="GridCell.Tab.0.bottom" timestamp="1609098961641">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="201" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609074802278" />
-    <state width="1493" height="201" key="GridCell.Tab.0.center" timestamp="1609074802278">
+    <state width="1493" height="201" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609098961641" />
+    <state width="1493" height="201" key="GridCell.Tab.0.center" timestamp="1609098961641">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="201" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1609074802278" />
-    <state width="1493" height="201" key="GridCell.Tab.0.left" timestamp="1609074802278">
+    <state width="1493" height="201" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1609098961641" />
+    <state width="1493" height="201" key="GridCell.Tab.0.left" timestamp="1609098961641">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="201" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1609074802278" />
-    <state width="1493" height="201" key="GridCell.Tab.0.right" timestamp="1609074802278">
+    <state width="1493" height="201" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1609098961641" />
+    <state width="1493" height="201" key="GridCell.Tab.0.right" timestamp="1609098961641">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="201" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1609074802278" />
+    <state width="1493" height="201" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1609098961641" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1606561105945">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -634,10 +642,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1608312974230" />
-    <state x="439" y="117" width="668" height="590" key="NewModule_or_Project.wizard" timestamp="1608922902798">
+    <state x="439" y="117" width="672" height="590" key="NewModule_or_Project.wizard" timestamp="1609079341826">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="439" y="117" width="668" height="590" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1608922902798" />
+    <state x="439" y="117" width="672" height="590" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1609079341826" />
     <state width="254" height="198" key="RunAnythingAction_Filter_Popup" timestamp="1607283767587">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -646,10 +654,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606560842174" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609074954303">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609076032741">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609074954303" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609076032741" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607973853995">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -666,14 +674,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="302" y="9" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1608489656753" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1608299876536">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1609094168275">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1608299876536" />
-    <state x="496" y="251" width="672" height="678" key="search.everywhere.popup" timestamp="1608324375592">
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1609094168275" />
+    <state x="496" y="251" width="672" height="678" key="search.everywhere.popup" timestamp="1609095537289">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="496" y="251" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1608324375592" />
+    <state x="496" y="251" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1609095537289" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

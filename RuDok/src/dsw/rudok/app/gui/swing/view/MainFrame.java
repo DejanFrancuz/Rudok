@@ -43,7 +43,8 @@ public class MainFrame extends  JFrame implements ISubscriber {
 	
 	private void initialise() {
 		actionManager = new ActionManager();
-
+		disableUndo();
+		disableRedo();
 	}
 	
 	public void initialiseWorkspaceTree() {
@@ -193,7 +194,10 @@ public class MainFrame extends  JFrame implements ISubscriber {
 	public void showError(MyError e){
 		JOptionPane.showMessageDialog(this,e.getTitle(), e.getMessage(),e.getType());
 	}
-
+	public void enableUndo(){getActionManager().getUndoAction().setEnabled(true);}
+	public void enableRedo(){getActionManager().getRedoAction().setEnabled(true);}
+	public void disableUndo(){getActionManager().getUndoAction().setEnabled(false);}
+	public void disableRedo(){getActionManager().getRedoAction().setEnabled(false);}
 
 	@Override
 	public void update(Object notif) {

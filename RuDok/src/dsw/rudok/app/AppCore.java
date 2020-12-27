@@ -1,9 +1,7 @@
 package dsw.rudok.app;
 
-import dsw.rudok.app.core.ApplicationFramework;
-import dsw.rudok.app.core.ErrorHandler;
-import dsw.rudok.app.core.Gui;
-import dsw.rudok.app.core.Repository;
+import dsw.rudok.app.commands.CommandManager;
+import dsw.rudok.app.core.*;
 import dsw.rudok.app.errorHandler.ErrorHandlerImpl;
 import dsw.rudok.app.gui.swing.SwingGui;
 import dsw.rudok.app.repository.RepositoryImpl;
@@ -30,8 +28,9 @@ public class AppCore extends ApplicationFramework {
         Repository repository=new RepositoryImpl();
         Gui gui= new SwingGui(repository);
         ErrorHandler errorHandler=new ErrorHandlerImpl();
+        Command command= new CommandManager();
         ApplicationFramework appCore= AppCore.getInstance();
-        appCore.initialise(gui,repository,errorHandler);
+        appCore.initialise(gui,repository,errorHandler,command);
         appCore.run();
     }
 }

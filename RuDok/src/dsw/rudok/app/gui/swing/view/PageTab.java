@@ -1,5 +1,6 @@
 package dsw.rudok.app.gui.swing.view;
 
+import dsw.rudok.app.commands.CommandManager;
 import dsw.rudok.app.gui.swing.view.painters.ElementPainter;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.Page;
@@ -25,10 +26,12 @@ public class PageTab extends JPanel implements ISubscriber {
 
 
 
+
     private String pageName;
     private RuNode parent;
     private JPanel panCenter;
     private Page page;
+
     static final int handleSize = 7;
 
 
@@ -230,6 +233,9 @@ public class PageTab extends JPanel implements ISubscriber {
 
         this.page = page;
     }
+
+
+
     public static int getOpenFrameCount() {
         return openFrameCount;
     }
