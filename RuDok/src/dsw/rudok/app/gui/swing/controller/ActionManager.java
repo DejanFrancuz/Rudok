@@ -19,6 +19,8 @@ public class ActionManager {
 	private DeleteSlotAction deleteSlotAction;
 	private OpenProjectAction openProjectAction;
 	private SaveProjectAction saveProjectAction;
+	private UndoAction undoAction;
+	private RedoAction redoAction;
 	
 	public ActionManager() {
 		initialiseActions();
@@ -41,6 +43,8 @@ public class ActionManager {
 		deleteSlotAction=new DeleteSlotAction();
 		openProjectAction=new OpenProjectAction();
 		saveProjectAction=new SaveProjectAction();
+		undoAction=new UndoAction();
+		redoAction=new RedoAction();
 	}
 
 	public MoveAction getMoveAction() {
@@ -170,5 +174,21 @@ public class ActionManager {
 
 	public void setSaveProjectAction(SaveProjectAction saveProjectAction) {
 		this.saveProjectAction = saveProjectAction;
+	}
+
+	public UndoAction getUndoAction() {
+		return undoAction;
+	}
+
+	public void setUndoAction(UndoAction undoAction) {
+		this.undoAction = undoAction;
+	}
+
+	public RedoAction getRedoAction() {
+		return redoAction;
+	}
+
+	public void setRedoAction(RedoAction redoAction) {
+		this.redoAction = redoAction;
 	}
 }
