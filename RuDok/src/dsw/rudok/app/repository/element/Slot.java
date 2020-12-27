@@ -78,6 +78,7 @@ public abstract class Slot extends RuNode implements IPublisher, Serializable {
 
     public void setAngle(double angle) {
         this.angle = angle;
+        notifyObs(this);
     }
 
     @Override

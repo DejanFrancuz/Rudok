@@ -26,7 +26,7 @@ public class PageSelectionModel extends DefaultSingleSelectionModel implements I
         return selectionList.size();
     }
     public Slot getElementFromSelectionListAt(int index) {
-        return (Slot)selectionList.get(index);
+        return selectionList.get(index);
     }
     public int getIndexByObject(Slot slot) {
         return selectionList.indexOf(slot);

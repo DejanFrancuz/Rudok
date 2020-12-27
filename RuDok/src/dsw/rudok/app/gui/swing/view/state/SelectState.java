@@ -14,7 +14,6 @@ import java.awt.geom.Point2D;
 
 public class SelectState extends State{
     private Page page;
-    private int elementInMotion = -1;
     public SelectState(Page page) {
         this.page = page;
     }
@@ -24,22 +23,17 @@ public class SelectState extends State{
             page.getPageSelectionModel().removeAllFromSelectionList();
         }
         Point position = e.getPoint();
-        if(e.getButton()==MouseEvent.BUTTON1){
-            elementInMotion=page.getPageModel().getIndexAtPosition(position);
-            if(elementInMotion != -1){
-                Slot element=page.getPageModel().getSlotAt(elementInMotion);
-                element.addSubs(page);
-                if (page.getPageSelectionModel().isElementSelected(element)){
-                    page.getPageSelectionModel().removeFromSelectionList(element);
-                    System.out.println("if");
+        if(e.getButton()==MouseEvent.BUTTON1) {
+            if (page.getPageModel().getSlotatPosition(position) != null) {
+                Slot slot = page.getPageModel().getSlotatPosition(position);
+                slot.addSubs(page);
+                if(page.getPageSelectionModel().isElementSelected(slot)){
+                    page.getPageSelectionModel().removeFromSelectionList(slot);
                 }else{
-                    page.getPageSelectionModel().addToSelectionList(element);
-                    System.out.println("else");
+                    page.getPageSelectionModel().addToSelectionList(slot);
+                    System.out.println(page.getPageSelectionModel().getSelectionList());
                 }
-            }else{
-                //nije pogodjen nijedan element
             }
-
-    }
+        }
     }
 }
