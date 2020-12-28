@@ -28,12 +28,15 @@ public class ErrorHandlerImpl  implements ErrorHandler {
 
     @Override
     public void addSubs(ISubscriber sub) {
-        if(sub == null)
+        if(sub == null) {
             return;
-        if(this.subscribers ==null)
+        }
+        if(this.subscribers ==null) {
             this.subscribers = new ArrayList<>();
-        if(this.subscribers.contains(sub))
+        }
+        if(this.subscribers.contains(sub)) {
             return;
+        }
         this.subscribers.add(sub);
     }
 

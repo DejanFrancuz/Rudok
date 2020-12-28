@@ -5,7 +5,7 @@ import dsw.rudok.app.observer.ISubscriber;
 
 import javax.imageio.IIOParamController;
 
-public interface Command extends IPublisher,ISubscriber {
+public interface Command extends IPublisher{
     void doCommand();
     void undoCommand();
 }

@@ -1,5 +1,6 @@
 package dsw.rudok.app.gui.swing;
 
+import dsw.rudok.app.AppCore;
 import dsw.rudok.app.commands.EventType;
 import dsw.rudok.app.core.Gui;
 import dsw.rudok.app.core.Repository;
@@ -29,6 +30,7 @@ public class SwingGui implements Gui{
 		
 	}
 	public void update(Object notif){
+		System.out.println("stigao");
 		if(notif instanceof MyError){
 			MyError e=(MyError)notif;
 			MainFrame.getInstance().showError(e);

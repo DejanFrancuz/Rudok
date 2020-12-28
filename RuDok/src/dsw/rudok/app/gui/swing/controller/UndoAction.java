@@ -17,9 +17,9 @@ public class UndoAction extends AbstractRudokAction{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-       /*PageTab view=(PageTab) MainFrame.getInstance().getjPanel();
-        view.getPage().getCommandManager().undoCommand();*/
-        AppCore.getInstance().getCommand().undoCommand();
+       PageTab view=(PageTab) MainFrame.getInstance().getjPanel();
+        view.getPage().getCommandManager().undoCommand();
+        //AppCore.getInstance().getCommand().undoCommand();
 
     }
 }

@@ -1,6 +1,7 @@
 package dsw.rudok.app.core;
 
 
+import dsw.rudok.app.AppCore;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.gui.swing.view.PageTab;
 

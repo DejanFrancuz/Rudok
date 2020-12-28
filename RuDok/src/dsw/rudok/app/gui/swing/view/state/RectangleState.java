@@ -1,6 +1,7 @@
 package dsw.rudok.app.gui.swing.view.state;
 
 import dsw.rudok.app.commands.AddDeviceCommand;
+import dsw.rudok.app.commands.CommandManager;
 import dsw.rudok.app.commands.ShapeEnum;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.repository.Page;
@@ -22,11 +23,14 @@ public class RectangleState extends State{
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
             if (page.getPageModel().getSlotatPosition(position)== null){
-              SlotFactory factory= new RectangleFactory();
+              /*SlotFactory factory= new RectangleFactory();
                 Slot slot= factory.makeSlot(position,page.getPageModel().getDeviceCount());
                 page.getPageModel().addSlots(slot);
-                MainFrame.getInstance().getTree().addSlot(slot,page);
-               // page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position, ShapeEnum.RECTANGLE));
+                MainFrame.getInstance().getTree().addSlot(slot,page);*/
+                /*CommandManager cm=page.getCommandManager();
+                AddDeviceCommand com=new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position, ShapeEnum.RECTANGLE);
+                cm.addCommand(com);*/
+                page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position, ShapeEnum.RECTANGLE));
             }
 
             }

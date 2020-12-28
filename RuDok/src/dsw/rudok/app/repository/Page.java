@@ -32,7 +32,6 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
 
     public Page(String name, RuNode parent) {
         super(name, parent);
-        getCommandManager().setPage(this);
     }
     private StateManager stateManager= new StateManager(this);
 
@@ -41,9 +40,7 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
             Slot slot = (Slot) child;
             if (!this.getChildren().contains(slot)) {
                 this.getChildren().add(slot);
-                notifyObs(slot);
-                //getCommandManager().addCommand(new AddDeviceCommand(getPageModel(),getPageSelectionModel(),slot.getPosition(), ShapeEnum.RECTANGLE));
-            }
+                notifyObs(slot);            }
         }
     }
 

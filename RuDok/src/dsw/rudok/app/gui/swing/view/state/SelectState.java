@@ -22,7 +22,7 @@ public class SelectState extends State{
         if(!e.isControlDown()){
             page.getPageSelectionModel().removeAllFromSelectionList();
             for(Slot slot: page.getPageSelectionModel().getSelectionList()){
-                //slot.removeSubs(page);
+                slot.removeSubs(page);
             }
         }
         Point position = e.getPoint();

@@ -23,11 +23,11 @@ public class CircleState extends State{
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
             if (page.getPageModel().getSlotatPosition(position) == null){
-                SlotFactory factory= new CircleFactory();
+                /*SlotFactory factory= new CircleFactory();
                 Slot slot= factory.makeSlot(position,page.getPageModel().getDeviceCount());
                 page.getPageModel().addSlots(slot);
-                MainFrame.getInstance().getTree().addSlot(slot,page);
-                //page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position, ShapeEnum.CIRCLE));
+                MainFrame.getInstance().getTree().addSlot(slot,page);*/
+                page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position, ShapeEnum.CIRCLE));
             }
 
 

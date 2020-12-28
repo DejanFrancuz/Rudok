@@ -17,9 +17,8 @@ public class RedoAction extends AbstractRudokAction{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        /*PageTab view=(PageTab) MainFrame.getInstance().getjPanel();
-        view.getPage().getCommandManager().doCommand();*/
-        AppCore.getInstance().getCommand().doCommand();
+        PageTab view=(PageTab) MainFrame.getInstance().getjPanel();
+        view.getPage().getCommandManager().doCommand();
 
     }
 }
