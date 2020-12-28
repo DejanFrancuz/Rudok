@@ -22,10 +22,7 @@ public class RectangleSlot extends Slot{
                 "Rectangle " + index);
         return rectangle;
     }
-    public static Slot createNotDefault(Dimension d,Point point,int index){
-        RectangleSlot rectangleSlot=new RectangleSlot(new Dimension(d),point,"Rectangle "+index);
-        return rectangleSlot;
-    }
+
     public double calculateDistanceBetweenPointsWithPoint2D(double x1,double y1,double x2,double y2) {
 
 

@@ -1,6 +1,8 @@
 package dsw.rudok.app.repository;
 
+import dsw.rudok.app.commands.AddDeviceCommand;
 import dsw.rudok.app.commands.CommandManager;
+import dsw.rudok.app.commands.ShapeEnum;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.PageTab;
 import dsw.rudok.app.gui.swing.view.state.StateManager;
@@ -9,6 +11,8 @@ import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.node.RuNode;
 import dsw.rudok.app.repository.node.RuNodeComposite;
 
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +25,11 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
     private PageSelectionModel pageSelectionModel=new PageSelectionModel();
     boolean rotate;
     private CommandManager commandManager;
+    private Rectangle2D selectionRectangle=null;
+    private Point2D lastPosition=null;
 
 
     public Page(String name, RuNode parent) {
-
         super(name, parent);
     }
     private StateManager stateManager= new StateManager(this);
@@ -35,6 +40,7 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
             if (!this.getChildren().contains(slot)) {
                 this.getChildren().add(slot);
                 notifyObs(slot);
+                //getCommandManager().addCommand(new AddDeviceCommand(getPageModel(),getPageSelectionModel(),slot.getPosition(), ShapeEnum.RECTANGLE));
             }
         }
     }
@@ -57,6 +63,31 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
 
     public void setStateManager(StateManager stateManager) {
         this.stateManager = stateManager;
+    }
+
+    public CommandManager getCommandManager() {
+        return commandManager;
+    }
+
+    public void setCommandManager(CommandManager commandManager) {
+        this.commandManager = commandManager;
+    }
+
+    public Rectangle2D getSelectionRectangle() {
+        return selectionRectangle;
+    }
+
+    public Point2D getLastPosition() {
+        return lastPosition;
+    }
+
+    public void setLastPosition(Point2D lastPosition) {
+        this.lastPosition = lastPosition;
+    }
+
+    public void setSelectionRectangle(Rectangle2D selectionRectangle) {
+        this.selectionRectangle = selectionRectangle;
+        notifyObs(selectionRectangle);
     }
 
     @Override
@@ -89,13 +120,7 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
         notifyObs(rotate);
     }
 
-    public CommandManager getCommandManager() {
-        return commandManager;
-    }
 
-    public void setCommandManager(CommandManager commandManager) {
-        this.commandManager = commandManager;
-    }
 
     @Override
     public void addSubs(ISubscriber sub) {

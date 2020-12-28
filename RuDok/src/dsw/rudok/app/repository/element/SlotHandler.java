@@ -68,5 +68,6 @@ public class SlotHandler {
     public double calculate(double x1,double y1,double x2,double y2) {
         return Point2D.distance(x1,y1,x2,y2);
     }
+    public double calculate1(Point2D point1,Point2D point2){ return Point2D.distance(point1.getX(),point1.getY(),point2.getX(),point2.getY());}
 }
 

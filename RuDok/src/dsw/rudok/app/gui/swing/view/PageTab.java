@@ -32,6 +32,8 @@ public class PageTab extends JPanel implements ISubscriber {
     private JPanel panCenter;
     private Page page;
 
+
+
     static final int handleSize = 7;
 
 
@@ -88,6 +90,7 @@ public class PageTab extends JPanel implements ISubscriber {
     }
 
 
+
     public void setuj(){
 
         MainFrame.getInstance().setjPanel(this);
@@ -98,6 +101,7 @@ public class PageTab extends JPanel implements ISubscriber {
 
         public void mousePressed(MouseEvent e) {
             setuj();
+            page.setLastPosition(e.getPoint());
             page.getStateManager().getCurrentState().mousePressed(e);
         }
 
@@ -139,12 +143,21 @@ public class PageTab extends JPanel implements ISubscriber {
                 painter.paint(graphics2D, slot);
             }
             paintSelectionHandles(graphics2D);
+            paintLasso(graphics2D);
+        }
+    }
+    private void paintLasso(Graphics2D g2){
+        if(page.getSelectionRectangle()!=null){
+            Rectangle2D rec=page.getSelectionRectangle();
+            g2.setStroke(new BasicStroke((float) 1, BasicStroke.CAP_SQUARE,
+                    BasicStroke.JOIN_BEVEL, 1f, new float[]{3f, 6f}, 0));
+            g2.setPaint(Color.BLACK);
+
+            g2.drawRect((int)  rec.getBounds2D().getX(), (int) rec.getBounds2D().getY(),
+                    (int) rec.getBounds().getWidth(), (int) rec.getBounds().getHeight());
         }
     }
     private void paintSelectionHandles(Graphics2D g2) {
-
-        //Iterator<Slot> it = page.getPageModel().getSlotIterator();
-        //while (it.hasNext()) {
         Iterator<Slot> it=page.getPageSelectionModel().getSelectionListIterator();
         while(it.hasNext()) {
             Slot slot = it.next();

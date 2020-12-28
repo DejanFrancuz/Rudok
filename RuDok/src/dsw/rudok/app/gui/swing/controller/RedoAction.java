@@ -1,5 +1,6 @@
 package dsw.rudok.app.gui.swing.controller;
 
+import dsw.rudok.app.AppCore;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.gui.swing.view.PageTab;
 
@@ -16,8 +17,9 @@ public class RedoAction extends AbstractRudokAction{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        PageTab view=(PageTab) MainFrame.getInstance().getjPanel();
-        view.getPage().getCommandManager().doCommand();
+        /*PageTab view=(PageTab) MainFrame.getInstance().getjPanel();
+        view.getPage().getCommandManager().doCommand();*/
+        AppCore.getInstance().getCommand().doCommand();
 
     }
 }

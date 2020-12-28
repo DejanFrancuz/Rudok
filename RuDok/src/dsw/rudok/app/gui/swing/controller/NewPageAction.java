@@ -24,27 +24,6 @@ public class NewPageAction extends AbstractRudokAction{
     }
     @Override
     public void actionPerformed(ActionEvent e){
-       // RuTreeItem node = (RuTreeItem) MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
-       // if(node.getNodeModel() instanceof Document) {
-
-          //  Document document  = (Document) node.getNodeModel();
-           // Page page = new Page("Page " + (node.getChildCount() + 1), document);
             MainFrame.getInstance().getTree().addPage();
-            //MainFrame.getInstance().getWorkspaceTree().updateUI();
-
-            //DODAVANJE STRANICE NA DOKUMENT
-/*
-            String name = page.getName();
-            PageTab pageTab = new PageTab(name,page.getParent());
-            Icon icon = loadIcon("images/close.png");
-            document.getDocumentTab().addPageToDoc(pageTab,icon,page);
-            page.setPageTab(pageTab);
-*/
-
-        //}
-
     }
-
-
-
 }

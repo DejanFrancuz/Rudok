@@ -13,21 +13,23 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.List;
 
-public class AddDeviceCommand extends AbstractCommand {
+public class AddDeviceCommand extends AbstractCommand{
     PageModel model;
     Point2D lastPosition;
     Slot device = null;
     PageSelectionModel selectionModel;
     ShapeEnum e;
-    List<ISubscriber> subscribers;
 
+    public AddDeviceCommand(){
+
+    }
 
     public AddDeviceCommand(PageModel model, PageSelectionModel selectionModel, Point2D lastPosition,ShapeEnum e) {
+
         this.model = model;
         this.lastPosition = lastPosition;
         this.selectionModel = selectionModel;
         this.e=e;
-
 
     }
 
@@ -54,6 +56,5 @@ public class AddDeviceCommand extends AbstractCommand {
         model.removeSlots(device);
 
     }
-
 
 }

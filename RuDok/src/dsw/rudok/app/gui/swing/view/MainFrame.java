@@ -43,8 +43,7 @@ public class MainFrame extends  JFrame implements ISubscriber {
 	
 	private void initialise() {
 		actionManager = new ActionManager();
-		disableUndo();
-		disableRedo();
+
 	}
 	
 	public void initialiseWorkspaceTree() {

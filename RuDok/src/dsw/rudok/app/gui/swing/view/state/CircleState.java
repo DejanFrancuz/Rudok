@@ -27,7 +27,7 @@ public class CircleState extends State{
                 Slot slot= factory.makeSlot(position,page.getPageModel().getDeviceCount());
                 page.getPageModel().addSlots(slot);
                 MainFrame.getInstance().getTree().addSlot(slot,page);
-                page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position, ShapeEnum.CIRCLE));
+                //page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position, ShapeEnum.CIRCLE));
             }
 
 

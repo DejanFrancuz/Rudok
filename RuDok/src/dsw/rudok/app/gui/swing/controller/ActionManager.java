@@ -21,7 +21,6 @@ public class ActionManager {
 	private SaveProjectAction saveProjectAction;
 	private UndoAction undoAction;
 	private RedoAction redoAction;
-	private LassoAction lassoAction;
 	
 	public ActionManager() {
 		initialiseActions();
@@ -46,16 +45,9 @@ public class ActionManager {
 		saveProjectAction=new SaveProjectAction();
 		undoAction=new UndoAction();
 		redoAction=new RedoAction();
-		lassoAction=new LassoAction();
 	}
 
-	public LassoAction getLassoAction() {
-		return lassoAction;
-	}
 
-	public void setLassoAction(LassoAction lassoAction) {
-		this.lassoAction = lassoAction;
-	}
 
 	public MoveAction getMoveAction() {
 		return moveAction;

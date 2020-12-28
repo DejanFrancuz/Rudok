@@ -1,5 +1,6 @@
 package dsw.rudok.app.gui.swing.controller;
 
+import dsw.rudok.app.AppCore;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.gui.swing.view.PageTab;
 
@@ -16,8 +17,9 @@ public class UndoAction extends AbstractRudokAction{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-       PageTab view=(PageTab) MainFrame.getInstance().getjPanel();
-        view.getPage().getCommandManager().undoCommand();
+       /*PageTab view=(PageTab) MainFrame.getInstance().getjPanel();
+        view.getPage().getCommandManager().undoCommand();*/
+        AppCore.getInstance().getCommand().undoCommand();
 
     }
 }

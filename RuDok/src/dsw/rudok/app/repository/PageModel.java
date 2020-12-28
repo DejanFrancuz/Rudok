@@ -1,5 +1,6 @@
 package dsw.rudok.app.repository;
 
+import dsw.rudok.app.commands.CommandManager;
 import dsw.rudok.app.observer.IPublisher;
 import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.element.Slot;
@@ -13,6 +14,7 @@ import java.util.List;
 public class PageModel implements IPublisher, Serializable {
     private String name;
     private static int count=0;
+
 
     protected ArrayList<Slot> slots = new ArrayList<Slot>();
     private List<ISubscriber> subscribers;
@@ -47,6 +49,7 @@ public Slot getSlotatPosition(Point point) {
     public static void setCount(int count) {
         PageModel.count = count;
     }
+
 
 
     public String getName() {

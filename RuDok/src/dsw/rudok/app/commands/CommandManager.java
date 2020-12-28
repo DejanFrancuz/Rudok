@@ -2,21 +2,32 @@ package dsw.rudok.app.commands;
 
 import dsw.rudok.app.core.Command;
 import dsw.rudok.app.gui.swing.view.MainFrame;
+import dsw.rudok.app.gui.swing.view.PageTab;
 import dsw.rudok.app.observer.ISubscriber;
+import dsw.rudok.app.repository.Page;
+import dsw.rudok.app.repository.PageModel;
+import dsw.rudok.app.repository.PageSelectionModel;
+import dsw.rudok.app.repository.element.Slot;
 
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CommandManager implements Command{
     List<ISubscriber> subscribers;
+    Page page;
     //lista koja predstavlja stek na kome se nalaze konkretne izvršene komande
-    private ArrayList<AbstractCommand> commands = new ArrayList<AbstractCommand>();
+    private ArrayList<AbstractCommand> commands = new ArrayList<>();
     //pokazivač steka, sadrži redni broj komande za undo / redo operaciju
     private int currentCommand = 0;
 
     /*
      * Dodaje novu komandu na stek i poziva izvršavanje komande
      */
+    public CommandManager(){
+        //page.addSubs(this);
+    }
+
     public void addCommand(AbstractCommand command){
         while(currentCommand < commands.size())
             commands.remove(currentCommand);
@@ -49,6 +60,15 @@ public class CommandManager implements Command{
             notifyObs(EventType.UNDO_DISABLE);
         }
     }
+
+    public Page getPage() {
+        return page;
+    }
+
+    public void setPage(Page page) {
+        this.page = page;
+    }
+
     public void addSubs(ISubscriber sub) {
         if(sub == null)
             return;
@@ -73,6 +93,15 @@ public class CommandManager implements Command{
 
         for(ISubscriber listener : subscribers){
             listener.update(notif);
+        }
+    }
+
+    @Override
+    public void update(Object notif) {
+        if(notif instanceof Slot){
+            Slot s=(Slot)notif;
+            addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),s.getPosition(),ShapeEnum.RECTANGLE));
+            System.out.println("usao");
         }
     }
 }

@@ -22,12 +22,11 @@ public class RectangleState extends State{
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
             if (page.getPageModel().getSlotatPosition(position)== null){
-                SlotFactory factory= new RectangleFactory();
+              SlotFactory factory= new RectangleFactory();
                 Slot slot= factory.makeSlot(position,page.getPageModel().getDeviceCount());
                 page.getPageModel().addSlots(slot);
                 MainFrame.getInstance().getTree().addSlot(slot,page);
-                page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position, ShapeEnum.RECTANGLE));
-               // med.getCommandManager().addCommand(new AddDeviceCommand(med.getDiagram().getModel(),med.getDiagram().getSelectionModel(),position,DiagramView.RECTANGLE));
+               // page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position, ShapeEnum.RECTANGLE));
             }
 
             }
