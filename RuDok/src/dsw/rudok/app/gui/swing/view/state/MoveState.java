@@ -23,7 +23,7 @@ public class MoveState extends State{
 
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
-            if(page.getPageModel().getSlotatPosition(position) != null) {
+            if(page.getPageModel().getSlotatPosition(position) != null && page.getPageSelectionModel().isElementSelected(page.getPageModel().getSlotatPosition(position))) {
                 slot=page.getPageModel().getSlotatPosition(position);
                 hit=true;
             }

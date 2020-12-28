@@ -25,9 +25,9 @@ public class CommandManager implements Command{
      * Dodaje novu komandu na stek i poziva izvršavanje komande
      */
     public CommandManager(){
-        //page.addSubs(this);
+        if(page!=null)
+        page.addSubs(this);
     }
-
     public void addCommand(AbstractCommand command){
         while(currentCommand < commands.size())
             commands.remove(currentCommand);

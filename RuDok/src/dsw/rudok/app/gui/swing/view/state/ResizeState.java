@@ -52,6 +52,7 @@ public class ResizeState extends State{
         }
     private boolean isPointInHandle(Slot device, Point2D point, Handle handle){
             Point2D handleCenter = getHandlePoint(device.getPosition(), device.getSize(), handle);
+            System.out.println(handleCenter);
             return ( (Math.abs(point.getX()-handleCenter.getX())<=(double)handleSize/2) &&
                     (Math.abs(point.getY()-handleCenter.getY())<=(double)handleSize/2) );
         }

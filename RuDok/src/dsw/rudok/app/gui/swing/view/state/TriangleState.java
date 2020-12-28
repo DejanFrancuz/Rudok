@@ -19,9 +19,7 @@ public class TriangleState extends State{
 
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
-            if (page.getPageModel().getSlotatPosition(position) == null){        //CircleSlot.createDefault(position);
-
-                //Slot slot = TriangleSlot.createDefault(position,page.getPageModel().getDeviceCount());
+            if (page.getPageModel().getSlotatPosition(position) == null){
                 SlotFactory factory= new TriangleFactory();
                 Slot slot= factory.makeSlot(position,page.getPageModel().getDeviceCount());
                 page.getPageModel().addSlots(slot);

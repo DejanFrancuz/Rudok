@@ -1,5 +1,6 @@
 package dsw.rudok.app.repository;
 
+import dsw.rudok.app.AppCore;
 import dsw.rudok.app.commands.AddDeviceCommand;
 import dsw.rudok.app.commands.CommandManager;
 import dsw.rudok.app.commands.ShapeEnum;
@@ -24,13 +25,14 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
     private PageModel pageModel = new PageModel();
     private PageSelectionModel pageSelectionModel=new PageSelectionModel();
     boolean rotate;
-    private CommandManager commandManager;
+    private CommandManager commandManager=new CommandManager();
     private Rectangle2D selectionRectangle=null;
     private Point2D lastPosition=null;
 
 
     public Page(String name, RuNode parent) {
         super(name, parent);
+        getCommandManager().setPage(this);
     }
     private StateManager stateManager= new StateManager(this);
 
@@ -132,6 +134,7 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
             return;
         this.subscribers.add(sub);
     }
+
 
 
     @Override

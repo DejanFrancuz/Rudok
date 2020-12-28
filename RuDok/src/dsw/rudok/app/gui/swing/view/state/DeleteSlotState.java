@@ -27,6 +27,7 @@ public class DeleteSlotState extends State{
                 if(page.getPageSelectionModel().getSelectionList().contains(slot)){
                     page.getPageSelectionModel().removeFromSelectionList(slot);
                 }
+
             }
             }
 

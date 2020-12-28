@@ -21,6 +21,9 @@ public class SelectState extends State{
     public void mousePressed(MouseEvent e){
         if(!e.isControlDown()){
             page.getPageSelectionModel().removeAllFromSelectionList();
+            for(Slot slot: page.getPageSelectionModel().getSelectionList()){
+                //slot.removeSubs(page);
+            }
         }
         Point position = e.getPoint();
         if(e.getButton()==MouseEvent.BUTTON1) {

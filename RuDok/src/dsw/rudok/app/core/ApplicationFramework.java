@@ -1,6 +1,9 @@
 package dsw.rudok.app.core;
 
 
+import dsw.rudok.app.gui.swing.view.MainFrame;
+import dsw.rudok.app.gui.swing.view.PageTab;
+
 public abstract class ApplicationFramework {
 
     protected Gui gui;

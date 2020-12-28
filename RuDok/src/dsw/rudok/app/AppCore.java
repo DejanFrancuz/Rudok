@@ -4,6 +4,8 @@ import dsw.rudok.app.commands.CommandManager;
 import dsw.rudok.app.core.*;
 import dsw.rudok.app.errorHandler.ErrorHandlerImpl;
 import dsw.rudok.app.gui.swing.SwingGui;
+import dsw.rudok.app.gui.swing.view.MainFrame;
+import dsw.rudok.app.gui.swing.view.PageTab;
 import dsw.rudok.app.repository.RepositoryImpl;
 
 import java.awt.*;

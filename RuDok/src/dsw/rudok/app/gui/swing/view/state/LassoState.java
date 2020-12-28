@@ -17,7 +17,6 @@ public class LassoState extends State{
     private Page page;
     Slot slot=null;
     SlotHandler handler=new SlotHandler();
-    ArrayList<Slot> selected=new ArrayList<>();
     public LassoState(Page page) {
         this.page = page;
     }
@@ -30,19 +29,20 @@ public class LassoState extends State{
             page.setSelectionRectangle(new Rectangle((Point) page.getLastPosition(),d));
 
 
+
+        }
+
+    public void mouseReleased(MouseEvent e){
         Iterator<Slot> it=page.getPageModel().getSlotIterator();
         while(it.hasNext()){
             Slot slot=it.next();
             if(page.getSelectionRectangle().intersects(slot.getPosition().getX(),slot.getPosition().getY(),slot.getSize().width,slot.getSize().getHeight())){
-                selected.add(slot);
+                page.getPageSelectionModel().addToSelectionList(slot);
+                slot.addSubs(page);
             }
         }
-        }
-
-    public void mouseReleased(MouseEvent e){
-        page.getPageSelectionModel().removeAllFromSelectionList();
-        page.getPageSelectionModel().addToSelectionList(selected);
         page.setSelectionRectangle(null);
+        page.getStateManager().setSelectState();
     }
 }
 
