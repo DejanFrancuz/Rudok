@@ -30,7 +30,6 @@ public class SwingGui implements Gui{
 		
 	}
 	public void update(Object notif){
-		System.out.println("stigao");
 		if(notif instanceof MyError){
 			MyError e=(MyError)notif;
 			MainFrame.getInstance().showError(e);

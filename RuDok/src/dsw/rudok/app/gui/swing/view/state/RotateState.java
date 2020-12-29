@@ -1,6 +1,8 @@
 package dsw.rudok.app.gui.swing.view.state;
 
 import dsw.rudok.app.AppCore;
+import dsw.rudok.app.commands.AddDeviceCommand;
+import dsw.rudok.app.commands.ShapeEnum;
 import dsw.rudok.app.errorHandler.ErrorType;
 import dsw.rudok.app.gui.swing.view.Handle;
 import dsw.rudok.app.gui.swing.view.MainFrame;
@@ -25,6 +27,8 @@ public class RotateState extends State{
     public RotateState(Page page) {
         this.page = page;
     }
+    Point point=null;
+    double angle=0.0;
 
 
     public void mousePressed(MouseEvent e) {
@@ -36,6 +40,7 @@ public class RotateState extends State{
                 if (handle != null) {
                     p = 1;
                     slot.addSubs(page);
+                    angle=slot.getAngle();
                 }
             }
         }
@@ -49,6 +54,8 @@ public class RotateState extends State{
     }
     public void mouseReleased(MouseEvent e){
         p=-1;
+        point=(Point) slot.getPosition();
+        page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),point, ShapeEnum.ROTATE,slot,angle,slot.getAngle()));
     }
     private boolean isPointInHandle(Slot device, Point2D point, Handle handle){
         Point2D handleCenter = getHandlePoint(device.getPosition(), device.getSize(), handle);

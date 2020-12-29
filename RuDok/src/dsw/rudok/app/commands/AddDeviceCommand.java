@@ -27,10 +27,11 @@ public class AddDeviceCommand extends AbstractCommand{
     Slot slot=null;
     SlotHandler handler=new SlotHandler();
     Object o=null;
+    Object o1=null;
 
 
 
-    public AddDeviceCommand(PageModel model, PageSelectionModel selectionModel, Point2D lastPosition,ShapeEnum e,Slot slot,Object o) {
+    public AddDeviceCommand(PageModel model, PageSelectionModel selectionModel, Point2D lastPosition,ShapeEnum e,Slot slot,Object o,Object o1) {
 
         this.model = model;
         this.lastPosition = lastPosition;
@@ -38,7 +39,7 @@ public class AddDeviceCommand extends AbstractCommand{
         this.e=e;
         this.slot=slot;
         this.o=o;
-
+        this.o1=o1;
     }
 
     public void doCommand() {
@@ -54,37 +55,53 @@ public class AddDeviceCommand extends AbstractCommand{
                 device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
             }else if(e==ShapeEnum.MOVE){
                 moveCommand();
+            }else if(e==ShapeEnum.RESIZE){
+                resizeCommand();
+            }else if(e==ShapeEnum.ROTATE){
+                rotateCommand();
             }
 
         selectionModel.removeAllFromSelectionList();
         model.addSlots(device);
+        if(device!=null)
         selectionModel.addToSelectionList(device);
+        if(slot!=null)
+        selectionModel.addToSelectionList(slot);
 
     }
 
     public void undoCommand() {
         if(e==ShapeEnum.MOVE){
             undoMove();
-        }else {
+        }else if(e==ShapeEnum.RESIZE){
+            undoResize();
+        }else if(e==ShapeEnum.ROTATE){
+            undoRotate();
+        }
+
+        else{
             selectionModel.removeAllFromSelectionList();
             model.removeSlots(device);
         }
+        if(slot!=null)selectionModel.addToSelectionList(slot);
         }
 
     @Override
     public void resizeCommand() {
-
+        Dimension d=(Dimension)o1;
+        slot.setSize(d);
     }
 
     @Override
     public void rotateCommand() {
+        //double angle=(Double)o1;
+        slot.setAngle((Double)o1);
 
     }
 
     @Override
     public void moveCommand() {
         slot.setPosition(lastPosition);
-
     }
 
     @Override
@@ -95,11 +112,12 @@ public class AddDeviceCommand extends AbstractCommand{
 
     @Override
     public void undoResize() {
-
+        Dimension d=(Dimension)o;
+        slot.setSize(d);
     }
     @Override
     public void undoRotate(){
-        slot.setAngle(0);
+        slot.setAngle((Double)o);
     }
 
     public PageModel getModel() {

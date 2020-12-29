@@ -22,6 +22,7 @@ public class PageModel implements IPublisher, Serializable {
 public Slot getSlotatPosition(Point point) {
     for(int i=getDeviceCount()-1;i>=0;i--){
         Slot slot = getSlotAt(i);
+        if(slot==null)return null;
         if(slot.getSlotPainter().isElementAt(point)){
             return slot;
         }

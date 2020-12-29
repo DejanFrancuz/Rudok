@@ -1,6 +1,8 @@
 package dsw.rudok.app.gui.swing.view.state;
 
 import dsw.rudok.app.AppCore;
+import dsw.rudok.app.commands.AddDeviceCommand;
+import dsw.rudok.app.commands.ShapeEnum;
 import dsw.rudok.app.errorHandler.ErrorType;
 import dsw.rudok.app.gui.swing.view.Handle;
 import dsw.rudok.app.gui.swing.view.MainFrame;
@@ -26,6 +28,7 @@ public class ResizeState extends State{
     public ResizeState(Page page) {
         this.page = page;
     }
+    Dimension d=null;
 
 
     public void mousePressed(MouseEvent e) {
@@ -37,6 +40,7 @@ public class ResizeState extends State{
                 if (handle != null) {
                     p = 1;
                     slot.addSubs(page);
+                    d=slot.getSize();
                 }
 
             }
@@ -49,6 +53,7 @@ public class ResizeState extends State{
         }
         public void mouseReleased(MouseEvent e){
         p=-1;
+            page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),e.getPoint(), ShapeEnum.RESIZE,slot,d,slot.getSize()));
         }
     private boolean isPointInHandle(Slot device, Point2D point, Handle handle){
             Point2D handleCenter = getHandlePoint(device.getPosition(), device.getSize(), handle);

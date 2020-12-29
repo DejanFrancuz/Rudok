@@ -15,8 +15,11 @@ public class PageSelectionModel extends DefaultSingleSelectionModel implements I
     private List<ISubscriber> subscribers;
 
     public void addToSelectionList(Slot slot) {
-        selectionList.add(slot);
-        notifyObs(slot);
+        if(!isElementSelected(slot)) {
+            selectionList.add(slot);
+            System.out.println(selectionList.toString());
+            notifyObs(slot);
+        }
     }
     public void addToSelectionList(ArrayList<Slot> list) {
         selectionList.addAll(list);

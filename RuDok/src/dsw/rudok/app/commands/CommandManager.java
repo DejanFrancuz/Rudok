@@ -40,14 +40,6 @@ public class CommandManager implements Command{
         }
     }
 
-    public List<ISubscriber> getSubscribers() {
-        return subscribers;
-    }
-
-    public void setSubscribers(List<ISubscriber> subscribers) {
-        this.subscribers = subscribers;
-    }
-
     public ArrayList<AbstractCommand> getCommands() {
         return commands;
     }
