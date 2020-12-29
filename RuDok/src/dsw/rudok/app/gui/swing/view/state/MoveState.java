@@ -1,5 +1,7 @@
 package dsw.rudok.app.gui.swing.view.state;
 
+import dsw.rudok.app.commands.AddDeviceCommand;
+import dsw.rudok.app.commands.ShapeEnum;
 import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.element.Slot;
 import dsw.rudok.app.repository.element.SlotHandler;
@@ -17,26 +19,30 @@ public class MoveState extends State{
     public MoveState(Page page) {
         this.page = page;
     }
-
+    Point position=null;
+    Point first=null;
 
     public void mousePressed(MouseEvent e) {
 
-        Point position = e.getPoint();
+        position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
             if(page.getPageModel().getSlotatPosition(position) != null && page.getPageSelectionModel().isElementSelected(page.getPageModel().getSlotatPosition(position))) {
                 slot=page.getPageModel().getSlotatPosition(position);
+                slot.addSubs(page);
                 hit=true;
+                first= (Point) slot.getPosition();
             }
         }
 
     }
     public void mouseDragged(MouseEvent e) {
         if (hit) {
-            Point position = e.getPoint();
+            position = e.getPoint();
             handler.transform(slot, page, TransformType.MOVE, position, null);
         }
     }
     public void mouseReleased(MouseEvent e){
         hit=false;
+        page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position,ShapeEnum.MOVE,slot,first));
     }
 }
