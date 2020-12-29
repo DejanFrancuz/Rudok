@@ -80,9 +80,10 @@ public Slot getSlotatPosition(Point point) {
 
 
     public void addSlots(Slot slot){
-
+    if(!getSlots().contains(slot)) {
         slots.add(slot);
         notifyObs(slot);
+    }
     }
     public void removeSlots(Slot slot){
     slots.remove(slot);

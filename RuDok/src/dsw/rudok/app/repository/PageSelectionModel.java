@@ -17,7 +17,6 @@ public class PageSelectionModel extends DefaultSingleSelectionModel implements I
     public void addToSelectionList(Slot slot) {
         if(!isElementSelected(slot)) {
             selectionList.add(slot);
-            System.out.println(selectionList.toString());
             notifyObs(slot);
         }
     }

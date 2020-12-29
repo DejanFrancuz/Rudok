@@ -18,17 +18,19 @@ import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
 import java.util.Iterator;
 
-public class ResizeState extends State{
+public class ResizeState extends State {
     private Page page;
-    Slot slot=null;
-    int p=-1;
+    Slot slot = null;
+    int p = -1;
     static final int handleSize = 14;
-    SlotHandler handler=new SlotHandler();
+    SlotHandler handler = new SlotHandler();
     Handle handle;
+
     public ResizeState(Page page) {
         this.page = page;
     }
-    Dimension d=null;
+
+    Dimension d = null;
 
 
     public void mousePressed(MouseEvent e) {
@@ -40,21 +42,26 @@ public class ResizeState extends State{
                 if (handle != null) {
                     p = 1;
                     slot.addSubs(page);
-                    d=slot.getSize();
+                    d = slot.getSize();
                 }
 
             }
         }
+    }
+
+    public void mouseDragged(MouseEvent e) {
+        if (p == 1) {
+            handler.transform(slot, page, TransformType.RESIZE, e.getPoint(), handle);
         }
-        public void mouseDragged(MouseEvent e){
-        if(p==1){
-            handler.transform(slot,page, TransformType.RESIZE,e.getPoint(),handle);
+    }
+
+    public void mouseReleased(MouseEvent e) {
+        if (p == 1) {
+        page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(), page.getPageSelectionModel(), e.getPoint(), ShapeEnum.RESIZE, slot, d, slot.getSize()));
         }
-        }
-        public void mouseReleased(MouseEvent e){
-        p=-1;
-            page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),e.getPoint(), ShapeEnum.RESIZE,slot,d,slot.getSize()));
-        }
+        p = -1;
+
+}
     private boolean isPointInHandle(Slot device, Point2D point, Handle handle){
             Point2D handleCenter = getHandlePoint(device.getPosition(), device.getSize(), handle);
             System.out.println(handleCenter);

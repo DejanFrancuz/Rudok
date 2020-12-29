@@ -26,7 +26,6 @@ public class SlotHandler {
             Point2D point=p.getStateManager().getRotateState().getHandlePoint(novi.getPosition(),novi.getSize(),handle);
             novi.setAngle(angleBetweenTwoPointsWithFixedPoint(point.getX(),point.getY(),position.getX(),position.getY(),novi.getPosition().getX(),novi.getPosition().getY())*50);
         }else if(type==TransformType.RESIZE){
-            System.out.println(handle);
             Dimension d=null;
             switch (handle){
                 case NorthWest:

@@ -43,7 +43,7 @@ public class AddDeviceCommand extends AbstractCommand{
     }
 
     public void doCommand() {
-        if (device==null)
+        //if (device==null)
             if (e== ShapeEnum.CIRCLE){
                 SlotFactory factory=new CircleFactory();
                 device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
@@ -75,15 +75,16 @@ public class AddDeviceCommand extends AbstractCommand{
             undoMove();
         }else if(e==ShapeEnum.RESIZE){
             undoResize();
-        }else if(e==ShapeEnum.ROTATE){
+        }else if(e==ShapeEnum.ROTATE) {
             undoRotate();
-        }
-
-        else{
+        }else{
             selectionModel.removeAllFromSelectionList();
             model.removeSlots(device);
         }
-        if(slot!=null)selectionModel.addToSelectionList(slot);
+        if(slot!=null){
+            selectionModel.removeAllFromSelectionList();
+            selectionModel.addToSelectionList(slot);
+        }
         }
 
     @Override

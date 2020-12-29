@@ -53,9 +53,11 @@ public class RotateState extends State{
         }
     }
     public void mouseReleased(MouseEvent e){
+        if(p==1){
+            point=(Point) slot.getPosition();
+            page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),point, ShapeEnum.ROTATE,slot,angle,slot.getAngle()));
+        }
         p=-1;
-        point=(Point) slot.getPosition();
-        page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),point, ShapeEnum.ROTATE,slot,angle,slot.getAngle()));
     }
     private boolean isPointInHandle(Slot device, Point2D point, Handle handle){
         Point2D handleCenter = getHandlePoint(device.getPosition(), device.getSize(), handle);
