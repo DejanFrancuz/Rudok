@@ -16,6 +16,7 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ResizeState extends State {
@@ -57,7 +58,8 @@ public class ResizeState extends State {
 
     public void mouseReleased(MouseEvent e) {
         if (p == 1) {
-        page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(), page.getPageSelectionModel(), e.getPoint(), ShapeEnum.RESIZE, page.getPageSelectionModel().getSelectionList(), d, slot.getSize()));
+            ArrayList<Slot> list=page.getPageSelectionModel().getSelectionList();
+        page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(), page.getPageSelectionModel(), e.getPoint(), ShapeEnum.RESIZE, list, d, slot.getSize()));
         }
         p = -1;
 

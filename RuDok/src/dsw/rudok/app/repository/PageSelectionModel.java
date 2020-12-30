@@ -21,8 +21,10 @@ public class PageSelectionModel extends DefaultSingleSelectionModel implements I
         }
     }
     public void addToSelectionList(ArrayList<Slot> list) {
-        selectionList.addAll(list);
-        notifyObs(list);
+        if(!selectionList.contains(list)) {
+            selectionList.addAll(list);
+            notifyObs(list);
+        }
     }
     public int getSelectionListSize() {
         return selectionList.size();
@@ -35,7 +37,7 @@ public class PageSelectionModel extends DefaultSingleSelectionModel implements I
     }
     public void removeFromSelectionList(Slot slot) {
         selectionList.remove(slot);
-        notifyObs(slot);
+        notifyObs(new Object());
     }
     public void removeAllFromSelectionList() {
         selectionList.clear();

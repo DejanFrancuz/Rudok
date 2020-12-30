@@ -47,15 +47,12 @@ public class AddDeviceCommand extends AbstractCommand{
             if (e== ShapeEnum.CIRCLE){
                 SlotFactory factory=new CircleFactory();
                 device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
-                //selectionModel.removeAllFromSelectionList();
             }else if (e==ShapeEnum.RECTANGLE){
                 SlotFactory factory=new RectangleFactory();
                 device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
-                //selectionModel.removeAllFromSelectionList();
             } else if (e == ShapeEnum.TRIANGLE) {
                 SlotFactory factory=new TriangleFactory();
                 device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
-                //selectionModel.removeAllFromSelectionList();
             }else if(e==ShapeEnum.MOVE){
                 moveCommand();
             }else if(e==ShapeEnum.RESIZE){
@@ -70,7 +67,6 @@ public class AddDeviceCommand extends AbstractCommand{
                     }
                 }
             }
-        //selectionModel.removeAllFromSelectionList();
 
         if(device!=null) {
             selectionModel.addToSelectionList(device);
@@ -97,9 +93,12 @@ public class AddDeviceCommand extends AbstractCommand{
             device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
         }
         else{
-            selectionModel.removeFromSelectionList(device);
+            while(selectionModel.isElementSelected(device))
+                selectionModel.removeFromSelectionList(device);
             model.removeSlots(device);
         }
+
+
         }
 
     @Override
@@ -119,14 +118,16 @@ public class AddDeviceCommand extends AbstractCommand{
 
     @Override
     public void moveCommand() {
-        device=model.getSlotatPosition((Point) lastPosition);
+        System.out.println("konacno");
+        device=(Slot)o1;
         device.setPosition(lastPosition);
     }
 
     @Override
     public void undoMove() {
+
         Point p=(Point)o;
-        device=model.getSlotatPosition((Point) lastPosition);
+        device=(Slot)o1;
         device.setPosition(p);
     }
 

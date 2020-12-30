@@ -23,9 +23,11 @@ public class SlotHandler {
     public void transform(Slot novi, Page p, TransformType type, Point2D position,Handle handle) {
         if(type == TransformType.MOVE){
             novi.setPosition(position);
-           /* ArrayList<Slot> list= p.getPageSelectionModel().getSelectionList();
+            /*double distance=calculate1(novi.getPosition(),position);
+            ArrayList<Slot> list= p.getPageSelectionModel().getSelectionList();
             for(Slot s: list){
-                s.setPosition(position);
+               // Point p=new Point(s.getPosition().getX())
+                s.setPosition(s.getPosition());
             }*/
         }else if(type==TransformType.ROTATE){
             Point2D point=p.getStateManager().getRotateState().getHandlePoint(novi.getPosition(),novi.getSize(),handle);
