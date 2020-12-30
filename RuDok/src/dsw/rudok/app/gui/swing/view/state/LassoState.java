@@ -36,14 +36,14 @@ public class LassoState extends State{
         Iterator<Slot> it=page.getPageModel().getSlotIterator();
         while(it.hasNext()){
             Slot slot=it.next();
-            if(slot==null)return;
+            if(slot==null||page.getSelectionRectangle()==null)continue;
             if(page.getSelectionRectangle().intersects(slot.getPosition().getX(),slot.getPosition().getY(),slot.getSize().width,slot.getSize().getHeight())){
                 page.getPageSelectionModel().addToSelectionList(slot);
                 slot.addSubs(page);
             }
         }
         page.setSelectionRectangle(null);
-        page.getStateManager().setSelectState();
+        page.startSelectState();
     }
 }
 

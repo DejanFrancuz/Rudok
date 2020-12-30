@@ -47,15 +47,17 @@ public class RotateState extends State{
 
     }
     public void mouseDragged(MouseEvent e){
-        if(p==1){
-            handler.transform(slot,page, TransformType.ROTATE,e.getPoint(),handle);
-            slot.setRotate(true);
+        if(p==1) {
+            handler.transform(slot, page, TransformType.ROTATE, e.getPoint(), handle);
+            for (Slot s : page.getPageSelectionModel().getSelectionList()) {
+                s.setRotate(true);
+            }
         }
     }
     public void mouseReleased(MouseEvent e){
         if(p==1){
             point=(Point) slot.getPosition();
-            page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),point, ShapeEnum.ROTATE,slot,angle,slot.getAngle()));
+            page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),point, ShapeEnum.ROTATE,page.getPageSelectionModel().getSelectionList(),angle,slot.getAngle()));
         }
         p=-1;
     }

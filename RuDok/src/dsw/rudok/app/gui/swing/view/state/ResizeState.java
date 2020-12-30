@@ -57,7 +57,7 @@ public class ResizeState extends State {
 
     public void mouseReleased(MouseEvent e) {
         if (p == 1) {
-        page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(), page.getPageSelectionModel(), e.getPoint(), ShapeEnum.RESIZE, slot, d, slot.getSize()));
+        page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(), page.getPageSelectionModel(), e.getPoint(), ShapeEnum.RESIZE, page.getPageSelectionModel().getSelectionList(), d, slot.getSize()));
         }
         p = -1;
 

@@ -16,15 +16,25 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 
 public class SlotHandler {
 
     public void transform(Slot novi, Page p, TransformType type, Point2D position,Handle handle) {
         if(type == TransformType.MOVE){
             novi.setPosition(position);
+           /* ArrayList<Slot> list= p.getPageSelectionModel().getSelectionList();
+            for(Slot s: list){
+                s.setPosition(position);
+            }*/
         }else if(type==TransformType.ROTATE){
             Point2D point=p.getStateManager().getRotateState().getHandlePoint(novi.getPosition(),novi.getSize(),handle);
-            novi.setAngle(angleBetweenTwoPointsWithFixedPoint(point.getX(),point.getY(),position.getX(),position.getY(),novi.getPosition().getX(),novi.getPosition().getY())*50);
+            double angle=angleBetweenTwoPointsWithFixedPoint(point.getX(),point.getY(),position.getX(),position.getY(),novi.getPosition().getX(),novi.getPosition().getY())*50;
+           // novi.setAngle(angleBetweenTwoPointsWithFixedPoint(point.getX(),point.getY(),position.getX(),position.getY(),novi.getPosition().getX(),novi.getPosition().getY())*50);
+            ArrayList<Slot> list= p.getPageSelectionModel().getSelectionList();
+            for(Slot s: list){
+                s.setAngle(angle);
+            }
         }else if(type==TransformType.RESIZE){
             Dimension d=null;
             switch (handle){
@@ -53,7 +63,12 @@ public class SlotHandler {
                     d=new Dimension((int)calculate(novi.getSouthWest().getX(),novi.getSouthWest().getY(),position.getX(),position.getY()),(int)calculate(novi.getNorthEast().getX(),novi.getNorthEast().getY(),position.getX(),position.getY()));
                     break;
             }
-            novi.setSize(d);
+            //novi.setSize(d);
+            ArrayList<Slot> list= p.getPageSelectionModel().getSelectionList();
+            for(Slot s: list){
+                System.out.println(s);
+                s.setSize(d);
+            }
         }
     }
     public static double angleBetweenTwoPointsWithFixedPoint(double point1X, double point1Y,

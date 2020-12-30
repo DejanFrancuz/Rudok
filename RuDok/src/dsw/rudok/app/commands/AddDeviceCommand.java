@@ -16,6 +16,7 @@ import dsw.rudok.app.repository.factory.TriangleFactory;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddDeviceCommand extends AbstractCommand{
@@ -24,22 +25,21 @@ public class AddDeviceCommand extends AbstractCommand{
     Slot device = null;
     PageSelectionModel selectionModel;
     ShapeEnum e;
-    Slot slot=null;
-    SlotHandler handler=new SlotHandler();
     Object o=null;
     Object o1=null;
+    ArrayList<Slot> list;
 
 
 
-    public AddDeviceCommand(PageModel model, PageSelectionModel selectionModel, Point2D lastPosition,ShapeEnum e,Slot slot,Object o,Object o1) {
+    public AddDeviceCommand(PageModel model, PageSelectionModel selectionModel, Point2D lastPosition,ShapeEnum e,ArrayList<Slot> list,Object o,Object o1) {
 
         this.model = model;
         this.lastPosition = lastPosition;
         this.selectionModel = selectionModel;
         this.e=e;
-        this.slot=slot;
         this.o=o;
         this.o1=o1;
+        this.list=list;
     }
 
     public void doCommand() {
@@ -47,26 +47,35 @@ public class AddDeviceCommand extends AbstractCommand{
             if (e== ShapeEnum.CIRCLE){
                 SlotFactory factory=new CircleFactory();
                 device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
+                //selectionModel.removeAllFromSelectionList();
             }else if (e==ShapeEnum.RECTANGLE){
                 SlotFactory factory=new RectangleFactory();
                 device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
+                //selectionModel.removeAllFromSelectionList();
             } else if (e == ShapeEnum.TRIANGLE) {
                 SlotFactory factory=new TriangleFactory();
                 device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
+                //selectionModel.removeAllFromSelectionList();
             }else if(e==ShapeEnum.MOVE){
                 moveCommand();
             }else if(e==ShapeEnum.RESIZE){
                 resizeCommand();
             }else if(e==ShapeEnum.ROTATE){
                 rotateCommand();
+            }else if(e==ShapeEnum.DELETE_C || e==ShapeEnum.DELETE_R || e==ShapeEnum.DELETE_T){
+                for(Slot s: list) {
+                    if (selectionModel.isElementSelected(s)) {
+                        selectionModel.removeFromSelectionList(s);
+                        model.removeSlots(s);
+                    }
+                }
             }
+        //selectionModel.removeAllFromSelectionList();
 
-        selectionModel.removeAllFromSelectionList();
-        model.addSlots(device);
-        if(device!=null)
-        selectionModel.addToSelectionList(device);
-        if(slot!=null)
-        selectionModel.addToSelectionList(slot);
+        if(device!=null) {
+            selectionModel.addToSelectionList(device);
+            model.addSlots(device);
+        }
 
     }
 
@@ -77,48 +86,62 @@ public class AddDeviceCommand extends AbstractCommand{
             undoResize();
         }else if(e==ShapeEnum.ROTATE) {
             undoRotate();
-        }else{
-            selectionModel.removeAllFromSelectionList();
-            model.removeSlots(device);
+        }else if(e==ShapeEnum.DELETE_C){
+            SlotFactory factory=new CircleFactory();
+            device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
+        }else if(e==ShapeEnum.DELETE_R){
+            SlotFactory factory=new RectangleFactory();
+            device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
+        }else if(e==ShapeEnum.DELETE_T){
+            SlotFactory factory=new TriangleFactory();
+            device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
         }
-        if(slot!=null){
-            selectionModel.removeAllFromSelectionList();
-            selectionModel.addToSelectionList(slot);
+        else{
+            selectionModel.removeFromSelectionList(device);
+            model.removeSlots(device);
         }
         }
 
     @Override
     public void resizeCommand() {
         Dimension d=(Dimension)o1;
-        slot.setSize(d);
+        for(Slot s: list){
+            s.setSize(d);
+        }
     }
 
     @Override
     public void rotateCommand() {
-        //double angle=(Double)o1;
-        slot.setAngle((Double)o1);
-
+        for(Slot s: list){
+            s.setAngle((Double)o1);
+        }
     }
 
     @Override
     public void moveCommand() {
-        slot.setPosition(lastPosition);
+        device=model.getSlotatPosition((Point) lastPosition);
+        device.setPosition(lastPosition);
     }
 
     @Override
     public void undoMove() {
         Point p=(Point)o;
-        slot.setPosition(p);
+        device=model.getSlotatPosition((Point) lastPosition);
+        device.setPosition(p);
     }
 
     @Override
     public void undoResize() {
         Dimension d=(Dimension)o;
-        slot.setSize(d);
+        for(Slot s: list){
+            s.setSize(d);
+        }
     }
     @Override
     public void undoRotate(){
-        slot.setAngle((Double)o);
+        for(Slot s: list){
+            s.setAngle((Double)o);
+        }
     }
 
     public PageModel getModel() {
@@ -159,13 +182,5 @@ public class AddDeviceCommand extends AbstractCommand{
 
     public void setE(ShapeEnum e) {
         this.e = e;
-    }
-
-    public Slot getSlot() {
-        return slot;
-    }
-
-    public void setSlot(Slot slot) {
-        this.slot = slot;
     }
 }

@@ -7,12 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommandManager implements Command{
-    List<ISubscriber> subscribers;
+    List<ISubscriber> subscribers = new ArrayList<>();
     private ArrayList<AbstractCommand> commands = new ArrayList<>();
     private int currentCommand = 0;
 
     public void addCommand(AbstractCommand command){
-        addSubs(AppCore.getInstance().getGui());
         while(currentCommand < commands.size())
             commands.remove(currentCommand);
         commands.add(command);
@@ -30,7 +29,6 @@ public class CommandManager implements Command{
     }
 
     public void undoCommand(){
-        System.out.println(subscribers);
         if(currentCommand > 0){
             notifyObs(EventType.REDO_ENABLE);
             commands.get(--currentCommand).undoCommand();
@@ -79,6 +77,7 @@ public class CommandManager implements Command{
 
     @Override
     public void notifyObs(Object notif) {
+        System.out.println(subscribers);
         if(notif == null || this.subscribers == null || this.subscribers.isEmpty())
             return;
 

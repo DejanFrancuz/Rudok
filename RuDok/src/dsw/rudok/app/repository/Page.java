@@ -25,7 +25,7 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
     private PageModel pageModel = new PageModel();
     private PageSelectionModel pageSelectionModel=new PageSelectionModel();
     boolean rotate;
-    private CommandManager commandManager=new CommandManager();
+    private CommandManager commandManager= (CommandManager) AppCore.getInstance().getCommand();
     private Rectangle2D selectionRectangle=null;
     private Point2D lastPosition=null;
 
@@ -56,20 +56,13 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
     public void startMoveState(){stateManager.setMoveState();}
     public void startRotateState(){stateManager.setRotateState();}
     public void startDeleteSlotState(){stateManager.setDeleteSlotState();}
+    public void startLassoState(){stateManager.setLassoState();}
     public StateManager getStateManager() {
         return stateManager;
     }
 
     public void setStateManager(StateManager stateManager) {
         this.stateManager = stateManager;
-    }
-
-    public CommandManager getCommandManager() {
-        return commandManager;
-    }
-
-    public void setCommandManager(CommandManager commandManager) {
-        this.commandManager = commandManager;
     }
 
     public Rectangle2D getSelectionRectangle() {
@@ -87,6 +80,14 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
     public void setSelectionRectangle(Rectangle2D selectionRectangle) {
         this.selectionRectangle = selectionRectangle;
         notifyObs(selectionRectangle);
+    }
+
+    public CommandManager getCommandManager() {
+        return commandManager;
+    }
+
+    public void setCommandManager(CommandManager commandManager) {
+        this.commandManager = commandManager;
     }
 
     @Override

@@ -43,7 +43,7 @@ public class MoveState extends State{
     }
     public void mouseReleased(MouseEvent e) {
         if (hit) {
-            page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(), page.getPageSelectionModel(), position, ShapeEnum.MOVE, slot, first, null));
+            page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(), page.getPageSelectionModel(), position, ShapeEnum.MOVE, null, first, null));
         }
         hit = false;
     }

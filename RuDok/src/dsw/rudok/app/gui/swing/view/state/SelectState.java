@@ -40,6 +40,6 @@ public class SelectState extends State{
         }
     }
     public void mouseDragged(MouseEvent e){
-        page.getStateManager().setLassoState();
+        page.startLassoState();
     }
 }
