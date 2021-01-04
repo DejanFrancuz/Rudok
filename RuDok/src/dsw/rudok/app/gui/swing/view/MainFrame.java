@@ -5,6 +5,7 @@ import javax.swing.tree.DefaultTreeModel;
 
 import dsw.rudok.app.core.Repository;
 import dsw.rudok.app.errorHandler.MyError;
+import dsw.rudok.app.gui.swing.SlotViewInterface;
 import dsw.rudok.app.gui.swing.controller.ActionManager;
 import dsw.rudok.app.gui.swing.controller.JTabbedPaneCloseButton;
 import dsw.rudok.app.gui.swing.tree.RuTree;
@@ -35,6 +36,7 @@ public class MainFrame extends  JFrame implements ISubscriber {
 	private JTabbedPane tabbedPane;
 	private JPanel jPanel;
 	private StateManager stateManager;
+	private SlotViewInterface slotInterface;
 
 
 	private MainFrame() {
@@ -73,6 +75,7 @@ public class MainFrame extends  JFrame implements ISubscriber {
 		scroll.setMinimumSize(new Dimension(200,150));
 
 		this.createTabbedPane();
+		slotInterface = new SlotViewImplementation();
 		
 		JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,tabbedPane);
 		getContentPane().add(split,BorderLayout.CENTER);
@@ -157,6 +160,14 @@ public class MainFrame extends  JFrame implements ISubscriber {
 	}
 	public RuTree getTree(){
 		return tree;
+	}
+
+	public SlotViewInterface getSlotInterface() {
+		return slotInterface;
+	}
+
+	public void setSlotInterface(SlotViewInterface slotInterface) {
+		this.slotInterface = slotInterface;
 	}
 
 	public DefaultTreeModel getTreeModel() {

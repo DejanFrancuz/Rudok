@@ -15,6 +15,7 @@ public class StateManager {
     ResizeState resizeState;
     RotateState rotateState;
     LassoState lassoState;
+    OpenSlotState openSlotState;
 
     public StateManager(Page page)
     {
@@ -28,6 +29,7 @@ public class StateManager {
         resizeState=new ResizeState(page);
         rotateState=new RotateState(page);
         lassoState=new LassoState(page);
+        openSlotState = new OpenSlotState(page);
 
 
         currentState = selectState;
@@ -41,6 +43,7 @@ public class StateManager {
     public void setRotateState(){ currentState = rotateState; }
     public void setMoveState(){ currentState = moveState; }
     public void setLassoState(){currentState=lassoState;}
+    public void setOpenSlotState(){currentState=openSlotState;}
 
     public CircleState getCircleState() {
         return circleState;

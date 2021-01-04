@@ -57,6 +57,7 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
     public void startRotateState(){stateManager.setRotateState();}
     public void startDeleteSlotState(){stateManager.setDeleteSlotState();}
     public void startLassoState(){stateManager.setLassoState();}
+    public void startOpenSlotState(){stateManager.setOpenSlotState();}
     public StateManager getStateManager() {
         return stateManager;
     }

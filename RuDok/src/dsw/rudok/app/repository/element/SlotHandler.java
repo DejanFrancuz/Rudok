@@ -3,9 +3,7 @@ package dsw.rudok.app.repository.element;
 
 import dsw.rudok.app.AppCore;
 import dsw.rudok.app.errorHandler.ErrorType;
-import dsw.rudok.app.gui.swing.view.Handle;
-import dsw.rudok.app.gui.swing.view.MainFrame;
-import dsw.rudok.app.gui.swing.view.PageTab;
+import dsw.rudok.app.gui.swing.view.*;
 import dsw.rudok.app.gui.swing.view.painters.SlotPainter;
 import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.factory.RectangleFactory;
@@ -70,6 +68,26 @@ public class SlotHandler {
             for(Slot s: list){
                 System.out.println(s);
                 s.setSize(d);
+            }
+        }
+        else if(type==TransformType.SLOT_OPENING) {
+            SlotView slotView;
+            if (novi.getTip() == null) {
+                new TipSelector(novi).setVisible(true);
+
+            } else {
+
+                if (novi.getTip().equals(TipSlota.GRAFICKI)) {
+                    slotView = new GraphicSlotView();
+                    novi.setSlotView(slotView);
+                    slotView.setVisible(true);
+                }
+                if (novi.getTip().equals(TipSlota.TEKSTUALNI)) {
+                    slotView = new TextSlotView();
+                    novi.setSlotView(slotView);
+                    slotView.setVisible(true);
+                }
+
             }
         }
     }
