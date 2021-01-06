@@ -60,12 +60,8 @@ public class AddDeviceCommand extends AbstractCommand{
             }else if(e==ShapeEnum.ROTATE){
                 rotateCommand();
             }else if(e==ShapeEnum.DELETE_C || e==ShapeEnum.DELETE_R || e==ShapeEnum.DELETE_T){
-                for(Slot s: list) {
-                    if (selectionModel.isElementSelected(s)) {
-                        selectionModel.removeFromSelectionList(s);
-                        model.removeSlots(s);
-                    }
-                }
+                model.getSlots().removeAll(selectionModel.getSelectionList());
+                selectionModel.removeAllFromSelectionList();
             }
 
         if(device!=null) {

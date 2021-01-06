@@ -77,7 +77,6 @@ public class CommandManager implements Command{
 
     @Override
     public void notifyObs(Object notif) {
-        System.out.println(subscribers);
         if(notif == null || this.subscribers == null || this.subscribers.isEmpty())
             return;
 

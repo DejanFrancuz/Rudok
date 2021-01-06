@@ -89,6 +89,14 @@ public Slot getSlotatPosition(Point point) {
     slots.remove(slot);
     notifyObs(slot);
     }
+    public void removeAllSlots(){
+    slots.clear();
+    notifyObs(new Object());
+    }
+    public void addToList(ArrayList<Slot> list) {
+            slots.addAll(list);
+            notifyObs(list);
+    }
     @Override
     public void addSubs(ISubscriber sub) {
         if(sub == null)

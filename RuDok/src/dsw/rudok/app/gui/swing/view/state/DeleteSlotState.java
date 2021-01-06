@@ -37,7 +37,7 @@ public class DeleteSlotState extends State{
                 if(page.getPageSelectionModel().getSelectionList().contains(slot)){
                     page.getPageSelectionModel().removeFromSelectionList(slot);
                 }*/
-                page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position,shape,null,null,null));
+                page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position,shape,page.getPageSelectionModel().getSelectionList(), null,null));
             }
             }
 

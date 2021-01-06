@@ -21,16 +21,9 @@ public class SlotHandler {
     public void transform(Slot novi, Page p, TransformType type, Point2D position,Handle handle) {
         if(type == TransformType.MOVE){
             novi.setPosition(position);
-            /*double distance=calculate1(novi.getPosition(),position);
-            ArrayList<Slot> list= p.getPageSelectionModel().getSelectionList();
-            for(Slot s: list){
-               // Point p=new Point(s.getPosition().getX())
-                s.setPosition(s.getPosition());
-            }*/
         }else if(type==TransformType.ROTATE){
             Point2D point=p.getStateManager().getRotateState().getHandlePoint(novi.getPosition(),novi.getSize(),handle);
             double angle=angleBetweenTwoPointsWithFixedPoint(point.getX(),point.getY(),position.getX(),position.getY(),novi.getPosition().getX(),novi.getPosition().getY())*50;
-           // novi.setAngle(angleBetweenTwoPointsWithFixedPoint(point.getX(),point.getY(),position.getX(),position.getY(),novi.getPosition().getX(),novi.getPosition().getY())*50);
             ArrayList<Slot> list= p.getPageSelectionModel().getSelectionList();
             for(Slot s: list){
                 s.setAngle(angle);
@@ -63,10 +56,8 @@ public class SlotHandler {
                     d=new Dimension((int)calculate(novi.getSouthWest().getX(),novi.getSouthWest().getY(),position.getX(),position.getY()),(int)calculate(novi.getNorthEast().getX(),novi.getNorthEast().getY(),position.getX(),position.getY()));
                     break;
             }
-            //novi.setSize(d);
             ArrayList<Slot> list= p.getPageSelectionModel().getSelectionList();
             for(Slot s: list){
-                System.out.println(s);
                 s.setSize(d);
             }
         }

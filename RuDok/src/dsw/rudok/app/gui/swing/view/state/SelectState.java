@@ -34,7 +34,6 @@ public class SelectState extends State{
                     page.getPageSelectionModel().removeFromSelectionList(slot);
                 }else{
                     page.getPageSelectionModel().addToSelectionList(slot);
-                    System.out.println(page.getPageSelectionModel().getSelectionList());
                 }
             }
         }
