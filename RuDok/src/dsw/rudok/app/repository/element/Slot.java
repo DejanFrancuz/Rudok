@@ -206,5 +206,6 @@ public abstract class Slot extends RuNode implements IPublisher, Serializable {
 
     public void setSlotView(SlotView slotView) {
         this.slotView = slotView;
+
     }
 }

@@ -78,13 +78,15 @@ public class SlotHandler {
             } else {
 
                 if (novi.getTip().equals(TipSlota.GRAFICKI)) {
-                    slotView = new GraphicSlotView();
+                    slotView = new GraphicSlotView(novi);
                     novi.setSlotView(slotView);
+                    slotView.setSlot(novi);
                     slotView.setVisible(true);
                 }
                 if (novi.getTip().equals(TipSlota.TEKSTUALNI)) {
-                    slotView = new TextSlotView();
+                    slotView = new TextSlotView(novi);
                     novi.setSlotView(slotView);
+                    slotView.setSlot(novi);
                     slotView.setVisible(true);
                 }
 
