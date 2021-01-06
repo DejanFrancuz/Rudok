@@ -1,6 +1,7 @@
 package dsw.rudok.app.commands;
 
 import dsw.rudok.app.AppCore;
+import dsw.rudok.app.gui.swing.tree.RuTree;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.gui.swing.view.PageTab;
 import dsw.rudok.app.observer.ISubscriber;
@@ -59,12 +60,17 @@ public class AddDeviceCommand extends AbstractCommand{
                 resizeCommand();
             }else if(e==ShapeEnum.ROTATE){
                 rotateCommand();
-            }else if(e==ShapeEnum.DELETE_C || e==ShapeEnum.DELETE_R || e==ShapeEnum.DELETE_T){
+            }else if(e==ShapeEnum.DELETE_C || e==ShapeEnum.DELETE_R || e==ShapeEnum.DELETE_T) {
+                for (Slot s : list) {
+                    MainFrame.getInstance().getTree().removeSlot(s);
+                }
                 model.getSlots().removeAll(selectionModel.getSelectionList());
                 selectionModel.removeAllFromSelectionList();
             }
 
         if(device!=null) {
+            MainFrame.getInstance().getTree().addSlot(device,((PageTab) MainFrame.getInstance().getjPanel()).getPage());
+            device.setParent(((PageTab) MainFrame.getInstance().getjPanel()).getPage());
             selectionModel.addToSelectionList(device);
             model.addSlots(device);
         }
@@ -81,20 +87,24 @@ public class AddDeviceCommand extends AbstractCommand{
         }else if(e==ShapeEnum.DELETE_C){
             SlotFactory factory=new CircleFactory();
             device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
+            selectionModel.addToSelectionList(device);
+            model.addSlots(device);
         }else if(e==ShapeEnum.DELETE_R){
             SlotFactory factory=new RectangleFactory();
             device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
+            selectionModel.addToSelectionList(device);
+            model.addSlots(device);
         }else if(e==ShapeEnum.DELETE_T){
             SlotFactory factory=new TriangleFactory();
             device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
+            selectionModel.addToSelectionList(device);
+            model.addSlots(device);
         }
         else{
             while(selectionModel.isElementSelected(device))
                 selectionModel.removeFromSelectionList(device);
             model.removeSlots(device);
         }
-
-
         }
 
     @Override
@@ -114,7 +124,6 @@ public class AddDeviceCommand extends AbstractCommand{
 
     @Override
     public void moveCommand() {
-        System.out.println("konacno");
         device=(Slot)o1;
         device.setPosition(lastPosition);
     }

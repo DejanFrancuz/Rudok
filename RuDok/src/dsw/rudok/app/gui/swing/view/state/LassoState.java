@@ -27,11 +27,7 @@ public class LassoState extends State{
             Point position = e.getPoint();
             Dimension d=new Dimension((int)handler.calculate1(page.getLastPosition(),new Point2D.Double(position.getX(),page.getLastPosition().getY())),(int)handler.calculate1(page.getLastPosition(),new Point2D.Double(page.getLastPosition().getX(),position.getY())));
             page.setSelectionRectangle(new Rectangle((Point) page.getLastPosition(),d));
-
-
-
         }
-
     public void mouseReleased(MouseEvent e){
         Iterator<Slot> it=page.getPageModel().getSlotIterator();
         while(it.hasNext()){

@@ -228,7 +228,7 @@ public class PageTab extends JPanel implements ISubscriber {
         if(notif instanceof Integer){
             int index = (Integer)notif;
             //this.slotTab.remove(index);
-            this.panCenter.remove(index);
+          //  this.panCenter.remove(index);
             this.panCenter.updateUI();
         }
         if(notif instanceof String){
