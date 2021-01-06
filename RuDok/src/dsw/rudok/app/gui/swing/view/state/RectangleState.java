@@ -22,7 +22,7 @@ public class RectangleState extends State{
     public void mousePressed(MouseEvent e) {
         Point position = e.getPoint();
         if (e.getButton()==MouseEvent.BUTTON1){
-                page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position, ShapeEnum.RECTANGLE,null,null,null));
+                page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position, ShapeEnum.RECTANGLE,null,page,null));
             }
         }
     }

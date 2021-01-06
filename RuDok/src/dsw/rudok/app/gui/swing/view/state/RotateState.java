@@ -15,6 +15,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class RotateState extends State{
@@ -56,7 +57,12 @@ public class RotateState extends State{
     public void mouseReleased(MouseEvent e){
         if(p==1){
             point=(Point) slot.getPosition();
-            page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),point, ShapeEnum.ROTATE,page.getPageSelectionModel().getSelectionList(),angle,slot.getAngle()));
+            ArrayList<String> list=new ArrayList<>();
+            for(Slot s:page.getPageSelectionModel().getSelectionList()){
+                list.add(s.getName());
+                s.setRotate(true);
+            }
+            page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),point, ShapeEnum.ROTATE,list,angle,slot.getAngle()));
         }
         p=-1;
     }

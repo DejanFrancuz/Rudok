@@ -11,6 +11,7 @@ import dsw.rudok.app.repository.factory.SlotFactory;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class DeleteSlotState extends State{
     private Page page;
@@ -37,7 +38,11 @@ public class DeleteSlotState extends State{
                 if(page.getPageSelectionModel().getSelectionList().contains(slot)){
                     page.getPageSelectionModel().removeFromSelectionList(slot);
                 }*/
-                page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position,shape,page.getPageSelectionModel().getSelectionList(), null,null));
+                ArrayList<String> list=new ArrayList<>();
+                for(Slot s:page.getPageSelectionModel().getSelectionList()){
+                    list.add(s.getName());
+                }
+                page.getCommandManager().addCommand(new AddDeviceCommand(page.getPageModel(),page.getPageSelectionModel(),position,shape,list, page,null));
             }
             }
 

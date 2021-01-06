@@ -6,6 +6,7 @@ import dsw.rudok.app.gui.swing.view.painters.SlotPainter;
 import dsw.rudok.app.gui.swing.view.state.StateManager;
 import dsw.rudok.app.observer.IPublisher;
 import dsw.rudok.app.observer.ISubscriber;
+import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.node.RuNode;
 
 import java.awt.*;
@@ -43,7 +44,6 @@ public abstract class Slot extends RuNode implements IPublisher, Serializable {
         this.size = size;
         this.position = position;
         this.name = name;
-
 
 
 

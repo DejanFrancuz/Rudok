@@ -28,11 +28,11 @@ public class AddDeviceCommand extends AbstractCommand{
     ShapeEnum e;
     Object o=null;
     Object o1=null;
-    ArrayList<Slot> list;
+    ArrayList<String> list;
 
 
 
-    public AddDeviceCommand(PageModel model, PageSelectionModel selectionModel, Point2D lastPosition,ShapeEnum e,ArrayList<Slot> list,Object o,Object o1) {
+    public AddDeviceCommand(PageModel model, PageSelectionModel selectionModel, Point2D lastPosition,ShapeEnum e,ArrayList<String> list,Object o,Object o1) {
 
         this.model = model;
         this.lastPosition = lastPosition;
@@ -48,12 +48,15 @@ public class AddDeviceCommand extends AbstractCommand{
             if (e== ShapeEnum.CIRCLE){
                 SlotFactory factory=new CircleFactory();
                 device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
+                device.addSubs((Page)o);
             }else if (e==ShapeEnum.RECTANGLE){
                 SlotFactory factory=new RectangleFactory();
                 device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
+                device.addSubs((Page)o);
             } else if (e == ShapeEnum.TRIANGLE) {
                 SlotFactory factory=new TriangleFactory();
                 device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
+                device.addSubs((Page)o);
             }else if(e==ShapeEnum.MOVE){
                 moveCommand();
             }else if(e==ShapeEnum.RESIZE){
@@ -61,16 +64,19 @@ public class AddDeviceCommand extends AbstractCommand{
             }else if(e==ShapeEnum.ROTATE){
                 rotateCommand();
             }else if(e==ShapeEnum.DELETE_C || e==ShapeEnum.DELETE_R || e==ShapeEnum.DELETE_T) {
-                for (Slot s : list) {
-                    MainFrame.getInstance().getTree().removeSlot(s);
+                for(Slot s: model.getSlots()) {
+                    for (String name : list) {
+                        if(s.getName().equals(name))
+                        MainFrame.getInstance().getTree().removeSlot(s);
+                    }
                 }
                 model.getSlots().removeAll(selectionModel.getSelectionList());
                 selectionModel.removeAllFromSelectionList();
             }
 
         if(device!=null) {
-            MainFrame.getInstance().getTree().addSlot(device,((PageTab) MainFrame.getInstance().getjPanel()).getPage());
-            device.setParent(((PageTab) MainFrame.getInstance().getjPanel()).getPage());
+            MainFrame.getInstance().getTree().addSlot(device,(Page)o);
+            device.setParent((Page)o);
             selectionModel.addToSelectionList(device);
             model.addSlots(device);
         }
@@ -87,16 +93,22 @@ public class AddDeviceCommand extends AbstractCommand{
         }else if(e==ShapeEnum.DELETE_C){
             SlotFactory factory=new CircleFactory();
             device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
+            MainFrame.getInstance().getTree().addSlot(device,((PageTab) MainFrame.getInstance().getjPanel()).getPage());
+            device.setParent(((PageTab) MainFrame.getInstance().getjPanel()).getPage());
             selectionModel.addToSelectionList(device);
             model.addSlots(device);
         }else if(e==ShapeEnum.DELETE_R){
             SlotFactory factory=new RectangleFactory();
             device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
+            MainFrame.getInstance().getTree().addSlot(device,((PageTab) MainFrame.getInstance().getjPanel()).getPage());
+            device.setParent(((PageTab) MainFrame.getInstance().getjPanel()).getPage());
             selectionModel.addToSelectionList(device);
             model.addSlots(device);
         }else if(e==ShapeEnum.DELETE_T){
             SlotFactory factory=new TriangleFactory();
             device= factory.makeSlot((Point) lastPosition,model.getDeviceCount());
+            MainFrame.getInstance().getTree().addSlot(device,((PageTab) MainFrame.getInstance().getjPanel()).getPage());
+            device.setParent(((PageTab) MainFrame.getInstance().getjPanel()).getPage());
             selectionModel.addToSelectionList(device);
             model.addSlots(device);
         }
@@ -110,15 +122,31 @@ public class AddDeviceCommand extends AbstractCommand{
     @Override
     public void resizeCommand() {
         Dimension d=(Dimension)o1;
-        for(Slot s: list){
+        /*for(Slot s: list){
             s.setSize(d);
+        }*/
+        for(Slot s:model.getSlots()){
+            for(String name: list){
+                if(s.getName().equals(name)){
+                    s.setSize(d);
+                }
+            }
         }
     }
 
     @Override
     public void rotateCommand() {
-        for(Slot s: list){
+        /*for(Slot s: list){
             s.setAngle((Double)o1);
+        }*/
+        Double angle=(Double)o1;
+        for(Slot s:model.getSlots()){
+            for(String name: list){
+                if(s.getName().equals(name)){
+                    s.setRotate(true);
+                    s.setAngle(angle);
+                }
+            }
         }
     }
 
@@ -139,14 +167,29 @@ public class AddDeviceCommand extends AbstractCommand{
     @Override
     public void undoResize() {
         Dimension d=(Dimension)o;
-        for(Slot s: list){
+        /*for(Slot s: list){
             s.setSize(d);
+        }*/
+        for(Slot s:model.getSlots()){
+            for(String name: list){
+                if(s.getName().equals(name)){
+                    s.setSize(d);
+                }
+            }
         }
     }
     @Override
     public void undoRotate(){
-        for(Slot s: list){
+        /*for(Slot s: list){
             s.setAngle((Double)o);
+        }*/
+        Double angle=(Double)o;
+        for(Slot s:model.getSlots()){
+            for(String name: list){
+                if(s.getName().equals(name)){
+                    s.setAngle(angle);
+                }
+            }
         }
     }
 

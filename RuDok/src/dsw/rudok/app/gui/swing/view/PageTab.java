@@ -235,6 +235,7 @@ public class PageTab extends JPanel implements ISubscriber {
             String s = (String)notif;
             getPage().getPageTab().setName(s);
         }else{
+            System.out.println(notif);
             repaint();
         }
     }
