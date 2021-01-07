@@ -21,10 +21,11 @@ import javax.print.Doc;
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RuTreeImplementation implements RuTree, IPublisher {
+public class RuTreeImplementation implements RuTree, IPublisher, Serializable {
 
     private RuTreeView treeView;
     private DefaultTreeModel treeModel;

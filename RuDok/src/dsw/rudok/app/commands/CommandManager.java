@@ -3,11 +3,13 @@ package dsw.rudok.app.commands;
 import dsw.rudok.app.AppCore;
 import dsw.rudok.app.core.Command;
 import dsw.rudok.app.observer.ISubscriber;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommandManager implements Command{
-    List<ISubscriber> subscribers = new ArrayList<>();
+public class CommandManager implements Command, Serializable {
+    private transient List<ISubscriber> subscribers = new ArrayList<>();
     private ArrayList<AbstractCommand> commands = new ArrayList<>();
     private int currentCommand = 0;
 

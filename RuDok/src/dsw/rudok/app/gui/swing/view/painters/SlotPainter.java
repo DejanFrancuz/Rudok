@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class SlotPainter extends  ElementPainter{
     protected Shape shape;
-    protected Stroke stroke = new BasicStroke();
+   protected Stroke stroke = new BasicStroke();
     protected Paint paint = Color.BLACK;
 
     public SlotPainter(Slot device) {

@@ -1,6 +1,8 @@
 package dsw.rudok.app.commands;
 
-public abstract class AbstractCommand {
+import java.io.Serializable;
+
+public abstract class AbstractCommand implements Serializable {
     public abstract void doCommand();
     public abstract void undoCommand();
     public abstract void resizeCommand();

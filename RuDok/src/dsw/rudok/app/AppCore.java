@@ -7,6 +7,8 @@ import dsw.rudok.app.gui.swing.SwingGui;
 import dsw.rudok.app.gui.swing.view.MainFrame;
 import dsw.rudok.app.gui.swing.view.PageTab;
 import dsw.rudok.app.repository.RepositoryImpl;
+import dsw.rudok.app.serialization.SerializationImpl;
+import dsw.rudok.app.serialization.SerializationInterface;
 
 import java.awt.*;
 
@@ -32,7 +34,9 @@ public class AppCore extends ApplicationFramework {
         ErrorHandler errorHandler=new ErrorHandlerImpl();
         Command command= new CommandManager();
         ApplicationFramework appCore= AppCore.getInstance();
-        appCore.initialise(gui,repository,errorHandler,command);
+        SerializationInterface serialization = new SerializationImpl();
+        appCore.initialise(gui,repository,errorHandler,command,serialization);
         appCore.run();
+
     }
 }

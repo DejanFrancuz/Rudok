@@ -20,6 +20,8 @@ public class TextSlotView extends SlotView implements ISubscriber {
 
     public TextSlotView(Slot slot){
         super(slot);
+        setTitle("Tekstualni slot");
+
         setLocationRelativeTo(null);
 
         toolbar = new JToolBar();
@@ -31,6 +33,7 @@ public class TextSlotView extends SlotView implements ISubscriber {
 
        JTextPane pane = new JTextPane();
         SimpleAttributeSet attributeSet = new SimpleAttributeSet();
+        pane.setContentType("text/html");
        /* StyleConstants.setBold(attributeSet, true);
 
         // Set the attributes before adding text

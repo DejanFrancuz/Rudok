@@ -4,6 +4,7 @@ import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.element.CircleSlot;
 import dsw.rudok.app.repository.element.Slot;
 
+import java.awt.*;
 import java.awt.geom.GeneralPath;
 
 public class CirclePainter extends SlotPainter implements ISubscriber {

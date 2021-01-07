@@ -4,6 +4,7 @@ import dsw.rudok.app.AppCore;
 import dsw.rudok.app.core.ApplicationFramework;
 import dsw.rudok.app.gui.swing.tree.model.RuTreeItem;
 import dsw.rudok.app.gui.swing.view.MainFrame;
+import dsw.rudok.app.repository.Page;
 import dsw.rudok.app.repository.Project;
 
 import javax.swing.*;
@@ -25,18 +26,21 @@ public class SaveProjectAction extends AbstractRudokAction{
         JFileChooser jfc = new JFileChooser();
         jfc.setFileFilter(new MyFileFilter());
 
-        RuTreeItem item= ((RuTreeItem)MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent());
-        Project project=(Project) item.getNodeModel();
-        File projectFile=project.getProjectFile();
 
-        /*if (!project.isChanged()){
-            System.out.println("tu sam poz");
+        RuTreeItem item= ((RuTreeItem)MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent());
+        //MainFrame.getInstance().getWorkspaceTree().getLastSelectedPathComponent();
+        Page page= (Page)item.getNodeModel();
+        File pageFile=page.getPageFile();
+
+
+       /* if (!page.isChanged()){
+            System.out.println("ZASTO");
             return;
         }*/
 
-        if (project.getProjectFile()==null){
+        if (page.getPageFile()==null){
             if(jfc.showSaveDialog(MainFrame.getInstance())==JFileChooser.APPROVE_OPTION){
-                projectFile=jfc.getSelectedFile();
+                pageFile=jfc.getSelectedFile();
             }else{
                 return;
             }
@@ -44,7 +48,7 @@ public class SaveProjectAction extends AbstractRudokAction{
         }
 
 
-        ObjectOutputStream os;
+       /* ObjectOutputStream os;
         try {
             os = new ObjectOutputStream(new FileOutputStream(projectFile));
             os.writeObject(project);
@@ -54,6 +58,9 @@ public class SaveProjectAction extends AbstractRudokAction{
             e1.printStackTrace();
         } catch (IOException e1) {
             e1.printStackTrace();
-        }
+        }*/
+
+
+        AppCore.getInstance().getSerializationInterface().save(page,pageFile);
     }
 }

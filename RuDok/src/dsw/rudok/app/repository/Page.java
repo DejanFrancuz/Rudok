@@ -14,6 +14,7 @@ import dsw.rudok.app.repository.node.RuNodeComposite;
 
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,17 +22,21 @@ import java.util.List;
 public class Page extends RuNodeComposite implements Serializable,ISubscriber {
 
     private PageTab pageTab;
-    List<ISubscriber> subscribers;
+    private transient List<ISubscriber> subscribers;
     private PageModel pageModel = new PageModel();
     private PageSelectionModel pageSelectionModel=new PageSelectionModel();
     boolean rotate;
     private CommandManager commandManager= (CommandManager) AppCore.getInstance().getCommand();
     private Rectangle2D selectionRectangle=null;
     private Point2D lastPosition=null;
+    private transient boolean changed;
+    private File pageFile;
 
 
     public Page(String name, RuNode parent) {
         super(name, parent);
+        changed=false;
+        pageFile=null;
     }
     private StateManager stateManager= new StateManager(this);
 
@@ -171,5 +176,24 @@ public class Page extends RuNodeComposite implements Serializable,ISubscriber {
     @Override
     public void update(Object notif) {
         notifyObs(new Object());
+    }
+
+    public void setChanged(boolean changed) {
+        if(this.changed!=changed) {
+            this.changed = changed;
+            // SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().);
+        }
+    }
+
+    public File getPageFile() {
+        return pageFile;
+    }
+
+    public void setPageFile(File pageFile) {
+        this.pageFile = pageFile;
+    }
+
+    public boolean isChanged() {
+        return changed;
     }
 }

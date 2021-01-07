@@ -5,11 +5,12 @@ import dsw.rudok.app.observer.ISubscriber;
 import dsw.rudok.app.repository.element.Slot;
 
 import javax.swing.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class PageSelectionModel extends DefaultSingleSelectionModel implements IPublisher {
+public class PageSelectionModel extends DefaultSingleSelectionModel implements IPublisher, Serializable {
 
     private ArrayList<Slot> selectionList=new ArrayList<>();
     private List<ISubscriber> subscribers;

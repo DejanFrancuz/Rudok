@@ -17,9 +17,10 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
 import java.util.Iterator;
 
-public class PageTab extends JPanel implements ISubscriber {
+public class PageTab extends JPanel implements ISubscriber, Serializable {
     static int openFrameCount = 0;
 
     static final int xOffset = 30, yOffset = 30;
